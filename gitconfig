@@ -1,0 +1,22 @@
+[user]
+        name        = John Evans
+        email       = john@milo.com
+[alias]             
+        co          = checkout
+        ci          = commit
+        st          = status
+        b           = branch
+        pr          = pull --rebase
+        r           = rebase
+	p           = push
+	qc          = commit --no-verify
+	qcommit     = commit --no-verify
+[color]             
+        status      = auto
+        diff        = auto
+        branch      = auto
+        interactive = auto
+[core]
+        excludesfile = /home/john/.gitignore
+[push]
+	default = matching

@@ -101,15 +101,12 @@ fi
 export VISUAL=emacsclient
 export EDITOR=$VISUAL
 
-. /pluto/local/activate-environment
-
 export LS_COLORS='di=01;33'
 
 
 export PATH=$PATH:~/.cabal/bin
 
-
-
+# TODO: Move into a go setup script
 export GOROOT=$HOME/go
 export GOOS=linux
 export GOARCH=amd64
@@ -117,7 +114,7 @@ export GOBIN=$HOME/bin
 export PATH=$GOBIN:$PATH
 
 
-
+# TODO: Move into something only triggered with xmonad
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 
@@ -131,3 +128,7 @@ export JAVA_HOME=$JDK_HOME
 export PATH=$PATH:/usr/local/google_appengine
 
 export PATH=$PATH:/var/lib/gems/1.8/bin
+
+if [ -f ~/dotfiles/tags/milo ]; then
+    . ~/dotfiles/milo
+fi

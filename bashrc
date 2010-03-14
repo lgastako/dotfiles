@@ -128,14 +128,6 @@ export JDK_HOME=/usr/lib/jvm/java-6-sun
 export JAVA_HOME=$JDK_HOME
 
 
-#
-# IRCSERVER=hermes.milo.com:6667:foofoo
-# IRCNAME=John
-# IRCNICK=john
-export IRCSERVER=zodiac.xzibition.com:56822:change0me786
-export IRCNAME=John
-export IRCNICK=john
-
 export PATH=$PATH:/usr/local/google_appengine
 
 export PATH=$PATH:/var/lib/gems/1.8/bin

@@ -11,5 +11,5 @@ LN=/bin/ln
 ${RM} ~/.bashrc
 ${RM} ~/.profile
 
-${LN} -s ~/.bashrc ~/dotfiles/bashrc
-${LN} -s ~/.profile ~/dotfiles/profile
+${LN} -s ~/dotfiles/bashrc ~/.bashrc
+${LN} -s ~/dotfiles/profile ~/.profile

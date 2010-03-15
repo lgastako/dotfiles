@@ -1,22 +1,22 @@
 [user]
         name        = John Evans
         email       = john@milo.com
-[alias]             
+[alias]
         co          = checkout
         ci          = commit
         st          = status
         b           = branch
         pr          = pull --rebase
         r           = rebase
-	p           = push
-	qc          = commit --no-verify
-	qcommit     = commit --no-verify
-[color]             
+        p           = push
+        qc          = commit --no-verify
+        qcommit     = commit --no-verify
+[color]
         status      = auto
         diff        = auto
         branch      = auto
         interactive = auto
 [core]
-        excludesfile = /home/john/.gitignore
+        excludesfile = /home/john/dotfiles/gitignore
 [push]
-	default = matching
+        default = matching

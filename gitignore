@@ -1,0 +1,6 @@
+.DS_Store
+*~
+*.tmproj
+*.pyc
+*.beam
+*.class

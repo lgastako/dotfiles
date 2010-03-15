@@ -8,8 +8,8 @@ fi
 RM=/bin/rm
 LN=/bin/ln
 
-${RM} ~/.bashrc
-${RM} ~/.profile
+${RM} -f ~/.bashrc
+${RM} -f ~/.profile
 
 ${LN} -s ~/dotfiles/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/profile ~/.profile

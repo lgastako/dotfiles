@@ -11,7 +11,7 @@
         p           = push
         qc          = commit --no-verify
         qcommit     = commit --no-verify
-        m           = merge
+        m           = merge --no-ff
 [color]
         status      = auto
         diff        = auto

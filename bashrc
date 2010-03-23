@@ -137,3 +137,7 @@ export PATH=$PATH:/var/lib/gems/1.8/bin
 if [ -f ~/dotfiles/tags/milo ]; then
     . ~/dotfiles/milo
 fi
+
+if [ -f ~/dotfiles/hosts/`hostname` ]; then
+    . ~/dotfiles/hosts/`hostname`
+fi

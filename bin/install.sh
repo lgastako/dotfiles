@@ -21,5 +21,5 @@ mkdir ~/dotfiles/tags
 
 for tag in $*
 do
-   touch ~/dotfiles/$tag
+   touch ~/dotfiles/tags/$tag
 done

@@ -16,3 +16,10 @@ ${RM} -f ~/.gitignore
 ${LN} -s ~/dotfiles/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/profile ~/.profile
 ${LN} -s ~/dotfiles/gitconfig ~/.gitconfig
+
+mkdir ~/dotfiles/tags
+
+for tag in $*
+do
+   touch ~/dotfiles/$tag
+done

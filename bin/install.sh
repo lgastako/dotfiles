@@ -17,7 +17,7 @@ ${LN} -s ~/dotfiles/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/profile ~/.profile
 ${LN} -s ~/dotfiles/gitconfig ~/.gitconfig
 
-mkdir ~/dotfiles/tags
+mkdir -p ~/dotfiles/tags
 
 for tag in $*
 do

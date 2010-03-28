@@ -107,7 +107,7 @@ export VISUAL=emacsclient
 export EDITOR=$VISUAL
 
 export LS_COLORS='di=01;33'
-
+export CLICOLOR="YES"
 
 export PATH=$PATH:~/.cabal/bin
 

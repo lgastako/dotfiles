@@ -8,6 +8,8 @@
         b           = branch
         pr          = pull --rebase
         r           = rebase
+        pl          = pull --no-ff
+        pn          = pull --no-ff
         p           = push
         qc          = commit --no-verify
         qcommit     = commit --no-verify

@@ -1,1 +1,4 @@
 . /pluto/local/activate-environment
+
+# Add the MAGIC_ENV to the prompt
+export PS1="(\${MAGIC_ENV:-None}) $PS1"

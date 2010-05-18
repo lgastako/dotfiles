@@ -135,7 +135,11 @@ export PATH=$PATH:/usr/local/google_appengine
 export PATH=$PATH:/var/lib/gems/1.8/bin
 
 if [ -f ~/dotfiles/tags/milo ]; then
-    . ~/dotfiles/milo
+    if [ -e /pluto/local/activate-environment ]; then
+        . ~/dotfiles/milo
+    else
+        echo WARNING: No /pluto/local/activate-environment
+    fi
 fi
 
 if [ -f ~/dotfiles/hosts/`hostname` ]; then

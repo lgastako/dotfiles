@@ -21,11 +21,16 @@ mkdir -p ~/dotfiles/tags
 
 for tag in $*
 do
-   src=~/dotfiles/tags-available/$tag
-   dst=~/dotfiles/tags-enabled/$tag
+   src=~/dotfiles/tags/available/$tag
+   dst=~/dotfiles/tags/enabled/$tag
    if [ -e "$src" ]
    then
-       ln -s $src $dst
+       if [ -e "$dst" ]
+       then
+           echo "Tag already exists: $tag"
+       else
+           ln -s $src $dst
+       fi
    else
        echo "WARNING: Could not install tag: $tag"
    fi

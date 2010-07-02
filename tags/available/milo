@@ -1,0 +1,10 @@
+. /pluto/local/activate-environment
+
+# Add the MAGIC_ENV to the prompt
+export PS1="(\${MAGIC_ENV:-None}) $PS1"
+
+# Additional aliases
+alias pp='cd /pluto/pycloud'
+alias pl='cd /pluto/pluto'
+alias rt='./runtests'
+alias pmm='psql milodb milo'

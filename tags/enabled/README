@@ -1,0 +1,4 @@
+This directory contains symlinks to zero or more of the tags
+available.  When you install dotfiles, you should run
+"dotfiles/bin/install.sh <tag1> .. <tagN>" which will create the
+appropriate symlinks.

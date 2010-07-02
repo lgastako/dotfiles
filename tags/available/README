@@ -1,0 +1,4 @@
+This directory contains all of the tag files that are available.  When
+you install dotfiles, you should run "dotfiles/bin/install.sh <tag1>
+.. <tagN>" which will create symlinks to the files in this directory
+from dotfiles/tags-enabled.

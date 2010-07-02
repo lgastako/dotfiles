@@ -21,5 +21,12 @@ mkdir -p ~/dotfiles/tags
 
 for tag in $*
 do
-   touch ~/dotfiles/tags/$tag
+   src=~/dotfiles/tags-available/$tag
+   dst=~/dotfiles/tags-enabled/$tag
+   if [ -e "$src" ]
+   then
+       ln -s $src $dst
+   else
+       echo "WARNING: Could not install tag: $tag"
+   fi
 done

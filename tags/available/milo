@@ -1,4 +1,10 @@
-. /pluto/local/activate-environment
+ACT_ENV=/pluto/local/activate-environment
+if [ -e ${ACT_ENV} ]
+then
+    . ${ACT_ENV}
+else
+    echo "WARNING: milo tag enabled but no '${ACT_ENV}' file exists."
+fi
 
 # Add the MAGIC_ENV to the prompt
 export PS1="(\${MAGIC_ENV:-None}) $PS1"

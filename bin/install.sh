@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d ~/dotfiles ]; then
    echo "~/dotfiles does not exist.  aborting."

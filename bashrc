@@ -136,7 +136,10 @@ export PATH=$PATH:/var/lib/gems/1.8/bin
 
 for tag in ~/dotfiles/tags/enabled/*
 do
-    . $tag
+    if [ `basename $tag` != "README" ]
+    then
+      . $tag
+    fi
 done
 
 if [ -f ~/dotfiles/hosts/`hostname` ]; then

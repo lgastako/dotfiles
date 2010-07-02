@@ -21,6 +21,10 @@ mkdir -p ~/dotfiles/tags
 
 for tag in $*
 do
+   if [ "$tag" == "README" ]
+   then
+     continue
+   fi
    src=~/dotfiles/tags/available/$tag
    dst=~/dotfiles/tags/enabled/$tag
    if [ -e "$src" ]

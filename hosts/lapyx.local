@@ -1,1 +1,2 @@
 export PATH=$PATH:/Users/john/.gem/ruby/1.8/bin:/opt/local/bin
+unalias ack

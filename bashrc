@@ -142,6 +142,12 @@ do
     fi
 done
 
-if [ -f ~/dotfiles/hosts/`hostname` ]; then
-    . ~/dotfiles/hosts/`hostname`
-fi
+UNAME_RC=~/dotfiles/unames/`uname`
+HNAME_RC=~/dotfiles/hosts/`hostname`
+
+for extra_rc in ${UNAME_RC} ${HNAME_RC}
+do
+    if [ -f ${extra_rc} ]; then
+        . ${extra_rc}
+    fi
+done

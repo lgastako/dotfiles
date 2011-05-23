@@ -134,6 +134,10 @@ export PATH=$PATH:/usr/local/google_appengine
 
 export PATH=$PATH:/var/lib/gems/1.8/bin
 
+export PATH=$PATH:/home/john/local
+
+export LESS=-X
+
 for tag in ~/dotfiles/tags/enabled/*
 do
     if [ `basename $tag` != "README" ]

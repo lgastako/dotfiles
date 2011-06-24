@@ -109,6 +109,8 @@ export EDITOR=$VISUAL
 export LS_COLORS='di=01;33'
 export CLICOLOR="YES"
 
+export PATH=~/local/bin:$PATH
+
 export PATH=$PATH:~/.cabal/bin
 
 # TODO: Move into a go setup script
@@ -136,7 +138,10 @@ export PATH=$PATH:/var/lib/gems/1.8/bin
 
 export PATH=$PATH:/home/john/local
 
-export LESS=-X
+# The idea behind this was to prevent less from clearing the screen before
+# exiting but it also has tons of other side effects like totally wrecking
+# the output of "git diff", etc.  Will have to find a better way.
+#export LESS=-X
 
 for tag in ~/dotfiles/tags/enabled/*
 do

@@ -1,0 +1,4 @@
+# Really this should just be set when it's Linux or rather when operating under the gnome desktop
+# environment specifically but for now removing it here is fine... mostly because I'm on a plane
+# and I want to commit this and I don't have a Linux box here :)
+unalias open

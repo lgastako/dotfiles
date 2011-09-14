@@ -1,0 +1,7 @@
+[ui]
+username = John Evans <lgastako@gmail.com>
+ignore = ~/.hgignore
+
+[alias]
+a = add
+ci = commit

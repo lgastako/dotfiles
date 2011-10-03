@@ -1,1 +1,2 @@
-. /Users/jpevans/dotfiles/common/git-completion.bash
+. $HOME/dotfiles/common/git-completion.bash
+export PATH=$PATH:$HOME/node_modules/.bin

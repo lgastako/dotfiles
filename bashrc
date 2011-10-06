@@ -152,7 +152,7 @@ do
 done
 
 UNAME_RC=~/dotfiles/unames/`uname`
-HNAME_RC=~/dotfiles/hosts/`hostname`
+HNAME_RC=~/dotfiles/hosts/`hostname -s`
 
 for extra_rc in ${UNAME_RC} ${HNAME_RC}
 do

@@ -75,8 +75,8 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/dotfiles/bash_aliases ]; then
-    . ~/dotfiles/bash_aliases
+if [ -f $HOME/dotfiles/bash_aliases ]; then
+    . $HOME/dotfiles/bash_aliases
 fi
 
 # enable color support of ls and also add handy aliases
@@ -109,9 +109,9 @@ export EDITOR=$VISUAL
 export LS_COLORS='di=01;33'
 export CLICOLOR="YES"
 
-export PATH=~/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
 
-export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:$HOME/cabal/bin
 
 # TODO: Move into a go setup script
 export GOROOT=$HOME/go
@@ -143,7 +143,7 @@ export PATH=$PATH:/home/john/local
 # the output of "git diff", etc.  Will have to find a better way.
 #export LESS=-X
 
-for tag in ~/dotfiles/tags/enabled/*
+for tag in $HOME/dotfiles/tags/enabled/*
 do
     if [ `basename $tag` != "README" ]
     then
@@ -151,8 +151,8 @@ do
     fi
 done
 
-UNAME_RC=~/dotfiles/unames/`uname`
-HNAME_RC=~/dotfiles/hosts/`hostname -s`
+UNAME_RC=$HOME/dotfiles/unames/`uname`
+HNAME_RC=$HOME/dotfiles/hosts/`hostname -s`
 
 for extra_rc in ${UNAME_RC} ${HNAME_RC}
 do

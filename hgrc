@@ -5,3 +5,4 @@ ignore = ~/.hgignore
 [alias]
 a = add
 ci = commit
+s = status

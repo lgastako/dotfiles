@@ -2,5 +2,4 @@ export PATH=$PATH:/Users/john/.gem/ruby/1.8/bin:/opt/local/bin
 unalias ack
 . $HOME/dotfiles/common/git-completion.bash
 export PATH=$PATH:$HOME/node_modules/.bin
-echo HOLLA
 

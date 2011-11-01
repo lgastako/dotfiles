@@ -20,14 +20,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-
-# repeating these from .bashrc here to try to make hadoop happy.  bah.
-
-# To make IntelliJ Idea happy
-export JDK_HOME=/usr/lib/jvm/java-6-sun
-
-# To make ant happy
-export JAVA_HOME=$JDK_HOME
-
-

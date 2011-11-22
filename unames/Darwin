@@ -5,4 +5,5 @@ unalias open
 
 alias m=mate
 
-export PATH=/opt/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+

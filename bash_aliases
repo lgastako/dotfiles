@@ -1,4 +1,3 @@
-alias ack=ack-grep
 alias b='git b'
 alias cls='clear'
 alias co='git co'

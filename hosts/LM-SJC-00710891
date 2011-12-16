@@ -1,2 +1,9 @@
 . $HOME/dotfiles/common/git-completion.bash
 export PATH=$PATH:$HOME/node_modules/.bin
+
+# install memegen autocompletion
+. /Users/administrator/src/memegen/script/autocomplete.sh
+
+
+alias g=git
+

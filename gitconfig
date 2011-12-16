@@ -2,12 +2,15 @@
         name        = John Evans
         email       = lgastako@gmail.com
 [alias]
+        u           = push
+        d           = pull
+        a           = add
         co          = checkout
         ci          = commit
         st          = status
         b           = branch
-        pr          = pull --rebase
-        r           = rebase
+        r           = remote
+        reb         = rebase
         pl          = pull --no-ff
         pn          = pull --no-ff
         p           = push

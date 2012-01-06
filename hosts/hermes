@@ -1,0 +1,9 @@
+. $HOME/dotfiles/common/git-completion.bash
+export PATH=$PATH:$HOME/node_modules/.bin
+
+# install memegen autocompletion
+. /Library/Ruby/Gems/1.8/gems/memegen-1.0.7/script/autocomplete.sh
+
+
+alias g=git
+

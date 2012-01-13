@@ -4,6 +4,10 @@ export PATH=$PATH:$HOME/node_modules/.bin
 # install memegen autocompletion
 . /Library/Ruby/Gems/1.8/gems/memegen-1.0.7/script/autocomplete.sh
 
+. /usr/local/bin/virtualenvwrapper.sh
+
 
 alias g=git
+
+export NODE_PATH=/usr/local/lib/node_modules
 

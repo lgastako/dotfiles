@@ -8,3 +8,8 @@ export PATH=$HOME/src/ringojs-0.8/bin:$PATH
 export PATH=$PATH:$HOME/src/clojurescript/bin
 export PATH=$PATH:$HOME/Library/Haskell/bin
 export PATH=$PATH:$HOME/Library/Clojure/bin
+
+export PATH=/usr/local/bin:$PATH
+
+# Esp. necessary for py27
+export PATH=/opt/local/bin:$PATH

@@ -6,3 +6,5 @@ unalias open
 alias m=mate
 
 export PATH=/opt/local/bin:$PATH
+
+source /usr/local/bin/virtualenvwrapper.sh

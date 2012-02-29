@@ -1,2 +1,17 @@
 . $HOME/dotfiles/common/git-completion.bash
 export PATH=$PATH:$HOME/node_modules/.bin
+
+# install memegen autocompletion
+. /Users/administrator/src/memegen/script/autocomplete.sh
+
+
+alias g=git
+
+alias t='py.test'
+alias d='py.test --capture=no --pdb'
+
+export IRCNICK=john
+export IRCNAME="root@whitehouse.gov"
+export IRCSERVER=irc.ebay.com
+
+. /usr/local/bin/virtualenvwrapper.sh

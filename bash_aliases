@@ -1,4 +1,3 @@
-alias ack=ack-grep
 alias b='git b'
 alias cls='clear'
 alias co='git co'
@@ -22,3 +21,5 @@ alias st='git st'
 alias syslog='tail -f /var/log/syslog'
 alias x='rxvt -rv -tr -sh 35 -sl 9999'
 alias y=fortune
+alias g=git
+alias t=py.test

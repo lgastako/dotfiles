@@ -1,3 +1,5 @@
+alias cd..='cd ..'
+alias ..='cd ..'
 alias b='git b'
 alias cls='clear'
 alias co='git co'
@@ -23,3 +25,5 @@ alias x='rxvt -rv -tr -sh 35 -sl 9999'
 alias y=fortune
 alias g=git
 alias t=py.test
+alias tq='t -q'
+alias s='g st'

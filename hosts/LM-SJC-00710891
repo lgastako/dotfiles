@@ -7,3 +7,15 @@ export PATH=$PATH:$HOME/node_modules/.bin
 
 alias g=git
 
+alias t='py.test'
+alias d='py.test --capture=no --pdb'
+
+export IRCNICK=john
+export IRCNAME="root@whitehouse.gov"
+export IRCSERVER=irc.ebay.com
+
+. /usr/local/bin/virtualenvwrapper.sh
+
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+export PATH="/Library/PostgreSQL/9.1/bin:$PATH"

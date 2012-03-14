@@ -13,11 +13,13 @@ ${RM} -f ~/.profile
 ${RM} -f ~/.gitconfig
 ${RM} -f ~/.gitignore
 ${RM} -f ~/.inputrc
+${RM} -f ~/.zshrc
 
 ${LN} -s ~/dotfiles/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/profile ~/.profile
 ${LN} -s ~/dotfiles/gitconfig ~/.gitconfig
 ${LN} -s ~/dotfiles/inputrc ~/.inputrc
+${LN} -s ~/dotfiles/zshrc ~/.zshrc
 
 mkdir -p ~/dotfiles/tags
 

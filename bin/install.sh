@@ -9,6 +9,7 @@ RM=/bin/rm
 LN=/bin/ln
 
 ${RM} -f ~/.bashrc
+${RM} -f ~/.vimrc
 ${RM} -f ~/.profile
 ${RM} -f ~/.gitconfig
 ${RM} -f ~/.gitignore
@@ -16,12 +17,13 @@ ${RM} -f ~/.inputrc
 ${RM} -f ~/.zshrc
 ${RM} -f ~/.oh-my-zsh
 
-${LN} -s ~/dotfiles/bashrc ~/.bashrc
-${LN} -s ~/dotfiles/profile ~/.profile
-${LN} -s ~/dotfiles/gitconfig ~/.gitconfig
+${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
+${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
+${LN} -s ~/dotfiles/bash/profile ~/.profile
+${LN} -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ${LN} -s ~/dotfiles/inputrc ~/.inputrc
-${LN} -s ~/dotfiles/zshrc ~/.zshrc
-${LN} -s ~/dotfiles/oh-my-zsh ~/.oh-my-zsh
+${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
+${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
 
 mkdir -p ~/dotfiles/tags
 

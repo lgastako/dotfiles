@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS packages;
-
-CREATE TABLE packages (package_id INTEGER PRIMARY KEY, 
-CREATE TABLE machines (machine_id INTEGER PRIMARY KEY,
-CREATE TABLE platforms (platform_id INTEGER PRIMARY KEY,
-CREATE TABLE machines_platforms (machine_id INTEGER REFERENCES 
-CREATE TABLE 

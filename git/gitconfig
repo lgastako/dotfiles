@@ -24,6 +24,8 @@
         branch      = auto
         interactive = auto
 [core]
+	# This is terrible, but whatever.
         excludesfile = /home/john/dotfiles/gitignore
+        excludesfile = /Users/john/dotfiles/gitignore
 [push]
         default = matching

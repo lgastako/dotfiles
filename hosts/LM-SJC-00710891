@@ -15,3 +15,7 @@ export IRCNAME="root@whitehouse.gov"
 export IRCSERVER=irc.ebay.com
 
 . /usr/local/bin/virtualenvwrapper.sh
+
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+export PATH="/Library/PostgreSQL/9.1/bin:$PATH"

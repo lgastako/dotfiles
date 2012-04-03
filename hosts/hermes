@@ -11,3 +11,9 @@ alias g=git
 
 export NODE_PATH=/usr/local/lib/node_modules
 
+
+export PATH=$HOME/android-sdk-macosx/platform-tools:$HOME/android-sdk-macosx/tools:$PATH
+export PATH=/opt/local/lib/postgresql91/bin:$PATH
+
+alias sqlite3='rlwrap sqlite3'
+alias s3=sqlite3

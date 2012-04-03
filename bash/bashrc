@@ -75,8 +75,8 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f $HOME/dotfiles/bash_aliases ]; then
-    . $HOME/dotfiles/bash_aliases
+if [ -f $HOME/dotfiles/bash/bash_aliases ]; then
+    . $HOME/dotfiles/bash/bash_aliases
 fi
 
 # enable color support of ls and also add handy aliases

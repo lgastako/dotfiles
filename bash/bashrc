@@ -75,8 +75,8 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f $HOME/dotfiles/bash_aliases ]; then
-    . $HOME/dotfiles/bash_aliases
+if [ -f $HOME/dotfiles/bash/bash_aliases ]; then
+    . $HOME/dotfiles/bash/bash_aliases
 fi
 
 # enable color support of ls and also add handy aliases
@@ -165,4 +165,8 @@ export ISE_PLATFORM=macosx-x86-64
 export ISE_EIFFEL=/Applications/MacPorts/Eiffel68 
 export GOBO=$ISE_EIFFEL/library/gobo/svn 
 export PATH=$PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/../spec/$ISE_PLATFORM/bin 
+
+export PTYHONSTARTUP="$HOME/dotfiles/python/ipython/ipythonrc"
+
+function protopy { git clone git@github.com:lgastako/protopy.git $1 && cd $1 && . ./begin.sh $1 }
 

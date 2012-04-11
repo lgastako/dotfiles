@@ -160,3 +160,8 @@ do
         . ${extra_rc}
     fi
 done
+
+export PTYHONSTARTUP="$HOME/dotfiles/python/ipython/ipythonrc"
+
+function protopy { git clone git@github.com:lgastako/protopy.git $1 && cd $1 && . ./begin.sh $1 }
+

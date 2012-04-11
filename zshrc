@@ -37,3 +37,6 @@ plugins=(git textmate)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+. $HOME/dotfiles/bash_aliases
+. /usr/local/bin/virtualenvwrapper.sh
+unsetopt correctall

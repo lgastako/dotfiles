@@ -25,7 +25,7 @@
         interactive = auto
 [core]
 	# This is terrible, but whatever.
-        excludesfile = /home/john/dotfiles/gitignore
-        excludesfile = /Users/john/dotfiles/gitignore
+        excludesfile = /home/john/dotfiles/git/gitignore
+        excludesfile = /Users/john/dotfiles/git/gitignore
 [push]
         default = matching

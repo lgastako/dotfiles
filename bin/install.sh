@@ -24,6 +24,7 @@ ${LN} -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ${LN} -s ~/dotfiles/inputrc ~/.inputrc
 ${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
+${LN} -s ~/dotfiles/python/pdb/pdbrc ~/.pdbrc
 
 mkdir -p ~/dotfiles/tags
 

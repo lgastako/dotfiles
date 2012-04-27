@@ -1,0 +1,1 @@
+alias eo import os;; execfile(os.path.expanduser("~/dotfiles/python/pdb/echoon.py"))

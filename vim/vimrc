@@ -1,3 +1,17 @@
+colorscheme desert
 syntax on
+
+# tab stop
 set ts=4
+# shift width
 set sw=4
+
+# Get rid of menubar
+set guioptions-=m
+
+# Get rid of toolbar
+set guioptions-=T
+
+# Get rid of scrollbars
+set guioptions-=lrb
+

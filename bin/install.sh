@@ -16,6 +16,8 @@ ${RM} -f ~/.gitignore
 ${RM} -f ~/.inputrc
 ${RM} -f ~/.zshrc
 ${RM} -f ~/.oh-my-zsh
+${RM} -f ~/.pdbrc
+${RM} -f ~/.xmonad
 
 ${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
@@ -25,6 +27,9 @@ ${LN} -s ~/dotfiles/inputrc ~/.inputrc
 ${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
 ${LN} -s ~/dotfiles/python/pdb/pdbrc ~/.pdbrc
+
+# symlinking whole directory
+${LN} -s ~/dotfiles/xmonad ~/.xmonad
 
 mkdir -p ~/dotfiles/tags
 

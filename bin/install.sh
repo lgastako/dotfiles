@@ -27,6 +27,7 @@ ${LN} -s ~/dotfiles/inputrc ~/.inputrc
 ${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
 ${LN} -s ~/dotfiles/python/pdb/pdbrc ~/.pdbrc
+${LN} -s ~/dotfiles/gtk/gtkrc-2.0 ~/.gtkrc-2.0
 
 # symlinking whole directory
 ${LN} -s ~/dotfiles/xmonad ~/.xmonad
@@ -53,3 +54,4 @@ do
        echo "WARNING: Could not install tag: $tag"
    fi
 done
+

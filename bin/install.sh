@@ -16,6 +16,8 @@ ${RM} -f ~/.gitignore
 ${RM} -f ~/.inputrc
 ${RM} -f ~/.zshrc
 ${RM} -f ~/.oh-my-zsh
+${RM} -f ~/.pdbrc
+${RM} -f ~/.xmonad
 
 ${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
@@ -24,6 +26,11 @@ ${LN} -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ${LN} -s ~/dotfiles/inputrc ~/.inputrc
 ${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
+${LN} -s ~/dotfiles/python/pdb/pdbrc ~/.pdbrc
+${LN} -s ~/dotfiles/gtk/gtkrc-2.0 ~/.gtkrc-2.0
+
+# symlinking whole directory
+${LN} -s ~/dotfiles/xmonad ~/.xmonad
 
 mkdir -p ~/dotfiles/tags
 
@@ -47,3 +54,4 @@ do
        echo "WARNING: Could not install tag: $tag"
    fi
 done
+

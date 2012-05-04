@@ -5,3 +5,4 @@
 *.beam
 *.class
 *.egg-info
+*.swp

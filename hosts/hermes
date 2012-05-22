@@ -17,3 +17,6 @@ export PATH=/opt/local/lib/postgresql91/bin:$PATH
 
 alias sqlite3='rlwrap sqlite3'
 alias s3=sqlite3
+
+export PATH=/opt/local/lib/postgresql91/bin:$PATH
+

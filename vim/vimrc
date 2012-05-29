@@ -6,15 +6,7 @@ set ts=4
 " shift width
 set sw=4
 
-" Get rid of menubar
-set guioptions-=m
-
-" Get rid of toolbar
-set guioptions-=T
-
-" Get rid of scrollbars
-" should be able to do -lrb but doesn't always work
-set guioptions-=l
-set guioptions-=r
-set guioptions-=b
+" Get rid of menubar, toolbar and all scrollbars
+" set guioptions=melrb would turn them all back on
+set guioptions=
 

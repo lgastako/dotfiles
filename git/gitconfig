@@ -11,13 +11,12 @@
         b           = branch
         r           = remote
         reb         = rebase
-        pl          = pull --no-ff
+        pl          = pull
         pn          = pull --no-ff
         p           = push
         qc          = commit --no-verify
         qcommit     = commit --no-verify
-        merge       = merge --no-ff
-        m           = merge --no-ff
+        m           = merge
 [color]
         status      = auto
         diff        = auto

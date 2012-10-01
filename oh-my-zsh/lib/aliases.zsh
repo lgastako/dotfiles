@@ -22,3 +22,5 @@ alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
 
+alias p=python
+alias py=python

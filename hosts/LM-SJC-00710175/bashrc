@@ -1,0 +1,10 @@
+
+
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
+export NODE_PATH=/usr/local/share/npm/lib/node_modules:$NODE_MODULES
+
+export PATH=${PATH}:/Users/jpevans/adt-bundle-mac/sdk/platform-tools:/Users/jpevans/adt-bundle-mac/sdk/tools
+
+unalias ack

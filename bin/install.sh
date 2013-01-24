@@ -5,11 +5,13 @@ if [ ! -d ~/dotfiles ]; then
    exit
 fi
 
+mkdir -p ~/local/bin
+mkdir -p ~/dotfiles/tags
+
 RM=/bin/rm
 LN=/bin/ln
 
 ${RM} -f ~/.bashrc
-${RM} -f ~/.vimrc
 ${RM} -f ~/.profile
 ${RM} -f ~/.gitconfig
 ${RM} -f ~/.gitignore
@@ -22,9 +24,11 @@ ${RM} -rf ~/.gtkrc-2.0
 ${RM} -rf ~/.emacs.d
 ${RM} -f ~/.ssh/config
 ${RM} -f ~/.ackrc
+${RM} -f ~/.vimrc
+${RM} -rf ~/.vim
+${RM} -rf ~/local/bin/mvim
 
 ${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
-${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
 ${LN} -s ~/dotfiles/bash/profile ~/.profile
 ${LN} -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ${LN} -s ~/dotfiles/inputrc ~/.inputrc
@@ -37,11 +41,13 @@ mkdir -p ~/.ssh
 chmod og-rwx ~/.ssh
 ${LN} -s ~/dotfiles/ssh/config ~/.ssh/config
 ${LN} -s ~/dotfiles/ack/ackrc ~/.ackrc
+${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
+${LN} -s ~/dotfiles/vim/dotvim ~/.vim
+${LN} -s ~/dotfiles/contrib/gvim/mvim ~/local/bin
 
 # symlinking whole directory
 ${LN} -s ~/dotfiles/xmonad ~/.xmonad
 
-mkdir -p ~/dotfiles/tags
 
 for tag in $*
 do

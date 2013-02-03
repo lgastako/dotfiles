@@ -1,4 +1,20 @@
-colorscheme desert
+" Automatically override the ExtraWhitespace setting in every colorscheme
+" this command must be issued before the first colorscheme command
+" per http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd BufWinLeave * call clearmatches()
+
+" autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+" WHY WON'T ANY OF THESE WORK FOR ME???
+" And yes I tried syntax on before the above autocmd Syntax ...
+" Still not working even though it's the very first goddamn thing wtf
+
+"colorscheme desert
+colorscheme darkblue
 syntax on
 
 " tab stop
@@ -10,3 +26,15 @@ set sw=4
 " set guioptions=melrb would turn them all back on
 set guioptions=
 
+" tabs to spaces
+set expandtab
+
+
+" Watch vimrc for changes, from:
+" http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2403926#2403926
+augroup myvimrc
+    au!
+    "I removed this from the pipeline below due to error
+    "| so $MYGVIMRC
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | endif
+augroup END

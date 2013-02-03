@@ -1,18 +1,3 @@
-" Automatically override the ExtraWhitespace setting in every colorscheme
-" this command must be issued before the first colorscheme command
-" per http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()
-
-" autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-" WHY WON'T ANY OF THESE WORK FOR ME???
-" And yes I tried syntax on before the above autocmd Syntax ...
-" Still not working even though it's the very first goddamn thing wtf
-
 "colorscheme desert
 colorscheme darkblue
 syntax on
@@ -28,6 +13,10 @@ set guioptions=
 
 " tabs to spaces
 set expandtab
+
+" highlighted unwanted whitespace in red
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 
 " Watch vimrc for changes, from:

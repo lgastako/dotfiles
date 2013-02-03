@@ -15,9 +15,9 @@ set guioptions=
 set expandtab
 
 " highlighted unwanted whitespace in red
+" the containedin=ALL ensures that it includes nested matches in other syntax groups
 highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
 " Watch vimrc for changes, from:
 " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2403926#2403926

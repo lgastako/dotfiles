@@ -14,10 +14,27 @@ set guioptions=
 " tabs to spaces
 set expandtab
 
+" show line numbers
+set number
+
+" show row,col in the bottom bar
+set ruler
+
 " highlighted unwanted whitespace in red
 " the containedin=ALL ensures that it includes nested matches in other syntax groups
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+
+" Commenting for various programming languages
+",c comments out a region
+",u uncomments a region
+au FileType haskell,vhdl,ada let b:comment_leader = '-- '
+au FileType vim let b:comment_leader = '" '
+au FileType c,cpp,java let b:comment_leader = '// '
+au FileType sh,make let b:comment_leader = '# '
+au FileType tex let b:comment_leader = '% '
+noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
+noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
 
 " Watch vimrc for changes, from:
 " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2403926#2403926
@@ -27,3 +44,4 @@ augroup myvimrc
     "| so $MYGVIMRC
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | endif
 augroup END
+

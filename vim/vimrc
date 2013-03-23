@@ -20,6 +20,9 @@ set number
 " show row,col in the bottom bar
 set ruler
 
+" incremental search
+set incsearch
+
 " highlighted unwanted whitespace in red
 " the containedin=ALL ensures that it includes nested matches in other syntax groups
 highlight ExtraWhitespace ctermbg=red guibg=red

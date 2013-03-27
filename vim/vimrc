@@ -1,5 +1,6 @@
 "colorscheme desert
-colorscheme darkblue
+"colorscheme darkblue
+colorscheme macvim
 syntax on
 
 " tab stop
@@ -22,6 +23,12 @@ set ruler
 
 " incremental search
 set incsearch
+
+" enable plugins, e.g. snipmate
+filetype plugin on
+
+" enable the help
+helptags ~/.vim/doc
 
 " highlighted unwanted whitespace in red
 " the containedin=ALL ensures that it includes nested matches in other syntax groups

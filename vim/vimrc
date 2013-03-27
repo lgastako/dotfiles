@@ -1,12 +1,15 @@
 "colorscheme desert
-"colorscheme darkblue
-colorscheme macvim
+colorscheme darkblue
+"colorscheme macvim
 syntax on
 
 " tab stop
 set ts=4
 " shift width
 set sw=4
+
+" position new splits below current window
+set splitright
 
 " Get rid of menubar, toolbar and all scrollbars
 " set guioptions=melrb would turn them all back on

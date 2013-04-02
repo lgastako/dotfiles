@@ -1,15 +1,19 @@
-"colorscheme desert
-colorscheme darkblue
+colorscheme desert
+"colorscheme darkblue
 "colorscheme macvim
 syntax on
 
-" tab stop
-set ts=4
-" shift width
-set sw=4
+" enable spelling in general
+set spell spelllang=en_us
+" but disable it for haskell source code
+autocmd FileType haskell setlocal nospell spelllang=en_us
 
-" position new splits below current window
-set splitright
+
+set tabstop=4
+set shiftwidth=4
+
+" Map underscore to remove search highlighting
+nnoremap <silent> _ :nohl<CR>
 
 " Get rid of menubar, toolbar and all scrollbars
 " set guioptions=melrb would turn them all back on
@@ -24,8 +28,8 @@ set number
 " show row,col in the bottom bar
 set ruler
 
-" incremental search
 set incsearch
+set hlsearch
 
 " enable plugins, e.g. snipmate
 filetype plugin on

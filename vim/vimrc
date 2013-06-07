@@ -4,7 +4,7 @@ colorscheme desert
 syntax on
 
 " enable spelling in general
-set spell spelllang=en_us
+"set spell spelllang=en_us
 " but disable it for haskell source code
 autocmd FileType haskell setlocal nospell spelllang=en_us
 
@@ -62,3 +62,5 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | endif
 augroup END
 
+" Enable pathogen
+execute pathogen#infect()

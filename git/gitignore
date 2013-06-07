@@ -6,3 +6,4 @@
 *.class
 *.egg-info
 *.swp
+.cache

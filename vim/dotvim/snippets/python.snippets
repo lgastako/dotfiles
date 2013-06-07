@@ -1,11 +1,27 @@
 snippet #!
 	#!/usr/bin/python
+snippet pdb
+	import pdb; pdb.set_trace()
+snippet p
+	import pdb; pdb.set_trace()
 snippet ipdb
 	import ipdb; ipdb.set_trace()
 snippet i
 	import ipdb; ipdb.set_trace()
 snippet imp
 	import ${1:module}
+snippet m
+	import argparse
+
+
+	def main():
+		parser = argparse.ArgumentParser()
+	    args = parser.parse_args()
+
+		${1}
+
+	if __name__ == "__main__":
+		main()
 # Module Docstring
 snippet docs
 	'''

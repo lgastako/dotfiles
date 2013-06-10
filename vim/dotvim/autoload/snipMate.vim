@@ -430,4 +430,9 @@ fun s:UpdateVars()
 	let s:oldWord = newWord
 	let g:snipPos[s:curPos][2] = newWordLen
 endf
+
+fun! ReloadSnippets(snippets_dir, ft)
+	call ResetSnippets()
+	call GetSnippets(a:snippets_dir, a:ft)
+endfun
 " vim:noet:sw=4:ts=4:ft=vim

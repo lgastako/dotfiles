@@ -4,10 +4,12 @@ colorscheme desert
 syntax on
 
 " enable spelling in general
-set spell spelllang=en_us
+"set spell spelllang=en_us
 " but disable it for haskell source code
-autocmd FileType haskell setlocal nospell spelllang=en_us
+"autocmd FileType haskell setlocal nospell spelllang=en_us
 
+" Keep pwd relative to current buffer
+set autochdir
 
 set tabstop=4
 set shiftwidth=4

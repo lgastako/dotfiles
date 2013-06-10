@@ -188,3 +188,9 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+snippet ex
+	{% extends "_chrome.html" %}
+	
+	{% block content %}
+		${1:content}
+	{% endblock %}

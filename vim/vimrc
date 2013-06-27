@@ -1,7 +1,14 @@
 colorscheme desert
 "colorscheme darkblue
 "colorscheme macvim
+
+" Hide buffer instead of 'E37: No write since last change (add ! to override)'
+set hidden
+
 syntax on
+
+" Better tab expansion of filenames
+set wildmenu
 
 " enable spelling in general
 "set spell spelllang=en_us
@@ -13,6 +20,8 @@ set autochdir
 
 set tabstop=4
 set shiftwidth=4
+
+set visualbell
 
 " Map underscore to remove search highlighting
 nnoremap <silent> _ :nohl<CR>
@@ -29,6 +38,9 @@ set number
 
 " show row,col in the bottom bar
 set ruler
+
+" show matching parens
+set showmatch
 
 set incsearch
 set hlsearch

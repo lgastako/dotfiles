@@ -1,6 +1,4 @@
-colorscheme desert
-"colorscheme darkblue
-"colorscheme macvim
+colorscheme sorcerer
 
 " Hide buffer instead of 'E37: No write since last change (add ! to override)'
 set hidden

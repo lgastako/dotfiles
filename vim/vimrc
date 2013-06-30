@@ -1,5 +1,3 @@
-colorscheme sorcerer
-
 " Hide buffer instead of 'E37: No write since last change (add ! to override)'
 set hidden
 
@@ -76,3 +74,6 @@ augroup END
 
 " Enable pathogen
 execute pathogen#infect()
+
+" set colorscheme
+colorscheme sorcerer

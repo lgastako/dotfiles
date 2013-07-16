@@ -77,3 +77,11 @@ execute pathogen#infect()
 
 " set colorscheme
 colorscheme sorcerer
+
+let mapleader=","
+
+" Unite
+"nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files file -no-split -start-insert<CR>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer -no-split -start-insert<CR>
+

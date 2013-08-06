@@ -22,6 +22,9 @@ set visualbell
 " Map underscore to remove search highlighting
 nnoremap <silent> _ :nohl<CR>
 
+" Preview markdown
+:nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+
 " Get rid of menubar, toolbar and all scrollbars
 " set guioptions=melrb would turn them all back on
 set guioptions=

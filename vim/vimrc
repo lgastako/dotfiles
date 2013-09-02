@@ -76,7 +76,8 @@ augroup END
 execute pathogen#infect()
 
 " set colorscheme
-colorscheme sorcerer
+" colorscheme sorcerer
+colorscheme hornet
 
 let mapleader=","
 

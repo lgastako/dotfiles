@@ -77,7 +77,8 @@ execute pathogen#infect()
 
 " set colorscheme
 " colorscheme sorcerer
-colorscheme hornet
+" colorscheme hornet
+colorscheme darkBlue
 
 let mapleader=","
 
@@ -85,4 +86,5 @@ let mapleader=","
 "nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files file -no-split -start-insert<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer -no-split -start-insert<CR>
+nnoremap <leader>l :set nolist!<CR>
 

@@ -49,6 +49,7 @@ helptags ~/.vim/doc
 
 " highlighted unwanted whitespace in red
 " the containedin=ALL ensures that it includes nested matches in other syntax groups
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 

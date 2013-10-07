@@ -32,3 +32,5 @@
 	prompt = false
 [diff]
 	tool = Kaleidoscope
+[grep]
+	lineNumber = true

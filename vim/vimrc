@@ -1,7 +1,16 @@
 " Hide buffer instead of 'E37: No write since last change (add ! to override)'
 set hidden
 
+" For backup files
+set backupdir=~/.vimbackups,/tmp
+" For swap files
+set directory=~/.vimswapfiles,/tmp
+
 syntax on
+
+" Make the window start big.
+set lines=1000
+set columns=1000
 
 " Better tab expansion of filenames
 set wildmenu
@@ -88,4 +97,3 @@ let mapleader=","
 nnoremap <leader>f :<C-u>Unite -buffer-name=files file -no-split -start-insert<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer -no-split -start-insert<CR>
 nnoremap <leader>l :set nolist!<CR>
-

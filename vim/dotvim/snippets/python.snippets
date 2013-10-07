@@ -103,3 +103,7 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+snippet sm
+	def setup_method(self, method):
+		super(${1:cls}, self).setup_method(method)
+		${2}

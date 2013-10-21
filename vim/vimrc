@@ -8,6 +8,9 @@ set directory=~/.vimswapfiles,/tmp
 
 syntax on
 
+" Don't ask if I want to reload files every 5 seconds
+set autoread
+
 " Make the window start big.
 set lines=1000
 set columns=1000

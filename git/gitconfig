@@ -1,6 +1,6 @@
 [user]
-        name        = John Evans
-        email       = lgastako@gmail.com
+	name = John Evans
+	email = lgastako@gmail.com
 [alias]
         u           = push
         d           = pull
@@ -34,3 +34,5 @@
 	tool = Kaleidoscope
 [grep]
 	lineNumber = true
+[mergetool]
+	keepBackup = true

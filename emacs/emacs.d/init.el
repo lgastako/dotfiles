@@ -1,5 +1,8 @@
 (defvar *emacs-load-start* (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
+(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
+
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (show-paren-mode 1)
@@ -8,6 +11,7 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
+(require 'coffee-mode)
 
 ;; Pretty Font
 (custom-set-faces

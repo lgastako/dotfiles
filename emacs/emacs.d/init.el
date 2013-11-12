@@ -33,6 +33,17 @@
    kept-old-versions 2
    version-control t)        ; use versioned backups
 
+;; Fix problem with nrepl and ANSI colors
+;; See https://github.com/clojure-emacs/cider/issues/312
+;; and https://github.com/clojure-emacs/cider/pull/275
+(defun nrepl-emit-output (buffer string &optional bol)
+  "Using BUFFER, emit STRING.
+   If BOL is non-nil, emit at the beginning of the line."
+  (with-current-buffer buffer
+    (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
+    (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
+
+
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 (require 'package)
@@ -47,6 +58,8 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

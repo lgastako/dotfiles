@@ -1,17 +1,26 @@
 (defvar *emacs-load-start* (current-time))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
-(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
 
+(defun add-to-load-path-list (fn)
+  (add-to-list 'load-path (expand-file-name fn)))
+
+(add-to-load-path-list "~/.emacs.d/elisp")
+(add-to-load-path-list "~/.emacs.d/vendor/coffee-mode")
+(add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq line-number-mode t)
-(setq column-number-mode t)
+(setq-default line-number-mode t)
+(setq-default column-number-mode t)
+(setq-default show-trailing-whitespace t)
+(setq-default fill-column 80)
 
 (require 'coffee-mode)
+(require 'fill-column-indicator)
+
+(add-hook 'python-mode-hook 'fci-mode)
 
 ;; Pretty Font
 (custom-set-faces
@@ -47,17 +56,16 @@
     (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
     (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
 
-
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 (defvar my-packages '(clojure-mode
-		      clojure-test-mode))
+                      clojure-test-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

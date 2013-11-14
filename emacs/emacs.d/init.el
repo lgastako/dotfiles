@@ -19,6 +19,11 @@
 
 (require 'coffee-mode)
 (require 'fill-column-indicator)
+(require 'yasnippet)
+(yas--initialize)
+(setq yas/root-directory "~/.emacs.d/snippets")
+(yas/load-directory yas/root-directory)
+(yas-global-mode 1)
 
 (add-hook 'python-mode-hook 'fci-mode)
 
@@ -65,7 +70,9 @@
 (package-initialize)
 
 (defvar my-packages '(clojure-mode
-                      clojure-test-mode))
+                      clojure-test-mode
+                      cl
+                      yasnippet))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

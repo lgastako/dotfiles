@@ -17,8 +17,17 @@
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
 
+;; This is so the edit-with-emacs-from-chrome extension will work but despite
+;; the fact that it's test-edit-server seems to correctly detect whether one is
+;; running or not I have not yet been able to successfully edit a document with
+;; it.
+(require 'edit-server)
+(edit-server-start)
+
 (require 'coffee-mode)
+
 (require 'fill-column-indicator)
+
 (require 'yasnippet)
 (yas--initialize)
 (setq yas/root-directory "~/.emacs.d/snippets")

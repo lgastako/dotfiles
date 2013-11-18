@@ -1,7 +1,19 @@
 " Hide buffer instead of 'E37: No write since last change (add ! to override)'
 set hidden
 
+" For backup files
+set backupdir=~/.vimbackups,/tmp
+" For swap files
+set directory=~/.vimswapfiles,/tmp
+
 syntax on
+
+" Don't ask if I want to reload files every 5 seconds
+set autoread
+
+" Make the window start big.
+set lines=1000
+set columns=1000
 
 " Better tab expansion of filenames
 set wildmenu
@@ -52,6 +64,7 @@ helptags ~/.vim/doc
 
 " highlighted unwanted whitespace in red
 " the containedin=ALL ensures that it includes nested matches in other syntax groups
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
@@ -79,7 +92,9 @@ augroup END
 execute pathogen#infect()
 
 " set colorscheme
-colorscheme sorcerer
+" colorscheme sorcerer
+" colorscheme hornet
+colorscheme darkBlue
 
 let mapleader=","
 
@@ -87,4 +102,4 @@ let mapleader=","
 "nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files file -no-split -start-insert<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer -no-split -start-insert<CR>
-
+nnoremap <leader>l :set nolist!<CR>

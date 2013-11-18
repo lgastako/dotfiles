@@ -112,6 +112,7 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
+;; http://www.emacswiki.org/emacs/PareditCheatsheet
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)

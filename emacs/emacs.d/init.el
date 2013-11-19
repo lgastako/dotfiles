@@ -128,3 +128,4 @@ Display the results in a hyperlinked *compilation* buffer."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))))
+(put 'upcase-region 'disabled nil)

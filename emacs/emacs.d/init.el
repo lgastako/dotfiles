@@ -16,6 +16,7 @@
 (setq-default column-number-mode t)
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
+(global-auto-revert-mode t)
 
 ;; This is so the edit-with-emacs-from-chrome extension will work but despite
 ;; the fact that it's test-edit-server seems to correctly detect whether one is
@@ -27,6 +28,8 @@
 (require 'coffee-mode)
 
 (require 'fill-column-indicator)
+
+(require 'uniquify)
 
 (require 'yasnippet)
 (yas--initialize)
@@ -127,5 +130,6 @@ Display the results in a hyperlinked *compilation* buffer."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))))
+ '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)

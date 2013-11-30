@@ -37,7 +37,6 @@
 (yas/load-directory yas/root-directory)
 (yas-global-mode 1)
 
-
 ;; Teach compile the syntax of the kibit output
 (require 'compile)
 (add-to-list 'compilation-error-regexp-alist-alist
@@ -58,7 +57,8 @@ Display the results in a hyperlinked *compilation* buffer."
   (interactive)
   (compile (concat "lein kibit " buffer-file-name)))
 
-
+(global-set-key (kbd "C-c k") 'kibit-current-file)
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 
 (add-hook 'python-mode-hook 'fci-mode)
 

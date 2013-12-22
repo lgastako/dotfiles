@@ -16,7 +16,13 @@
 (setq-default column-number-mode t)
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
+(setq auto-save-visited-file-name t)
+(setq auto-save-interval 5)  ; keystrokes
+(setq auto-save-timeout 5)   ; seconds
 (global-auto-revert-mode t)
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 
 ;; This is so the edit-with-emacs-from-chrome extension will work but despite
 ;; the fact that it's test-edit-server seems to correctly detect whether one is
@@ -68,7 +74,7 @@ Display the results in a hyperlinked *compilation* buffer."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "apple" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 (load-theme 'deeper-blue)
 
 ;; Maximize window on startup
@@ -133,3 +139,4 @@ Display the results in a hyperlinked *compilation* buffer."
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)
+

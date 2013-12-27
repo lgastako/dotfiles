@@ -77,6 +77,9 @@ Display the results in a hyperlinked *compilation* buffer."
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 (load-theme 'deeper-blue)
 
+;; Temporary, really only want it on maia.local.
+(set-face-attribute 'default nil :height 180)
+
 ;; Maximize window on startup
 (load "frame-cmds.el")
 (maximize-frame-vertically)
@@ -101,6 +104,13 @@ Display the results in a hyperlinked *compilation* buffer."
   (with-current-buffer buffer
     (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
     (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
+
+;; Fix problem with nrepl not switching to init-ns from project.clj
+;; See https://github.com/clojure-emacs/cider/issues/316 (though this is for
+;; Cider which I am not using... yet)
+(add-hook 'nrepl-connected-hook
+  (lambda () (nrepl-set-ns (plist-get
+                 (nrepl-send-string-sync "(symbol (str *ns*))") :value))))
 
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
@@ -139,4 +149,3 @@ Display the results in a hyperlinked *compilation* buffer."
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)
-

@@ -27,6 +27,7 @@ ${RM} -f ~/.ackrc
 ${RM} -f ~/.vimrc
 ${RM} -rf ~/.vim
 ${RM} -rf ~/local/bin/mvim
+${RM} -rf ~/.lein
 
 ${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/bash/profile ~/.profile
@@ -44,6 +45,7 @@ ${LN} -s ~/dotfiles/ack/ackrc ~/.ackrc
 ${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
 ${LN} -s ~/dotfiles/vim/dotvim ~/.vim
 ${LN} -s ~/dotfiles/contrib/gvim/mvim ~/local/bin
+${LN} -s ~/dotfiles/lein/dot.lein ~/.lein
 
 # symlinking whole directory
 ${LN} -s ~/dotfiles/xmonad ~/.xmonad

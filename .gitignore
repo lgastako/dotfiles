@@ -2,4 +2,6 @@ tags/enabled/*
 !tags/enabled/README
 python/history
 vim/dotvim/.netrwhist
-
+lein/dot.lein/indices
+lein/dot.lein/repl-port
+lein/dot.lein/repl-history

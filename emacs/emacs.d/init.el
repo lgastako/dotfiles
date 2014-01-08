@@ -65,6 +65,8 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
+(global-set-key (kbd "C-c C-j") 'nrepl-jack-in)
+(global-set-key (kbd "C-x p") 'paredit-mode)
 
 (add-hook 'python-mode-hook 'fci-mode)
 

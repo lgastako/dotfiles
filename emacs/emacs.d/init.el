@@ -27,6 +27,7 @@
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
+(setq ws-trim-global-modes t)
 
 (require 'edit-server)
 (edit-server-start)

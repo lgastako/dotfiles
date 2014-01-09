@@ -66,6 +66,7 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
+(global-set-key (kbd "C-c C-j") 'nrepl-jack-in)
 (global-set-key (kbd "C-x p") 'paredit-mode)
 
 (add-hook 'python-mode-hook 'fci-mode)
@@ -143,6 +144,9 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+
+(autoload 'markdown-mode "markdown-mode.el"	"Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

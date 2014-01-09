@@ -24,10 +24,11 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;; This is so the edit-with-emacs-from-chrome extension will work but despite
-;; the fact that it's test-edit-server seems to correctly detect whether one is
-;; running or not I have not yet been able to successfully edit a document with
-;; it.
+
+(require 'ws-trim)
+(global-ws-trim-mode t)
+(setq ws-trim-global-modes t)
+
 (require 'edit-server)
 (edit-server-start)
 
@@ -80,7 +81,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (load-theme 'deeper-blue)
 
 ;; Temporary, really only want it on maia.local.
-(set-face-attribute 'default nil :height 180)
+;;(set-face-attribute 'default nil :height 235)
 
 ;; Maximize window on startup
 (load "frame-cmds.el")
@@ -132,6 +133,7 @@ Display the results in a hyperlinked *compilation* buffer."
     (package-install p)))
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
 
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)

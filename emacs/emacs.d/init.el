@@ -16,9 +16,10 @@
 (setq-default column-number-mode t)
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
-(setq auto-save-visited-file-name t)
-(setq auto-save-interval 5)  ; keystrokes
-(setq auto-save-timeout 5)   ; seconds
+(setq auto-save-visited-file-name f)
+;; (setq auto-save-visited-file-name t)
+;; (setq auto-save-interval 5)  ; keystrokes
+;; (setq auto-save-timeout 5)   ; seconds
 (global-auto-revert-mode t)
 
 (when (fboundp 'windmove-default-keybindings)

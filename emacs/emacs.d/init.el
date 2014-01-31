@@ -25,6 +25,7 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+(require 'go-mode-load)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)

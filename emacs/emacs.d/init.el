@@ -18,9 +18,9 @@
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
 (setq auto-save-visited-file-name nil)
-;; (setq auto-save-visited-file-name t)
-;; (setq auto-save-interval 5)  ; keystrokes
-;; (setq auto-save-timeout 5)   ; seconds
+;;(setq auto-save-visited-file-name t)
+;;(setq auto-save-interval 5)  ; keystrokes
+;;(setq auto-save-timeout 5)   ; seconds
 (global-auto-revert-mode t)
 
 (when (fboundp 'windmove-default-keybindings)
@@ -38,6 +38,8 @@
 (edit-server-start)
 
 (require 'coffee-mode)
+
+(require 'rust-mode)
 
 (require 'fill-column-indicator)
 
@@ -89,6 +91,7 @@ Display the results in a hyperlinked *compilation* buffer."
 
 ;; Temporary, really only want it on maia.local.
 ;;(set-face-attribute 'default nil :height 235)
+(set-face-attribute 'default nil :height 172)
 
 ;; Maximize window on startup
 (load "frame-cmds.el")
@@ -165,3 +168,4 @@ Display the results in a hyperlinked *compilation* buffer."
  '(tpm-tagged nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

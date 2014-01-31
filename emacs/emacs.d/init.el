@@ -6,6 +6,7 @@
 (add-to-load-path-list "~/.emacs.d/elisp")
 (add-to-load-path-list "~/.emacs.d/vendor/coffee-mode")
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
+(add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -25,6 +26,9 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+(require 'theme-park-mode)
+
+(require 'go-mode-load)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
@@ -71,6 +75,8 @@ Display the results in a hyperlinked *compilation* buffer."
 (global-set-key (kbd "C-x p") 'paredit-mode)
 
 (add-hook 'python-mode-hook 'fci-mode)
+
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Pretty Font
 (custom-set-faces
@@ -154,6 +160,8 @@ Display the results in a hyperlinked *compilation* buffer."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
+ '(tpm-tagged nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)

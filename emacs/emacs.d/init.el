@@ -143,6 +143,7 @@ Display the results in a hyperlinked *compilation* buffer."
     (package-install p)))
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
 
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet

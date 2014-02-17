@@ -90,8 +90,8 @@ Display the results in a hyperlinked *compilation* buffer."
 (load-theme 'deeper-blue)
 
 ;; Temporary, really only want it on maia.local.
-;;(set-face-attribute 'default nil :height 235)
-(set-face-attribute 'default nil :height 172)
+(set-face-attribute 'default nil :height 235)
+;;(set-face-attribute 'default nil :height 172)
 
 ;; Maximize window on startup
 (load "frame-cmds.el")

@@ -65,3 +65,7 @@
 \set sp 'SHOW search_path;'
 \set clear '\\! clear;'
 \set ll '\\! ls -lrt;'
+
+-- yapa-search stuff
+\set cvenues 'SELECT COUNT(*) num_venues FROM fs_venues;'
+\set csearches 'SELECT COUNT(*) num_fs_searches FROM fs_searches;'

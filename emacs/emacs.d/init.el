@@ -23,6 +23,15 @@
 ;;(setq auto-save-timeout 5)   ; seconds
 (global-auto-revert-mode t)
 
+;; Remember state of emacs when reopening.
+(autoload 'save-current-configuration "revive" "Save status" t)
+(autoload 'resume "revive" "Resume Emacs" t)
+(autoload 'wipe "revive" "Wipe Emacs" t)
+
+(define-key ctl-x-map "S" 'save-current-configuration)
+(define-key ctl-x-map "F" 'resume)
+(define-key ctl-x-map "K" 'wipe)
+
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
@@ -124,6 +133,10 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'nrepl-connected-hook
   (lambda () (nrepl-set-ns (plist-get
                  (nrepl-send-string-sync "(symbol (str *ns*))") :value))))
+
+;; Use arrows to recall previous/next commands in nrepl instead of just M-n/p
+;; (define-key nrepl-mode-map (kbd "<up>") 'nrepl-previous-input)
+;; (define-key nrepl-mode-map (kbd "<down>") 'nrepl-next-input)
 
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about

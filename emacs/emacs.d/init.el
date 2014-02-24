@@ -98,9 +98,9 @@ Display the results in a hyperlinked *compilation* buffer."
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 (load-theme 'deeper-blue)
 
-;; Temporary, really only want it on maia.local.
-(set-face-attribute 'default nil :height 235)
-;;(set-face-attribute 'default nil :height 172)
+(if (> (x-display-pixel-width) 1280)
+    (set-face-attribute 'default nil :height 172)
+  (set-face-attribute 'default nil :height 235))
 
 ;; Maximize window on startup
 (load "frame-cmds.el")

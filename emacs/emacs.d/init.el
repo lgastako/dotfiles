@@ -137,6 +137,8 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; Use arrows to recall previous/next commands in nrepl instead of just M-n/p
 ;; (define-key nrepl-mode-map (kbd "<up>") 'nrepl-previous-input)
 ;; (define-key nrepl-mode-map (kbd "<down>") 'nrepl-next-input)
+;; This breaks when you're trying to up/down arrow through text anywhere in the
+;; buffer.
 
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about

@@ -16,7 +16,6 @@ alias o=open
 alias pg='LESS=-Xe psql'
 alias pull='git pull'
 alias push='git push'
-alias q=fortune
 alias s='g st'
 alias slog='syslog'
 alias st='git st'

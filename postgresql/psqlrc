@@ -1,5 +1,6 @@
 -- Mostly ganked from:
 -- http://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
+
 \set QUIET ON
 
 \set PROMPT1 '%[%033[1;32;40m%]%M:%> %n@%/%[%033[0m%]% # '
@@ -67,5 +68,6 @@
 \set ll '\\! ls -lrt;'
 
 -- yapa-search stuff
-\set cvenues 'SELECT COUNT(*) num_venues FROM fs_venues;'
-\set csearches 'SELECT COUNT(*) num_fs_searches FROM fs_searches;'
+\set cvenues 'SELECT COUNT(*) "Count of fs_venues" FROM fs_venues;'
+\set csearches 'SELECT COUNT(*) "Count of fs_searches" FROM fs_searches;'
+\set ccats 'SELECT COUNT(*) "Count of fs_categories" FROM fs_categories;'

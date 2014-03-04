@@ -1,5 +1,6 @@
 -- Mostly ganked from:
 -- http://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
+
 \set QUIET ON
 
 \set PROMPT1 '%[%033[1;32;40m%]%M:%> %n@%/%[%033[0m%]% # '

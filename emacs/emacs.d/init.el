@@ -8,6 +8,8 @@
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 (add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
 
+(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (show-paren-mode 1)

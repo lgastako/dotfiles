@@ -37,6 +37,12 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+(require 'rainbow-delimiters)
+;; For specific modes:
+;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+;; For all programming modes:
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 (require 'theme-park-mode)
 
 (require 'go-mode-load)
@@ -59,7 +65,7 @@
 (require 'yasnippet)
 (yas--initialize)
 (setq yas/root-directory "~/.emacs.d/snippets")
-(yas/load-directory yas/root-directory)
+(yas-load-directory yas/root-directory)
 (yas-global-mode 1)
 
 ;; Teach compile the syntax of the kibit output

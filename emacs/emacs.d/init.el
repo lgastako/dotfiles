@@ -90,10 +90,9 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
-(global-set-key (kbd "C-c C-j") 'nrepl-jack-in)
 (global-set-key (kbd "C-x p") 'paredit-mode)
 
-(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
+;;(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
 
 (add-hook 'python-mode-hook 'fci-mode)
 
@@ -108,15 +107,9 @@ Display the results in a hyperlinked *compilation* buffer."
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 (load-theme 'deeper-blue)
 
-(x-display-pixel-width)
-(if (> (x-display-pixel-width) 1280)
+(if (> (x-display-pixel-width) 2000)
     (set-face-attribute 'default nil :height 235)
   (set-face-attribute 'default nil :height 172))
-
-;; Maximize window on startup
-(load "frame-cmds.el")
-(maximize-frame-vertically)
-(maximize-frame-horizontally)
 
 ;; http://www.emacswiki.org/emacs/BackupDirectory
 (setq
@@ -131,19 +124,19 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; Fix problem with nrepl and ANSI colors
 ;; See https://github.com/clojure-emacs/cider/issues/312
 ;; and https://github.com/clojure-emacs/cider/pull/275
-(defun nrepl-emit-output (buffer string &optional bol)
-  "Using BUFFER, emit STRING.
-   If BOL is non-nil, emit at the beginning of the line."
-  (with-current-buffer buffer
-    (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
-    (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
+;; (defun nrepl-emit-output (buffer string &optional bol)
+;;   "Using BUFFER, emit STRING.
+;;    If BOL is non-nil, emit at the beginning of the line."
+;;   (with-current-buffer buffer
+;;     (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
+;;     (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
 
 ;; Fix problem with nrepl not switching to init-ns from project.clj
 ;; See https://github.com/clojure-emacs/cider/issues/316 (though this is for
 ;; Cider which I am not using... yet)
-(add-hook 'nrepl-connected-hook
-  (lambda () (nrepl-set-ns (plist-get
-                 (nrepl-send-string-sync "(symbol (str *ns*))") :value))))
+;; (add-hook 'nrepl-connected-hook
+;;   (lambda () (nrepl-set-ns (plist-get
+;;                  (nrepl-send-string-sync "(symbol (str *ns*))") :value))))
 
 ;; Use arrows to recall previous/next commands in nrepl instead of just M-n/p
 ;; (define-key nrepl-mode-map (kbd "<up>") 'nrepl-previous-input)
@@ -157,11 +150,11 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(defvar my-packages '(clojure-mode
-                      clojure-test-mode
-                      cl
+(defvar my-packages '(cl
                       yasnippet))
 
 (dolist (p my-packages)
@@ -180,7 +173,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+;;(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
 
 (autoload 'markdown-mode "markdown-mode.el"	"Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
@@ -196,3 +189,7 @@ Display the results in a hyperlinked *compilation* buffer."
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;; Maximize window on startup
+(load "frame-cmds.el")
+(maximize-frame)

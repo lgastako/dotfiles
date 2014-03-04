@@ -5,9 +5,8 @@
                                                      org.clojure/tools.reader
                                                      commons-codec]]
                   [jonase/eastwood "0.1.0"]
-                  [slamhound "1.5.1"]
 ;;                  [gluon "0.1.0-SNAPSHOT"]
 ;;                  [com.jakemccrary/lein-test-refresh "0.3.4"]
-                  [gluon "0.1.0-SNAPSHOT"]]
+                  [slamhound "1.5.1"]]
         :dependencies [[slamhound "1.5.1"]]
         :aliases {"slamhound" ["run" "-m" "slam.hound"]}}}

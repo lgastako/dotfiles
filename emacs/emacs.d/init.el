@@ -86,12 +86,14 @@ Display the results in a hyperlinked *compilation* buffer."
   "Run kibit on the current file.
 Display the results in a hyperlinked *compilation* buffer."
   (interactive)
-  (compile (concat "lein kibit " buffer-file-name)))
+ (compile (concat "lein kibit " buffer-file-name)))
 
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c C-j") 'nrepl-jack-in)
 (global-set-key (kbd "C-x p") 'paredit-mode)
+
+(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
 
 (add-hook 'python-mode-hook 'fci-mode)
 

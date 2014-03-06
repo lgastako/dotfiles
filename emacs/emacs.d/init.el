@@ -194,7 +194,8 @@ Display the results in a hyperlinked *compilation* buffer."
 
 ;; Maximize window on startup
 (load "frame-cmds.el")
-(maximize-frame)
+(maximize-frame-vertically)
+(maximize-frame-horizontally)
 
 (defun yank-and-indent ()
   "Yank and then indent the newly formed region according to mode."

@@ -88,6 +88,8 @@ Display the results in a hyperlinked *compilation* buffer."
   (interactive)
  (compile (concat "lein kibit " buffer-file-name)))
 
+(global-set-key (kbd "RET") 'newline-and-indent)
+
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-x p") 'paredit-mode)
@@ -173,7 +175,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-;;(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
 
 (autoload 'markdown-mode "markdown-mode.el"	"Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
@@ -193,3 +195,11 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; Maximize window on startup
 (load "frame-cmds.el")
 (maximize-frame)
+
+(defun yank-and-indent ()
+  "Yank and then indent the newly formed region according to mode."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
+
+(global-set-key "\C-y" 'yank-and-indent)

@@ -192,6 +192,9 @@ Display the results in a hyperlinked *compilation* buffer."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;;;;;;;;;;;;;;;;;
+;; Haven't properly merged these into the appropriate spots above.
+
 ;; Maximize window on startup
 (load "frame-cmds.el")
 (maximize-frame-vertically)
@@ -204,3 +207,5 @@ Display the results in a hyperlinked *compilation* buffer."
   (call-interactively 'indent-region))
 
 (global-set-key "\C-y" 'yank-and-indent)
+
+(load-library "troncle")

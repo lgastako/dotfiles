@@ -8,7 +8,8 @@
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 (add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
 
-(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+;; bah humbug - too slow, doesn't pay for itself
+;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -209,3 +210,5 @@ Display the results in a hyperlinked *compilation* buffer."
 (global-set-key "\C-y" 'yank-and-indent)
 
 (load-library "troncle")
+
+(setenv "PATH" (concat (getenv "PATH") ":$HOME/bin"))

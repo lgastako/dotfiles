@@ -21,9 +21,11 @@
 (setq-default show-trailing-whitespace t)
 (setq-default fill-column 80)
 (setq auto-save-visited-file-name nil)
-;;(setq auto-save-visited-file-name t)
-;;(setq auto-save-interval 5)  ; keystrokes
-;;(setq auto-save-timeout 5)   ; seconds
+;; (setq auto-save-visited-file-name t)
+;; (setq auto-save-interval 5)  ; keystrokes
+;; (setq auto-save-timeout 5)   ; seconds
+;; (setq cider-auto-select-error-buffer t)
+
 (global-auto-revert-mode t)
 
 ;; Remember state of emacs when reopening.
@@ -37,6 +39,10 @@
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+
+(require 'easymenu)
+(require 'mkhtml-htmlize)
+(require 'mkhtml)
 
 (require 'rainbow-delimiters)
 ;; For specific modes:
@@ -212,3 +218,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (load-library "troncle")
 
 (setenv "PATH" (concat (getenv "PATH") ":$HOME/bin"))
+(setq sql-postgres-program "/usr/local/bin/psql")
+;;(setq sql-port ...) -- seems to not be a good idea
+;; this seems to be the way: sigh
+;;(setq sql-postgres-options (list "-p 5492"))

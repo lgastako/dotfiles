@@ -66,6 +66,7 @@
 \set sp 'SHOW search_path;'
 \set clear '\\! clear;'
 \set ll '\\! ls -lrt;'
+\set pwd '\\! pwd;'
 
 -- yapa-search stuff
 \set cvenues 'SELECT COUNT(*) "Count of fs_venues" FROM fs_venues;'

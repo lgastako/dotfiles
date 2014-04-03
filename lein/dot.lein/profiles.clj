@@ -4,7 +4,7 @@
                   ;; [lein-gorilla "0.2.0"]
                   [lein-midje "3.0.0"]
                   [lein-exec "0.3.1"]
-                  [nikola "0.1.0-SNAPSHOT"]
+                  ;; [nikola "0.1.0-SNAPSHOT"]
                   ;; [xwatch "0.1.0-SNAPSHOT"]
                   [lein-simpleton "1.2.0"]
                   [lein-pprint "1.1.1"]

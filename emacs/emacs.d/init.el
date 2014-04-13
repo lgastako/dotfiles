@@ -8,7 +8,8 @@
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 (add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
 
-(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+;; bah humbug - too slow, doesn't pay for itself
+;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -216,9 +217,8 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (load-library "troncle")
 
+(setenv "PATH" (concat (getenv "PATH") ":$HOME/bin"))
 (setq sql-postgres-program "/usr/local/bin/psql")
 ;;(setq sql-port ...) -- seems to not be a good idea
 ;; this seems to be the way: sigh
 ;;(setq sql-postgres-options (list "-p 5492"))
-
-

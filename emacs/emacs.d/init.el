@@ -40,15 +40,16 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-(require 'easymenu)
-(require 'mkhtml-htmlize)
-(require 'mkhtml)
+;; (require 'mkhtml-htmlize)
+;; (require 'mkhtml)
 
 (require 'rainbow-delimiters)
 ;; For specific modes:
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 ;; For all programming modes:
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;;(add-hook 'clojure-mode-hook 'typed-clojure-mode)
 
 (require 'theme-park-mode)
 

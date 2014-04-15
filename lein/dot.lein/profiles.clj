@@ -1,5 +1,7 @@
 {:user {:env {:env :dev} ;; so you can check "(= (env :env) :dev)
         :plugins [[lein-kibit "0.0.8"]
+                  [soup-site/lein-template "0.1.0-SNAPSHOT"]
+                  [lein-typed "0.3.4"]
                   [lein-ritz "0.7.0"]
                   ;; [lein-gorilla "0.2.0"]
                   [lein-midje "3.0.0"]

@@ -1,6 +1,8 @@
 {:user {:env {:env :dev} ;; so you can check "(= (env :env) :dev)
         :plugins [[lein-kibit "0.0.8"]
                   [lein-ritz "0.7.0"]
+                  [lein-cprint "1.0.0"]
+                  [lein-bin "0.3.4"]
                   ;; [lein-gorilla "0.2.0"]
                   [lein-midje "3.0.0"]
                   [lein-exec "0.3.1"]

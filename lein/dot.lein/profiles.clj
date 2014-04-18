@@ -27,7 +27,8 @@
 ;;                       [schmetterling "0.0.7"]
                        [alembic "0.2.1"]
                        [io.aviso/pretty "0.1.8"]]
-        :aliases {"slamhound" ["run" "-m" "slam.hound"]}
+        :aliases {"slamhound" ["run" "-m" "slam.hound"]
+                  "auto-test" ["do" "clean," "cljsbuild" "auto" "test"]}
         :injections  [(require 'io.aviso.repl
                                'clojure.repl
                                'clojure.main)

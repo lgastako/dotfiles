@@ -40,6 +40,7 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+(require 'quack)
 (require 'easymenu)
 (require 'mkhtml-htmlize)
 (require 'mkhtml)

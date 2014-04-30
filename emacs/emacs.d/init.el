@@ -130,6 +130,7 @@ Display the results in a hyperlinked *compilation* buffer."
     (set-face-attribute 'default nil :height 235)
   (set-face-attribute 'default nil :height 172))
 
+;;(set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
 
 ;; http://www.emacswiki.org/emacs/BackupDirectory

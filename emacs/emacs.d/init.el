@@ -7,6 +7,7 @@
 (add-to-load-path-list "~/.emacs.d/vendor/coffee-mode")
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 (add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
+(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
 
 ;; bah humbug - too slow, doesn't pay for itself
 ;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
@@ -43,14 +44,18 @@
 ;; (require 'mkhtml-htmlize)
 ;; (require 'mkhtml)
 
-(require 'quack)
-(require 'geiser)
-(setq geiser-active-implementations '(racket))
-(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
 
-(require 'easymenu)
-(require 'mkhtml-htmlize)
-(require 'mkhtml)
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;;(require 'quack)
+;;(require 'geiser)
+;;(setq geiser-active-implementations '(racket))
+;;(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
+
+;;(require 'easymenu)
+;; (require 'mkhtml-htmlize)
+;; (require 'mkhtml)
 
 (require 'rainbow-delimiters)
 ;; For specific modes:
@@ -63,6 +68,7 @@
 (require 'theme-park-mode)
 
 (require 'go-mode-load)
+(require 'go-flymake)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
@@ -130,7 +136,7 @@ Display the results in a hyperlinked *compilation* buffer."
     (set-face-attribute 'default nil :height 235)
   (set-face-attribute 'default nil :height 172))
 
-;;(set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
 
 ;; http://www.emacswiki.org/emacs/BackupDirectory
@@ -236,3 +242,9 @@ Display the results in a hyperlinked *compilation* buffer."
 ;;(setq sql-port ...) -- seems to not be a good idea
 ;; this seems to be the way: sigh
 ;;(setq sql-postgres-options (list "-p 5492"))
+
+(setenv "GOPATH" "$HOME/go")
+
+;; argh.. still can't run godef
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:$HOME/go/bin"))
+

@@ -67,6 +67,8 @@
 
 (require 'theme-park-mode)
 
+(require 'flymake-cursor)
+
 (require 'go-mode-load)
 (require 'go-flymake)
 
@@ -243,8 +245,7 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; this seems to be the way: sigh
 ;;(setq sql-postgres-options (list "-p 5492"))
 
-(setenv "GOPATH" "$HOME/go")
+(setenv "GOPATH" "~/go")
 
-;; argh.. still can't run godef
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:$HOME/go/bin"))
-
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("~/go/bin")))

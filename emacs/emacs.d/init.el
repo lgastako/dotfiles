@@ -71,6 +71,8 @@
 
 (require 'go-mode-load)
 (require 'go-flymake)
+(require 'go-eldoc)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)

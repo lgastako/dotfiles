@@ -71,8 +71,6 @@
 
 (require 'go-mode-load)
 (require 'go-flymake)
-(require 'go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
@@ -251,3 +249,6 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq exec-path (append exec-path '("~/go/bin")))
+
+(require 'go-eldoc)
+(add-hook 'go-mode-hook 'go-eldoc-setup)

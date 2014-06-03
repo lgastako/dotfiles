@@ -201,6 +201,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+(add-hook 'go-mode-hook          #'enable-paredit-mode)
 
 (autoload 'markdown-mode "markdown-mode.el"	"Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
@@ -253,6 +254,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (setenv "GOPATH" "~/go")
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/usr/local/go/bin")))
 (setq exec-path (append exec-path '("~/go/bin")))
 
 (require 'go-eldoc)

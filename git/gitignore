@@ -8,4 +8,5 @@
 *.swp
 .cache
 \#*
-.\#*
+.\#*/yapa-devtool
+/Users/john/atomic/yapa/yapa-devtool

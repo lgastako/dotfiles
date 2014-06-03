@@ -44,6 +44,7 @@
 ;; (require 'mkhtml-htmlize)
 ;; (require 'mkhtml)
 
+;; (require 'easymenu)
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -52,10 +53,6 @@
 ;;(require 'geiser)
 ;;(setq geiser-active-implementations '(racket))
 ;;(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
-
-;;(require 'easymenu)
-;; (require 'mkhtml-htmlize)
-;; (require 'mkhtml)
 
 (require 'rainbow-delimiters)
 ;; For specific modes:
@@ -70,7 +67,7 @@
 (require 'flymake-cursor)
 
 (require 'go-mode-load)
-(require 'go-flymake)
+;;(require 'go-flymake)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
@@ -246,6 +243,14 @@ Display the results in a hyperlinked *compilation* buffer."
 ;;(setq sql-port ...) -- seems to not be a good idea
 ;; this seems to be the way: sigh
 ;;(setq sql-postgres-options (list "-p 5492"))
+
+(require 'quack)
+(require 'geiser)
+(setq geiser-active-implementations '(racket))
+(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
+
+;;failed to compile
+;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")
 
 (setenv "GOPATH" "~/go")
 

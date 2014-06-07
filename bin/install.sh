@@ -29,6 +29,7 @@ ${RM} -rf ~/.vim
 ${RM} -rf ~/local/bin/mvim
 ${RM} -rf ~/.lein
 ${RM} -rf ~/.psqlrc
+${RM} -rf ~/.gitk
 
 ${LN} -s ~/dotfiles/bash/bashrc ~/.bashrc
 ${LN} -s ~/dotfiles/bash/profile ~/.profile
@@ -48,6 +49,7 @@ ${LN} -s ~/dotfiles/vim/dotvim ~/.vim
 ${LN} -s ~/dotfiles/contrib/gvim/mvim ~/local/bin
 ${LN} -s ~/dotfiles/lein/dot.lein ~/.lein
 ${LN} -s ~/dotfiles/postgresql/psqlrc ~/.psqlrc
+${LN} -s ~/dotfiles/git/gitk ~/.gitk
 
 # symlinking whole directory
 ${LN} -s ~/dotfiles/xmonad ~/.xmonad

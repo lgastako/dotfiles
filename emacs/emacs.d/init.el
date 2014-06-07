@@ -38,6 +38,9 @@
 (define-key ctl-x-map "F" 'resume)
 (define-key ctl-x-map "K" 'wipe)
 
+;; Make '^x s' behave the same as '^x ^s'
+(define-key ctl-x-map "s" 'save-buffer)
+
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 

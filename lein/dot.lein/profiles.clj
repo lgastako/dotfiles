@@ -3,7 +3,7 @@
               :febay-port 2014
               :febay-elastic-search-url "http://localhost:9200"}
         :plugins [[lein-kibit "0.0.8"]
-                  [soup-site/lein-template "0.1.0-SNAPSHOT"]
+;;                  [soup-site/lein-template "0.1.0-SNAPSHOT"]
                   ;; [lein-typed "0.3.4"]
                   ;; [lein-ritz "0.7.0"]
                   ;; [lein-cprint "1.0.0"]

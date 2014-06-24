@@ -123,6 +123,8 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (add-hook 'python-mode-hook 'fci-mode)
 
+(setq gofmt-command "goimports")
+
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Pretty Font
@@ -263,3 +265,4 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+

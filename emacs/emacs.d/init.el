@@ -96,7 +96,7 @@
 ;; Teach compile the syntax of the kibit output
 (require 'compile)
 (add-to-list 'compilation-error-regexp-alist-alist
-         '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
+             '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
 (add-to-list 'compilation-error-regexp-alist 'kibit)
 
 ;; A convenient command to run "lein kibit" in the project to which
@@ -111,13 +111,19 @@ Display the results in a hyperlinked *compilation* buffer."
   "Run kibit on the current file.
 Display the results in a hyperlinked *compilation* buffer."
   (interactive)
- (compile (concat "lein kibit " buffer-file-name)))
+  (compile (concat "lein kibit " buffer-file-name)))
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 (global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-x p") 'paredit-mode)
+
+(defun indent-all ()
+  (interactive)
+  (indent-region 0 (buffer-size)))
+
+(global-set-key (kbd "C-c f") 'indent-all)
 
 ;;(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
 
@@ -142,17 +148,17 @@ Display the results in a hyperlinked *compilation* buffer."
 
 ;;(set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
-(set-face-attribute 'default nil :height 172)
+(set-face-attribute 'default nil :height 200)
 
 ;; http://www.emacswiki.org/emacs/BackupDirectory
 (setq
-   backup-by-copying t       ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)        ; use versioned backups
+ backup-by-copying t       ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)        ; use versioned backups
 
 ;; Fix problem with nrepl and ANSI colors
 ;; See https://github.com/clojure-emacs/cider/issues/312
@@ -181,10 +187,10 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; http://marmalade-repo.org/about
 (require 'package)
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+             '("marmalade" .
+               "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (defvar my-packages '(cl

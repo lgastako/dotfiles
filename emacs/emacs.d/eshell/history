@@ -1,1 +1,5 @@
 julia
+ls -latr
+ls
+lein
+exit

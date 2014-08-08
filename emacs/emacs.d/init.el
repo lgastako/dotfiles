@@ -150,7 +150,7 @@ Display the results in a hyperlinked *compilation* buffer."
 ;;(set-face-attribute 'default nil :height 256)
 (set-face-attribute 'default nil :height 200)
 
-;; http://www.emacswiki.org/emacs/BackupDirectory
+;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq
  backup-by-copying t       ; don't clobber symlinks
  backup-directory-alist
@@ -272,3 +272,13 @@ Display the results in a hyperlinked *compilation* buffer."
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(setenv "PATH"
+        (concat
+         (getenv "HOME") "/.rvm/rubes/ruby-1.9.3-p448/bin:"
+         (getenv "PATH")))
+
+; Load el4r, which loads Xiki
+(add-to-list 'load-path "~/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
+(require 'el4r)
+;; (el4r-boot)
+;; (el4r-troubleshooting-keys)

@@ -3,3 +3,26 @@ ls -latr
 ls
 lein
 exit
+ls -latr
+m
+make
+make ck
+alias m=make
+m
+alias
+alias 
+help alias
+alias -0heko
+alias --help
+alias -h
+man alias
+make ck
+echo $PATH
+export PATH=$PATH:/Users/john/dotfiles/bin/lein
+export PATH=$PATH:/Users/john/dotfiles/bin
+lein
+echo $PATH
+ls -l /Users/john/dotfiles/bin
+ls -l /Users/john/dotfiles/binlein
+ls -l /Users/john/dotfiles/bin/lein
+/Users/john/dotfiles/bin/lein

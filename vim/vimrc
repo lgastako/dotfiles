@@ -94,7 +94,8 @@ execute pathogen#infect()
 " set colorscheme
 " colorscheme sorcerer
 " colorscheme hornet
-colorscheme darkBlue
+" colorscheme darkBlue
+colorscheme dark-ruby
 
 let mapleader=","
 

@@ -1,5 +1,4 @@
 {:user {:env {:env :dev ;; so you can check "(= (env :env) :dev)
-              :files-port 6969
               :febay-port 2014
               :febay-elastic-search-url "http://localhost:9200"}
         :plugins [[lein-kibit "0.0.8"]

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/local/bin/pg_ctl -D /Library/PostgreSQL/9.2/data/ stop

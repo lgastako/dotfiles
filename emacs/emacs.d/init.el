@@ -287,3 +287,6 @@ Display the results in a hyperlinked *compilation* buffer."
 (require 'el4r)
 ;; (el4r-boot)
 ;; (el4r-troubleshooting-keys)
+
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))

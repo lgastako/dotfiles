@@ -140,13 +140,13 @@ Display the results in a hyperlinked *compilation* buffer."
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 (load-theme 'deeper-blue)
 
-(if (> (x-display-pixel-width) 2000)
-    (set-face-attribute 'default nil :height 235)
-  (set-face-attribute 'default nil :height 172))
-
+;; (if (> (x-display-pixel-width) 2000)
+;;     (set-face-attribute 'default nil :height 235)
+;;   (set-face-attribute 'default nil :height 172))
 ;;(set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
-(set-face-attribute 'default nil :height 200)
+;;(set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 172)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq
@@ -279,7 +279,7 @@ Display the results in a hyperlinked *compilation* buffer."
 ; Load el4r, which loads Xiki
 (add-to-list 'load-path "/Library/Ruby/Gems/2.0.0/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
 ;;(add-to-list 'load-path "~/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
-(require 'el4r)
+;; (require 'el4r)
 ;; (el4r-boot)
 ;; (el4r-troubleshooting-keys)
 

@@ -55,11 +55,6 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-;;(require 'quack)
-;;(require 'geiser)
-;;(setq geiser-active-implementations '(racket))
-;;(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
-
 (require 'rainbow-delimiters)
 ;; For specific modes:
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
@@ -228,7 +223,7 @@ Display the results in a hyperlinked *compilation* buffer."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  '(haskell-mode-hook (quote (paredit-mode capitalized-words-mode turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indent turn-on-haskell-indentation turn-on-haskell-simple-indent)))
- '(quack-programs (quote ("/Users/john/local/racket/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
+ '(quack-programs (quote ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
  '(tpm-tagged nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
@@ -262,7 +257,7 @@ Display the results in a hyperlinked *compilation* buffer."
 (require 'quack)
 (require 'geiser)
 (setq geiser-active-implementations '(racket))
-(setq geiser-racket-binary "/Users/john/local/racket/bin/racket")
+(setq geiser-racket-binary "/Users/john/local/bin/racket")
 
 ;;failed to compile
 ;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")

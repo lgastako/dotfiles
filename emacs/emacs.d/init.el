@@ -143,10 +143,10 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; (if (> (x-display-pixel-width) 2000)
 ;;     (set-face-attribute 'default nil :height 235)
 ;;   (set-face-attribute 'default nil :height 172))
+(set-face-attribute 'default nil :height 172)
 ;;(set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
-;;(set-face-attribute 'default nil :height 200)
-(set-face-attribute 'default nil :height 172)
+;;(set-face-attribute 'default nil :height 240)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq

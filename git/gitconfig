@@ -2,6 +2,7 @@
 	name = John Evans
 	email = lgastako@gmail.com
 [alias]
+        pull        = pull --recurse-submodules
         u           = push
         d           = pull
         a           = add

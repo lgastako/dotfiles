@@ -1,27 +1,21 @@
 """
-Naval Fate.
+REPLACE_ME.py.
 
 Usage:
-naval_fate ship new <name>...
-naval_fate ship <name> move <x> <y> [--speed=<kn>]
-naval_fate ship shoot <x> <y>
-naval_fate mine (set|remove) <x> <y> [--moored|--drifting]
-naval_fate -h | --help
-naval_fate --version
+REPLACE_ME.py foo <bar>...
+REPLACE_ME.py -h | --help
+REPLACE_ME.py --version
 
 Options:
 -h --help     Show this screen.
 --version     Show version.
---speed=<kn>  Speed in knots [default: 10].
---moored      Moored (anchored) mine.
---drifting    Drifting mine.
 """
 from docopt import docopt
 
 def main():
-    args = docopt(__doc__, version='Naval Fate 2.0')
-    print(args)
+    args = docopt(__doc__, version="REPLACE_ME.py 0.1")
     $0
+    print(args)
 
 if __name__ == "__main__":
     main()

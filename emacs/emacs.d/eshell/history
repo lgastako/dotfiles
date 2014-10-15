@@ -26,3 +26,5 @@ ls -l /Users/john/dotfiles/bin
 ls -l /Users/john/dotfiles/binlein
 ls -l /Users/john/dotfiles/bin/lein
 /Users/john/dotfiles/bin/lein
+ptipython
+workon snow

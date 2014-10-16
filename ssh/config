@@ -1,0 +1,37 @@
+# Host jb
+#   HostName slcmilodb01.slc.ebay.com
+#   User jpevans
+
+# Host milodb
+#   Hostname slcmilodb02.slc.ebay.com
+#   User jpevans
+
+# Host *.slc.ebay.com
+#   User jpevans
+
+# Host ebnvm
+#   Hostname 10.254.233.69
+#   User john
+
+Host pi
+  HostName 192.168.1.16
+  User pi
+
+Host dr
+  HostName dr.everalbum.com
+  User ubuntu
+  IdentityFile /Users/john/.ssh/JohnEvansKeyPair1.pem
+
+Host zeus
+  User john
+  HostName 162.248.163.16
+
+Host snow1
+  User john
+  HostName 54.68.97.79
+  #IdentityFile /Users/john/dotfiles/sensitive/AccuvitAmazonKeys.pem
+
+Host snowmm
+  Hostname snows-mac-mini.local
+  User snow
+

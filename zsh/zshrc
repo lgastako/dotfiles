@@ -1,0 +1,155 @@
+# Automatically report run time of all commands
+REPORTTIME=0
+
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+ZSH_THEME=kphoen
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git textmate virtualenvwrapper)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+source $HOME/dotfiles/bash/bash_aliases
+
+export PATH=$HOME/local/bin:$HOME/.cabal/bin:/opt/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:/usr/local/share/npm/bin
+
+# Put any path additions before this.
+
+# We load oh-my-zsh after the path modifications so it can find other things,
+# e.g. virtualenvwrappersource $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+
+VIRTUALENV_WRAPPER_LOCATIONS=(
+    /usr/local/bin/python
+    /usr/local/share/python
+    /usr/bin
+)
+for d in $VIRTUALENV_WRAPPER_LOCATIONS
+do
+    wrapper=$d/virtualenvwrapper.sh
+    if [ -e $wrapper ]; then
+        . $wrapper
+    fi
+done
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+
+unsetopt correctall
+
+function protopy { git clone git@github.com:lgastako/protopy.git $1 && cd $1 && . ./begin.sh $1 }
+
+setopt autocd
+
+alias t=py.test
+# pysrc() { cd "~WORKON_HOME/$1/lib/python*/site-packages" }
+px() { cd ~VIRTUAL_ENV/lib/python*/site-packages }
+mx() { mate ~VIRTUAL_ENV/lib/python*/site-packages }
+
+alias m=make
+
+export PYTHONSTARTUP=$HOME/dotfiles/python/pythonstartup.py
+
+export RBENV_ROOT=/usr/local/opt/rbenv
+
+export PYTHONPATH=.
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Environment specific extensions
+
+UNAME=`uname -s`
+unames_zshrc=$HOME/dotfiles/unames/$UNAME/zshrc
+if [ -e $unames_zshrc ]; then
+    echo "Loading environment specific zsh extensions (environment $UNAME)."
+    . $unames_zshrc
+fi
+
+### Host specific extensions
+
+host_zshrc=$HOME/dotfiles/hosts/$HOST/zshrc
+if [ -e $host_zshrc ]; then
+    echo "Loading host specific zsh extensions (host $HOST)."
+    . $host_zshrc
+fi
+
+### Sensitive values like keys and things that should NOT be commited to git
+
+sensitive_zshrc=$HOME/dotfiles/sensitive/zshrc
+if [ -e $sensitive_zshrc ]; then
+    echo "Loading sensitive environment variables."
+    . $sensitive_zshrc
+fi
+
+# I like being able to use comments on the interactive command line.
+setopt INTERACTIVECOMMENTS
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
+LD_LIBRARY_PATH="/Applications/Postgres.app/Contents/MacOS/lib:$LD_LIBRARY_PATH"
+
+#if [ `whoami` = "vagrant" ]; then
+#    . /var/venv/sm/bin/activate
+#fi
+
+# Need /usr/local/bin to be first to get correct psql version on maia for atomic
+export PATH=/usr/local/bin:$PATH
+
+# Except we need this to have the right lein first.
+export PATH=$HOME/dotfiles/bin:$PATH
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+export PATH=$PATH:$HOME/go_appengine
+
+export PATH="$PATH:/Applications/Racket v6.0/bin"
+
+if [ `hostname` != "ip-172-31-17-204" ]; then
+   export DOCKER_HOST=tcp://localhost:4243
+fi
+
+if [ -e /usr/local/share/zsh/site-functions ]; then
+    . /usr/local/share/zsh/site-functions
+fi
+
+alias rethinkdb.start='launchctl load /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
+alias rethinkdb.stop='launchctl unload /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
+
+export PATH="$PATH:/Applications/Julia-0.2.1.app/Contents/Resources/julia/bin"
+export PATH="$PATH:/Users/john/go_appengine"
+
+export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+
+alias l=lein
+alias vs='vagrant ssh'
+
+export PATH="$PATH:/Users/john/src/CMU-Cam_Toolkit_v2/bin"
+
+export PATH="/Users/john/dotfiles/packer/osx-amd64:$PATH"

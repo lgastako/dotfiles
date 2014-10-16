@@ -7,3 +7,4 @@ lein/dot.lein/repl-port
 lein/dot.lein/repl-history
 *.elc
 bin/fixssh
+sensitive

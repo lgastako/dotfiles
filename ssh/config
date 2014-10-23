@@ -35,3 +35,8 @@ Host snowmm
   Hostname snows-mac-mini.local
   User snow
 
+Host tower
+  Hostname ec2-54-193-127-116.us-west-1.compute.amazonaws.com
+
+Host switch
+  Hostname ec2-54-183-109-17.us-west-1.compute.amazonaws.com

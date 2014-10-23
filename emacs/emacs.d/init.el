@@ -285,3 +285,11 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+
+;; (eval-after-load 'haskell
+;;   '(define-key ))
+
+;; (add-hook 'haskell-mode
+;;           (lambda () (local-set-key (kbd "C-c") #'haskell-compile)))

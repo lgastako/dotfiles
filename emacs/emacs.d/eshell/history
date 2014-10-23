@@ -28,3 +28,4 @@ ls -l /Users/john/dotfiles/bin/lein
 /Users/john/dotfiles/bin/lein
 ptipython
 workon snow
+ls -l

@@ -2,4 +2,4 @@ alias ack=ack-grep
 alias open=gnome-open
 
 # Should be in x startup files somewhere else but good enough for now
-setxkbmap -option ctrl:nocaps
+#setxkbmap -option ctrl:nocaps

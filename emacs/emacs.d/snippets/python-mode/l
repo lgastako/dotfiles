@@ -1,1 +1,5 @@
+# -*- mode: snippet -*-
+# name: logger.debug
+# key: l
+# --
 logger.debug("$0")

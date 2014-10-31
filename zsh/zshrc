@@ -1,5 +1,5 @@
 # Automatically report run time of all commands
-REPORTTIME=0
+REPORTTIME=1
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh

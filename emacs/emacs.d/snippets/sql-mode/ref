@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: references
+# key: ref
+# --
+    REFERENCES ${1:table} (${$1_id})
+        ON UPDATE CASCADE
+        ON DELETE CASCADE

@@ -79,30 +79,6 @@ export PYTHONPATH=.
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-### Environment specific extensions
-
-UNAME=`uname -s`
-unames_zshrc=$HOME/dotfiles/unames/$UNAME/zshrc
-if [ -e $unames_zshrc ]; then
-    echo "Loading environment specific zsh extensions (environment $UNAME)."
-    . $unames_zshrc
-fi
-
-### Host specific extensions
-
-host_zshrc=$HOME/dotfiles/hosts/$HOST/zshrc
-if [ -e $host_zshrc ]; then
-    echo "Loading host specific zsh extensions (host $HOST)."
-    . $host_zshrc
-fi
-
-### Sensitive values like keys and things that should NOT be commited to git
-
-sensitive_zshrc=$HOME/dotfiles/sensitive/zshrc
-if [ -e $sensitive_zshrc ]; then
-    echo "Loading sensitive environment variables."
-    . $sensitive_zshrc
-fi
 
 # I like being able to use comments on the interactive command line.
 setopt INTERACTIVECOMMENTS
@@ -131,10 +107,6 @@ export PATH=$PATH:$HOME/go_appengine
 
 export PATH="$PATH:/Applications/Racket v6.0/bin"
 
-if [ `hostname` != "ip-172-31-17-204" ]; then
-   export DOCKER_HOST=tcp://localhost:4243
-fi
-
 if [ -e /usr/local/share/zsh/site-functions ]; then
     . /usr/local/share/zsh/site-functions
 fi
@@ -153,3 +125,28 @@ alias vs='vagrant ssh'
 export PATH="$PATH:/Users/john/src/CMU-Cam_Toolkit_v2/bin"
 
 export PATH="/Users/john/dotfiles/packer/osx-amd64:$PATH"
+
+### Environment specific extensions
+
+UNAME=`uname -s`
+unames_zshrc=$HOME/dotfiles/unames/$UNAME/zshrc
+if [ -e $unames_zshrc ]; then
+    echo "Loading environment specific zsh extensions (environment $UNAME)."
+    . $unames_zshrc
+fi
+
+### Host specific extensions
+
+host_zshrc=$HOME/dotfiles/hosts/$HOST/zshrc
+if [ -e $host_zshrc ]; then
+    echo "Loading host specific zsh extensions (host $HOST)."
+    . $host_zshrc
+fi
+
+### Sensitive values like keys and things that should NOT be commited to git
+
+sensitive_zshrc=$HOME/dotfiles/sensitive/zshrc
+if [ -e $sensitive_zshrc ]; then
+    echo "Loading sensitive environment variables."
+    . $sensitive_zshrc
+fi

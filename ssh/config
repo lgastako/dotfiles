@@ -40,3 +40,6 @@ Host tower
 
 Host switch
   Hostname ec2-54-183-109-17.us-west-1.compute.amazonaws.com
+
+Host jenkins
+  Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com

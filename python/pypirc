@@ -1,5 +1,4 @@
-[pypi] # authentication details for live PyPI
+[pypi] 
 repository: https://pypi.python.org/pypi
 username: lgastako2
 password: newpw4Pypi
-

@@ -19,6 +19,7 @@ ${RM} -f ~/.inputrc
 ${RM} -f ~/.zshrc
 ${RM} -f ~/.oh-my-zsh
 ${RM} -f ~/.pdbrc
+${RM} -f ~/.pypirc
 ${RM} -f ~/.xmonad
 ${RM} -rf ~/.gtkrc-2.0
 ${RM} -rf ~/.emacs.d
@@ -38,6 +39,7 @@ ${LN} -s ~/dotfiles/inputrc ~/.inputrc
 ${LN} -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ${LN} -s ~/dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
 ${LN} -s ~/dotfiles/python/pdb/pdbrc ~/.pdbrc
+${LN} -s ~/dotfiles/python/pypirc ~/.pypirc
 ${LN} -s ~/dotfiles/gtk/gtkrc-2.0 ~/.gtkrc-2.0
 ${LN} -s ~/dotfiles/emacs/emacs.d ~/.emacs.d
 mkdir -p ~/.ssh

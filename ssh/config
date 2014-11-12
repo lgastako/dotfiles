@@ -38,8 +38,11 @@ Host snowmm
 Host tower
   Hostname ec2-54-193-127-116.us-west-1.compute.amazonaws.com
 
-Host switch
+Host switch-prd
   Hostname ec2-54-183-109-17.us-west-1.compute.amazonaws.com
+
+Host switch-stg
+  Hostname ec2-54-67-0-219.us-west-1.compute.amazonaws.com
 
 Host jenkins
   Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com

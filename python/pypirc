@@ -1,4 +1,7 @@
-[pypi] 
-repository: https://pypi.python.org/pypi
-username: lgastako2
-password: newpw4Pypi
+[distutils]
+index-servers =
+    pypi
+
+[pypi]
+username:lgastako2
+password:newpw4Pypi

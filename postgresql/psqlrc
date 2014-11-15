@@ -16,6 +16,8 @@
 \pset null 'NULL'
 \pset border 2
 
+\pset pager off
+
 \set QUIET OFF
 
 \echo '\nCurrent Host Server Date Time : '`date` '\n'

@@ -144,8 +144,13 @@ Display the results in a hyperlinked *compilation* buffer."
 ;;     (set-face-attribute 'default nil :height 235)
 ;;   (set-face-attribute 'default nil :height 172))
 ;; (set-face-attribute 'default nil :height 172)
+<<<<<<< HEAD
 (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
+=======
+;; (set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 256)
+>>>>>>> 2b1b5e3f66dfd0512e8660c56acde5a27f06d802
 ;;(set-face-attribute 'default nil :height 240)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory

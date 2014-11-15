@@ -3,12 +3,12 @@
 # key: m
 # --
 """
-REPLACE_ME.py.
+${1:program_name.py}.
 
 Usage:
-REPLACE_ME.py foo <bar>...
-REPLACE_ME.py -h | --help
-REPLACE_ME.py --version
+$1 foo <bar>...
+$1 -h | --help
+$1 --version
 
 Options:
 -h --help     Show this screen.
@@ -17,7 +17,7 @@ Options:
 from docopt import docopt
 
 def main():
-    args = docopt(__doc__, version="REPLACE_ME.py 0.1")
+    args = docopt(__doc__, version="$1 0.1")
     $0
     print(args)
 

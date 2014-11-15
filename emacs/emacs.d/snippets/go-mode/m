@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: main
+# key: m
+# --
+package main
+
+import (
+	"fmt"
+
+	docopt "github.com/docopt/docopt-go"
+)
+$0
+func main() {
+	usage := \`${1:REPLACE_ME}.
+
+Usage:
+  $1 ${2:command} ${3:<arg>...}
+  $1 -h | --help
+  $1 --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.\`
+
+	arguments, _ := docopt.Parse(usage, nil, true, "$1 0.1", false)
+	fmt.Println(arguments)
+}

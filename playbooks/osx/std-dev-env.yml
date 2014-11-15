@@ -1,0 +1,21 @@
+---
+- name: "John's Standard OS X Development Environment"
+  hosts: "John's Standard OS X Development Environment"
+  remote_user: "john"
+  sudo: yes
+  sudo_user: root
+
+  tasks:
+    - homebrew: state=present name=ack
+      homebrew: state=present name=cowsay
+      homebrew: state=present name=curl
+      homebrew: state=present name=drake
+      homebrew: state=present name=erlang
+      homebrew: state=present name=git
+      homebrew: state=present name=go
+      homebrew: state=present name=gource
+      homebrew: state=present name=haskell-platform
+      homebrew: state=present name=jq
+      homebrew: state=present name=wget
+      file: state=directory name=/Users/john/src
+      git: dest=/Users/john/dotfiles force=no repo=git@github.com:lgastako/dotfiles.git

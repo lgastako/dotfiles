@@ -144,13 +144,8 @@ Display the results in a hyperlinked *compilation* buffer."
 ;;     (set-face-attribute 'default nil :height 235)
 ;;   (set-face-attribute 'default nil :height 172))
 ;; (set-face-attribute 'default nil :height 172)
-<<<<<<< HEAD
-(set-face-attribute 'default nil :height 200)
-;;(set-face-attribute 'default nil :height 256)
-=======
 ;; (set-face-attribute 'default nil :height 200)
 (set-face-attribute 'default nil :height 256)
->>>>>>> 2b1b5e3f66dfd0512e8660c56acde5a27f06d802
 ;;(set-face-attribute 'default nil :height 240)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
@@ -347,3 +342,12 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (add-hook 'python-mode-hook
    '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+
+;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
+(global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
+(global-set-key (kbd "C-c g") 'helm-git-grep)
+;; Invoke `helm-git-grep' from isearch.
+(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+;; Invoke `helm-git-grep' from other helm.
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))

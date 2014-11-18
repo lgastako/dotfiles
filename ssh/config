@@ -49,3 +49,6 @@ Host switch-prd
 
 Host jenkins
   Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com
+
+Host rama-stg
+  Hostname ec2-54-67-24-109.us-west-1.compute.amazonaws.com

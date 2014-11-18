@@ -356,3 +356,5 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (global-set-key (kbd "C-c l") 'linum-mode)
 (global-set-key (kbd "C-c C-l") 'global-linum-mode)
+
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)

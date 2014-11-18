@@ -351,3 +351,8 @@ Display the results in a hyperlinked *compilation* buffer."
 ;; Invoke `helm-git-grep' from other helm.
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+
+(global-set-key (kbd "C-c M-i") 'helm-swoop)
+
+(global-set-key (kbd "C-c l") 'linum-mode)
+(global-set-key (kbd "C-c C-l") 'global-linum-mode)

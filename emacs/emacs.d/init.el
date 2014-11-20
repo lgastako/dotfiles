@@ -358,3 +358,10 @@ Display the results in a hyperlinked *compilation* buffer."
 (global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+(add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.apexclass$" . js-mode))

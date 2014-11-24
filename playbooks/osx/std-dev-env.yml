@@ -6,10 +6,10 @@
   sudo_user: root
 
   vars:
-    PostgresVersion=9.3.5.2
-    PostgresArchiveFn=Postgres-{{ PostgresVersion }}.zip
-    PGInstallWorkDir=/tmp
-    PostgresArchivePath={{ PGInstallWorkDir }}/{{ PostgresArchiveFn }}
+    PostgresVersion: 9.3.5.2
+    PostgresArchiveFn: Postgres-{{ PostgresVersion }}.zip
+    PGInstallWorkDir: /tmp
+    PostgresArchivePath: "{{ PGInstallWorkDir }}/{{ PostgresArchiveFn }}"
 
   tasks:
 

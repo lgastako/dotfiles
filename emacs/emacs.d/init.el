@@ -1,6 +1,14 @@
 ;; Store the start time for later reporting
 (defvar *emacs-load-start* (current-time))
 
+;; Highlight the current line...
+(global-hl-line-mode t)
+;; ...in black
+;; (set-face-background 'hl-line "black")
+;; ..ish
+(set-face-background 'hl-line "grey9")
+;; for a list of colors: http://raebear.net/comp/emacscolors.html
+
 ;; Helper for more natural path additions
 (defun add-to-load-path-list (fn)
   (add-to-list 'load-path (expand-file-name fn)))

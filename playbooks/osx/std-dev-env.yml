@@ -22,12 +22,12 @@
         - curl
         - drake
         - erlang
-        - git
+#        - git  # "already installed" error... argh
         - go
         - gource
         - haskell-platform
-        - jq
-        - wget
+#        - jq  # "already installed" ...
+#        - wget  # "already installed" ...
 
     - name: Upgrade homebrew packages.
       homebrew:

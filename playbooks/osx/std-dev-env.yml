@@ -2,8 +2,6 @@
 - name: "John's Standard OS X Development Environment"
   hosts: "John's Standard OS X Development Environment"
   remote_user: "john"
-  sudo: yes
-  sudo_user: root
 
   vars:
     PostgresVersion: 9.3.5.2

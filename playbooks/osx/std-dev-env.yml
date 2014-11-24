@@ -21,11 +21,12 @@
 #        - cowsay
         - curl
         - drake
+        - cabal-install
         - erlang
 #        - git  # "already installed" error... argh
         - go
         - gource
-        - haskell-platform
+        - ghc
 #        - jq  # "already installed" ...
 #        - wget  # "already installed" ...
 

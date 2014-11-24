@@ -14,7 +14,9 @@
   tasks:
 
     - name: Add homebrew packages.
-      homebrew: name={{ pkg }} state=present
+      homebrew:
+        name={{ item }}
+        state=present
       with_items:
         - ack
         - cowsay

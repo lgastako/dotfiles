@@ -15,7 +15,6 @@
       homebrew:
         name={{ item }}
         update_homebrew=yes
-        upgrade_all=yes
         state=present
       with_items:
         - ack
@@ -29,6 +28,10 @@
         - haskell-platform
         - jq
         - wget
+
+    - name: Upgrade homebrew packages.
+      homebrew:
+        upgrade_all=yes
 
     - name: Ensure dotfiles checked out.
       git:

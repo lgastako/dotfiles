@@ -315,3 +315,5 @@
 (load-file "~/.emacs.d/languages/sass.el")
 (load-file "~/.emacs.d/languages/scheme.el")
 (load-file "~/.emacs.d/languages/yaml.el")
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)

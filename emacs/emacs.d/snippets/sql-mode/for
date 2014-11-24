@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: foreign_key
+# key: for
+# --
+FOREIGN KEY (${1})
+    REFERENCES ${2:table_name} (${2} _ ${3:slug})
+        ON UPDATE ${4:CASCADE}
+        ON DELETE ${5:RESTRICT},

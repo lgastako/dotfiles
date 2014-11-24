@@ -5,17 +5,37 @@
   sudo: yes
   sudo_user: root
 
+  vars:
+    PostgresVersion=9.3.5.2
+    PostgresArchiveFn=Postgres-{{ PostgresVersion }}.zip
+    PGInstallWorkDir=/tmp
+    PostgresArchivePath={{ PGInstallWorkDir }}/{{ PostgresArchiveFn }}
+
   tasks:
-    - homebrew: state=present name=ack
-      homebrew: state=present name=cowsay
-      homebrew: state=present name=curl
-      homebrew: state=present name=drake
-      homebrew: state=present name=erlang
-      homebrew: state=present name=git
-      homebrew: state=present name=go
-      homebrew: state=present name=gource
-      homebrew: state=present name=haskell-platform
-      homebrew: state=present name=jq
-      homebrew: state=present name=wget
-      file: state=directory name=/Users/john/src
-      git: dest=/Users/john/dotfiles force=no repo=git@github.com:lgastako/dotfiles.git
+
+    - name: Add homebrew packages.
+      homebrew: name={{ pkg }} state=present
+      with_items:
+        - ack
+        - cowsay
+        - curl
+        - drake
+        - erlang
+        - git
+        - go
+        - gource
+        - haskell-platform
+        - jq
+        - wget
+
+    - name: Ensure dotfiles checked out.
+      git:
+        dest=/Users/john/dotfiles
+        force=no
+        repo=git@github.com:lgastako/dotfiles.git
+
+    - name: Get Postgres.app Archive.
+      get_url:
+        dest={{ PostgresArchivePath }}
+        url="https://github.com/PostgresApp/PostgresApp/releases/download/{{ PostgresVersion }}/Postgres-{{ PostgresVersion }}.zip"
+        force=no

@@ -1,1 +1,5 @@
+# -*- mode: snippet -*-
+# name: ouc
+# key: ouc
+# --
 ON UPDATE CASCADE

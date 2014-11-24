@@ -14,6 +14,8 @@
     - name: Add homebrew packages.
       homebrew:
         name={{ item }}
+        update_homebrew=yes
+        upgrade_all=yes
         state=present
       with_items:
         - ack

@@ -1,32 +1,57 @@
+;; Store the start time for later reporting
 (defvar *emacs-load-start* (current-time))
 
+;; Highlight the current line...
+(global-hl-line-mode t)
+;; ...in black
+;; (set-face-background 'hl-line "black")
+;; ..ish
+(set-face-background 'hl-line "grey9")
+;; for a list of colors: http://raebear.net/comp/emacscolors.html
+
+;; Helper for more natural path additions
 (defun add-to-load-path-list (fn)
   (add-to-list 'load-path (expand-file-name fn)))
 
+;; Individual .el files here
 (add-to-load-path-list "~/.emacs.d/elisp")
-(add-to-load-path-list "~/.emacs.d/vendor/coffee-mode")
+
+;; Directory-based plugins here
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
-(add-to-load-path-list "/usr/local/Cellar/go/1.0.3/misc/emacs")
-(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
 
 ;; bah humbug - too slow, doesn't pay for itself
-;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
+;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+
+;; Highlight matching delimiters
 (show-paren-mode 1)
+
+;; Prevent insertion of tabs for spaces
 (setq-default indent-tabs-mode nil)
+
 (setq-default tab-width 4)
+
+;; Show (line, col) in modeline
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
+
+;; Highlight trailing whitespace in red
 (setq-default show-trailing-whitespace t)
+
+;; Set the print margin
 (setq-default fill-column 80)
+
 (setq auto-save-visited-file-name nil)
 ;; (setq auto-save-visited-file-name t)
 ;; (setq auto-save-interval 5)  ; keystrokes
 ;; (setq auto-save-timeout 5)   ; seconds
 ;; (setq cider-auto-select-error-buffer t)
 
+;; Automatically reverts all buffers every 5 seconds
+;; Keeps us in sync with the filesystem.
 (global-auto-revert-mode t)
 
 ;; Remember state of emacs when reopening.
@@ -34,41 +59,33 @@
 (autoload 'resume "revive" "Resume Emacs" t)
 (autoload 'wipe "revive" "Wipe Emacs" t)
 
+;; Save the current window configuration with 'C-x S'
 (define-key ctl-x-map "S" 'save-current-configuration)
+;; Restore the window configuration with 'C-x F'
 (define-key ctl-x-map "F" 'resume)
+;; Forget the stored window configuration with 'C-x K'
 (define-key ctl-x-map "K" 'wipe)
 
 ;; Make '^x s' behave the same as '^x ^s'
 (define-key ctl-x-map "s" 'save-buffer)
 
+;; Use shift-arrow keys to move between windows
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-(require 'haml-mode)
-(require 'sass-mode)
-
-;; (require 'mkhtml-htmlize)
-;; (require 'mkhtml)
+(require 'ido)
+(ido-mode t)
 
 ;; (require 'easymenu)
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
 (require 'rainbow-delimiters)
-;; For specific modes:
-;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
 ;; For all programming modes:
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;;(add-hook 'clojure-mode-hook 'typed-clojure-mode)
 
 (require 'theme-park-mode)
 
 (require 'flymake-cursor)
-
-(require 'go-mode-load)
-;;(require 'go-flymake)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
@@ -77,43 +94,20 @@
 (require 'edit-server)
 (edit-server-start)
 
-(require 'coffee-mode)
-
-(require 'rust-mode)
-
 (require 'fill-column-indicator)
 
+;; Better uniqification of buffer names
 (require 'uniquify)
 
+;; Snippets
 (require 'yasnippet)
 (yas--initialize)
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas-load-directory yas/root-directory)
 (yas-global-mode 1)
 
-;; Teach compile the syntax of the kibit output
-(require 'compile)
-(add-to-list 'compilation-error-regexp-alist-alist
-             '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
-(add-to-list 'compilation-error-regexp-alist 'kibit)
-
-;; A convenient command to run "lein kibit" in the project to which
-;; the current emacs buffer belongs to.
-(defun kibit ()
-  "Run kibit on the current project.
-Display the results in a hyperlinked *compilation* buffer."
-  (interactive)
-  (compile "lein kibit"))
-
-(defun kibit-current-file ()
-  "Run kibit on the current file.
-Display the results in a hyperlinked *compilation* buffer."
-  (interactive)
-  (compile (concat "lein kibit " buffer-file-name)))
-
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(global-set-key (kbd "C-c k") 'kibit-current-file)
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-x p") 'paredit-mode)
 
@@ -124,12 +118,6 @@ Display the results in a hyperlinked *compilation* buffer."
 (global-set-key (kbd "C-c f") 'indent-all)
 
 ;;(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
-
-(add-hook 'python-mode-hook 'fci-mode)
-
-(setq gofmt-command "goimports")
-
-(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Pretty Font
 (custom-set-faces
@@ -158,29 +146,6 @@ Display the results in a hyperlinked *compilation* buffer."
  kept-old-versions 2
  version-control t)        ; use versioned backups
 
-;; Fix problem with nrepl and ANSI colors
-;; See https://github.com/clojure-emacs/cider/issues/312
-;; and https://github.com/clojure-emacs/cider/pull/275
-;; (defun nrepl-emit-output (buffer string &optional bol)
-;;   "Using BUFFER, emit STRING.
-;;    If BOL is non-nil, emit at the beginning of the line."
-;;   (with-current-buffer buffer
-;;     (nrepl-emit-output-at-pos buffer string nrepl-input-start-mark bol)
-;;     (ansi-color-apply-on-region (marker-position nrepl-output-start) (point-max))))
-
-;; Fix problem with nrepl not switching to init-ns from project.clj
-;; See https://github.com/clojure-emacs/cider/issues/316 (though this is for
-;; Cider which I am not using... yet)
-;; (add-hook 'nrepl-connected-hook
-;;   (lambda () (nrepl-set-ns (plist-get
-;;                  (nrepl-send-string-sync "(symbol (str *ns*))") :value))))
-
-;; Use arrows to recall previous/next commands in nrepl instead of just M-n/p
-;; (define-key nrepl-mode-map (kbd "<up>") 'nrepl-previous-input)
-;; (define-key nrepl-mode-map (kbd "<down>") 'nrepl-next-input)
-;; This breaks when you're trying to up/down arrow through text anywhere in the
-;; buffer.
-
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 (require 'package)
@@ -198,10 +163,6 @@ Display the results in a hyperlinked *compilation* buffer."
   (when (not (package-installed-p p))
     (package-install p)))
 
-(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
-
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -209,12 +170,6 @@ Display the results in a hyperlinked *compilation* buffer."
 (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
-(add-hook 'go-mode-hook               #'enable-paredit-mode)
-
-(autoload 'markdown-mode "markdown-mode.el"	"Major mode for editing Markdown files" t)
-(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -247,51 +202,17 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (global-set-key "\C-y" 'yank-and-indent)
 
-(load-library "troncle")
-
 (setenv "PATH" (concat (getenv "PATH") ":$HOME/bin"))
 (setq sql-postgres-program "/usr/local/bin/psql")
 ;;(setq sql-port ...) -- seems to not be a good idea
 ;; this seems to be the way: sigh
 ;;(setq sql-postgres-options (list "-p 5492"))
 
-(require 'quack)
-(require 'geiser)
-(setq geiser-active-implementations '(racket))
-(setq geiser-racket-binary "/Users/john/local/bin/racket")
-
 ;;failed to compile
 ;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")
 
-(setenv "GOPATH" "~/go")
-
-(setq exec-path (append exec-path '("/usr/local/bin")))
-(setq exec-path (append exec-path '("/usr/local/go/bin")))
-(setq exec-path (append exec-path '("~/go/bin")))
-
-(require 'go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
-
-(setenv "PATH"
-        (concat
-         (getenv "HOME") "/.rvm/rubes/ruby-1.9.3-p448/bin:"
-         (getenv "PATH")))
-
-; Load el4r, which loads Xiki
-(add-to-list 'load-path "/Library/Ruby/Gems/2.0.0/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
-;;(add-to-list 'load-path "~/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
-;; (require 'el4r)
-;; (el4r-boot)
-;; (el4r-troubleshooting-keys)
-
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-
-;; (eval-after-load 'haskell
-;;   '(define-key ))
-
-;; (add-hook 'haskell-mode
-;;           (lambda () (local-set-key (kbd "C-c") #'haskell-compile)))
 
 (require 'helm)
 (require 'helm-config)
@@ -331,7 +252,6 @@ Display the results in a hyperlinked *compilation* buffer."
 (auto-complete-mode)
 
 ;; To consider:
-;; https://github.com/clojure-emacs/ac-cider
 ;; https://github.com/emacs-helm/helm-cmd-t
 
 ;; Bind a key to edit my init.el
@@ -339,9 +259,6 @@ Display the results in a hyperlinked *compilation* buffer."
                 (lambda ()
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
-
-(add-hook 'python-mode-hook
-   '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
 
 ;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
 (global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
@@ -357,8 +274,18 @@ Display the results in a hyperlinked *compilation* buffer."
 (global-set-key (kbd "C-c l") 'linum-mode)
 (global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
+;; Enable Ace Jump mode
+;;   'C-u C-c SPC <char>' to jump to a specific char
+;;   'C-c SPC <char>' to jump to a specific first-char
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+(defvar ace-jump-mode-submode-list
+  '(ace-jump-char-mode
+    ace-jump-word-mode
+    ace-jump-line-mode))
+
+;; Winner mode
+;;   'C-c left' and 'C-c right' to undo/redo changes to window settings
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
@@ -368,3 +295,23 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (require 'edit-server)
 (edit-server-start)
+
+;; Something like this should work, but it doesn't, so for now...
+;; ;; Load all the individual language configs
+;; (require 'load-directory)
+;; (load-directory "~/.emacs.d/languages")
+;; ... we do it manually:
+(load-file "~/.emacs.d/languages/clojure.el")
+(load-file "~/.emacs.d/languages/coffee.el")
+(load-file "~/.emacs.d/languages/go.el")
+(load-file "~/.emacs.d/languages/haml.el")
+(load-file "~/.emacs.d/languages/haskell.el")
+(load-file "~/.emacs.d/languages/html.el")
+(load-file "~/.emacs.d/languages/markdown.el")
+(load-file "~/.emacs.d/languages/python.el")
+(load-file "~/.emacs.d/languages/ruby.el")
+(load-file "~/.emacs.d/languages/rust.el")
+(load-file "~/.emacs.d/languages/salesforce.el")
+(load-file "~/.emacs.d/languages/sass.el")
+(load-file "~/.emacs.d/languages/scheme.el")
+(load-file "~/.emacs.d/languages/yaml.el")

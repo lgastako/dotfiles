@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
-# name: odc
-# key: odc
+# name: cascade
+# key: cas
 # --
+ON UPDATE CASCADE
 ON DELETE CASCADE

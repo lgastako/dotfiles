@@ -45,3 +45,9 @@
         dest={{ PostgresArchivePath }}
         url="https://github.com/PostgresApp/PostgresApp/releases/download/{{ PostgresVersion }}/Postgres-{{ PostgresVersion }}.zip"
         force=no
+
+# TODO:
+# VirtualBox
+# vagrant
+# docker
+

@@ -30,9 +30,9 @@
 #        - jq  # "already installed" ...
 #        - wget  # "already installed" ...
 
-    - name: Upgrade homebrew packages.
-      homebrew:
-        upgrade_all=yes
+    # - name: Upgrade homebrew packages.
+    #   homebrew:
+    #     upgrade_all=yes
 
     - name: Ensure dotfiles checked out.
       git:

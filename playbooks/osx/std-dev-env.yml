@@ -18,8 +18,8 @@
         state=present
       with_items:
         - ack
-#        - cowsay
         - curl
+        - docker
         - drake
         - cabal-install
         - erlang
@@ -27,21 +27,51 @@
         - go
         - gource
         - ghc
+        - heroku-toolbelt
 #        - jq  # "already installed" ...
+#        - mercurial  # "already installed"
+        - s3cmd
+#        - sloccount  # "already installed"
 #        - wget  # "already installed" ...
+        - zsh
 
-    - name: Upgrade homebrew packages.
-      homebrew:
-        upgrade_all=yes
+    # - name: Upgrade homebrew packages.
+    #   homebrew:
+    #     upgrade_all=yes
 
     - name: Ensure dotfiles checked out.
       git:
         dest=/Users/john/dotfiles
         force=no
         repo=git@github.com:lgastako/dotfiles.git
+        update=yes
 
     - name: Get Postgres.app Archive.
       get_url:
         dest={{ PostgresArchivePath }}
         url="https://github.com/PostgresApp/PostgresApp/releases/download/{{ PostgresVersion }}/Postgres-{{ PostgresVersion }}.zip"
         force=no
+
+# TODO:
+# VirtualBox
+# vagrant
+# https://github.com/chrisdone/structured-haskell-mode
+#
+# Applications:
+# - Adium
+# - Cyberduck (or better SFTP?)
+# - Divvy
+# - Emacs.app
+# - Evernote
+# - Firefox
+# - Flux.app
+# - Google Chrome
+# - HipChat
+# - LightTable
+# - MacVim
+# - Mathematica
+# - Pandora
+# - Racket
+# - Sublime
+# - TextMate
+# - VLC

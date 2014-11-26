@@ -29,9 +29,9 @@
         - ghc
         - heroku-toolbelt
 #        - jq  # "already installed" ...
-        - mercurial
+#        - mercurial  # "already installed"
         - s3cmd
-        - sloccount
+#        - sloccount  # "already installed"
 #        - wget  # "already installed" ...
         - zsh
 

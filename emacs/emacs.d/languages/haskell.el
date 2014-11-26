@@ -4,3 +4,4 @@
 ;; (add-hook 'haskell-mode
 ;;           (lambda () (local-set-key (kbd "C-c") #'haskell-compile)))
 
+(speedbar-add-supported-extension ".hs")

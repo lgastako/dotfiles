@@ -1,0 +1,20 @@
+opam-version: "1"
+maintainer: "Christophe.Troestler@umons.ac.be"
+build: [
+  [make "install" "INSTALL_DIR=%{share}%/emacs/site-lisp"]
+]
+remove: [
+  [make "uninstall"]
+]
+depends: ["caml-mode"]
+post-messages: [
+"If you have not yet done so, please add in ~/.emacs.d/init.el or
+in ~/.emacs to following lines:
+    (add-to-list 'load-path
+      (let ((share (shell-command-to-string "opam config var share")))
+        (concat (replace-regexp-in-string "\n$" "" share) "/emacs/site-lisp")))
+    (load \"tuareg-site-file\")
+Note that the location of Tuareg will be determined when Emacs starts.
+If you switch compilers, make sure this package is installed for all of
+them so Emacs can always find it."
+  {success} ]

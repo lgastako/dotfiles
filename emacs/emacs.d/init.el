@@ -278,6 +278,7 @@
 ;;   'C-u C-c SPC <char>' to jump to a specific char
 ;;   'C-c SPC <char>' to jump to a specific first-char
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
 
 (defvar ace-jump-mode-submode-list
   '(ace-jump-char-mode

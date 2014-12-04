@@ -1,28 +1,14 @@
-;;(add-to-list 'load-path "~/dotfiles/emacs/emacs.d/plugins/structured-haskell-mode")
-;;(require 'shm)
+(require 'haskell-mode)
 
-;; Do not add a hook for haskell-indentation-modes.  SHM prevails.
-;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+;;'(haskell-mode-hook (quote (paredit-mode capitalized-words-mode turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indent turn-on-haskell-indentation turn-on-haskell-simple-indent)))
 
-;; (eval-after-load 'haskell
-;;   '(define-key ))
+;; We need to establish both an interaction mode and an indentation mode.
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;; (add-hook 'haskell-mode
-;;           (lambda () (local-set-key (kbd "C-c") #'haskell-compile)))
+;; Since we are sane, we use cabal sandboxes, so we need this:
 
-;; breaks on startup
-;;(speedbar-add-supported-extension ".hs")
-
-;;(setq shm-program-name "~/local/bin/structured-haskell-mode")
-
-;; (eval-after-load "haskell-mode"
-;;   '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
-
-;; (eval-after-load "haskell-cabal"
-;;   '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
-
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-;;(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;; I think this is for haskell-interaction-mode
 ;;(setq haskell-process-type 'cabal-repl)
-
+;; This is for the other
+;;(setq haskell-program-name "cabal repl")

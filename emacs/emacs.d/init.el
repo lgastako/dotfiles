@@ -177,7 +177,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- '(haskell-mode-hook (quote (paredit-mode capitalized-words-mode turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indent turn-on-haskell-indentation turn-on-haskell-simple-indent)))
  '(helm-google-search-function (quote helm-google-api-search))
  '(quack-programs (quote ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
@@ -318,3 +317,12 @@
 (load-file "~/.emacs.d/languages/yaml.el")
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+
+;; /sudo::/etc/hosts doesn't work for some reason.
+
+;; (defadvice helm-find-files (after find-file-sudo activate)
+;;   "Find file as root if necessary."
+;;   (unless (and buffer-file-name
+;;                (file-writable-p buffer-file-name))
+;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))

@@ -1,0 +1,22 @@
+;; -*- emacs-lisp -*- <14/12/02 01:03:29 /Users/john/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["sudo" "root" "hyperion.local" nil nil]
+  nil)
+ (["sudo" "root" "root" nil nil]
+  nil)
+ (["sudo" "root" "localhost" nil nil]
+  nil)
+ (["ssh" nil "hyperion.local" nil nil]
+  nil)
+ (["ssh" nil "localhost" nil nil]
+  nil)
+ (["su" "root" "hyperion.local" nil nil]
+  nil)
+ (["sudo" nil "root" nil nil]
+  nil)
+ (["root" nil "hyperion.local" nil nil]
+  nil)
+ (["ssh" nil "root" nil nil]
+  nil))

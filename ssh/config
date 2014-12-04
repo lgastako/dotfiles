@@ -1,21 +1,6 @@
 KeepAlive yes
 ServerAliveInterval 60
 
-# Host jb
-#   HostName slcmilodb01.slc.ebay.com
-#   User jpevans
-
-# Host milodb
-#   Hostname slcmilodb02.slc.ebay.com
-#   User jpevans
-
-# Host *.slc.ebay.com
-#   User jpevans
-
-# Host ebnvm
-#   Hostname 10.254.233.69
-#   User john
-
 Host pi
   HostName 192.168.1.16
   User pi
@@ -52,3 +37,6 @@ Host jenkins
 
 Host rama-stg
   Hostname ec2-54-67-24-109.us-west-1.compute.amazonaws.com
+
+Host nickolay
+  Hostname ec2-54-68-97-79.us-west-2.compute.amazonaws.com

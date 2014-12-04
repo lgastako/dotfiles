@@ -150,3 +150,6 @@ if [ -e $sensitive_zshrc ]; then
     echo "Loading sensitive environment variables."
     . $sensitive_zshrc
 fi
+
+alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
+alias e=emacsclient

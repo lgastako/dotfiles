@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import logging
+# key: il
+# --
+import logging

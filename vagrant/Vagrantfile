@@ -1,0 +1,43 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+$provisioning_script = <<SCRIPT
+sudo apt-get update -y
+sudo apt-get install -y -q linux-image-generic-lts-raring linux-headers-generic-lts-raring
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+sudo apt-get update -y
+sudo apt-get install -y -q lxc-docker
+sudo service docker stop
+sudo sh -c "echo DOCKER_OPTS=\\'-H 0.0.0.0:4243\\' >> /etc/default/docker"
+sudo service docker start
+SCRIPT
+
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "hashicorp/precise64"
+  config.ssh.forward_agent = true
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "/", "/host"
+
+  # Docker Daemon
+  config.vm.network :forwarded_port, :host => 4243, :guest => 4243
+
+  # These are a couple of arbitrary high numbered ports for ad-hoc
+  # experimentation.  Use these temporarily but if something becomes a permanent
+  # part of the architecture please assign a permanent port above.
+  config.vm.network :forwarded_port, :host => 9090, :guest => 9090
+  config.vm.network :forwarded_port, :host => 9091, :guest => 9091
+  config.vm.network :forwarded_port, :host => 9092, :guest => 9092
+  config.vm.network :forwarded_port, :host => 9093, :guest => 9093
+  config.vm.network :forwarded_port, :host => 9094, :guest => 9094
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "3072"]
+  end
+
+  config.vm.provision "shell", inline: $provisioning_script
+end

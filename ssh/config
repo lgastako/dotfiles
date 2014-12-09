@@ -25,18 +25,35 @@ Host snowmm
 
 Host tower
   Hostname ec2-54-193-127-116.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
 
 Host switch-prd
   Hostname ec2-54-183-109-17.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
 
 Host switch-stg
   Hostname ec2-54-67-0-219.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+
+Host jenkins-old
+  Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
 
 Host jenkins
-  Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com
+  Hostname ec2-54-67-91-98.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
 
 Host rama-stg
   Hostname ec2-54-67-24-109.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
 
 Host nickolay
   Hostname ec2-54-68-97-79.us-west-2.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu

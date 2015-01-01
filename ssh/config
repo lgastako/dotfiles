@@ -38,13 +38,8 @@ Host switch-stg
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
 
-Host jenkins-old
-  Hostname ec2-54-219-137-180.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
 Host jenkins
-  Hostname ec2-54-67-91-98.us-west-1.compute.amazonaws.com
+  Hostname ec2-50-18-197-44.us-west-1.compute.amazonaws.com
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
 
@@ -53,7 +48,23 @@ Host rama-stg
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
 
+Host rama-prd
+  Hostname ec2-54-67-8-8.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+
 Host nickolay
   Hostname ec2-54-68-97-79.us-west-2.compute.amazonaws.com
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
+
+Host etienne-recog
+  Hostname ec2-54-67-9-64.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+
+Host etienne-new
+  Hostname ec2-54-67-124-234.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+

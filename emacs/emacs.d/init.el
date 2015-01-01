@@ -1,6 +1,9 @@
 ;; Store the start time for later reporting
 (defvar *emacs-load-start* (current-time))
 
+;; Answer with 'y' or 'n' instead of having to type of 'yes' or 'no'.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Highlight the current line...
 (global-hl-line-mode t)
 ;; ...in black
@@ -42,7 +45,7 @@
 (setq-default show-trailing-whitespace t)
 
 ;; Set the print margin
-(setq-default fill-column 80)
+(setq-default fill-column 79)
 
 (setq auto-save-visited-file-name nil)
 ;; (setq auto-save-visited-file-name t)
@@ -132,8 +135,8 @@
 ;;     (set-face-attribute 'default nil :height 235)
 ;;   (set-face-attribute 'default nil :height 172))
 ;; (set-face-attribute 'default nil :height 172)
-;; (set-face-attribute 'default nil :height 200)
-(set-face-attribute 'default nil :height 256)
+(set-face-attribute 'default nil :height 200)
+;;(set-face-attribute 'default nil :height 256)
 ;;(set-face-attribute 'default nil :height 240)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
@@ -326,3 +329,5 @@
 ;;   (unless (and buffer-file-name
 ;;                (file-writable-p buffer-file-name))
 ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
+
+(add-hook 'after-init-hook #'global-flycheck-mode)

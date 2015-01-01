@@ -25,14 +25,6 @@
 
 ;; (load-library "troncle")
 
-;; (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-;; (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
-;; (add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
-
-;; (add-hook 'clojure-mode-hook #'enable-paredit-mode)
-
-;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
 ;; (add-hook 'clojure-mode-hook 'typed-clojure-mode)
 
 ;; ;; To consider:
@@ -61,8 +53,9 @@
 
 ;; (global-set-key (kbd "C-c k") 'kibit-current-file)
 
-;; (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-;; (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
-;; (add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
 
-;; (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'enable-paredit-mode)

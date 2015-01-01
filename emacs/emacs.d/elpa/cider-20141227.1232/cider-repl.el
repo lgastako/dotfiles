@@ -162,16 +162,19 @@ PROJECT-DIR, PORT and HOST are as in `nrepl-make-buffer-name'."
                            (current-buffer))
     (nrepl-make-buffer-name nrepl-repl-buffer-name-template project-dir host port)))
 
-(defun cider-repl-create (&optional project-dir host port)
+(defun cider-repl-create (endpoint)
   "Create a REPL buffer and install `cider-repl-mode'.
-PROJECT-DIR, PORT and HOST are as in `nrepl-make-buffer-name'."
+ENDPOINT is a plist as returned by `nrepl-connect'."
   ;; Connection might not have been set as yet. Please don't send requests here.
-  (let ((buf (nrepl-make-buffer-name nrepl-repl-buffer-name-template
-                                     project-dir host port)))
+  (let ((buf (nrepl-make-buffer-name nrepl-repl-buffer-name-template nil
+                                     (plist-get endpoint :host)
+                                     (plist-get endpoint :port))))
     (with-current-buffer (get-buffer-create buf)
       (unless (derived-mode-p 'cider-repl-mode)
         (cider-repl-mode))
-      (cider-repl-reset-markers))
+      (cider-repl-reset-markers)
+      (add-hook 'nrepl-connected-hook 'cider--connected-handler nil 'local)
+      (add-hook 'nrepl-disconnected-hook 'cider--disconnected-handler nil 'local))
     buf))
 
 (defun cider-repl-require-repl-utils ()
@@ -183,14 +186,17 @@ PROJECT-DIR, PORT and HOST are as in `nrepl-make-buffer-name'."
    (lambda (response) nil)))
 
 (defun cider-repl-set-initial-ns (buffer)
-  "Set the REPL BUFFER's initial namespace (by altering `nrepl-buffer-ns').
+  "Set the REPL BUFFER's initial namespace (by altering `cider-buffer-ns').
 This is \"user\" by default but can be overridden in apps like lein (:init-ns)."
   ;; we don't want to get a timeout during init
   (let ((nrepl-sync-request-timeout nil))
     (with-current-buffer buffer
-      (let ((initial-ns (read (nrepl-dict-get (nrepl-sync-request:eval "(str *ns*)") "value"))))
-        (when initial-ns
-          (setq nrepl-buffer-ns initial-ns))))))
+      (let ((initial-ns (or (read
+                             (nrepl-dict-get
+                              (nrepl-sync-request:eval "(str *ns*)")
+                              "value"))
+                            "user")))
+        (setq cider-buffer-ns initial-ns)))))
 
 (defun cider-repl-init (buffer &optional no-banner)
   "Initialize the REPL in BUFFER.
@@ -223,7 +229,7 @@ client process connection. Unless NO-BANNER is non-nil, insert a banner."
     (goto-char (point-max))
     (cider-repl--mark-output-start)
     (cider-repl--mark-input-start)
-    (cider-repl--insert-prompt nrepl-buffer-ns)))
+    (cider-repl--insert-prompt cider-buffer-ns)))
 
 (defun cider-get-repl-buffer ()
   "Return the REPL buffer for current connection."
@@ -398,7 +404,7 @@ Return the position of the prompt beginning."
         prompt-start))))
 
 (defun cider-repl-emit-output-at-pos (buffer string output-face position &optional bol)
-  "Using BUFFER, insert STRING at POSITION and mark it as output.
+  "Using BUFFER, insert STRING (applying to it OUTPUT-FACE) at POSITION.
 If BOL is non-nil insert at the beginning of line."
   (with-current-buffer buffer
     (save-excursion
@@ -417,7 +423,7 @@ If BOL is non-nil insert at the beginning of line."
     (cider-repl--show-maximum-output)))
 
 (defun cider-repl--emit-interactive-output (string face)
-  "Emit STRING as interactive output using face."
+  "Emit STRING as interactive output using FACE."
   (with-current-buffer (cider-current-repl-buffer)
     (let ((pos (1- (cider-repl--input-line-beginning-position)))
           (string (replace-regexp-in-string "\n\\'" "" string)))
@@ -454,7 +460,7 @@ If BOL is non-nil, emit at the beginning of the line."
     (save-excursion
       (cider-save-marker cider-repl-output-start
         (cider-save-marker cider-repl-output-end
-          (cider-repl--insert-prompt nrepl-buffer-ns))))
+          (cider-repl--insert-prompt cider-buffer-ns))))
     (cider-repl--show-maximum-output)))
 
 (defun cider-repl-emit-result (buffer string &optional bol)
@@ -686,7 +692,7 @@ namespace to switch to."
                        (cider-current-ns))))
   (if ns
       (with-current-buffer (cider-current-repl-buffer)
-        (setq nrepl-buffer-ns ns)
+        (setq cider-buffer-ns ns)
         (cider-repl-emit-prompt (current-buffer)))
     (error "Cannot determine the current namespace")))
 

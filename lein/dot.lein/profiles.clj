@@ -2,6 +2,7 @@
               :febay-port 2014
               :febay-elastic-search-url "http://localhost:9200"}
         :plugins [[lein-kibit "0.0.8"]
+                  [cider/cider-nrepl "0.8.2"]
                   [quickie "0.2.5"]
                   ;; [soup-site/lein-template "1.1.0-SNAPSHOT"]
                   ;; [lein-typed "0.3.4"]

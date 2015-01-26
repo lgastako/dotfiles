@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: o.hm
+# key: o
+# --
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>${1:app}</title>
+  <body>
+    <script src="out/goog/base.js" type="text/javascript"></script>
+    <script src="otg.js" type="text/javascript"></script>
+    <script type="text/javascript">goog.require("app.core");</script>
+    <script src="js/app.js"></script>
+$0

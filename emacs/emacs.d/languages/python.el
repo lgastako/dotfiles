@@ -33,3 +33,7 @@
 ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
 ;; ===============================================
 
+
+;; cython
+(require 'cython-mode)
+(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))

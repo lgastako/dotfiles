@@ -59,3 +59,5 @@
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+
+(setq cider-lein-command "/Users/john/dotfiles/bin/lein")

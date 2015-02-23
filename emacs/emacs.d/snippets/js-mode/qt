@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: qunittest
+# key: qt
+# --
+QUnit.test(
+    "${1:something}",
+
+    function(assert) {
+        $0
+    }
+)

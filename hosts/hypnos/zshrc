@@ -3,3 +3,5 @@
 export DOCKER_HOST=tcp://localhost:4243
 
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+
+export PATH=~/local/vert.x/bin:$PATH

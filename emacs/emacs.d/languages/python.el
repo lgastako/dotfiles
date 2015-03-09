@@ -1,6 +1,6 @@
 ;; Python autocompletion
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+;;(add-hook 'python-mode-hook 'jedi:setup)
+;;(setq jedi:complete-on-dot t)
 
 ;; Fix indenting
 (add-hook 'python-mode-hook

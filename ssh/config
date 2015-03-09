@@ -68,3 +68,13 @@ Host etienne-new
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
 
+Host clabonne
+  Hostname ec2-54-187-225-11.us-west-2.compute.amazonaws.com
+  User ubuntu
+
+
+Host jenkins-wheezy
+  Hostname ec2-54-67-12-35.us-west-1.compute.amazonaws.com
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+

@@ -331,3 +331,5 @@
 ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(setq erc-track-enable-keybindings nil)

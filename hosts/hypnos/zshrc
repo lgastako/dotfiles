@@ -1,6 +1,6 @@
 . /Users/john/.nix-profile/etc/profile.d/nix.sh
 
-export DOCKER_HOST=tcp://localhost:4243
+export DOCKER_HOST=tcp://10.10.10.10:4243
 
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 

@@ -137,9 +137,10 @@ fi
 
 ### Host specific extensions
 
-host_zshrc=$HOME/dotfiles/hosts/$HOST/zshrc
+DOT_HOST=`echo $HOST | cut -f1 -d.`
+host_zshrc=$HOME/dotfiles/hosts/$DOT_HOST/zshrc
 if [ -e $host_zshrc ]; then
-    echo "Loading host specific zsh extensions (host $HOST)."
+    echo "Loading host specific zsh extensions (host $DOT_HOST)."
     . $host_zshrc
 fi
 

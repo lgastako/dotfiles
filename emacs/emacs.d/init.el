@@ -22,8 +22,23 @@
 ;; Directory-based plugins here
 (add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
 
+;; Marmalade Package Manager
+;; http://marmalade-repo.org/about
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" .
+               "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 ;; bah humbug - too slow, doesn't pay for itself
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+
+;; Maximize window on startup
+(load "frame-cmds.el")
+(maximize-frame-vertically)
+(maximize-frame-horizontally)
 
 ;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)
@@ -149,16 +164,6 @@
  kept-old-versions 2
  version-control t)        ; use versioned backups
 
-;; Marmalade Package Manager
-;; http://marmalade-repo.org/about
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" .
-               "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
 (defvar my-packages '(cl
                       yasnippet))
 
@@ -190,11 +195,6 @@
 
 ;;;;;;;;;;;;;;;;;
 ;; Haven't properly merged these into the appropriate spots above.
-
-;; Maximize window on startup
-(load "frame-cmds.el")
-(maximize-frame-vertically)
-(maximize-frame-horizontally)
 
 (defun yank-and-indent ()
   "Yank and then indent the newly formed region according to mode."

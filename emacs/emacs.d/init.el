@@ -35,6 +35,23 @@
 ;; bah humbug - too slow, doesn't pay for itself
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
+;; Pretty Font
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
+(load-theme 'deeper-blue)
+
+;; (if (> (x-display-pixel-width) 2000)
+;;     (set-face-attribute 'default nil :height 235)
+;;   (set-face-attribute 'default nil :height 172))
+;; (set-face-attribute 'default nil :height 172)
+(set-face-attribute 'default nil :height 200)
+;;(set-face-attribute 'default nil :height 256)
+;;(set-face-attribute 'default nil :height 240)
+
 ;; Maximize window on startup
 (load "frame-cmds.el")
 (maximize-frame-vertically)
@@ -136,23 +153,6 @@
 (global-set-key (kbd "C-c f") 'indent-all)
 
 ;;(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
-
-;; Pretty Font
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
-(load-theme 'deeper-blue)
-
-;; (if (> (x-display-pixel-width) 2000)
-;;     (set-face-attribute 'default nil :height 235)
-;;   (set-face-attribute 'default nil :height 172))
-;; (set-face-attribute 'default nil :height 172)
-(set-face-attribute 'default nil :height 200)
-;;(set-face-attribute 'default nil :height 256)
-;;(set-face-attribute 'default nil :height 240)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq

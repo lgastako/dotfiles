@@ -61,3 +61,9 @@
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 
 (setq cider-lein-command "/Users/john/dotfiles/bin/lein")
+
+
+;;(define-key cider-repl-mode (kbd "C-c o") 'cider-repl-clear-output)
+;; (define-key cider-repl-mode (kbd "C-c o") (lambda ()
+;;                                             (interactive)
+;;                                             (cider-repl-clear-output)))

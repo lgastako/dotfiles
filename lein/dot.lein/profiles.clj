@@ -4,6 +4,7 @@
                                                      org.clojure/tools.reader
                                                      commons-codec]]
                   [lein-bikeshed "0.2.0"]
+                  [lein-cloverage "1.0.2"]
                   [lein-kibit "0.0.8"]
                   [lein-vanity "0.2.0"]
                   [org.timmc/nephila "0.3.0"]

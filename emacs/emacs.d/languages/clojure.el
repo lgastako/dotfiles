@@ -55,12 +55,20 @@
 
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.cljc$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 
-(setq cider-lein-command "/Users/john/dotfiles/bin/lein")
+;;(setq cider-lein-command "/Users/john/dotfiles/bin/lein")
+(setq cider-boot-command "/Users/john/dotfiles/bin/boot")
+
+
+
+;;(global-set-key (kbd "C-c j") 'cider-jack-in)
+
 
 
 ;;(define-key cider-repl-mode (kbd "C-c o") 'cider-repl-clear-output)

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+path=`pwd`
+
+while [ ${#path} -gt 0 ]
+do
+    echo "looking in path: $path"
+
+    if [ -e "project.clj" ]; then
+        exec lein $*
+    elif [ -e "build.boot" ]; then
+        if [ "$*" = "repl :headless" ]
+        then
+            exec boot "[cljs/+" ":browser]" repl/repl
+            # exec boot [repl/repl :headless]
+        else
+            exec boot $*
+        fi
+    fi
+
+    path=`echo ${path} | grep -o '.*/'`
+done
+
+echo "Could not find project.clj or build.boot, what am I to do?"

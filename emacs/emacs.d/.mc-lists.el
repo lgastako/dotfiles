@@ -9,6 +9,7 @@
         paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once

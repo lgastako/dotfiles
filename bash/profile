@@ -21,3 +21,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+
+# added by Anaconda 2.2.0 installer
+export PATH="//anaconda/bin:$PATH"

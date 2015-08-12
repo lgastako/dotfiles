@@ -29,6 +29,7 @@ ${RM} -f ~/.vimrc
 ${RM} -rf ~/.vim
 ${RM} -rf ~/local/bin/mvim
 ${RM} -rf ~/.lein
+${RM} -rf ~/.boot
 ${RM} -rf ~/.psqlrc
 ${RM} -rf ~/.gitk
 
@@ -50,6 +51,7 @@ ${LN} -s ~/dotfiles/vim/vimrc ~/.vimrc
 ${LN} -s ~/dotfiles/vim/dotvim ~/.vim
 ${LN} -s ~/dotfiles/contrib/gvim/mvim ~/local/bin
 ${LN} -s ~/dotfiles/lein/dot.lein ~/.lein
+${LN} -s ~/dotfiles/boot/dot.boot ~/.boot
 ${LN} -s ~/dotfiles/postgresql/psqlrc ~/.psqlrc
 ${LN} -s ~/dotfiles/git/gitk ~/.gitk
 

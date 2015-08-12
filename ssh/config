@@ -78,3 +78,17 @@ Host jenkins-wheezy
   IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
   User ubuntu
 
+
+Host rama-staging
+  Hostname 54.67.24.109
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+
+Host freeswitch-staging
+  Hostname 54.67.0.219
+  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+  User ubuntu
+
+Host git-codecommit.*.amazonaws.com
+  User APKAJFHUIGZK4ZAJTEFQ
+  IdentityFile ~/.ssh/id_rsa

@@ -2,3 +2,5 @@ export PATH=/usr/local/go/bin:$PATH
 
 export DOCKER_HOST=tcp://10.10.10.10:4243
 
+export DIALER_URL="http://john-asp.ngrok.io"
+

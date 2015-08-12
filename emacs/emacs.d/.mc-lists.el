@@ -14,6 +14,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        markdown-exdent-or-delete
         paredit-backward-kill-word
         paredit-kill
         ))

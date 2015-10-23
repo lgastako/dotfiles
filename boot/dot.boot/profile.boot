@@ -5,3 +5,6 @@
 
 (swap! boot.repl/*default-middleware*
        conj 'cider.nrepl/cider-middleware)
+
+(set-env! :dependencies '[[boot-deps "0.1.6"]])
+(require '[boot-deps :refer [ancient]])

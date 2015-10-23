@@ -92,3 +92,12 @@ Host freeswitch-staging
 Host git-codecommit.*.amazonaws.com
   User APKAJFHUIGZK4ZAJTEFQ
   IdentityFile ~/.ssh/id_rsa
+
+Host consul
+  Hostname 127.0.0.1
+  Port 2201
+  IdentityFile /Users/john/.vagrant.d/insecure_private_key
+  User vagrant
+  LocalForward 8300 localhost:8300
+  LocalForward 8400 localhost:8400
+  LocalForward 8500 localhost:8500

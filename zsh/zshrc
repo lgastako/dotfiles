@@ -158,3 +158,8 @@ alias e=emacsclient
 if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
    source /usr/local/share/zsh/site-functions/_aws
 fi
+PERL_MB_OPT="--install_base \"/Users/john/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/john/perl5"; export PERL_MM_OPT;
+
+
+export PATH=${PATH}:/Users/john/.gem/ruby/2.0.0/bin

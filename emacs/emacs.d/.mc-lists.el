@@ -3,17 +3,25 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        cider-load-buffer
         dabbrev-expand
         delete-horizontal-space
         kill-region
+        paredit-backward-slurp-sexp
+        paredit-close-round
+        paredit-doublequote
         paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
+        paredit-semicolon
+        paredit-splice-sexp
+        upcase-region
         yas-expand
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        helm-git-grep
         markdown-exdent-or-delete
         paredit-backward-kill-word
         paredit-kill

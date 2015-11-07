@@ -25,11 +25,14 @@
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" .
-               "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+;; (add-to-list 'package-archives
+;;              '("marmalade" .
+;;                "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ;; bah humbug - too slow, doesn't pay for itself
@@ -52,14 +55,14 @@
 ;;(set-face-attribute 'default nil :height 256)
 ;;(set-face-attribute 'default nil :height 240)
 
+;; Declutter the UI by hiding the menus
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
 ;; Maximize window on startup
 (load "frame-cmds.el")
 (maximize-frame-vertically)
 (maximize-frame-horizontally)
-
-;; Declutter the UI by hiding the menus
-(menu-bar-mode 0)
-(tool-bar-mode 0)
 
 ;; Highlight matching delimiters
 (show-paren-mode 1)

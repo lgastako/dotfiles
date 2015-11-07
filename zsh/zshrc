@@ -163,3 +163,5 @@ PERL_MM_OPT="INSTALL_BASE=/Users/john/perl5"; export PERL_MM_OPT;
 
 
 export PATH=${PATH}:/Users/john/.gem/ruby/2.0.0/bin
+
+export DESK_DIR=${HOME}/dotfiles/desks

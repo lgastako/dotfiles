@@ -340,10 +340,33 @@
       ace-jump-word-mode
       ace-jump-line-mode)))
 
-;; Winner mode
-;;   'C-c left' and 'C-c right' to undo/redo changes to window settings
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
+(use-package winner
+  ;; Winner mode
+  ;;   'C-c left' and 'C-c right' to undo/redo changes to window settings
+  :init (winner-mode))
+
+(use-package drag-stuff
+  ;; 'M-N' / 'M-P' to move lines or selected groups of lines up/down
+  ;; 'M-<left>' / 'M-<right>' to move words or selected regions
+  :init (drag-stuff-global-mode 1)
+  :bind (("M-N" . drag-stuff-down)
+         ("M-P" . drag-stuff-up)))
+
+(use-package company
+  :bind ("C-." . company-complete)
+  :init (global-company-mode 1)
+  :config
+  (bind-keys :map company-active-map
+             ("C-n"   . company-select-next)
+             ("C-p"   . company-select-previous)
+             ("C-d"   . company-show-doc-buffer)
+             ("<tab>" . company-complete)))
+
+(use-package expand-region
+  :bind (("C-@" . er/expand-region)
+         ("C-=" . er/expand-region)
+         ("M-3" . er/expand-region))
+  :init (delete-selection-mode))
 
 (add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))

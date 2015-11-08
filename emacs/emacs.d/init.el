@@ -58,9 +58,6 @@
 ;; Individual .el files here
 (add-to-load-path-list "~/.emacs.d/elisp")
 
-;; Directory-based plugins here
-(add-to-load-path-list "~/.emacs.d/plugins/yasnippet")
-
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 
@@ -156,8 +153,10 @@
   (global-ws-trim-mode t))
 
 (use-package edit-server
-  :config
-  (edit-server-start))
+  :if window-system
+  :init
+  (add-hook 'after-init-hook 'server-start t)
+  (add-hook 'after-init-hook 'edit-server-start t))
 
 (use-package fill-column-indicator)
 
@@ -174,6 +173,7 @@
 
 ;; Snippets
 (use-package yasnippet
+  :load-path "~/.emacs.d/plugins/yasnippet"
   :config
   (setq yas/root-directory "~/.emacs.d/snippets")
   (yas-load-directory yas/root-directory)

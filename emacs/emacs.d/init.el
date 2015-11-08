@@ -67,6 +67,10 @@
                          ("melpa"     . "http://melpa.org/packages/")))
 (package-initialize)
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 ;; have use-package install missing packages automatically
 (setq use-package-always-ensure t)
 
@@ -173,7 +177,7 @@
 
 ;; Snippets
 (use-package yasnippet
-  :load-path "~/.emacs.d/plugins/yasnippet"
+  :load-path "~/.emacs..d/plugins/yasnippet"
   :config
   (setq yas/root-directory "~/.emacs.d/snippets")
   (yas-load-directory yas/root-directory)

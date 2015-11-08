@@ -1,5 +1,11 @@
 ;; Store the start time for later reporting
 (defvar *emacs-load-start* (current-time))
+;; Thanks anarcat!
+(defun anarcat/time-to-ms (time)
+  (+ (* (+ (* (car time) (expt 2 16)) (car (cdr time))) 1000000) (car (cdr (cdr time)))))
+(defun anarcat/display-timing ()
+  (message ".emacs loaded in %fms" (/ (- (anarcat/time-to-ms (current-time)) (anarcat/time-to-ms *emacs-load-start*)) 1000000.0)))
+(add-hook 'after-init-hook 'anarcat/display-timing t)
 
 ;; Answer with 'y' or 'n' instead of having to type of 'yes' or 'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -59,24 +65,18 @@
 ;; http://marmalade-repo.org/about
 
 (require' package)
-  ;; TODO: :init
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
-;; (add-to-list 'package-archives
-;;              '("marmalade" .
-;;                "http://marmalade-repo.org/packages/"))
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+                         ("melpa"     . "http://melpa.org/packages/")))
 (package-initialize)
+
+;; have use package install missing packages automatically
+(setq use-package-always-ensure t)
 
 (eval-when-compile
   (require 'use-package))
-;; (require 'diminish)                ;; if you use :diminish
-;; (require 'bind-key)                ;; if you use any :bind variant
-
-;; Have use package install missing packages automatically
-(setq use-package-always-ensure t)
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
 
 ;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)
@@ -162,7 +162,8 @@
 (use-package fill-column-indicator)
 
 ;; Better uniqification of buffer names
-;; (use-package uniquify)
+;; doesn't work with use-package for some reason
+(require 'uniquify)
 
 (use-package multiple-cursors
   :config
@@ -183,6 +184,9 @@
 (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-x p") 'paredit-mode)
 
+(global-set-key (kbd "C-c l")   'linum-mode)
+(global-set-key (kbd "C-c C-l") 'global-linum-mode)
+
 (defun indent-all ()
   (interactive)
   (indent-region 0 (buffer-size)))
@@ -190,14 +194,13 @@
 (global-set-key (kbd "C-c f") 'indent-all)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
-(setq
- backup-by-copying t       ; don't clobber symlinks
- backup-directory-alist
- '(("." . "~/.saves"))    ; don't litter my fs tree
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)        ; use versioned backups
+(setq backup-by-copying t       ; don't clobber symlinks
+      backup-directory-alist
+      '(("." . "~/.saves"))     ; don't litter my fs tree
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)        ; use versioned backups
 
 (defvar my-packages '(cl
                       yasnippet))
@@ -221,7 +224,9 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  ;; '(helm-google-search-function (quote helm-google-api-search))
- '(quack-programs (quote ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
+ '(quack-programs (quote ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi"
+                          "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket"
+                          "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
  '(tpm-tagged nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
@@ -285,6 +290,10 @@
   (helm-mode 1)
 
   (use-package ac-helm
+    :bind (("C-c g"   . helm-git-grep)
+           ("C-c t"   . helm-git-grep-at-point)
+           ("C-x C-f" . helm-find-files)
+           ("C-c M-i" . heml-swoop))
     :config
     (global-set-key (kbd "C-;") 'ac-complete-with-helm)
     (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
@@ -303,21 +312,11 @@
   ;;                (file-writable-p buffer-file-name))
   ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
 
-  ;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
-  (global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
-  (global-set-key (kbd "C-c g") 'helm-git-grep)
   ;; Invoke `helm-git-grep' from isearch.
   (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
   ;; Invoke `helm-git-grep' from other helm.
   (eval-after-load 'helm
-    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
-
-  (global-set-key (kbd "C-c M-i") 'helm-swoop)
-
-  (global-set-key (kbd "C-c l") 'linum-mode)
-  (global-set-key (kbd "C-c C-l") 'global-linum-mode)
-
-  (global-set-key (kbd "C-x C-f") 'helm-find-files))
+    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))
 
 ;; Bind a key to edit my init.el
 (global-set-key (kbd "C-c i")
@@ -325,16 +324,17 @@
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
 
-;; Enable Ace Jump mode
-;;   'C-u C-c SPC <char>' to jump to a specific char
-;;   'C-c SPC <char>' to jump to a specific first-char
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-(define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
-
-(defvar ace-jump-mode-submode-list
-  '(ace-jump-char-mode
-    ace-jump-word-mode
-    ace-jump-line-mode))
+(use-package ace-jump-mode
+  ;; Enable Ace Jump mode
+  ;;   'C-u C-c SPC <char>' to jump to a specific char
+  ;;   'C-c SPC <char>' to jump to a specific first-char
+  :bind (("C-c SPC" . ace-jump-mode)
+         ("C-c C-SPC" . ace-jump-mode))
+  :config
+  (defvar ace-jump-mode-submode-list
+    '(ace-jump-char-mode
+      ace-jump-word-mode
+      ace-jump-line-mode)))
 
 ;; Winner mode
 ;;   'C-c left' and 'C-c right' to undo/redo changes to window settings

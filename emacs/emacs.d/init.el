@@ -10,6 +10,9 @@
 (set-face-background 'hl-line "grey9")
 ;; for a list of colors: http://raebear.net/comp/emacscolors.html
 
+;; We load this early to maximize the niceness of the editing environment if
+;; init.el explodes.
+
 ;; Pretty Font
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -41,7 +44,6 @@
 ;; (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
 ;;(set-face-attribute 'default nil :height 240)
-
 
 ;; Helper for more natural path additions
 (defun add-to-load-path-list (fn)
@@ -75,10 +77,6 @@
 
 ;; Have use package install missing packages automatically
 (setq use-package-always-ensure t)
-
-;; bah humbug - too slow, doesn't pay for itself
-;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
-
 
 ;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)

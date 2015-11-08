@@ -70,7 +70,7 @@
                          ("melpa"     . "http://melpa.org/packages/")))
 (package-initialize)
 
-;; have use package install missing packages automatically
+;; have use-package install missing packages automatically
 (setq use-package-always-ensure t)
 
 (eval-when-compile

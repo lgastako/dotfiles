@@ -254,71 +254,72 @@
   :init
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-;; (use-package helm
-;;   :config
-;;   (use-package helm-config
-;;     :config
-;;     (setq helm-quick-update                     t ; do not display invisible candidates
-;;           helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-;;           helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
-;;           helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-;;           helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-;;           helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-;;           helm-ff-file-name-history-use-recentf t)
+(use-package helm
+  :config
 
-;;     ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;;     ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;;     ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-;;     (global-set-key (kbd "C-c h") 'helm-command-prefix)
-;;     (global-unset-key (kbd "C-x c"))
+  (require 'helm-config)
 
-;;     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-;;     (define-key helm-map (kbd "C-i")   'helm-execute-persistent-action) ; make TAB works in terminal
-;;     (define-key helm-map (kbd "C-z")   'helm-select-action)             ; list actions using C-z
+  (setq helm-quick-update                     t ; do not display invisible candidates
+        helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+        helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
+        helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+        helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+        helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+        helm-ff-file-name-history-use-recentf t)
 
-;;     (when (executable-find "curl")
-;;       (setq helm-google-suggest-use-curl-p t))
+  ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+  ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+  ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
 
-;;     ;; My muscle memory is set to "C-x-b" for selecting buffers, so lets change that to helm:
-;;     (global-set-key (kbd "C-x C-b") 'list-buffers)
-;;     (global-set-key (kbd "C-x b") 'helm-mini)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  (define-key helm-map (kbd "C-i")   'helm-execute-persistent-action) ; make TAB works in terminal
+  (define-key helm-map (kbd "C-z")   'helm-select-action)             ; list actions using C-z
 
-;;     (helm-mode 1)
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
 
-;;     (use-package ac-helm
-;;       :config
-;;       (global-set-key (kbd "C-;") 'ac-complete-with-helm)
-;;       (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
-;;       (auto-complete-mode))
+  ;; My muscle memory is set to "C-x-b" for selecting buffers, so lets change that to helm:
+  (global-set-key (kbd "C-x C-b") 'list-buffers)
+  (global-set-key (kbd "C-x b") 'helm-mini)
 
-;;     ;; To consider:
-;;     ;; https://github.com/emacs-helm/helm-cmd-t
+  (helm-mode 1)
 
-;;     ;; (global-set-key (kbd "C-c C-g") 'helm-google)
+  (use-package ac-helm
+    :config
+    (global-set-key (kbd "C-;") 'ac-complete-with-helm)
+    (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
+    (auto-complete-mode))
 
-;;     ;; /sudo::/etc/hosts doesn't work for some reason.
+  ;; To consider:
+  ;; https://github.com/emacs-helm/helm-cmd-t
 
-;;     ;; (defadvice helm-find-files (after find-file-sudo activate)
-;;     ;;   "Find file as root if necessary."
-;;     ;;   (unless (and buffer-file-name
-;;     ;;                (file-writable-p buffer-file-name))
-;;     ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
+  ;; (global-set-key (kbd "C-c C-g") 'helm-google)
 
-;;     ;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
-;;     (global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
-;;     (global-set-key (kbd "C-c g") 'helm-git-grep)
-;;     ;; Invoke `helm-git-grep' from isearch.
-;;     (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
-;;     ;; Invoke `helm-git-grep' from other helm.
-;;     (eval-after-load 'helm
-;;       '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+  ;; /sudo::/etc/hosts doesn't work for some reason.
 
-;;     (global-set-key (kbd "C-c M-i") 'helm-swoop)
+  ;; (defadvice helm-find-files (after find-file-sudo activate)
+  ;;   "Find file as root if necessary."
+  ;;   (unless (and buffer-file-name
+  ;;                (file-writable-p buffer-file-name))
+  ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
 
-;;     (global-set-key (kbd "C-c l") 'linum-mode)
-;;     (global-set-key (kbd "C-c C-l") 'global-linum-mode)
+  ;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
+  (global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
+  (global-set-key (kbd "C-c g") 'helm-git-grep)
+  ;; Invoke `helm-git-grep' from isearch.
+  (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+  ;; Invoke `helm-git-grep' from other helm.
+  (eval-after-load 'helm
+    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
 
-;;     (global-set-key (kbd "C-x C-f") 'helm-find-files)))
+  (global-set-key (kbd "C-c M-i") 'helm-swoop)
+
+  (global-set-key (kbd "C-c l") 'linum-mode)
+  (global-set-key (kbd "C-c C-l") 'global-linum-mode)
+
+  (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
 ;; Bind a key to edit my init.el
 (global-set-key (kbd "C-c i")

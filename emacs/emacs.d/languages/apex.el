@@ -1,1 +1,1 @@
-(require 'apex-mode)
+(use-package apex-mode)

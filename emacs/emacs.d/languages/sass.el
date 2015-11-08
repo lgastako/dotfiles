@@ -1,1 +1,1 @@
-(require 'sass-mode)
+(use-package sass-mode)

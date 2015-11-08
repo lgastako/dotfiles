@@ -1,1 +1,1 @@
-(require 'rust-mode)
+(use-package rust-mode)

@@ -6,11 +6,42 @@
 
 ;; Highlight the current line...
 (global-hl-line-mode t)
-;; ...in black
-;; (set-face-background 'hl-line "black")
-;; ..ish
+;; ...darker
 (set-face-background 'hl-line "grey9")
 ;; for a list of colors: http://raebear.net/comp/emacscolors.html
+
+;; Pretty Font
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil
+                :stipple nil
+                :inverse-video nil
+                :box nil
+                :strike-through nil
+                :overline nil
+                :underline nil
+                :slant normal
+                :weight normal
+                :height 235
+                :width normal
+                :foundry "apple"
+                :family "Monaco")))))
+
+(load-theme 'deeper-blue)
+
+;; We do this right after the theme is loaded to minimize the time it looks
+;; wonky.
+;; (if (> (x-display-pixel-width) 2000)
+;;     (set-face-attribute 'default nil :height 235)
+;;   (set-face-attribute 'default nil :height 172))
+(set-face-attribute 'default nil :height 172)
+;; (set-face-attribute 'default nil :height 200)
+;;(set-face-attribute 'default nil :height 256)
+;;(set-face-attribute 'default nil :height 240)
+
 
 ;; Helper for more natural path additions
 (defun add-to-load-path-list (fn)
@@ -24,7 +55,9 @@
 
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
-(require 'package)
+
+(require' package)
+  ;; TODO: :init
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
@@ -35,25 +68,17 @@
 ;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+(eval-when-compile
+  (require 'use-package))
+;; (require 'diminish)                ;; if you use :diminish
+;; (require 'bind-key)                ;; if you use any :bind variant
+
+;; Have use package install missing packages automatically
+(setq use-package-always-ensure t)
+
 ;; bah humbug - too slow, doesn't pay for itself
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
-;; Pretty Font
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
-(load-theme 'deeper-blue)
-
-;; (if (> (x-display-pixel-width) 2000)
-;;     (set-face-attribute 'default nil :height 235)
-;;   (set-face-attribute 'default nil :height 172))
-(set-face-attribute 'default nil :height 172)
-;; (set-face-attribute 'default nil :height 200)
-;;(set-face-attribute 'default nil :height 256)
-;;(set-face-attribute 'default nil :height 240)
 
 ;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)
@@ -111,47 +136,49 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-(require 'ido)
-(ido-mode t)
+(use-package ido
+  :config
+  (ido-mode t))
 
-;; (require 'easymenu)
+;; (use-package easymenu)
 
-(require 'rainbow-delimiters)
+(use-package rainbow-delimiters
+  :init
+  ;; For all programming modes:
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-;; For all programming modes:
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(use-package theme-park-mode)
 
-(require 'theme-park-mode)
+(use-package flymake-cursor)
 
-(require 'flymake-cursor)
+(use-package ws-trim
+  :init
+  (setq ws-trim-global-modes t)
+  :config
+  (global-ws-trim-mode t))
 
-(require 'ws-trim)
-(global-ws-trim-mode t)
-(setq ws-trim-global-modes t)
+(use-package edit-server
+  :config
+  (edit-server-start))
 
-(require 'edit-server)
-(edit-server-start)
-
-(require 'fill-column-indicator)
+(use-package fill-column-indicator)
 
 ;; Better uniqification of buffer names
-(require 'uniquify)
+;; (use-package uniquify)
 
-(require 'multiple-cursors)
-
-(global-set-key (kbd "C-c m") 'mc/edit-lines)
-
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(use-package multiple-cursors
+  :config
+  (global-set-key (kbd "C-c m") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
 ;; Snippets
-(require 'yasnippet)
-;;(yas--initialize)
-(yas/initialize)
-(setq yas/root-directory "~/.emacs.d/snippets")
-(yas-load-directory yas/root-directory)
-(yas-global-mode 1)
+(use-package yasnippet
+  :config
+  (setq yas/root-directory "~/.emacs.d/snippets")
+  (yas-load-directory yas/root-directory)
+  (yas-global-mode 1))
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 
@@ -163,8 +190,6 @@
   (indent-region 0 (buffer-size)))
 
 (global-set-key (kbd "C-c f") 'indent-all)
-
-;;(global-set-key (kbd "C-c t") 'nrepl-make-repl-connection-default)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq
@@ -185,11 +210,11 @@
 
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -225,68 +250,81 @@
 ;;failed to compile
 ;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")
 
-(require 'dockerfile-mode)
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(use-package dockerfile-mode
+  :init
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-(require 'helm)
-(require 'helm-config)
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
+;; (use-package helm
+;;   :config
+;;   (use-package helm-config
+;;     :config
+;;     (setq helm-quick-update                     t ; do not display invisible candidates
+;;           helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+;;           helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
+;;           helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+;;           helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+;;           helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+;;           helm-ff-file-name-history-use-recentf t)
 
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+;;     ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;;     ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;;     ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+;;     (global-set-key (kbd "C-c h") 'helm-command-prefix)
+;;     (global-unset-key (kbd "C-x c"))
 
-(when (executable-find "curl")
-  (setq helm-google-suggest-use-curl-p t))
+;;     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+;;     (define-key helm-map (kbd "C-i")   'helm-execute-persistent-action) ; make TAB works in terminal
+;;     (define-key helm-map (kbd "C-z")   'helm-select-action)             ; list actions using C-z
 
-(setq helm-quick-update                     t ; do not display invisible candidates
-      helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-      helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
-      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      helm-ff-file-name-history-use-recentf t)
+;;     (when (executable-find "curl")
+;;       (setq helm-google-suggest-use-curl-p t))
 
-;; My muscle memory is set to "C-x-b" for selecting buffers, so lets change that to helm:
-(global-set-key (kbd "C-x C-b") 'list-buffers)
-(global-set-key (kbd "C-x b") 'helm-mini)
+;;     ;; My muscle memory is set to "C-x-b" for selecting buffers, so lets change that to helm:
+;;     (global-set-key (kbd "C-x C-b") 'list-buffers)
+;;     (global-set-key (kbd "C-x b") 'helm-mini)
 
-(helm-mode 1)
+;;     (helm-mode 1)
 
-(require 'ac-helm)
-(global-set-key (kbd "C-;") 'ac-complete-with-helm)
-(define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
+;;     (use-package ac-helm
+;;       :config
+;;       (global-set-key (kbd "C-;") 'ac-complete-with-helm)
+;;       (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
+;;       (auto-complete-mode))
 
-(global-set-key (kbd "C-c C-g") 'helm-google)
+;;     ;; To consider:
+;;     ;; https://github.com/emacs-helm/helm-cmd-t
 
-(auto-complete-mode)
+;;     ;; (global-set-key (kbd "C-c C-g") 'helm-google)
 
-;; To consider:
-;; https://github.com/emacs-helm/helm-cmd-t
+;;     ;; /sudo::/etc/hosts doesn't work for some reason.
+
+;;     ;; (defadvice helm-find-files (after find-file-sudo activate)
+;;     ;;   "Find file as root if necessary."
+;;     ;;   (unless (and buffer-file-name
+;;     ;;                (file-writable-p buffer-file-name))
+;;     ;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
+
+;;     ;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
+;;     (global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
+;;     (global-set-key (kbd "C-c g") 'helm-git-grep)
+;;     ;; Invoke `helm-git-grep' from isearch.
+;;     (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+;;     ;; Invoke `helm-git-grep' from other helm.
+;;     (eval-after-load 'helm
+;;       '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+
+;;     (global-set-key (kbd "C-c M-i") 'helm-swoop)
+
+;;     (global-set-key (kbd "C-c l") 'linum-mode)
+;;     (global-set-key (kbd "C-c C-l") 'global-linum-mode)
+
+;;     (global-set-key (kbd "C-x C-f") 'helm-find-files)))
 
 ;; Bind a key to edit my init.el
 (global-set-key (kbd "C-c i")
                 (lambda ()
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
-
-;; (require 'helm-git-grep) ;; Not necessary if installed by package.el
-(global-set-key (kbd "C-c t") 'helm-git-grep-at-point)
-(global-set-key (kbd "C-c g") 'helm-git-grep)
-;; Invoke `helm-git-grep' from isearch.
-(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
-;; Invoke `helm-git-grep' from other helm.
-(eval-after-load 'helm
-  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
-
-(global-set-key (kbd "C-c M-i") 'helm-swoop)
-
-(global-set-key (kbd "C-c l") 'linum-mode)
-(global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
 ;; Enable Ace Jump mode
 ;;   'C-u C-c SPC <char>' to jump to a specific char
@@ -308,9 +346,6 @@
 (add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.apexclass$" . js-mode))
 
-(require 'edit-server)
-(edit-server-start)
-
 ;; Something like this should work, but it doesn't, so for now...
 ;; ;; Load all the individual language configs
 ;; (require 'load-directory)
@@ -330,17 +365,6 @@
 (load-file "~/.emacs.d/languages/sass.el")
 (load-file "~/.emacs.d/languages/scheme.el")
 (load-file "~/.emacs.d/languages/yaml.el")
-
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-
-;; /sudo::/etc/hosts doesn't work for some reason.
-
-;; (defadvice helm-find-files (after find-file-sudo activate)
-;;   "Find file as root if necessary."
-;;   (unless (and buffer-file-name
-;;                (file-writable-p buffer-file-name))
-;;     (find-alternate-file (concat "/sudo::" buffer-file-name))))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 

@@ -9,12 +9,12 @@
 ;; In theory 'C-h S' will lookup symbols, but even after installing the python
 ;; info files per https://bitbucket.org/jonwaltman/pydoc-info/ it still doesn't
 ;; quite work for me.
-(require 'pydoc-info)
+(use-package pydoc-info)
 
 ;; Causing problems. Very annoying.
 ;;(add-hook 'python-mode-hook 'fci-mode)
 
-;;(require 'ipython)
+;;(use-package ipython)
 
 
 ;; ===============================================
@@ -33,7 +33,7 @@
 ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
 ;; ===============================================
 
-
 ;; cython
-(require 'cython-mode)
-(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
+(use-package cython-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode)))

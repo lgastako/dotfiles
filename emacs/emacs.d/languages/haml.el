@@ -1,1 +1,1 @@
-(require 'haml-mode)
+(use-package haml-mode)

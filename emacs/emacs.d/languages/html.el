@@ -1,7 +1,8 @@
-;; (require 'mkhtml-htmlize)
-;; (require 'mkhtml)
+;; (use-package mkhtml-htmlize)
+;; (use-package mkhtml)
 
-
-(require 'zencoding-mode)
-(add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
+(use-package zencoding-mode
+  ;; Auto-start on any markup modes
+  :config
+  (add-hook 'sgml-mode-hook 'zencoding-mode))
 

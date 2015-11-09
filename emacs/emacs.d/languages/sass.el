@@ -1,1 +1,2 @@
-(use-package sass-mode)
+(use-package sass-mode
+  :mode ("\\.sass\\'" "\\.scss\\'"))

@@ -1,3 +1,5 @@
+;;; init.el --- John's Emacs Configuration
+
 ;; Store the start time for later reporting
 (defvar *emacs-load-start* (current-time))
 ;; Thanks anarcat!
@@ -6,6 +8,9 @@
 (defun anarcat/display-timing ()
   (message ".emacs loaded in %fms" (/ (- (anarcat/time-to-ms (current-time)) (anarcat/time-to-ms *emacs-load-start*)) 1000000.0)))
 (add-hook 'after-init-hook 'anarcat/display-timing t)
+
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
 ;; Answer with 'y' or 'n' instead of having to type of 'yes' or 'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)

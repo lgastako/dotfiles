@@ -58,10 +58,16 @@
 ;; Individual .el files here
 (add-to-load-path-list "~/.emacs.d/elisp")
 
+(defmacro rename-modeline (package-name mode new-name)
+  `(eval-after-load ,package-name
+     '(defadvice ,mode (after rename-modeline activate)
+        (setq mode-name ,new-name))))
+
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
 
 (require' package)
+(setq package-enable-at-startup nil)
 (setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa"     . "http://melpa.org/packages/")))
@@ -136,25 +142,21 @@
   (windmove-default-keybindings))
 
 (use-package ido
-  :config
-  (ido-mode t))
+  :config (ido-mode t))
 
 ;; (use-package easymenu)
 
 (use-package rainbow-delimiters
-  :init
   ;; For all programming modes:
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+  :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package theme-park-mode)
 
 (use-package flymake-cursor)
 
 (use-package ws-trim
-  :init
-  (setq ws-trim-global-modes t)
-  :config
-  (global-ws-trim-mode t))
+  :init   (setq ws-trim-global-modes t)
+  :config (global-ws-trim-mode t))
 
 (use-package edit-server
   :if window-system
@@ -258,8 +260,7 @@
 ;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")
 
 (use-package dockerfile-mode
-  :init
-  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+  :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 (use-package helm
   :config
@@ -355,18 +356,27 @@
 (use-package company
   :bind ("C-." . company-complete)
   :init (global-company-mode 1)
-  :config
-  (bind-keys :map company-active-map
-             ("C-n"   . company-select-next)
-             ("C-p"   . company-select-previous)
-             ("C-d"   . company-show-doc-buffer)
-             ("<tab>" . company-complete)))
+  :config (bind-keys :map company-active-map
+                     ("C-n"   . company-select-next)
+                     ("C-p"   . company-select-previous)
+                     ("C-d"   . company-show-doc-buffer)
+                     ("<tab>" . company-complete)))
 
 (use-package expand-region
   :bind (("C-@" . er/expand-region)
          ("C-=" . er/expand-region)
          ("M-3" . er/expand-region))
   :init (delete-selection-mode))
+
+;; (use-package hungry-delete
+;;   :init (global-hungry-delete-mode))
+
+(use-package beacon
+  :diminish beacon-mode
+  :init
+  (beacon-mode 1)
+  (setq beacon-push-mark 35)
+  (setq beacon-color "#cccc00"))
 
 (add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))

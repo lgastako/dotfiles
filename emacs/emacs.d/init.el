@@ -233,6 +233,8 @@
 (add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
 
+(diminish 'paredit-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -276,6 +278,8 @@
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 (use-package helm
+  ;; Why isn't diminishing helm working?
+  :diminish ""
   :config
 
   (require 'helm-config)
@@ -370,6 +374,7 @@
 
 (use-package company
   :bind ("C-." . company-complete)
+  :diminish ""
   :init (global-company-mode 1)
   :config (bind-keys :map company-active-map
                      ("C-n"   . company-select-next)
@@ -448,6 +453,10 @@
 (use-package symon
   :config
   (symon-mode))
+
+(use-package smex
+  :init (smex-initialize)
+  :bind ("M-x" . smex))
 
 ;; something like this should work, but it doesn't, so for now...
 ;; ;; Load all the individual language configs

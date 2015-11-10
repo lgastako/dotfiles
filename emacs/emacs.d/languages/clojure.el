@@ -17,10 +17,12 @@
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
-  (setq cider-lein-command "/Users/john/dotfiles/bin/lein")
-  (setq cider-boot-command "/Users/john/dotfiles/bin/boot")
+  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
+        cider-boot-command "/Users/john/dotfiles/bin/boot")
 
   (setq cider-overlays-use-font-lock t)
+
+  ;; (setq cider-auto-select-error-buffer t)
 
   :config
   (rename-modeline "clojure-mode" clojure-mode "λ"))

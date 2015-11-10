@@ -1,0 +1,42 @@
+;;; -*- coding: utf-8 -*-
+(("/Users/john/src/asp/"
+  (dired-filename . "/Users/john/src/asp/src"))
+ ("/Users/john/src/asp/src/"
+  (dired-filename . "/Users/john/src/asp/src/clj"))
+ ("/Users/john/src/asp/src/clj/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp"))
+ ("/Users/john/src/asp/src/clj/asp/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/app_state.cljs"))
+ ("/Users/john/src/asp/src/clj/asp/app_state.cljs" . 1009)
+ ("/Users/john/dotfiles/emacs/emacs.d/init.el" . 15390)
+ ("/Users/john/.emacs.d/elpa/ace-window-20150803.837/ace-window-autoloads.el" . 1589)
+ ("/Users/john/.emacs.d/elpa/avy-20151026.59/avy-autoloads.el" . 2995)
+ ("/Users/john/.emacs.d/elpa/mwim-20150822.1236/mwim-autoloads.el" . 882)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/"
+  (dired-filename . "/Users/john/dotfiles/emacs/emacs.d/languages/scheme.el"))
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/scheme.el" . 449)
+ ("/Users/john/.recentf" . 1697)
+ ("/Users/john/dotfiles/vim/"
+  (dired-filename . "/Users/john/dotfiles/vim/dotvim"))
+ ("/Users/john/.emacs.d/elpa/racket-mode-20151108.1707/racket-mode-autoloads.el" . 3436)
+ ("/Users/john/.emacs.d/elpa/faceup-20150215.1348/faceup-autoloads.el" . 889)
+ ("/Users/john/firefoxes.yaml" . 53860)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/yaml.el" . 44)
+ ("/Users/john/src/asp/README.md" . 2474)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/json.el" . 24)
+ ("/Users/john/.emacs.d/elpa/golden-ratio-20150819.420/golden-ratio-autoloads.el" . 912)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/salesforce.el" . 48)
+ ("/Users/john/.emacs.d/elpa/free-keys-20140309.1051/free-keys-autoloads.el" . 778)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/haskell.el" . 98)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/sbcl.el" . 109)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/clojure.el" . 968)
+ ("/Users/john/.emacs.d/elpa/use-package-20151109.1733/use-package-autoloads.el" . 239)
+ ("/Users/john/.emacs.d/elpa/tuareg-20151108.1834/tuareg-autoloads.el" . 2958)
+ ("/Users/john/.emacs.d/elpa/haskell-mode-20151107.1406/haskell-mode-autoloads.el" . 60068)
+ ("/Users/john/.emacs.d/elpa/yasnippet-20151108.1505/yasnippet-autoloads.el" . 1512)
+ ("/Users/john/.emacs.d/elpa/clj-refactor-20151109.416/clj-refactor-autoloads.el" . 11553)
+ ("/Users/john/.emacs.d/elpa/beacon-20151109.343/beacon-autoloads.el" . 892)
+ ("/Users/john/.emacs.d/elpa/helm-20151106.2158/helm-autoloads.el" . 27672)
+ ("/Users/john/.emacs.d/elpa/clojure-mode-20151109.632/clojure-mode-autoloads.el" . 1145)
+ ("/Users/john/.emacs.d/elpa/cider-20151106.2226/cider-autoloads.el" . 6772)
+ ("/Users/john/.emacs.d/elpa/auto-package-update-20151025.2311/auto-package-update-autoloads.el" . 756))

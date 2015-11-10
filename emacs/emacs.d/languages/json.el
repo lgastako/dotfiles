@@ -1,3 +1,5 @@
+;;; JSON Configuration
+
 (defun json-format ()
   (interactive)
   (save-excursion

@@ -9,8 +9,8 @@
   (message ".emacs loaded in %fms" (/ (- (anarcat/time-to-ms (current-time)) (anarcat/time-to-ms *emacs-load-start*)) 1000000.0)))
 (add-hook 'after-init-hook 'anarcat/display-timing t)
 
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
+(setq inhibit-splash-screen t
+      inhibit-startup-message t)
 
 ;; Answer with 'y' or 'n' instead of having to type of 'yes' or 'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -32,7 +32,16 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 
-(load-theme 'deeper-blue)
+(if window-system
+    (load-theme 'deeper-blue)
+  (load-theme 'wombat t))
+
+;; UTF-8 All The Things
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;; We do this right after the theme is loaded to minimize the time it looks
 ;; wonky.
@@ -55,6 +64,9 @@
   `(eval-after-load ,package-name
      '(defadvice ,mode (after rename-modeline activate)
         (setq mode-name ,new-name))))
+
+;; Don't use outdated compiled elisp
+(setq load-prefer-newer t)
 
 ;; Marmalade Package Manager
 ;; http://marmalade-repo.org/about
@@ -96,8 +108,8 @@
 (setq-default tab-width 4)
 
 ;; Show (line, col) in modeline
-(setq-default line-number-mode t)
-(setq-default column-number-mode t)
+(setq-default line-number-mode t
+              column-number-mode t)
 
 ;; Highlight trailing whitespace in red
 (setq-default show-trailing-whitespace t)
@@ -109,7 +121,6 @@
 ;; (setq auto-save-visited-file-name t)
 ;; (setq auto-save-interval 5)  ; keystrokes
 ;; (setq auto-save-timeout 5)   ; seconds
-;; (setq cider-auto-select-error-buffer t)
 
 ;; Automatically reverts all buffers every 5 seconds
 ;; Keeps us in sync with the filesystem.
@@ -162,6 +173,9 @@
 ;; Better uniqification of buffer names
 ;; doesn't work with use-package for some reason
 (require 'uniquify)
+;; (use-package uniquify
+;;   :ensure nil
+;;   :config (setq uniquify-buffer-name-style 'forward))
 
 (use-package multiple-cursors
   :config
@@ -191,6 +205,9 @@
   (indent-region 0 (buffer-size)))
 
 (global-set-key (kbd "C-c f") 'indent-all)
+
+(setq ring-bell-function 'ignore
+      visible-bell t)
 
 ;;http://www.emacswiki.org/emacs/BackupDirectory
 (setq backup-by-copying t       ; don't clobber symlinks
@@ -298,6 +315,7 @@
     :config
     (global-set-key (kbd "C-;") 'ac-complete-with-helm)
     (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
+    ;; TODO: Does company mode supersede this?
     (auto-complete-mode))
 
   ;; To consider:
@@ -372,8 +390,8 @@
   :diminish beacon-mode
   :init
   (beacon-mode 1)
-  (setq beacon-push-mark 35)
-  (setq beacon-color "#cccc00"))
+  (setq beacon-push-mark 35
+        beacon-color "#cccc00"))
 
 (use-package org
   :init
@@ -386,11 +404,52 @@
   :diminish which-key-mode
   :config (which-key-mode))
 
-(add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.apexclass$" . js-mode))
+(use-package saveplace
+  :config
+  (setq-default save-place t
+                save-place-file "~/.emacs.d/saved-placed"))
 
-;; Something like this should work, but it doesn't, so for now...
+(use-package auto-package-update
+  :config
+  (progn
+    (setq auto-package-update-interval 1)
+    (auto-package-update-maybe)))
+
+(use-package free-keys
+  :defer t)
+
+(use-package which-key
+  :defer t
+  :diminish ""
+  ;; :init	(after-init)
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-right))
+
+(use-package golden-ratio
+  :config
+;;  (golden-ratio-mode 1)
+  )
+
+(use-package mwim
+  :bind ("C-a" . mwim-beginning-of-code-or-line))
+
+(use-package ace-window
+  :bind ("M-p" . ace-window)
+  :config
+  (setq aw-background t))
+
+;; Doesn't work with something else?
+;; (use-package rainbow-mode
+;;   :diminish (rainbow-mode . "")
+;;   :config
+;;   (add-hook 'prog-mode-hook 'rainbow-mode))
+
+(use-package symon
+  :config
+  (symon-mode))
+
+;; something like this should work, but it doesn't, so for now...
 ;; ;; Load all the individual language configs
 ;; (require 'load-directory)
 ;; (load-directory "~/.emacs.d/languages")
@@ -407,6 +466,7 @@
 (load-file "~/.emacs.d/languages/rust.el")
 (load-file "~/.emacs.d/languages/salesforce.el")
 (load-file "~/.emacs.d/languages/sass.el")
+(load-file "~/.emacs.d/languages/sbcl.el")
 (load-file "~/.emacs.d/languages/scheme.el")
 (load-file "~/.emacs.d/languages/yaml.el")
 

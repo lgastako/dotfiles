@@ -38,5 +38,8 @@
   ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
   ;; ===============================================
 
+  (use-package virtualenvwrapper
+    :commands (venv-workon))
+
   (use-package cython-mode
     :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))

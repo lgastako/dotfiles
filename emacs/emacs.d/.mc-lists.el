@@ -4,15 +4,18 @@
 (setq mc/cmds-to-run-for-all
       '(
         cider-load-buffer
+        cljr-slash
         dabbrev-expand
         delete-horizontal-space
         kill-region
         paredit-backward-slurp-sexp
         paredit-close-round
+        paredit-comment-dwim
         paredit-doublequote
         paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
+        paredit-open-square
         paredit-semicolon
         paredit-splice-sexp
         upcase-region

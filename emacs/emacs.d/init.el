@@ -30,19 +30,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil
-                :stipple nil
-                :inverse-video nil
-                :box nil
-                :strike-through nil
-                :overline nil
-                :underline nil
-                :slant normal
-                :weight normal
-                :height 235
-                :width normal
-                :foundry "apple"
-                :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 
 (load-theme 'deeper-blue)
 
@@ -233,12 +221,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- ;; '(helm-google-search-function (quote helm-google-api-search))
- '(quack-programs (quote ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi"
-                          "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket"
-                          "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(org-agenda-files (quote ("~/Dropbox/src/todo/todo.org")))
+ '(quack-programs
+   (quote
+    ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
+ '(tab-stop-list
+   (quote
+    (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
  '(tpm-tagged nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (put 'upcase-region 'disabled nil)
@@ -352,6 +343,7 @@
   :init (winner-mode))
 
 (use-package drag-stuff
+  :disabled
   ;; 'M-N' / 'M-P' to move lines or selected groups of lines up/down
   ;; 'M-<left>' / 'M-<right>' to move words or selected regions
   :init (drag-stuff-global-mode 1)
@@ -382,6 +374,17 @@
   (beacon-mode 1)
   (setq beacon-push-mark 35)
   (setq beacon-color "#cccc00"))
+
+(use-package org
+  :init
+  (setq org-startup-indented t))
+
+(use-package magit
+  :bind (("C-c C-g C-g" . magit-status)))
+
+(use-package which-key
+  :diminish which-key-mode
+  :config (which-key-mode))
 
 (add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))

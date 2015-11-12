@@ -18,6 +18,7 @@
                    :exclusions [org.clojure/clojure]]
                   ;; [org.timmc/nephila "0.3.0"]
                   [lein-pprint "1.1.1"]
+                  [refactor-nrepl "1.1.0"]
                   ;; [varspotting "0.0.2"]
                   ;; [venantius/yagni "0.1.1"]
                   ]}}

@@ -1,44 +1,169 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/john/src/asp/"
+(("/Users/john/src/asp/src/clj/asp/dal/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/dal/conf_members.sql"))
+ ("/Users/john/src/asp/src/clj/asp/dal/conf_members.sql" . 593)
+ ("/Users/john/Dropbox/org/"
+  (dired-filename . "/Users/john/Dropbox/org/todo.org"))
+ ("/Users/john/src/asp/src/clj/asp/dal.clj" . 1914)
+ ("/Users/john/src/asok/"
+  (dired-filename . "/Users/john/src/asok/src"))
+ ("/Users/john/src/asok/src/"
+  (dired-filename . "/Users/john/src/asok/src/asok"))
+ ("/Users/john/src/asok/src/asok/"
+  (dired-filename . "/Users/john/src/asok/src/asok/connections.cljc"))
+ ("/Users/john/src/asok/src/asok/connections.cljc" . 221)
+ ("/Users/john/src/asok/src/asok/client.cljs" . 894)
+ ("/Users/john/src/asp/src/clj/asp/views/dialer.cljs" . 3320)
+ ("/Users/john/src/asp/"
   (dired-filename . "/Users/john/src/asp/src"))
  ("/Users/john/src/asp/src/"
   (dired-filename . "/Users/john/src/asp/src/clj"))
  ("/Users/john/src/asp/src/clj/"
   (dired-filename . "/Users/john/src/asp/src/clj/asp"))
  ("/Users/john/src/asp/src/clj/asp/"
-  (dired-filename . "/Users/john/src/asp/src/clj/asp/app_state.cljs"))
- ("/Users/john/dotfiles/emacs/emacs.d/init.el" . 14655)
- ("/Users/john/.recentf" . 1714)
- ("/Users/john/.emacs.d/elpa/smex-20150822.1146/smex-autoloads.el" . 490)
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/handlers"))
+ ("/Users/john/src/asp/src/clj/asp/handlers/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/handlers/commlink.clj"))
+ ("/Users/john/src/asp/src/clj/asp/asok/compat/client.cljs" . 736)
+ ("/Users/john/src/asp/src/clj/asp/handlers/default.clj" . 137)
+ ("/Users/john/src/asp/src/clj/asp/handlers/commlink.clj" . 835)
+ ("/Users/john/Dropbox/org/todo.org" . 1423)
+ ("/Users/john/.recentf" . 1403)
+ ("/Users/john/src/asp/src/clj/asp/commlink.cljs" . 2621)
+ ("/Users/john/dotfiles/lein/"
+  (dired-filename . "/Users/john/dotfiles/lein/dot.lein"))
+ ("/Users/john/dotfiles/lein/dot.lein/"
+  (dired-filename . "/Users/john/dotfiles/lein/dot.lein/profiles.clj"))
+ ("/Users/john/dotfiles/lein/dot.lein/profiles.clj" . 987)
+ ("/Users/john/dotfiles/emacs/emacs.d/init.el" . 14150)
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/clojure.el" . 995)
+ ("/Users/john/.emacs.d/elpa/with-editor-20151111.418/with-editor-autoloads.el" . 260)
+ ("/Users/john/.emacs.d/elpa/git-commit-20151111.418/git-commit-autoloads.el" . 992)
+ ("/Users/john/.emacs.d/elpa/magit-popup-20151111.418/magit-popup-autoloads.el" . 260)
+ ("/Users/john/.emacs.d/elpa/magit-20151111.713/magit-autoloads.el" . 40615)
+ ("/Users/john/.emacs.d/elpa/haskell-mode-20151110.2309/haskell-mode-autoloads.el" . 60068)
+ ("/Users/john/.emacs.d/elpa/flycheck-20151111.719/flycheck-autoloads.el" . 8300)
+ ("/Users/john/.emacs.d/elpa/avy-20151111.450/avy-autoloads.el" . 2995)
+ ("/Users/john/.emacs.d/elpa/clojure-mode-20151110.341/clojure-mode-autoloads.el" . 1145)
+ ("/Users/john/.emacs.d/elpa/cider-20151110.809/cider-autoloads.el" . 6772)
+ ("/Users/john/.emacs.d/elpa/yaml-mode-20150816.2235/yaml-mode-autoloads.el" . 560)
+ ("/Users/john/.emacs.d/elpa/racket-mode-20151108.1707/racket-mode-autoloads.el" . 3436)
+ ("/Users/john/.emacs.d/elpa/faceup-20150215.1348/faceup-autoloads.el" . 889)
+ ("/Users/john/.emacs.d/elpa/sly-20151105.135/sly-autoloads.el" . 1765)
+ ("/Users/john/.emacs.d/elpa/sass-mode-20150508.2012/sass-mode-autoloads.el" . 436)
+ ("/Users/john/.emacs.d/elpa/rust-mode-20151023.826/rust-mode-autoloads.el" . 406)
+ ("/Users/john/.emacs.d/elpa/markdown-mode-20151108.735/markdown-mode-autoloads.el" . 697)
+ ("/Users/john/.emacs.d/elpa/zencoding-mode-20140213.22/zencoding-mode-autoloads.el" . 1386)
+ ("/Users/john/.emacs.d/elpa/haml-mode-20150508.2011/haml-mode-autoloads.el" . 436)
+ ("/Users/john/.emacs.d/elpa/go-eldoc-20151028.10/go-eldoc-autoloads.el" . 367)
+ ("/Users/john/.emacs.d/elpa/go-mode-20150817.2318/go-mode-autoloads.el" . 2868)
+ ("/Users/john/.emacs.d/elpa/coffee-mode-20151019.2009/coffee-mode-autoloads.el" . 695)
+ ("/Users/john/.emacs.d/elpa/edn-20150929.146/edn-autoloads.el" . 2054)
+ ("/Users/john/.emacs.d/elpa/peg-20150707.2341/peg-autoloads.el" . 214)
+ ("/Users/john/.emacs.d/elpa/s-20150924.406/s-autoloads.el" . 211)
+ ("/Users/john/.emacs.d/elpa/pkg-info-20150517.443/pkg-info-autoloads.el" . 3738)
+ ("/Users/john/.emacs.d/elpa/epl-20150517.433/epl-autoloads.el" . 215)
+ ("/Users/john/.emacs.d/elpa/queue-0.1.1/queue-autoloads.el" . 334)
  ("/Users/john/.emacs.d/elpa/symon-20151108.1828/symon-autoloads.el" . 669)
- ("/Users/john/.emacs.d/elpa/cider-20151106.2226/cider-autoloads.el" . 6772)
- ("/Users/john/.emacs.d/elpa/rainbow-mode-0.12/rainbow-mode-autoloads.el" . 473)
  ("/Users/john/.emacs.d/elpa/ace-window-20150803.837/ace-window-autoloads.el" . 1589)
- ("/Users/john/.emacs.d/elpa/avy-20151026.59/avy-autoloads.el" . 2995)
  ("/Users/john/.emacs.d/elpa/mwim-20150822.1236/mwim-autoloads.el" . 882)
+ ("/Users/john/.emacs.d/elpa/golden-ratio-20150819.420/golden-ratio-autoloads.el" . 912)
+ ("/Users/john/.emacs.d/elpa/free-keys-20140309.1051/free-keys-autoloads.el" . 778)
+ ("/Users/john/.emacs.d/elpa/auto-package-update-20151025.2311/auto-package-update-autoloads.el" . 756)
+ ("/Users/john/.emacs.d/elpa/dash-20151021.113/dash-autoloads.el" . 217)
+ ("/Users/john/.lein/"
+  (dired-filename . "/Users/john/.lein/profiles.clj"))
+ ("/Users/john/src/asp/src/clj/asp/asok/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/asok/.."))
+ ("/Users/john/src/asp/src/clj/asp/app_state.cljs" . 146)
+ ("/Users/john/src/asp/src/clj/asp/asok/compat/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/asok/compat/.."))
+ ("/Users/john/src/asp/spec/cljs/asp/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp/fake_spec.cljs"))
+ ("/Users/john/src/asp/spec/cljs/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp"))
+ ("/Users/john/src/asp/src/clj/asp/schemas.cljc" . 1991)
+ ("/Users/john/src/asp/spec/cljs/asp/asok/compat/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp/asok/compat/client_spec.cljs"))
+ ("/Users/john/src/asp/src/clj/minos/"
+  (dired-filename . "/Users/john/src/asp/src/clj/minos/.."))
+ ("/Users/john/src/asp/circle.yml" . 540)
+ ("/Users/john/src/asp/resources/salesforce/"
+  (dired-filename . "/Users/john/src/asp/resources/salesforce/.."))
+ ("/Users/john/src/asp/resources/"
+  (dired-filename . "/Users/john/src/asp/resources/public"))
+ ("/Users/john/src/asok/src/asok/uuid.cljc" . 17)
+ ("/Users/john/src/asok/src/asok/prelude.cljc" . 548)
+ ("/Users/john/src/asp/env/"
+  (dired-filename . "/Users/john/src/asp/env/dev"))
+ ("/Users/john/src/asp/env/dev/clj/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj/.."))
+ ("/Users/john/src/asp/env/dev/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre"))
+ ("/Users/john/src/asp/env/dev/clj-pre/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre/asp"))
+ ("/Users/john/src/asp/env/dev/clj-pre/asp/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre/asp/devtools.cljs"))
+ ("/Users/john/src/asp/src/clj/asp/dal/active_calls.sql" . 1267)
+ ("/Users/john/src/asok/src/asok/reaper.cljs" . 589)
+ ("/Users/john/src/asok/src/asok/frame.cljc" . 292)
+ ("/Users/john/src/asok/test/asok/testconn.cljc" . 31)
+ ("/Users/john/src/asok/test/asok/mockdata.cljc" . 374)
+ ("/Users/john/src/asok/src/asok/ack.cljc" . 480)
+ ("/Users/john/src/asok/test/asok/core_test.cljc" . 1582)
+ ("/Users/john/src/asok/test/asok/frame_test.cljc" . 644)
+ ("/Users/john/src/asok/test/asok/heartbeat_test.cljs" . 306)
+ ("/Users/john/src/asok/test/asok/mockemitter.cljc" . 60)
+ ("/Users/john/src/asok/test/asok/reaper_test.cljs" . 1532)
+ ("/Users/john/src/asok/test/asok/runner.cljs" . 818)
+ ("/Users/john/src/asok/test/asok/server_test.clj" . 189)
+ ("/Users/john/src/asok/test/asok/connections_test.cljc" . 45)
+ ("/Users/john/src/asok/src/asok/emitter.cljc" . 1585)
+ ("/Users/john/src/asok/src/asok/heartbeat.cljs" . 561)
+ ("/Users/john/src/asok/test/asok/ack_test.cljc" . 1738)
+ ("/Users/john/src/asok/test/asok/client_test.cljs" . 1387)
+ ("/Users/john/src/asp/src/clj/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/tools/.."))
+ ("/tmp/tree.txt" . 12654)
+ ("/Users/john/src/asok/README.md" . 7403)
+ ("/Users/john/src/asp/spec/"
+  (dired-filename . "/Users/john/src/asp/spec/clj"))
+ ("/Users/john/src/asp/spec/clj/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp"))
+ ("/Users/john/src/asok/test/"
+  (dired-filename . "/Users/john/src/asok/test/asok"))
+ ("/Users/john/src/asok/test/asok/"
+  (dired-filename . "/Users/john/src/asok/test/asok/mockconn.cljc"))
+ ("/Users/john/src/asok/test/asok/mockconn.cljc" . 1174)
+ ("/Users/john/src/asp/src/clj/asp/tools/cache/redis.clj" . 62)
+ ("/Users/john/src/asp/src/clj/asp/dal/sf_user_names.clj" . 33)
+ ("/Users/john/src/asp/spec/cljs/asp/views/dialer_spec.cljs" . 2919)
+ ("/Users/john/src/asp/src/clj/asp/server.clj" . 46)
+ ("/Users/john/src/asp/spec/clj/asp/handlers/commlink_spec.clj" . 47)
+ ("/Users/john/src/asp/spec/clj/asp/handlers/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/handlers/.."))
+ ("/Users/john/src/asp/spec/clj/asp/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/tools"))
+ ("/Users/john/src/asp/spec/clj/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/tools/cache_spec.clj"))
+ ("/Users/john/src/asp/spec/cljs/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp/tools/cache_spec.cljs"))
+ ("/Users/john/src/asp/spec/clj/asp/tools/cache_spec.clj" . 28)
+ ("/Users/john/src/asp/spec/cljs/asp/tools/cache_spec.cljs" . 59)
+ ("/Users/john/src/asok/src/asok/server.clj" . 1166)
+ ("/Users/john/src/asp/src/clj/neutrino/transport/websocket.cljs" . 626)
+ ("/Users/john/src/asok/src/asok/ws.cljs" . 6)
+ ("/Users/john/src/asp/spec/cljs/asp/commlink_spec.cljs" . 1118)
+ ("/Users/john/src/asp/spec/cljs/asp/asok/compat/client_spec.cljs" . 895)
  ("/Users/john/dotfiles/emacs/emacs.d/languages/"
   (dired-filename . "/Users/john/dotfiles/emacs/emacs.d/languages/scheme.el"))
  ("/Users/john/dotfiles/emacs/emacs.d/languages/scheme.el" . 449)
  ("/Users/john/dotfiles/vim/"
   (dired-filename . "/Users/john/dotfiles/vim/dotvim"))
- ("/Users/john/.emacs.d/elpa/racket-mode-20151108.1707/racket-mode-autoloads.el" . 3436)
- ("/Users/john/.emacs.d/elpa/faceup-20150215.1348/faceup-autoloads.el" . 889)
  ("/Users/john/firefoxes.yaml" . 53860)
  ("/Users/john/dotfiles/emacs/emacs.d/languages/yaml.el" . 44)
  ("/Users/john/src/asp/README.md" . 2474)
  ("/Users/john/dotfiles/emacs/emacs.d/languages/json.el" . 24)
- ("/Users/john/.emacs.d/elpa/golden-ratio-20150819.420/golden-ratio-autoloads.el" . 912)
  ("/Users/john/dotfiles/emacs/emacs.d/languages/salesforce.el" . 48)
- ("/Users/john/.emacs.d/elpa/free-keys-20140309.1051/free-keys-autoloads.el" . 778)
  ("/Users/john/dotfiles/emacs/emacs.d/languages/haskell.el" . 98)
- ("/Users/john/dotfiles/emacs/emacs.d/languages/sbcl.el" . 109)
- ("/Users/john/dotfiles/emacs/emacs.d/languages/clojure.el" . 968)
- ("/Users/john/.emacs.d/elpa/use-package-20151109.1733/use-package-autoloads.el" . 239)
- ("/Users/john/.emacs.d/elpa/tuareg-20151108.1834/tuareg-autoloads.el" . 2958)
- ("/Users/john/.emacs.d/elpa/haskell-mode-20151107.1406/haskell-mode-autoloads.el" . 60068)
- ("/Users/john/.emacs.d/elpa/yasnippet-20151108.1505/yasnippet-autoloads.el" . 1512)
- ("/Users/john/.emacs.d/elpa/clj-refactor-20151109.416/clj-refactor-autoloads.el" . 11553)
- ("/Users/john/.emacs.d/elpa/beacon-20151109.343/beacon-autoloads.el" . 892)
- ("/Users/john/.emacs.d/elpa/helm-20151106.2158/helm-autoloads.el" . 27672)
- ("/Users/john/.emacs.d/elpa/clojure-mode-20151109.632/clojure-mode-autoloads.el" . 1145)
- ("/Users/john/.emacs.d/elpa/auto-package-update-20151025.2311/auto-package-update-autoloads.el" . 756))
+ ("/Users/john/dotfiles/emacs/emacs.d/languages/sbcl.el" . 109))

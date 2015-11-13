@@ -1,5 +1,16 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/john/src/asok/test/asok/mock/"
+(("/Users/john/dotfiles/emacs/emacs.d/init.el" . 5267)
+ ("/Users/john/.emacs.d/elpa/flycheck-20151113.240/flycheck-autoloads.el" . 8297)
+ ("/Users/john/.emacs.d/elpa/cider-20151113.655/cider-autoloads.el" . 6760)
+ ("/Users/john/.emacs.d/elpa/auto-complete-20151112.2030/auto-complete-autoloads.el" . 1684)
+ ("/Users/john/.emacs.d/elpa/which-key-20151112.1029/which-key-autoloads.el" . 3455)
+ ("/Users/john/.emacs.d/elpa/use-package-20151112.1439/use-package-autoloads.el" . 239)
+ ("/Users/john/.emacs.d/elpa/restclient-20151112.1333/restclient-autoloads.el" . 939)
+ ("/Users/john/.emacs.d/elpa/projectile-20151111.2318/projectile-autoloads.el" . 8340)
+ ("/Users/john/.emacs.d/elpa/flycheck-20151112.42/flycheck-autoloads.el" . 8300)
+ ("/Users/john/.emacs.d/elpa/clj-refactor-20151112.117/clj-refactor-autoloads.el" . 11553)
+ ("/Users/john/.emacs.d/elpa/cider-20151112.1442/cider-autoloads.el" . 6772)
+ ("/Users/john/src/asok/test/asok/mock/"
   (dired-filename . "/Users/john/src/asok/test/asok/mock/.."))
  ("/tmp/foo/"
   (dired-filename . "/tmp/foo/src"))
@@ -57,7 +68,6 @@
  ("/Users/john/src/asok/src/asok/connections.cljc" . 1334)
  ("/Users/john/src/asok/src/asok/server.clj" . 2584)
  ("/Users/john/Dropbox/org/todo.org" . 5294)
- ("/Users/john/dotfiles/emacs/emacs.d/init.el" . 3086)
  ("/Users/john/.recentf" . 1282)
  ("/tmp/foo/src/cljs/foo/"
   (dired-filename . "/tmp/foo/src/cljs/foo/app.cljs"))

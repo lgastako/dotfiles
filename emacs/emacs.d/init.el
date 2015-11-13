@@ -160,7 +160,7 @@
   ;; For all programming modes:
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package theme-park-mode)
+;; (use-package theme-park-mode)
 
 (use-package flymake-cursor)
 
@@ -450,9 +450,9 @@
 ;;   :config
 ;;   (add-hook 'prog-mode-hook 'rainbow-mode))
 
-(use-package symon
-  :config
-  (symon-mode))
+;; (use-package symon
+;;   :config
+;;   (symon-mode))
 
 ;; (use-package smex
 ;;   :init (smex-initialize)

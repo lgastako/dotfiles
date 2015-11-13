@@ -1,18 +1,20 @@
 
 ;; ----- smex-history -----
 (
+ java-mode
  clojure-mode
+ symon-mode
  symon-display
  package-install
  cd
  5x5
- arp
- dbx
 )
 
 ;; ----- smex-data -----
 (
  (package-install . 1)
- (symon-display . 1)
- (clojure-mode . 2)
+ (symon-display . 2)
+ (clojure-mode . 6)
+ (symon-mode . 1)
+ (java-mode . 1)
 )

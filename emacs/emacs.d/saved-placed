@@ -1,0 +1,238 @@
+;;; -*- coding: utf-8 -*-
+(("/Users/john/dotfiles/emacs/emacs.d/init.el" . 18604)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/go.el" . 737)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/haml.el" . 46)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/haskell.el" . 337)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/html.el" . 176)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/json.el" . 211)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/markdown.el" . 67)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/ocaml.el" . 95)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/python.el" . 1415)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/ruby.el" . 538)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/rust.el" . 44)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/salesforce.el" . 234)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/sass.el" . 61)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/sbcl.el" . 110)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/scheme.el" . 501)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/yaml.el" . 45)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/languages/clojure.el" . 206)
+ ("/Users/john/dotfiles/emacs/emacs.d/old/"
+  (dired-filename . "/Users/john/dotfiles/emacs/emacs.d/old/init.el"))
+ ("/Users/john/dotfiles/emacs/emacs.d/old/init.el" . 107)
+ ("/Users/john/Dropbox/org/"
+  (dired-filename . "/Users/john/Dropbox/org/founderjam.org"))
+ ("/Users/john/src/asp/src/clj/asp/handlers/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/handlers/connections.clj"))
+ ("/Users/john/src/asok/"
+  (dired-filename . "/Users/john/src/asok/src"))
+ ("/Users/john/src/asok/src/"
+  (dired-filename . "/Users/john/src/asok/src/asok"))
+ ("/Users/john/src/asok/src/asok/"
+  (dired-filename . "/Users/john/src/asok/src/asok/core.cljc"))
+ ("/Users/john/src/asok/.git/"
+  (dired-filename . "/Users/john/src/asok/.git/.."))
+ ("/Users/john/src/accuvit-db/snow/revert/"
+  (dired-filename . "/Users/john/src/accuvit-db/snow/revert/.."))
+ ("/Users/john/src/accuvit-db/snow/verify/"
+  (dired-filename . "/Users/john/src/accuvit-db/snow/verify/capture-opp-stage.sql"))
+ ("/Users/john/src/asok/src/asok/queue.cljc" . 1683)
+ ("/Users/john/src/asok/test/asok/mock/conn.cljc" . 1817)
+ ("/Users/john/src/asok/test/asok/connections_test.cljc" . 4670)
+ ("/Users/john/src/asok/src/asok/prelude.cljc" . 548)
+ ("/Users/john/src/asok/src/asok/internal.cljc" . 142)
+ ("/Users/john/src/asok/src/asok/heartbeat.cljs" . 287)
+ ("/Users/john/src/asp/src/clj/asp/handlers/commlink.clj" . 42)
+ ("/Users/john/src/asok/src/asok/connections.cljc" . 2338)
+ ("/Users/john/src/asok/src/asok/ws.cljs" . 1717)
+ ("/Users/john/src/asok/test/asok/internal_test.cljc" . 63)
+ ("/Users/john/src/asok/test/asok/mock/"
+  (dired-filename . "/Users/john/src/asok/test/asok/mock/event.cljs"))
+ ("/Users/john/src/asok/test/asok/client_test.cljs" . 1020)
+ ("/Users/john/src/asok/test/asok/mock/event.cljs" . 214)
+ ("/Users/john/src/asok/test/asok/server_test.clj" . 921)
+ ("/Users/john/src/asok/test/"
+  (dired-filename . "/Users/john/src/asok/test/asok"))
+ ("/Users/john/src/asok/test/asok/"
+  (dired-filename . "/Users/john/src/asok/test/asok/queue_test.cljc"))
+ ("/Users/john/src/asok/src/asok/client.cljs" . 1091)
+ ("/Users/john/src/asok/src/asok/server.clj" . 521)
+ ("/tmp/first_explosion.clj" . 46115)
+ ("/Users/john/src/asp/src/salesforce/classes/"
+  (dired-filename . "/Users/john/src/asp/src/salesforce/classes/PhoneController.cls"))
+ ("/Users/john/src/asp/src/salesforce/classes/PhoneController.cls" . 8888)
+ ("/Users/john/src/asp/src/clj/asp/views/active_calls/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/views/active_calls/remote.cljs"))
+ ("/Users/john/src/asp/project.clj" . 6222)
+ ("/Users/john/src/asp/src/clj/asp/plivo.clj" . 7345)
+ ("/Users/john/src/asp/env/dev/clj/asp/main.cljs" . 451)
+ ("/Users/john/src/asp/src/"
+  (dired-filename . "/Users/john/src/asp/src/clj"))
+ ("/Users/john/src/asp/src/clj/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp"))
+ ("/Users/john/src/asp/src/clj/asp/handlers/connections.clj" . 20469)
+ ("/Users/john/src/asp/src/salesforce/pages/userinfo.vfp" . 837)
+ ("/Users/john/src/asp/src/clj/asp/log/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/log/.."))
+ ("/Users/john/src/asp/src/clj/asp/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/log.cljc"))
+ ("/Users/john/src/asp/src/salesforce/"
+  (dired-filename . "/Users/john/src/asp/src/salesforce/pages"))
+ ("/Users/john/src/asp/src/salesforce/pages/"
+  (dired-filename . "/Users/john/src/asp/src/salesforce/pages/phone.vfp"))
+ ("/Users/john/src/asp/src/clj/asp/log.cljc" . 1344)
+ ("/Users/john/src/asp/src/clj/asp/core.cljs" . 2779)
+ ("/Users/john/src/accuvit-db/"
+  (dired-filename . "/Users/john/src/accuvit-db/snow"))
+ ("/Users/john/src/accuvit-db/snow/"
+  (dired-filename . "/Users/john/src/accuvit-db/snow/deploy"))
+ ("/Users/john/src/accuvit-db/snow/deploy/"
+  (dired-filename . "/Users/john/src/accuvit-db/snow/deploy/capture-opp-stage.sql"))
+ ("/Users/john/src/asp/"
+  (dired-filename . "/Users/john/src/asp/src"))
+ ("/Users/john/src/asp/src/clj/asp/views/active_calls.cljs" . 23444)
+ ("/Users/john/src/asp/src/clj/asp/views/active_calls/remote.cljs" . 5206)
+ ("/Users/john/src/asp/src/clj/asp/handlers/call_logs.clj" . 207)
+ ("/Users/john/src/asp/src/clj/asp/dal/dials.sql" . 413)
+ ("/Users/john/src/asp/src/clj/asp/dal/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/dal/dials.clj"))
+ ("/Users/john/src/asp/src/clj/asp/dal/dials.clj" . 170)
+ ("/tmp/gistfile1.txt" . 1220843)
+ ("/Users/john/src/asp/src/clj/asp/views/dialer.cljs" . 4905)
+ ("/tmp/foo.sql" . 1810)
+ ("/Users/john/src/accuvit-db/snow/deploy/capture-opp-stage.sql" . 800)
+ ("/Users/john/Dropbox/org/todo.org" . 77)
+ ("/Users/john/.recentf" . 1344)
+ ("/Users/john/src/sess/"
+  (dired-filename . "/Users/john/src/sess/src"))
+ ("/Users/john/src/sess/src/"
+  (dired-filename . "/Users/john/src/sess/src/sess"))
+ ("/Users/john/src/sess/src/sess/"
+  (dired-filename . "/Users/john/src/sess/src/sess/handlers.cljc"))
+ ("/Users/john/src/sess/src/sess/handlers.cljc" . 143)
+ ("/Users/john/src/accuvit-db/snow/revert/capture-opp-stage.sql" . 144)
+ ("/Users/john/src/accuvit-db/snow/verify/capture-opp-stage.sql" . 152)
+ ("/Users/john/src/asok/test/asok/core_test.cljc" . 110)
+ ("/Users/john/.emacs.d/elpa/use-package-20151112.1439/use-package-autoloads.el" . 239)
+ ("/tmp/foo/"
+  (dired-filename . "/tmp/foo/src"))
+ ("/tmp/foo/src/"
+  (dired-filename . "/tmp/foo/src/cljs"))
+ ("/tmp/foo/src/cljs/"
+  (dired-filename . "/tmp/foo/src/cljs/foo"))
+ ("/Users/john/src/asp/Makefile" . 166)
+ ("/Users/john/src/asok/test/asok/prelude_test.cljc" . 143)
+ ("/Users/john/src/asok/src/asok/emitter.cljc" . 1098)
+ ("/Users/john/src/asok/src/asok/uuid.cljc" . 17)
+ ("/Users/john/src/asok/test/asok/mock/emitter.cljc" . 15)
+ ("/Users/john/src/asok/src/asok/ack.cljc" . 345)
+ ("/Users/john/src/asok/src/asok/frame.cljc" . 292)
+ ("/Users/john/src/asok/test/asok/ack_test.cljc" . 62)
+ ("/Users/john/src/asok/test/asok/runner.cljs" . 324)
+ ("/Users/john/src/asok/test/asok/heartbeat_test.cljs" . 837)
+ ("/Users/john/src/asok/src/asok/core.cljc" . 1046)
+ ("/Users/john/src/asok/src/asok/reaper.cljs" . 201)
+ ("/Users/john/src/asok/test/asok/drainer_test.cljs" . 1337)
+ ("/Users/john/src/asok/src/asok/drainer.cljs" . 426)
+ ("/Users/john/src/asok/test/asok/mock/data.cljc" . 527)
+ ("/tmp/foo/src/cljs/foo/"
+  (dired-filename . "/tmp/foo/src/cljs/foo/app.cljs"))
+ ("/Users/john/src/brooksdb/src/Language/Heidi/"
+  (dired-filename . "/Users/john/src/brooksdb/src/Language/Heidi/Parser.y"))
+ ("/Users/john/src/brooksdb/src/Language/Heidi/Parser.y" . 162)
+ ("/Users/john/src/brooksdb/Setup.hs" . 19)
+ ("/Users/john/src/brooksdb/brooksdb.cabal" . 1705)
+ ("/Users/john/src/brooksdb/stack.yaml" . 1067)
+ ("/Users/john/src/brooksdb/Makefile" . 936)
+ ("/Users/john/src/brooksdb/"
+  (dired-filename . "/Users/john/src/brooksdb/src"))
+ ("/Users/john/src/brooksdb/src/Language/"
+  (dired-filename . "/Users/john/src/brooksdb/src/Language/.."))
+ ("/Users/john/src/brooksdb/src/"
+  (dired-filename . "/Users/john/src/brooksdb/src/Data"))
+ ("/Users/john/src/brooksdb/src/Data/"
+  (dired-filename . "/Users/john/src/brooksdb/src/Data/Relation"))
+ ("/Users/john/src/brooksdb/src/Data/Relation/"
+  (dired-filename . "/Users/john/src/brooksdb/src/Data/Relation/Types.hs"))
+ ("/Users/john/src/tree/resources/" . 181)
+ ("/Users/john/src/folded/"
+  (dired-filename . "/Users/john/src/folded/README.md"))
+ ("/Users/john/src/tree/src/tree/"
+  (dired-filename . "/Users/john/src/tree/src/tree/.."))
+ ("/Users/john/src/tree/src/"
+  (dired-filename . "/Users/john/src/tree/src/.."))
+ ("/Users/john/src/tree/"
+  (dired-filename . "/Users/john/src/tree/project.clj"))
+ ("/Users/john/src/tree/Makefile" . 22)
+ ("/Users/john/src/tree/project.clj" . 192)
+ ("/Users/john/src/tree/src/tree/core.cljc" . 487)
+ ("/Users/john/src/tree/README.md" . 2541)
+ ("/Users/john/src/asp/src/clj/asp/handlers/dials.clj" . 587)
+ ("/Users/john/src/asp/src/clj/asp/handlers.clj" . 796)
+ ("/Users/john/src/asp/src/clj/asp/commlink.cljs" . 981)
+ ("/Users/john/src/asp/src/clj/asp/salesforce.clj" . 2102)
+ ("/Users/john/src/asp/src/clj/asp/handlers/user_info.clj" . 222)
+ ("/Users/john/src/asp/spec/clj/asp/handlers/dials_spec.clj" . 3752)
+ ("/Users/john/src/asp/src/clj/asp/views/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/views/dialer.cljs"))
+ ("/Users/john/src/asp/src/clj/asp/sf/click_to_dial.cljs" . 819)
+ ("/Users/john/src/asp/src/clj/asp/dal/conf_members.sql" . 593)
+ ("/Users/john/src/asp/src/clj/asp/dal.clj" . 1914)
+ ("/Users/john/src/asp/src/clj/asp/handlers/default.clj" . 137)
+ ("/Users/john/dotfiles/lein/"
+  (dired-filename . "/Users/john/dotfiles/lein/dot.lein"))
+ ("/Users/john/dotfiles/lein/dot.lein/"
+  (dired-filename . "/Users/john/dotfiles/lein/dot.lein/profiles.clj"))
+ ("/Users/john/dotfiles/lein/dot.lein/profiles.clj" . 987)
+ ("/Users/john/.lein/"
+  (dired-filename . "/Users/john/.lein/profiles.clj"))
+ ("/Users/john/src/asp/src/clj/asp/app_state.cljs" . 146)
+ ("/Users/john/src/asp/spec/cljs/asp/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp/fake_spec.cljs"))
+ ("/Users/john/src/asp/spec/cljs/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp"))
+ ("/Users/john/src/asp/src/clj/asp/schemas.cljc" . 1991)
+ ("/Users/john/src/asp/src/clj/minos/"
+  (dired-filename . "/Users/john/src/asp/src/clj/minos/.."))
+ ("/Users/john/src/asp/circle.yml" . 540)
+ ("/Users/john/src/asp/resources/salesforce/"
+  (dired-filename . "/Users/john/src/asp/resources/salesforce/.."))
+ ("/Users/john/src/asp/resources/"
+  (dired-filename . "/Users/john/src/asp/resources/public"))
+ ("/Users/john/src/asp/env/"
+  (dired-filename . "/Users/john/src/asp/env/dev"))
+ ("/Users/john/src/asp/env/dev/clj/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj/.."))
+ ("/Users/john/src/asp/env/dev/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre"))
+ ("/Users/john/src/asp/env/dev/clj-pre/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre/asp"))
+ ("/Users/john/src/asp/env/dev/clj-pre/asp/"
+  (dired-filename . "/Users/john/src/asp/env/dev/clj-pre/asp/devtools.cljs"))
+ ("/Users/john/src/asok/test/asok/frame_test.cljc" . 644)
+ ("/Users/john/src/asok/test/asok/reaper_test.cljs" . 1532)
+ ("/Users/john/src/asp/src/clj/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/src/clj/asp/tools/.."))
+ ("/Users/john/src/asp/spec/"
+  (dired-filename . "/Users/john/src/asp/spec/clj"))
+ ("/Users/john/src/asp/spec/clj/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp"))
+ ("/Users/john/src/asp/src/clj/asp/tools/cache/redis.clj" . 62)
+ ("/Users/john/src/asp/src/clj/asp/dal/sf_user_names.clj" . 33)
+ ("/Users/john/src/asp/spec/cljs/asp/views/dialer_spec.cljs" . 2919)
+ ("/Users/john/src/asp/spec/clj/asp/handlers/commlink_spec.clj" . 47)
+ ("/Users/john/src/asp/spec/clj/asp/handlers/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/handlers/.."))
+ ("/Users/john/src/asp/spec/clj/asp/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/tools"))
+ ("/Users/john/src/asp/spec/clj/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/spec/clj/asp/tools/cache_spec.clj"))
+ ("/Users/john/src/asp/spec/cljs/asp/tools/"
+  (dired-filename . "/Users/john/src/asp/spec/cljs/asp/tools/cache_spec.cljs"))
+ ("/Users/john/src/asp/spec/clj/asp/tools/cache_spec.clj" . 28)
+ ("/Users/john/src/asp/spec/cljs/asp/tools/cache_spec.cljs" . 59)
+ ("/Users/john/src/asp/src/clj/neutrino/transport/websocket.cljs" . 626)
+ ("/Users/john/src/asp/spec/cljs/asp/commlink_spec.cljs" . 1118)
+ ("/Users/john/dotfiles/vim/"
+  (dired-filename . "/Users/john/dotfiles/vim/dotvim"))
+ ("/Users/john/firefoxes.yaml" . 53860)
+ ("/Users/john/src/asp/README.md" . 2474))

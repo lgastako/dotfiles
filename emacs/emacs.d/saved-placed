@@ -1,5 +1,7 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/john/dotfiles/emacs/emacs.d/init.el" . 18604)
+(("/Users/john/dotfiles/emacs/emacs.d/README.md" . 198)
+ ("/Users/john/dotfiles/emacs/emacs.d/"
+  (dired-filename . "/Users/john/dotfiles/emacs/emacs.d/.last-package-update-day"))
  ("/Users/john/dotfiles/emacs/emacs.d/old/languages/go.el" . 737)
  ("/Users/john/dotfiles/emacs/emacs.d/old/languages/haml.el" . 46)
  ("/Users/john/dotfiles/emacs/emacs.d/old/languages/haskell.el" . 337)

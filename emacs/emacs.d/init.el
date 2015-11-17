@@ -10,17 +10,18 @@
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
 
-(setq backup-by-copying       t   ;; don't clobber symlinks
+(setq backup-by-copying         t    ;; don't clobber symlinks
       backup-directory-alist
-        '(("." . "~/.saves"))     ;; collect all saves in one place
-      delete-old-versions     t
-      inhibit-splash-screen   t
-      inhibit-startup-message t
-      kept-new-versions       6
-      kept-old-versions       2
-      ring-bell-function      'ignore
-      visible-bell            t
-      version-control         t)  ;; use versioned backups
+        '(("." . "~/.saves"))        ;; collect all saves in one place
+      delete-old-versions       t
+      inhibit-splash-screen     t
+      inhibit-startup-message   t
+      kept-new-versions         6
+      kept-old-versions         2
+      ring-bell-function        'ignore
+      use-package-always-ensure t
+      visible-bell              t
+      version-control           t)   ;; use versioned backups
 
 (custom-set-faces
  '(default ((t (:inherit        nil
@@ -119,12 +120,19 @@
 ;; Don't use outdated compiled elisp
 (setq load-prefer-newer t)
 
+;; A macro for renaming mode names in the modeline
+(defmacro rename-modeline (package-name mode new-name)
+  `(eval-after-load ,package-name
+     '(defadvice ,mode (after rename-modeline activate)
+        (setq mode-name ,new-name))))
+
 ;; Packaging (brought to you by use-package)
 (require' package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("gnu"       . "https://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
+                         ("marmalade"    . "https://marmalade-repo.org/packages/")
+                         ("melpa"        . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -204,6 +212,13 @@
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
+(use-package popup)
+
+(use-package auto-complete)
+
+;; Require for helm
+(use-package async)
 
 (use-package helm
   ;; Why isn't diminishing helm working?
@@ -326,8 +341,8 @@
   :init
   (setq org-startup-indented t))
 
-(use-package magit
-  :bind (("C-c C-g C-g" . magit-status)))
+;; (use-package magit
+;;   :bind (("C-c C-g C-g" . magit-status)))
 
 (use-package which-key
   :diminish which-key-mode
@@ -360,8 +375,8 @@
 ;;  (golden-ratio-mode 1)
   )
 
-(use-package mwim
-  :bind ("C-a" . mwim-beginning-of-code-or-line))
+;; (use-package mwim
+;;   :bind ("C-a" . mwim-beginning-of-code-or-line))
 
 (use-package ace-window
   :bind ("M-p" . ace-window)
@@ -388,6 +403,9 @@
 ;; Languages
 
 ;; clojure/clojurescript
+
+(use-package cider
+  :pin melpa-stable)
 
 (use-package clojure-mode
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.cljc\\'")
@@ -599,6 +617,9 @@
 ;;   (setq geiser-active-implementations '(racket))
 ;;   (setq geiser-racket-binary "/Users/john/local/bin/racket"))
 
+(require 'faceup)
+(use-package faceup)
+
 (use-package racket-mode
   :defer t
   :config
@@ -608,6 +629,8 @@
                (define-key racket-mode-map (kbd "C-c C-k") 'racket-test))))
 
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
+
+;; YAML
 
 (use-package yaml-mode
   :mode "\\.yml\\'")

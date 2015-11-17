@@ -162,7 +162,6 @@
   :config (ido-mode t))
 
 (use-package rainbow-delimiters
-  :disabled t
   ;; For all programming modes:
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
@@ -309,7 +308,6 @@
          ("M-P" . drag-stuff-up)))
 
 (use-package company
-  :disabled t
   :bind ("C-." . company-complete)
   :diminish ""
   :init (global-company-mode 1)
@@ -329,7 +327,6 @@
 ;;   :init (global-hungry-delete-mode))
 
 (use-package beacon
-  :disabled t
   :diminish beacon-mode
   :init
   (beacon-mode 1)
@@ -384,7 +381,6 @@
 
 ;; Doesn't work with something else?
 (use-package rainbow-mode
-  :disabled t
   :diminish (rainbow-mode . "")
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))

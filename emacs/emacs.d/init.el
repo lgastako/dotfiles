@@ -223,6 +223,8 @@
   :diminish ""
   :config
 
+  (use-package helm-git-grep)
+
   (require 'helm-config)
 
   (setq helm-quick-update                     t ; do not display invisible candidates

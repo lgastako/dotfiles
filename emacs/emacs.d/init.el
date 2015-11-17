@@ -156,8 +156,7 @@
          ("<M-right>" . move-frame-right))
   :config
   ;; Maximize window on startup
-  (maximize-frame-vertically)
-  (maximize-frame-horizontally))
+  (maximize-frame))
 
 (use-package ido
   :config (ido-mode t))
@@ -590,7 +589,7 @@
 
 ;; salesforce
 
-(use-package apex-mode)
+;; (use-package apex-mode)
 ;; (require 'apex-mode)
 
 (add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))

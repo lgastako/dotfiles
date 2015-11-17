@@ -4,5 +4,9 @@ This is the new re-unified version of John's init.el for Emacs.
 
 ## Known Bugs
 
-- Markdown mode not active for this README.md right now
-- Ctrl-A doesn't jump to the beginning of the line
+- No open bugs.
+
+## Fixed Bugs
+
+- FIXED: Markdown mode not active for this README.md right now
+- FIXED: Ctrl-A doesn't jump to the beginning of the line

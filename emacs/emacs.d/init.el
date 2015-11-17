@@ -1,53 +1,45 @@
 ;;; init.el --- John's Emacs Configuration
 
-;; Store the start time for later reporting
-(defvar *emacs-load-start* (current-time))
-;; Thanks anarcat!
-(defun anarcat/time-to-ms (time)
-  (+ (* (+ (* (car time) (expt 2 16)) (car (cdr time))) 1000000) (car (cdr (cdr time)))))
-(defun anarcat/display-timing ()
-  (message ".emacs loaded in %fms" (/ (- (anarcat/time-to-ms (current-time)) (anarcat/time-to-ms *emacs-load-start*)) 1000000.0)))
-(add-hook 'after-init-hook 'anarcat/display-timing t)
+;; If a package appears in a use-package declartion but is disabled that means
+;; that I still want it, but it was preventing init.el from loading and I
+;; haven't had time to fix it yet.  Feel free to submit pull requests :)
 
-(setq inhibit-splash-screen t
-      inhibit-startup-message t)
-
-;; Answer with 'y' or 'n' instead of having to type of 'yes' or 'no'.
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Highlight the current line...
-(global-hl-line-mode t)
-;; ...darker
-(set-face-background 'hl-line "grey9")
-;; for a list of colors: http://raebear.net/comp/emacscolors.html
-
-;; Bind a key to edit my init.el
+;; Bind a key to edit this file
 (global-set-key (kbd "C-c i")
                 (lambda ()
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
 
-;; We load this early to maximize the niceness of the editing environment if
-;; init.el explodes.
+(setq backup-by-copying       t   ;; don't clobber symlinks
+      backup-directory-alist
+        '(("." . "~/.saves"))     ;; collect all saves in one place
+      delete-old-versions     t
+      inhibit-splash-screen   t
+      inhibit-startup-message t
+      kept-new-versions       6
+      kept-old-versions       2
+      ring-bell-function      'ignore
+      visible-bell            t
+      version-control         t)  ;; use versioned backups
 
-;; Pretty Font
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
+ '(default ((t (:inherit        nil
+                :stipple        nil
+                :inverse-video  nil
+                :box            nil
+                :strike-through nil
+                :overline       nil
+                :underline      nil
+                :slant          normal
+                :weight         normal
+                :height         235
+                :width          normal
+                :foundry        "apple"
+                :family         "Monaco")))))
 
 (if window-system
     (load-theme 'deeper-blue)
   (load-theme 'wombat t))
-
-;; UTF-8 All The Things
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 ;; We do this right after the theme is loaded to minimize the time it looks
 ;; wonky.
@@ -59,51 +51,24 @@
 ;;(set-face-attribute 'default nil :height 256)
 ;;(set-face-attribute 'default nil :height 240)
 
-;; Helper for more natural path additions
-(defun add-to-load-path-list (fn)
-  (add-to-list 'load-path (expand-file-name fn)))
-
-;; Individual .el files here
-(add-to-load-path-list "~/.emacs.d/elisp")
-
-(defmacro rename-modeline (package-name mode new-name)
-  `(eval-after-load ,package-name
-     '(defadvice ,mode (after rename-modeline activate)
-        (setq mode-name ,new-name))))
-
-;; Don't use outdated compiled elisp
-(setq load-prefer-newer t)
-
-;; Marmalade Package Manager
-;; http://marmalade-repo.org/about
-
-(require' package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(("gnu"       . "https://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")))
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; have use-package install missing packages automatically
-(setq use-package-always-ensure t)
-
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
-
 ;; Declutter the UI by hiding the menus
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
-;; Maximize window on startup
-(load "frame-cmds.el")
-(maximize-frame-vertically)
-(maximize-frame-horizontally)
+;; Highlight the current line
+(global-hl-line-mode t)
+(set-face-background 'hl-line "grey9")
+;; for a list of colors: http://raebear.net/comp/emacscolors.html
+
+;; Answer 'y' or 'n' instead of 'yes' or 'no'.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; UTF-8 All The Things
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;; Highlight matching delimiters
 (show-paren-mode 1)
@@ -151,16 +116,48 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;; Don't use outdated compiled elisp
+(setq load-prefer-newer t)
+
+;; Packaging (brought to you by use-package)
+(require' package)
+(setq package-enable-at-startup nil)
+(setq package-archives '(("gnu"       . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa"     . "https://melpa.org/packages/")))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+;; Frame cmds is loaded as early as possible in order to
+;; maximize as early as possible.
+(use-package frame-cmds
+  :bind (("C-c f m" . maximize-frame)
+         ("C-c f r" . restore-frame)
+         ("C-c f o" . other-window-or-frame)
+         ("<M-up>" . move-frame-up)
+         ("<M-down>" . move-frame-down)
+         ("<M-left>" . move-frame-left)
+         ("<M-right>" . move-frame-right))
+  :config
+  ;; Maximize window on startup
+  (maximize-frame-vertically)
+  (maximize-frame-horizontally))
+
 (use-package ido
   :config (ido-mode t))
 
-;; (use-package easymenu)
-
 (use-package rainbow-delimiters
+  :disabled t
   ;; For all programming modes:
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
-;; (use-package theme-park-mode)
 
 (use-package flymake-cursor)
 
@@ -171,8 +168,9 @@
 (use-package edit-server
   :if window-system
   :init
-  (add-hook 'after-init-hook 'server-start t)
-  (add-hook 'after-init-hook 'edit-server-start t))
+  ;;  (add-hook 'after-init-hook 'server-start t)
+  ;;  (add-hook 'after-init-hook 'edit-server-start t)
+  )
 
 (use-package fill-column-indicator)
 
@@ -190,95 +188,19 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-;; Snippets
-(use-package yasnippet
-  :load-path "~/.emacs..d/plugins/yasnippet"
-  :config
-  (setq yas/root-directory "~/.emacs.d/snippets")
-  (yas-load-directory yas/root-directory)
-  (yas-global-mode 1))
-
-(global-set-key (kbd "RET") 'newline-and-indent)
-
-(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
-(global-set-key (kbd "C-x p") 'paredit-mode)
-
-(global-set-key (kbd "C-c l")   'linum-mode)
-(global-set-key (kbd "C-c C-l") 'global-linum-mode)
+;; (use-package yasnippet
+;;   :load-path "~/.emacs..d/plugins/yasnippet"
+;;   :config
+;;   (setq yas/root-directory "~/.emacs.d/snippets")
+;;   (yas-load-directory yas/root-directory)
+;;   (yas-global-mode 1)
+;;   (yas-reload-all)))
 
 (defun indent-all ()
   (interactive)
   (indent-region 0 (buffer-size)))
 
 (global-set-key (kbd "C-c f") 'indent-all)
-
-(setq ring-bell-function 'ignore
-      visible-bell t)
-
-;;http://www.emacswiki.org/emacs/BackupDirectory
-(setq backup-by-copying t       ; don't clobber symlinks
-      backup-directory-alist
-      '(("." . "~/.saves"))     ; don't litter my fs tree
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)        ; use versioned backups
-
-(defvar my-packages '(cl
-                      yasnippet))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-;; http://www.emacswiki.org/emacs/PareditCheatsheet
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
-
-;; (diminish 'paredit-mode)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- '(org-agenda-files (quote ("~/Dropbox/src/todo/todo.org")))
- '(quack-programs
-   (quote
-    ("/Users/john/local/bin/racket" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mzscheme" "mzschme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
- '(tab-stop-list
-   (quote
-    (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80)))
- '(tpm-tagged nil)
- '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-;;;;;;;;;;;;;;;;;
-;; Haven't properly merged these into the appropriate spots above.
-
-(defun yank-and-indent ()
-  "Yank and then indent the newly formed region according to mode."
-  (interactive)
-  (yank)
-  (call-interactively 'indent-region))
-
-(global-set-key "\C-y" 'yank-and-indent)
-
-(setenv "PATH" (concat (getenv "PATH") ":$HOME/bin"))
-(setq sql-postgres-program "/usr/local/bin/psql")
-;;(setq sql-port ...) -- seems to not be a good idea
-;; this seems to be the way: sigh
-;;(setq sql-postgres-options (list "-p 5492"))
-
-;;failed to compile
-;;(load-file "/Users/john/.emacs.d/elisp/ProofGeneral/generic/proof-site.el")
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -365,7 +287,7 @@
   :init (winner-mode))
 
 (use-package drag-stuff
-  :disabled
+  :disabled t
   ;; 'M-N' / 'M-P' to move lines or selected groups of lines up/down
   ;; 'M-<left>' / 'M-<right>' to move words or selected regions
   :init (drag-stuff-global-mode 1)
@@ -373,6 +295,7 @@
          ("M-P" . drag-stuff-up)))
 
 (use-package company
+  :disabled t
   :bind ("C-." . company-complete)
   :diminish ""
   :init (global-company-mode 1)
@@ -392,6 +315,7 @@
 ;;   :init (global-hungry-delete-mode))
 
 (use-package beacon
+  :disabled t
   :diminish beacon-mode
   :init
   (beacon-mode 1)
@@ -445,40 +369,271 @@
   (setq aw-background t))
 
 ;; Doesn't work with something else?
-;; (use-package rainbow-mode
-;;   :diminish (rainbow-mode . "")
+(use-package rainbow-mode
+  :disabled t
+  :diminish (rainbow-mode . "")
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-mode))
+
+;; TODO: Clean these up
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
+(global-set-key (kbd "C-x p") 'paredit-mode)
+
+(global-set-key (kbd "C-c l")   'linum-mode)
+(global-set-key (kbd "C-c C-l") 'global-linum-mode)
+
+;;===========
+;; Languages
+
+;; clojure/clojurescript
+
+(use-package clojure-mode
+  :mode ("\\.clj\\'" "\\.cljs\\'" "\\.cljc\\'")
+  :init
+
+  (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\.cljc$" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\.edn$"  . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
+
+  ;; Clojure Files
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+
+  ;; In the REPL
+  (add-hook 'cider-repl-mode-hook #'subword-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
+        cider-boot-command "/Users/john/dotfiles/bin/boot")
+
+  (setq cider-overlays-use-font-lock t)
+
+  ;; (setq cider-auto-select-error-buffer t)
+
+  :config
+  (rename-modeline "clojure-mode" clojure-mode "λ"))
+
+(use-package clj-refactor
+  :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
+  :config (cljr-add-keybindings-with-prefix "C-!"))
+
+;; coffescript
+
+(use-package coffee-mode
+  :mode "\\.coffee\\'")
+
+;; go
+
+(use-package go-mode
+  :init
+
+  (setenv "GOPATH" "~/go")
+  ;; These next two should probably be moved out to the top level, no?
+  (setq exec-path (append exec-path '("/usr/local/bin")))
+  (setq exec-path (append exec-path '("/usr/local/go/bin")))
+  (setq exec-path (append exec-path '("~/go/bin")))
+
+  :config
+
+  (use-package flymake-go
+    :disabled t
+    :init
+    (setq gofmt-command "goimports")
+    :config
+    (add-hook 'before-save-hook 'gofmt-before-save)
+    (add-hook 'go-mode-hook #'enable-paredit-mode))
+
+  (use-package go-eldoc
+    :config
+    (add-hook 'go-mode-hook 'go-eldoc-setup)))
+
+;; haml
+
+(use-package haml-mode
+  :mode "\\.haml\\'")
+
+;; haskell
+
+(use-package haskell-mode
+  :mode ("\\.hs\\'" "\\.lhs\\'")
+  ;; :mode "\\.\\(?:[gh]s\\|hi\\)\\'"
+
+  :init
+  ;; We need to establish both an interaction mode and an indentation mode.
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+  (setq haskell-process-type 'stack))
+
+;; html
+
+;; (use-package mkhtml-htmlize)
+;; (use-package mkhtml)
+
+(use-package zencoding-mode
+  ;; Auto-start on any markup modes
+  :config (add-hook 'sgml-mode-hook 'zencoding-mode))
+
+;; json
+
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
+
+(global-set-key (kbd "C-x j") 'json-format)
+
+(use-package markdown-mode
+  :mode ("\\.md\\'" "\\.markdown\\'"))
+
+;; ocaml
+
+(use-package tuareg
+  :mode "\\.ml\\'"
+  :config
+  (use-package utop)
+  (use-package merlin))
+
+;; python
+
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+
+  :config
+
+  ;; Python autocompletion
+  ;;(add-hook 'python-mode-hook 'jedi:setup)
+  ;;(setq jedi:complete-on-dot t)
+
+  ;; Fix indenting
+  (add-hook 'python-mode-hook
+            '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+
+  ;; In theory 'C-h S' will lookup symbols, but even after installing the python
+  ;; info files per https://bitbucket.org/jonwaltman/pydoc-info/ it still doesn't
+  ;; quite work for me.
+  (use-package pydoc-info)
+
+  ;; Causing problems. Very annoying.
+  ;;(add-hook 'python-mode-hook 'fci-mode)
+
+  (use-package ipython)
+
+  ;; ===============================================
+  ;; from http://www.reddit.com/r/emacs/comments/24l8f2/beginner_setting_up_emacs_for_python
+
+  ;; would be cool but doesn't have right pythonpath when i tried it..
+
+  ;; (defun my-python-f5 ()
+  ;;   (interactive)
+  ;;   (python-shell-send-buffer)
+  ;;   (python-shell-switch-to-shell))
+
+  ;; (eval-after-load "python"
+  ;;   '(progn
+  ;;      (define-key python-mode-map (kbd "<f5>") 'my-python-f5)
+  ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
+  ;; ===============================================
+
+  (use-package virtualenvwrapper
+    :commands (venv-workon))
+
+  (use-package cython-mode
+    :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
+
+;; ruby
+
+(use-package ruby-mode
+  :mode "\\.rb\\'"
+  :interpreter "ruby"
+  :init
+  (setenv "PATH"
+          (concat
+           (getenv "HOME") "/.rvm/rubes/ruby-1.9.3-p448/bin:"
+           (getenv "PATH")))
+  ;; Load el4r, which loads Xiki
+  (add-to-list 'load-path "/Library/Ruby/Gems/2.0.0/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
+  ;;(add-to-list 'load-path "~/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
+  (use-package el4r
+    :disabled t
+    :config
+    (el4r-boot)
+    (el4r-troubleshooting-keys)))
+
+;; rust
+
+(use-package rust-mode
+  :mode "\\.rs\\'")
+
+;; salesforce
+
+(use-package apex-mode)
+;; (require 'apex-mode)
+
+(add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.vfc$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.apexclass$" . js-mode))
+
+;; sass
+
+(use-package sass-mode
+  :mode ("\\.sass\\'" "\\.scss\\'"))
+
+;; sbcl (common lisp)
+
+(use-package sly
+  :commands (sly)
+  :config (setq inferior-lisp-program (executable-find "sbcl")))
+
+;; scheme
+
+;; (use-package quack)
+;; (use-package geiser
+;;   :mode "\\.scm\\'"
 ;;   :config
-;;   (add-hook 'prog-mode-hook 'rainbow-mode))
+;;   (setq geiser-active-implementations '(racket))
+;;   (setq geiser-racket-binary "/Users/john/local/bin/racket"))
 
-;; (use-package symon
-;;   :config
-;;   (symon-mode))
+(use-package racket-mode
+  :defer t
+  :config
+  (add-hook 'racket-mode-hook
+            '(lambda ()
+               (define-key racket-mode-map (kbd "C-c C-l") 'racket-run)
+               (define-key racket-mode-map (kbd "C-c C-k") 'racket-test))))
 
-;; (use-package smex
-;;   :init (smex-initialize)
-;;   :bind ("M-x" . smex))
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
-;; something like this should work, but it doesn't, so for now...
-;; ;; Load all the individual language configs
-;; (require 'load-directory)
-;; (load-directory "~/.emacs.d/languages")
-;; ... we do it manually:
-(load-file "~/.emacs.d/languages/clojure.el")
-(load-file "~/.emacs.d/languages/coffee.el")
-(load-file "~/.emacs.d/languages/go.el")
-(load-file "~/.emacs.d/languages/haml.el")
-(load-file "~/.emacs.d/languages/haskell.el")
-(load-file "~/.emacs.d/languages/html.el")
-(load-file "~/.emacs.d/languages/markdown.el")
-(load-file "~/.emacs.d/languages/python.el")
-(load-file "~/.emacs.d/languages/ruby.el")
-(load-file "~/.emacs.d/languages/rust.el")
-(load-file "~/.emacs.d/languages/salesforce.el")
-(load-file "~/.emacs.d/languages/sass.el")
-(load-file "~/.emacs.d/languages/sbcl.el")
-(load-file "~/.emacs.d/languages/scheme.el")
-(load-file "~/.emacs.d/languages/yaml.el")
+(use-package yaml-mode
+  :mode "\\.yml\\'")
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :init
+  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
+  :config
+  (progn
+    (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
+;; Where should this really be?
 (setq erc-track-enable-keybindings nil)
+
+;; ;; Report on emacs load speed
+;; (defun ->ms (time)
+;;   (+ (* (+ (* (car time)
+;;               (expt 2 16))
+;;            (car (cdr time)))
+;;         1000000)
+;;      (car (cdr (cdr time)))))
+;; (defun how-fast?! ()
+;;   (message ".emacs loaded in %fms"
+;;            (/ (- (->ms (current-time))
+;;                  (->ms *emacs-load-start*))
+;;               1000000.0)))
+;; (add-hook 'after-init-hook 'how-fast?! t)

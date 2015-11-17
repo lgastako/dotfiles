@@ -1,5 +1,8 @@
-# emacs.d
+# README
 
-## TODOs
+This is the new re-unified version of John's init.el for Emacs.
 
-- key :binds in use-package statements
+## Known Bugs
+
+- Markdown mode not active for this README.md right now
+- Ctrl-A doesn't jump to the beginning of the line

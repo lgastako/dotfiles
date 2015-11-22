@@ -7,6 +7,7 @@
         cljr-slash
         dabbrev-expand
         delete-horizontal-space
+        indent-for-tab-command
         kill-region
         paredit-backward-slurp-sexp
         paredit-close-round

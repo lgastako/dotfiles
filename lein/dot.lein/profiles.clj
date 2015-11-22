@@ -1,6 +1,9 @@
-{:user {:plugins [;;[cider/cider-nrepl "0.9.1"]
+{:repl {:plugins [;;[cider/cider-nrepl "0.9.1"]
                   [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                  [jonase/eastwood "0.2.1"]
+                  [org.clojure/tools.nrepl "0.2.10"
+                   :exclusions [org.clojure/clojure]]
+                  [refactor-nrepl "1.1.0"]]}
+ :user {:plugins [[jonase/eastwood "0.2.1"]
                   [lein-ancient "0.6.5"
                    :exclusions [org.clojure/clojure
                                 org.clojure/tools.reader
@@ -14,8 +17,6 @@
                   [lein-kibit "0.1.2"]
                   [lein-marginalia "0.8.0"]
                   [lein-vanity "0.2.0"]
-                  [org.clojure/tools.nrepl "0.2.10"
-                   :exclusions [org.clojure/clojure]]
                   ;; [org.timmc/nephila "0.3.0"]
                   [lein-pprint "1.1.1"]
                   [refactor-nrepl "1.1.0"]

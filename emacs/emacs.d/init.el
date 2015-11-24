@@ -144,6 +144,10 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; The automatic maximize-frame in this stopped working when I installed
+;; projectile (and continues to fail even if I comment out the use-package for
+;; projectile).  TODO: Figure out why and fix it.
+
 ;; Frame cmds is loaded as early as possible in order to
 ;; maximize as early as possible.
 (use-package frame-cmds
@@ -158,7 +162,7 @@
   ;; Maximize window on startup
   (maximize-frame))
 
-(use-package revive)
+;; (use-package revive)
 
 (use-package ido
   :config (ido-mode t))
@@ -203,12 +207,6 @@
 ;;   (yas-load-directory yas/root-directory)
 ;;   (yas-global-mode 1)
 ;;   (yas-reload-all)))
-
-(defun indent-all ()
-  (interactive)
-  (indent-region 0 (buffer-size)))
-
-(global-set-key (kbd "C-c f") 'indent-all)
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -652,4 +650,3 @@
 
 ;; Type greek lambda character with "M-g l"
 (global-set-key (kbd "M-g l") "λ")
-

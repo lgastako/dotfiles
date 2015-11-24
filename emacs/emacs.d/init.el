@@ -158,6 +158,8 @@
   ;; Maximize window on startup
   (maximize-frame))
 
+(use-package revive)
+
 (use-package ido
   :config (ido-mode t))
 
@@ -283,6 +285,9 @@
   ;; Invoke `helm-git-grep' from other helm.
   (eval-after-load 'helm
     '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))
+
+(use-package projectile
+  :config (projectile-global-mode t))
 
 (use-package ace-jump-mode
   ;; Enable Ace Jump mode
@@ -423,7 +428,8 @@
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
-  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
+  (setq exec-path (append exec-path '("/Users/john/dotfiles/bin"))
+        cider-lein-command "/Users/john/dotfiles/bin/lein"
         cider-boot-command "/Users/john/dotfiles/bin/boot")
 
   (setq cider-overlays-use-font-lock t)
@@ -644,16 +650,6 @@
 ;; Where should this really be?
 (setq erc-track-enable-keybindings nil)
 
-;; ;; Report on emacs load speed
-;; (defun ->ms (time)
-;;   (+ (* (+ (* (car time)
-;;               (expt 2 16))
-;;            (car (cdr time)))
-;;         1000000)
-;;      (car (cdr (cdr time)))))
-;; (defun how-fast?! ()
-;;   (message ".emacs loaded in %fms"
-;;            (/ (- (->ms (current-time))
-;;                  (->ms *emacs-load-start*))
-;;               1000000.0)))
-;; (add-hook 'after-init-hook 'how-fast?! t)
+;; Type greek lambda character with "M-g l"
+(global-set-key (kbd "M-g l") "λ")
+

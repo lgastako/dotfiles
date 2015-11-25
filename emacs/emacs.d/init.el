@@ -285,6 +285,7 @@
     '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))
 
 (use-package projectile
+  :diminish projectile-mode
   :config (projectile-global-mode t))
 
 (use-package ace-jump-mode

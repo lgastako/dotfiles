@@ -1,1 +1,1 @@
-("~/Dropbox/org/" "~/src/alonzo/" "~/src/asp/" "~/dotfiles/")
+("~/dotfiles/" "~/src/alonzo/" "~/Dropbox/org/" "~/src/asp/")

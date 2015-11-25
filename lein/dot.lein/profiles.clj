@@ -1,4 +1,4 @@
-{:repl {:plugins [;;[cider/cider-nrepl "0.9.1"]
+{:repl {:plugins [ ;;[cider/cider-nrepl "0.9.1"]
                   [cider/cider-nrepl "0.10.0-SNAPSHOT"]
                   [org.clojure/tools.nrepl "0.2.10"
                    :exclusions [org.clojure/clojure]]
@@ -22,4 +22,34 @@
                   [refactor-nrepl "1.1.0"]
                   ;; [varspotting "0.0.2"]
                   ;; [venantius/yagni "0.1.1"]
-                  ]}}
+                  ]
+        :dependencies [[alembic "0.3.2"]
+                       [com.gfredericks/debug-repl "0.0.7"]
+                       [im.chit/vinyasa "0.4.2"]
+                       ;; [io.aviso/pretty "0.1.8"]
+                       [leiningen #=(leiningen.core.main/leiningen-version)]
+                       [org.clojure/tools.namespace "0.2.4"]
+                       [spyscope "0.1.4"]]
+        :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
+        :injections [(require 'leiningen.core.main)
+                     (require 'spyscope.core)
+                     (require '[vinyasa.inject :as inject])
+                     ;; (require 'io.aviso.repl)
+
+                     ;; the default injected namespace is `.`
+                     ;; note that `:refer, :all and :exclude can be used
+                     (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
+                                [vinyasa.lein :exclude [*project*]]
+
+                                ;; imports all functions in vinyasa.pull
+                                [alembic.still [distill pull]]
+
+                                ;; inject into clojure.core
+                                clojure.core
+                                [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
+
+                                ;; inject into clojure.core with prefix
+                                clojure.core >
+                                [com.gfredericks.debug-repl break! catch-break! unbreak! unbreak!!]
+                                [clojure.java.shell sh]
+                                [clojure.pprint pprint])]}}

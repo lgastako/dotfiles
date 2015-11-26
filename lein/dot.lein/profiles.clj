@@ -3,7 +3,8 @@
                   [org.clojure/tools.nrepl "0.2.10"
                    :exclusions [org.clojure/clojure]]
                   [refactor-nrepl "1.1.0"]]}
- :user {:plugins [[jonase/eastwood "0.2.1"]
+ :user {:plugins [[org.clojure/clojurescript "1.7.170"] ;; needed to prevent breakage in ASP with vinyasa.lein
+                  [jonase/eastwood "0.2.1"]
                   [lein-ancient "0.6.5"
                    :exclusions [org.clojure/clojure
                                 org.clojure/tools.reader
@@ -36,8 +37,8 @@
                      (require '[vinyasa.inject :as inject])
                      ;; (require 'io.aviso.repl)
 
-                     ;; the default injected namespace is `.`
-                     ;; note that `:refer, :all and :exclude can be used
+                     ;; ;; the default injected namespace is `.`
+                     ;; ;; note that `:refer, :all and :exclude can be used
                      (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
                                 [vinyasa.lein :exclude [*project*]]
 

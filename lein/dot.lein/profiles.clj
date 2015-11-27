@@ -47,7 +47,7 @@
                                 [vinyasa.lein :exclude [*project*]]
 
                                 ;; imports all functions in vinyasa.pull
-                                ;; [alembic.still [distill pull]]
+                                [alembic.still [distill pull]]
 
                                 ;; inject into clojure.core
                                 clojure.core

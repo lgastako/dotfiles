@@ -1,6 +1,6 @@
 (1
  (zone-nyan .
-	    [(0 2 0)
+	    [(0 2 1)
 	     ((esxml
 	       (0 3 1)))
 	     "Zone out with nyan cat" single])
@@ -994,7 +994,7 @@
 	  [(20110708)
 	   nil "Mode-specific scratch buffers" single])
  (scpaste .
-	  [(0 6 3)
+	  [(0 6 4)
 	   ((htmlize
 	     (1 39)))
 	   "Paste to the web via scp." single])

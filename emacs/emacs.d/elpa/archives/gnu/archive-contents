@@ -147,7 +147,7 @@
 		((:url . "https://github.com/vspinu/company-math")
 		 (:keywords "unicode" "symbols" "completion"))])
  (company-statistics .
-		     [(0 2 1)
+		     [(0 2 2)
 		      ((emacs
 			(24 3))
 		       (company
@@ -194,7 +194,7 @@
 		((:url . "http://elpa.gnu.org/packages/dbus-codegen.html")
 		 (:keywords "comm" "dbus" "convenience"))])
  (debbugs .
-	  [(0 7)
+	  [(0 8)
 	   nil "SOAP library to access debbugs servers" tar
 	   ((:keywords "comm" "hypermedia")
 	    (:url . "http://elpa.gnu.org/packages/debbugs.html"))])

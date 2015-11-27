@@ -25,10 +25,14 @@
                   ;; [venantius/yagni "0.1.1"]
                   ]
         :dependencies [[alembic "0.3.2"]
+                       ;; Had to add this manually for some reason to avoid
+                       ;; problems starting a REPL.
+                       [commons-logging/commons-logging "1.2"]
                        [com.gfredericks/debug-repl "0.0.7"]
                        [im.chit/vinyasa "0.4.2"]
                        ;; [io.aviso/pretty "0.1.8"]
-                       [leiningen #=(leiningen.core.main/leiningen-version)]
+                       [leiningen #=(leiningen.core.main/leiningen-version)
+                        :exclusions [commons-logging]]
                        [org.clojure/tools.namespace "0.2.4"]
                        [spyscope "0.1.4"]]
         :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
@@ -43,7 +47,7 @@
                                 [vinyasa.lein :exclude [*project*]]
 
                                 ;; imports all functions in vinyasa.pull
-                                [alembic.still [distill pull]]
+                                ;; [alembic.still [distill pull]]
 
                                 ;; inject into clojure.core
                                 clojure.core

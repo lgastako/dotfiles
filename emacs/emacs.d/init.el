@@ -646,6 +646,8 @@
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
+(use-package simplesecrets)
+
 ;; Where should this really be?
 (setq erc-track-enable-keybindings nil)
 

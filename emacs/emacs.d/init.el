@@ -646,10 +646,20 @@
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
-(use-package simplesecrets)
+;; TODO: packagize as
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'simple-secrets)
+(require 'secret-funs)
+
+(global-set-key (kbd "C-c s n")
+                (create-new-site-secret))
 
 ;; Where should this really be?
 (setq erc-track-enable-keybindings nil)
 
 ;; Type greek lambda character with "M-g l"
 (global-set-key (kbd "M-g l") "λ")
+(global-set-key (kbd "M-g d") "Δ")
+(global-set-key (kbd "M-g - >") "→")
+(global-set-key (kbd "M-g = >") "⇒")
+(put 'downcase-region 'disabled nil)

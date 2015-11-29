@@ -19,7 +19,7 @@
       kept-new-versions         6
       kept-old-versions         2
       ring-bell-function        'ignore
-      use-package-always-ensure t
+      ;; use-package-always-ensure t
       visible-bell              t
       version-control           t)   ;; use versioned backups
 
@@ -459,8 +459,7 @@
     :init
     (setq gofmt-command "goimports")
     :config
-    (add-hook 'before-save-hook 'gofmt-before-save)
-    (add-hook 'go-mode-hook #'enable-paredit-mode))
+    (add-hook 'before-save-hook 'gofmt-before-save))
 
   (use-package go-eldoc
     :config
@@ -641,8 +640,10 @@
 (use-package paredit
   :diminish "par"
   :init
-  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+  (add-hook 'go-mode-hook #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
   :config
   (global-set-key (kbd "C-x p") 'paredit-mode))

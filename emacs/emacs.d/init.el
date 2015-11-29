@@ -141,8 +141,13 @@
 
 (eval-when-compile
   (require 'use-package))
+
 (require 'diminish)
 (require 'bind-key)
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq mode-name "Eλ")))
 
 ;; The automatic maximize-frame in this stopped working when I installed
 ;; projectile (and continues to fail even if I comment out the use-package for
@@ -391,15 +396,6 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))
 
-;; TODO: Clean these up
-(global-set-key (kbd "RET") 'newline-and-indent)
-
-(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
-(global-set-key (kbd "C-x p") 'paredit-mode)
-
-(global-set-key (kbd "C-c l")   'linum-mode)
-(global-set-key (kbd "C-c C-l") 'global-linum-mode)
-
 ;;===========
 ;; Languages
 
@@ -420,11 +416,9 @@
 
   ;; Clojure Files
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 
   ;; In the REPL
   (add-hook 'cider-repl-mode-hook #'subword-mode)
-  (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
   (setq exec-path (append exec-path '("/Users/john/dotfiles/bin"))
@@ -630,8 +624,6 @@
                (define-key racket-mode-map (kbd "C-c C-l") 'racket-run)
                (define-key racket-mode-map (kbd "C-c C-k") 'racket-test))))
 
-(add-hook 'scheme-mode-hook #'enable-paredit-mode)
-
 ;; YAML
 
 (use-package yaml-mode
@@ -646,20 +638,34 @@
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
-;; TODO: packagize as
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'simple-secrets)
-(require 'secret-funs)
+(use-package paredit
+  :diminish "par"
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'scheme-mode-hook #'enable-paredit-mode)
+  :config
+  (global-set-key (kbd "C-x p") 'paredit-mode))
 
-(global-set-key (kbd "C-c s n")
-                (create-new-site-secret))
+;; (add-to-list 'load-path "~/.emacs.d/lisp")
+;; (require 'simple-secrets)
+;; (require 'secret-funs)
 
-;; Where should this really be?
-(setq erc-track-enable-keybindings nil)
+;; (global-set-key (kbd "C-c s n")
+;;                 (create-new-site-secret))
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
+(global-set-key (kbd "C-c l")   'linum-mode)
+(global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
 ;; Type greek lambda character with "M-g l"
 (global-set-key (kbd "M-g l") "λ")
 (global-set-key (kbd "M-g d") "Δ")
 (global-set-key (kbd "M-g - >") "→")
 (global-set-key (kbd "M-g = >") "⇒")
+
+(setq erc-track-enable-keybindings nil)
+
+(put 'upcase-region   'disabled nil)
 (put 'downcase-region 'disabled nil)

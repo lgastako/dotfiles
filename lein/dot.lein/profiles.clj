@@ -34,7 +34,7 @@
                        [leiningen #=(leiningen.core.main/leiningen-version)
                         :exclusions [commons-logging]]
                        [org.clojure/tools.namespace "0.2.4"]
-                       [spyscope "0.1.4"]]
+                       [spyscope "0.1.5"]]
         :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
         :injections [(require 'leiningen.core.main)
                      (require 'spyscope.core)
@@ -55,6 +55,6 @@
 
                                 ;; inject into clojure.core with prefix
                                 clojure.core >
-                                [com.gfredericks.debug-repl break! catch-break! unbreak! unbreak!!]
+;;                                [com.gfredericks.debug-repl break! catch-break! unbreak! unbreak!!]
                                 [clojure.java.shell sh]
                                 [clojure.pprint pprint])]}}

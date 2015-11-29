@@ -1,3 +1,5 @@
+(provide 'secret-funs)
+
 (use-package dash)
 
 (defun kw->name (kw)
@@ -43,9 +45,9 @@
   (secret-new (concat site "/username") username)
   (secret-new (concat site "/password") password))
 
-(call-interactively 'create-new-site-secret)
+;; (call-interactively 'create-new-site-secret)
 
-(create-new-site-secret "foo" "Bar " "baz")
+;; (create-new-site-secret "foo" "Bar " "baz")
 
 (defun ff (arg)
   "Prompt user to enter a string, with input history support."
@@ -53,4 +55,6 @@
   (message "String is %s." arg) )
 
 
-(call-interactively)
+;; (call-interactively)
+;; (defun secret-funs (&rest rest)
+;;   :not-implemented)

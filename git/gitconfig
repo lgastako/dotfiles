@@ -28,7 +28,7 @@
 [core]
         excludesfile = ~/dotfiles/git/gitignore
 [push]
-        default = matching
+        default = upstream
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]

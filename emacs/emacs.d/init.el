@@ -648,7 +648,7 @@
   :config
   (global-set-key (kbd "C-x p") 'paredit-mode))
 
-;; (add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 ;; (require 'simple-secrets)
 ;; (require 'secret-funs)
 

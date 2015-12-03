@@ -323,7 +323,9 @@
 (use-package company
   :bind ("C-." . company-complete)
   :diminish ""
-  :init (global-company-mode 1)
+  :init
+  (setq company-idle-delay 0.5)
+  (global-company-mode 1)
   :config (bind-keys :map company-active-map
                      ("C-n"   . company-select-next)
                      ("C-p"   . company-select-previous)

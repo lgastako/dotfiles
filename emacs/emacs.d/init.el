@@ -83,8 +83,10 @@
 (setq-default line-number-mode t
               column-number-mode t)
 
-;; Highlight trailing whitespace in red
+;; Highlight trailing whitespace in red in all modes except the ones explicitly
+;; exempted below.
 (setq-default show-trailing-whitespace t)
+(add-hook 'cider-repl-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
 ;; Set the print margin
 (setq-default fill-column 79)

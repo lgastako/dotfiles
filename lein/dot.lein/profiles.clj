@@ -29,6 +29,7 @@
                        ;; problems starting a REPL.
                        [commons-logging/commons-logging "1.2"]
                        [com.gfredericks/debug-repl "0.0.7"]
+                       ;; [com.inferstructure/repl "0.1.0-SNAPSHOT"]
                        [im.chit/vinyasa "0.4.2"]
                        ;; [io.aviso/pretty "0.1.8"]
                        [leiningen #=(leiningen.core.main/leiningen-version)
@@ -40,6 +41,7 @@
                      (require 'spyscope.core)
                      (require '[vinyasa.inject :as inject])
                      ;; (require 'io.aviso.repl)
+                     ;; (require '[com.inferstructure.repl])
 
                      ;; ;; the default injected namespace is `.`
                      ;; ;; note that `:refer, :all and :exclude can be used
@@ -55,6 +57,8 @@
 
                                 ;; inject into clojure.core with prefix
                                 clojure.core >
-;;                                [com.gfredericks.debug-repl break! catch-break! unbreak! unbreak!!]
+                                ;; [com.gfredericks.debug-repl break! catch-break! unbreak! unbreak!!]
                                 [clojure.java.shell sh]
-                                [clojure.pprint pprint])]}}
+                                [clojure.pprint pprint]
+                                ;; [com.inferstructure.repl explore]
+                                )]}}

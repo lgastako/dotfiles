@@ -87,6 +87,7 @@
 ;; exempted below.
 (setq-default show-trailing-whitespace t)
 (add-hook 'cider-repl-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'buffer-menu-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
 ;; Set the print margin
 (setq-default fill-column 79)

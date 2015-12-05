@@ -680,3 +680,8 @@
 ;; Experimental
 (global-set-key (kbd "C-c r a t") 'mc/mark-all-like-this-dwim)
 
+;; ;; TODO: Figure out how to send this to figwheel REPLs automatically:
+;; (use 'figwheel-sidecar.repl-api)
+;; (start-figwheel!)
+;; ;; Then once that's started...
+;; (cljs-repl)

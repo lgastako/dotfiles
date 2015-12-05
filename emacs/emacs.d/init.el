@@ -325,7 +325,7 @@
   :bind ("C-." . company-complete)
   :diminish ""
   :init
-  (setq company-idle-delay 0.5)
+  (setq company-idle-delay 1.0)
   (global-company-mode 1)
   :config (bind-keys :map company-active-map
                      ("C-n"   . company-select-next)
@@ -438,6 +438,7 @@
   (rename-modeline "clojure-mode" clojure-mode "λ"))
 
 (use-package clj-refactor
+  :pin melpa-stable
   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
   :config (cljr-add-keybindings-with-prefix "C-!"))
 
@@ -675,3 +676,7 @@
 
 (put 'upcase-region   'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;; Experimental
+(global-set-key (kbd "C-c r a t") 'mc/mark-all-like-this-dwim)
+

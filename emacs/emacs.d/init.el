@@ -438,7 +438,7 @@
   (rename-modeline "clojure-mode" clojure-mode "λ"))
 
 (use-package clj-refactor
-  :pin melpa-stable
+  :pin    melpa-stable
   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
   :config (cljr-add-keybindings-with-prefix "C-!"))
 

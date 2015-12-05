@@ -1,29 +1,5 @@
 # Changelog
 
-## Up next
-
-- Get rid of `cljr-reload-config`.  We're now sending the configuration options down to the middleware on each request instead of storing it down there.
-- Make magic requires cljc aware.
-- [#215](https://github.com/clojure-emacs/clj-refactor.el/issues/215) Improve the magic requires feature (when you hit `/`) by asking the middleware for all available namespace aliases.
-- Add `cljr-extract-def` which extracts the form at, or around, point as a def.
-- Add `cljr-change-function-signature` to re-order or re-name function parameters.
-- Keep pressing `l` after `cljr-expand-let` to expand further.
-
-### Changes
-
-- `cljr-remove-debug-fns` has been removed.
-- `cljr-magic-require-namespaces` is now only consulted in the event the namespace alias isn't already used in the project.
-- [#217](https://github.com/clojure-emacs/clj-refactor.el/issues/217) When requiring the test framework in test files stop favoring `:refer :all`.
-- [#217](https://github.com/clojure-emacs/clj-refactor.el/issues/217) Add a bunch of defcustoms to parameterise what gets inserted into the test namespaces for the various test frameworks.
-- [#216](https://github.com/clojure-emacs/clj-refactor.el/issues/216) Teach our automatic ns generator about cljc files.
-- Teach `cljr-extract-constant` about the `^:const` hint to the compiler.
-- Use yasnippet for placeholder parameters in `cljr-create-fn-from-example`
-- Highlight the function be promoted with overlays in `cljr-promote-function`.
-- Highlight the form to be extracted with overlays in `cljr-extract-function`.
-- `cljr-create-fn-from-example` is now significantly smarter about guessing parameter numbers and names.
-- `cljr-sort-ns` no longer marks the buffer as changed if it did no work.
-- `cljr-rename-symbol` now fails earlier, before prompting the user for a new name if an AST can't be built due to errors.
-
 ## 1.1.0
 
 - Add `cljr-describe-refactoring` which shows the wiki page describing one of the available refactorings inline in emacs.

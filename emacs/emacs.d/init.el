@@ -671,6 +671,8 @@
 (global-set-key (kbd "M-g d") "Δ")
 (global-set-key (kbd "M-g - >") "→")
 (global-set-key (kbd "M-g = >") "⇒")
+(global-set-key (kbd "M-g f") "∀")
+(global-set-key (kbd "M-g e") "∃")
 
 (setq erc-track-enable-keybindings nil)
 

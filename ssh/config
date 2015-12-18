@@ -101,3 +101,8 @@ Host consul
   LocalForward 8300 localhost:8300
   LocalForward 8400 localhost:8400
   LocalForward 8500 localhost:8500
+
+Host fs1
+  Hostname 66.228.117.214
+  IdentityFile /Users/john/secure/TalkIQKeyPair2015-06-30.pem
+  User ubuntu

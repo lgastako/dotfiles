@@ -1,6 +1,7 @@
 {:repl {:plugins [ ;;[cider/cider-nrepl "0.9.1"]
                   ;; [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                  [cider/cider-nrepl "0.10.0"]
+                  ;; [cider/cider-nrepl "0.10.0"]
+                  [cider/cider-nrepl "0.11.0-SNAPSHOT"]
                   [org.clojure/tools.nrepl "0.2.12"
                    :exclusions [org.clojure/clojure]]
                   ;; [org.clojure/tools.nrepl "0.2.10"

@@ -9,6 +9,7 @@
         delete-horizontal-space
         indent-for-tab-command
         kill-region
+        move-frame-right
         org-delete-char
         org-self-insert-command
         paredit-backward-slurp-sexp

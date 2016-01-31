@@ -18,6 +18,7 @@
         paredit-doublequote
         paredit-forward-delete
         paredit-forward-slurp-sexp
+        paredit-open-curly
         paredit-open-round
         paredit-open-square
         paredit-semicolon

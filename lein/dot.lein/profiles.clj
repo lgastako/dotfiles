@@ -11,6 +11,7 @@
                   [jonase/eastwood "0.2.1"]
                   [lein-ancient "0.6.5"
                    :exclusions [org.clojure/clojure
+                                org.clojure/core.cache
                                 org.clojure/tools.reader
                                 commons-codec]]
                   [lein-auto "0.1.2"]
@@ -19,6 +20,7 @@
                   [lein-codox "0.9.0"]
                   ;; [lein-instant-cheatsheet "2.1.4"
                   ;;  :exclusions [org.clojure/tools.namespace]]
+                  [lein-create-template "0.1.2"]
                   [lein-kibit "0.1.2"]
                   [lein-marginalia "0.8.0"]
                   [lein-vanity "0.2.0"]

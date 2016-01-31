@@ -509,6 +509,16 @@
 (use-package markdown-mode
   :mode ("\\.md\\'" "\\.markdown\\'"))
 
+;; nu
+
+;; wtf, nu-mode?
+(use-package nu-mode
+  :disabled t
+  :pin melpa-stable
+  :mode ("\\.nu\\'" . nu-mode)
+;;  :config (nu-mode 1)
+  )
+
 ;; ocaml
 
 (use-package tuareg
@@ -617,6 +627,9 @@
 ;;   :config
 ;;   (setq geiser-active-implementations '(racket))
 ;;   (setq geiser-racket-binary "/Users/john/local/bin/racket"))
+
+(use-package swift-mode
+  :pin melpa-stable)
 
 (require 'faceup)
 (use-package faceup)

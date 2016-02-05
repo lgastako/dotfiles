@@ -366,6 +366,7 @@
                 save-place-file "~/.emacs.d/saved-placed"))
 
 (use-package auto-package-update
+  :disabled t
   :config
   (progn
     (setq auto-package-update-interval 1)

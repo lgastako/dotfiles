@@ -208,13 +208,14 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-;; (use-package yasnippet
-;;   :load-path "~/.emacs..d/plugins/yasnippet"
-;;   :config
-;;   (setq yas/root-directory "~/.emacs.d/snippets")
-;;   (yas-load-directory yas/root-directory)
-;;   (yas-global-mode 1)
-;;   (yas-reload-all)))
+(use-package yasnippet
+  :disabled t
+  :load-path "~/.emacs..d/plugins/yasnippet"
+  :config
+  (setq yas/root-directory "~/.emacs.d/snippets")
+  (yas-load-directory yas/root-directory)
+  (yas-global-mode 1)
+  (yas-reload-all))
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -339,8 +340,9 @@
          ("M-3" . er/expand-region))
   :init (delete-selection-mode))
 
-;; (use-package hungry-delete
-;;   :init (global-hungry-delete-mode))
+(use-package hungry-delete
+  :disabled t
+  :init (global-hungry-delete-mode))
 
 (use-package beacon
   :diminish beacon-mode
@@ -353,8 +355,9 @@
   :init
   (setq org-startup-indented t))
 
-;; (use-package magit
-;;   :bind (("C-c C-g C-g" . magit-status)))
+(use-package magit
+  :disabled t
+  :bind (("C-c C-g C-g" . magit-status)))
 
 (use-package which-key
   :diminish which-key-mode
@@ -384,12 +387,13 @@
   (which-key-setup-side-window-right))
 
 (use-package golden-ratio
-  :config
-;;  (golden-ratio-mode 1)
+  ;; :config
+  ;; (golden-ratio-mode 1)
   )
 
-;; (use-package mwim
-;;   :bind ("C-a" . mwim-beginning-of-code-or-line))
+(use-package mwim
+  :disabled t
+  :bind ("C-a" . mwim-beginning-of-code-or-line))
 
 (use-package ace-window
   :bind ("M-p" . ace-window)
@@ -420,6 +424,18 @@
   (add-to-list 'auto-mode-alist '("\.edn$"  . clojure-mode))
   (add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
 
+  ;; Fix indenting on some things
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (put-clojure-indent 'defui '(1 nil nil (1)))))
+
+  ;; Why doesn't this work?
+  ;; See https://github.com/clojure-emacs/clojure-mode
+  ;; And https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
+
   ;; Clojure Files
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
@@ -447,6 +463,11 @@
 
 (use-package coffee-mode
   :mode "\\.coffee\\'")
+
+;; erlang
+
+(use-package erlang
+  :ensure t)
 
 ;; go
 
@@ -491,14 +512,41 @@
 
 ;; html
 
-;; (use-package mkhtml-htmlize)
-;; (use-package mkhtml)
+(use-package mkhtml-htmlize
+  :disabled t)
+
+(use-package mkhtml
+  :disabled t)
 
 (use-package zencoding-mode
   ;; Auto-start on any markup modes
   :config (add-hook 'sgml-mode-hook 'zencoding-mode))
 
+;; javascript
+
+(use-package js2-mode
+  :mode (("\\.js$" . js2-mode)
+         ("Jakefile$" . js2-mode)
+         ("\\.babelrc$" . js2-mode))
+  :interpreter ("node" . js2-mode)
+  ;; :bind (("C-a" . back-to-indentation-or-beginning-of-line)
+  ;;        ("C-M-h" . backward-kill-word))
+  :config
+  (progn
+;;    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+    ;; (add-hook 'js2-mode-hook (lambda ()
+    ;;                            (bind-key "M-j" 'join-line-or-lines-in-region js2-mode-map)))
+    ))
+
+
 ;; json
+
+(use-package json-reformat
+  :disabled t)
+
+(use-package json-mode
+  :disabled t
+  :pin marmalade)
 
 (defun json-format ()
   (interactive)
@@ -620,17 +668,24 @@
   :commands (sly)
   :config (setq inferior-lisp-program (executable-find "sbcl")))
 
+;; scala
+
+(use-package scala-mode2)
+
+(use-package sbt-mode
+  :disabled t)
+
 ;; scheme
 
-;; (use-package quack)
-;; (use-package geiser
-;;   :mode "\\.scm\\'"
-;;   :config
-;;   (setq geiser-active-implementations '(racket))
-;;   (setq geiser-racket-binary "/Users/john/local/bin/racket"))
+(use-package quack
+  :disabled t)
 
-(use-package swift-mode
-  :pin melpa-stable)
+(use-package geiser
+  :disabled t
+  :mode "\\.scm\\'"
+  :config
+  (setq geiser-active-implementations '(racket))
+  (setq geiser-racket-binary "/Users/john/local/bin/racket"))
 
 (require 'faceup)
 (use-package faceup)
@@ -642,6 +697,11 @@
             '(lambda ()
                (define-key racket-mode-map (kbd "C-c C-l") 'racket-run)
                (define-key racket-mode-map (kbd "C-c C-k") 'racket-test))))
+
+;; swift
+
+(use-package swift-mode
+  :pin melpa-stable)
 
 ;; YAML
 
@@ -681,6 +741,9 @@
 (global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
 ;; Type greek lambda character with "M-g l"
+;; Dunno why these two don't work.
+;; (global-set-key (kbd "M-g c") "©")
+;; (global-set-key (kbd "M-g t") "™")
 (global-set-key (kbd "M-g l") "λ")
 (global-set-key (kbd "M-g d") "Δ")
 (global-set-key (kbd "M-g - >") "→")

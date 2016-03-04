@@ -9,11 +9,22 @@
                   [refactor-nrepl "1.1.0"]]}
  :user {:plugins [[org.clojure/clojurescript "1.7.170"] ;; needed to prevent breakage in ASP with vinyasa.lein
                   [jonase/eastwood "0.2.1"]
+                  ;; [lein-ancient "0.6.5"
+                  ;;  :exclusions [org.clojure/clojure
+                  ;;               org.clojure/core.cache
+                  ;;               org.clojure/tools.reader
+                  ;;               commons-codec]]
                   [lein-ancient "0.6.5"
                    :exclusions [org.clojure/clojure
                                 org.clojure/core.cache
                                 org.clojure/tools.reader
                                 commons-codec]]
+                  [ancient-clj "0.3.6"
+                   :exclusions [com.amazonaws/aws-java-sdk-s3]]
+                  [clj-http "1.0.1"
+                   :exclusions [joda-time org.clojure/clojure com.cognitect/transit-clj]]
+                  [slingshot "0.10.3"
+                   :exclusions [org.clojure/clojure]]
                   [lein-auto "0.1.2"]
                   [lein-bikeshed "0.2.0"]
                   [lein-cloverage "1.0.2"]
@@ -21,6 +32,7 @@
                   ;; [lein-instant-cheatsheet "2.1.4"
                   ;;  :exclusions [org.clojure/tools.namespace]]
                   [lein-create-template "0.1.2"]
+                  [lein-fruit "0.2.3"]
                   [lein-kibit "0.1.2"]
                   [lein-marginalia "0.8.0"]
                   [lein-vanity "0.2.0"]
@@ -30,6 +42,7 @@
                   ;; [varspotting "0.0.2"]
                   ;; [venantius/yagni "0.1.1"]
                   ]
+        :ios {:robovm-path "/Users/john/Downloads/robovm-1.4.0"}
         :dependencies [[alembic "0.3.2"]
                        ;; Had to add this manually for some reason to avoid
                        ;; problems starting a REPL.
@@ -39,7 +52,10 @@
                        [im.chit/vinyasa "0.4.2"]
                        ;; [io.aviso/pretty "0.1.8"]
                        [leiningen #=(leiningen.core.main/leiningen-version)
-                        :exclusions [commons-logging]]
+                        :exclusions [commons-logging
+                                     org.apache.httpcomponents/httpclient
+                                     org.apache.maven.wagon/wagon-provider-api
+                                     org.codehaus.plexus/plexus-utils]]
                        [org.clojure/tools.namespace "0.2.4"]
                        [spyscope "0.1.5"]]
         :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}

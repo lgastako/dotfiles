@@ -672,8 +672,11 @@
 
 (use-package scala-mode2)
 
-(use-package sbt-mode
-  :disabled t)
+;; fuck this noise
+;; (use-package sbt-mode
+;;   :mode "\\.sbt\\'"
+;;   :init
+;;   (setq exec-path (append exec-path '("/usr/local/bin"))))
 
 ;; scheme
 

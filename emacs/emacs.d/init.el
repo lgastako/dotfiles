@@ -301,8 +301,9 @@
   ;; Enable Ace Jump mode
   ;;   'C-u C-c SPC <char>' to jump to a specific char
   ;;   'C-c SPC <char>' to jump to a specific first-char
-  :bind (("C-c SPC" . ace-jump-mode)
-         ("C-c C-SPC" . ace-jump-mode))
+  ;; :bind (("C-c SPC" . ace-jump-mode)
+  ;;        ("C-c C-SPC" . ace-jump-mode))
+  :bind (("C-c C-SPC" . ace-jump-char-mode))
   :config
   (defvar ace-jump-mode-submode-list
     '(ace-jump-char-mode

@@ -468,7 +468,12 @@
 ;; elixir
 
 (use-package elixir-mode
-  :ensure t)
+  :config
+  (use-package alchemist
+    :disabled t
+    :diminish alchemist-mode
+    ;; :ensure t
+    ))
 
 ;; erlang
 

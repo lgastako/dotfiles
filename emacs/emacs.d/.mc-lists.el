@@ -29,6 +29,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+        ace-jump-mode
+        ace-jump-move
         helm-git-grep
         markdown-exdent-or-delete
         paredit-backward-kill-word

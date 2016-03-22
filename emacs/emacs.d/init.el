@@ -635,6 +635,11 @@
   (use-package cython-mode
     :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
 
+;; REST
+
+(use-package restclient
+  :mode ("\\.rest\\'" . restclient-mode))
+
 ;; ruby
 
 (use-package ruby-mode
@@ -796,6 +801,7 @@ negative rotates |n| times in the other direction."
             (set-window-buffer-start-and-point w2 b1 s1 p1)))))))
 
 (global-set-key (kbd "C-x r w") 'rotate-windows)
+(global-set-key (kbd "C-x w r") 'rotate-windows)
 
 ;; Experimental
 (global-set-key (kbd "C-c r a t") 'mc/mark-all-like-this-dwim)
@@ -805,3 +811,4 @@ negative rotates |n| times in the other direction."
 ;; (start-figwheel!)
 ;; ;; Then once that's started...
 ;; (cljs-repl)
+(put 'erase-buffer 'disabled nil)

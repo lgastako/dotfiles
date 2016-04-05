@@ -1,12 +1,18 @@
-{:repl {:plugins [ ;;[cider/cider-nrepl "0.9.1"]
+{:repl {:plugins [
+                  ;;[cider/cider-nrepl "0.9.1"]
                   ;; [cider/cider-nrepl "0.10.0-SNAPSHOT"]
                   ;; [cider/cider-nrepl "0.10.0"]
-                  [cider/cider-nrepl "0.11.0-SNAPSHOT"]
+                  ;; [cider/cider-nrepl "0.11.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.11.0"]
+
                   [org.clojure/tools.nrepl "0.2.12"
                    :exclusions [org.clojure/clojure]]
                   ;; [org.clojure/tools.nrepl "0.2.10"
                   ;;  :exclusions [org.clojure/clojure]]
-                  [refactor-nrepl "1.1.0"]]}
+
+                  ;; [refactor-nrepl "1.1.0"]
+                  [refactor-nrepl "2.2.0"]
+                  ]}
  :user {:plugins [[org.clojure/clojurescript "1.7.170"] ;; needed to prevent breakage in ASP with vinyasa.lein
                   [jonase/eastwood         "0.2.1"]
                   [lein-ancient            "0.6.5"
@@ -44,16 +50,17 @@
                        ;; Had to add this manually for some reason to avoid
                        ;; problems starting a REPL.
                        [commons-logging/commons-logging "1.2"]
-                       [com.gfredericks/debug-repl "0.0.7"]
-                       ;; [com.inferstructure/repl "0.1.0-SNAPSHOT"]
-                       [im.chit/vinyasa "0.4.2"]
-                       ;; [io.aviso/pretty "0.1.8"]
+                       [com.cemerick/pomegranate        "0.3.1"]
+                       [com.gfredericks/debug-repl      "0.0.7"]
+                       ;; [com.inferstructure/repl         "0.1.0-SNAPSHOT"]
+                       [im.chit/vinyasa                 "0.4.2"]
+                       ;; [io.aviso/pretty                 "0.1.8"]
                        [leiningen #=(leiningen.core.main/leiningen-version)
                         :exclusions [commons-logging
                                      org.apache.httpcomponents/httpclient
                                      org.apache.maven.wagon/wagon-provider-api
                                      org.codehaus.plexus/plexus-utils]]
-                       [org.clojure/tools.namespace "0.2.4"]
+                       [org.clojure/tools.namespace     "0.2.4"]
                        [spyscope "0.1.5"]]
         :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
         :injections [(require 'leiningen.core.main)

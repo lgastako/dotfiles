@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        cider-jack-in
         cider-load-buffer
         cljr-slash
         dabbrev-expand
@@ -17,6 +18,7 @@
         paredit-comment-dwim
         paredit-doublequote
         paredit-forward-delete
+        paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-open-curly
         paredit-open-round

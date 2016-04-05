@@ -171,8 +171,8 @@
   ;; Maximize window on startup
   (maximize-frame))
 
-;; (use-package revive
-;;   :pin melpa-stable)
+(use-package revive
+  :pin melpa-stable)
 
 (use-package ido
   :pin melpa-stable
@@ -446,14 +446,19 @@
 
 (use-package clojure-mode
   :pin melpa-stable
-  :mode ("\\.clj\\'" "\\.cljs\\'" "\\.cljc\\'")
+  :mode ()
+  :mode (("\\.clj$" . clojure-mode)
+         ("\\.cljs$" . clojurescript-mode)
+         ("\\.cljc$" . clojurec-mode)
+         ("\\.cljx$" . clojurex-mode)
+         ("\\.edn$" . clojure-mode))
   :init
 
-  (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\.cljc$" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\.edn$"  . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
+  ;; (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+  ;; (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
+  ;; (add-to-list 'auto-mode-alist '("\.cljc$" . clojure-mode))
+  ;; (add-to-list 'auto-mode-alist '("\.edn$"  . clojure-mode))
+  ;; (add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
 
   ;; Fix indenting on some things
   (add-hook 'clojure-mode-hook

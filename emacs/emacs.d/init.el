@@ -19,7 +19,7 @@
       kept-new-versions         6
       kept-old-versions         2
       ring-bell-function        'ignore
-      ;; use-package-always-ensure t
+      use-package-always-ensure t
       visible-bell              t
       version-control           t)   ;; use versioned backups
 
@@ -159,6 +159,7 @@
 ;; Frame cmds is loaded as early as possible in order to
 ;; maximize as early as possible.
 (use-package frame-cmds
+  :pin melpa-stable
   :bind (("C-c f m" . maximize-frame)
          ("C-c f r" . restore-frame)
          ("C-c f o" . other-window-or-frame)
@@ -170,29 +171,36 @@
   ;; Maximize window on startup
   (maximize-frame))
 
-;; (use-package revive)
+;; (use-package revive
+;;   :pin melpa-stable)
 
 (use-package ido
+  :pin melpa-stable
   :config (ido-mode t))
 
 (use-package rainbow-delimiters
+  :pin melpa-stable
   ;; For all programming modes:
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package flymake-cursor)
+(use-package flymake-cursor
+  :pin melpa-stable)
 
 (use-package ws-trim
+  :pin melpa-stable
   :init   (setq ws-trim-global-modes t)
   :config (global-ws-trim-mode t))
 
 (use-package edit-server
+  :pin melpa-stable
   :if window-system
   :init
   ;;  (add-hook 'after-init-hook 'server-start t)
   ;;  (add-hook 'after-init-hook 'edit-server-start t)
   )
 
-(use-package fill-column-indicator)
+(use-package fill-column-indicator
+  :pin melpa-stable)
 
 ;; Better uniqification of buffer names
 ;; doesn't work with use-package for some reason
@@ -202,6 +210,7 @@
 ;;   :config (setq uniquify-buffer-name-style 'forward))
 
 (use-package multiple-cursors
+  :pin melpa-stable
   :config
   (global-set-key (kbd "C-c m") 'mc/edit-lines)
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
@@ -209,8 +218,8 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
 (use-package yasnippet
-  :disabled t
-  :load-path "~/.emacs..d/plugins/yasnippet"
+  :pin melpa-stable
+  :load-path "~/.emacs.d/plugins/yasnippet"
   :config
   (setq yas/root-directory "~/.emacs.d/snippets")
   (yas-load-directory yas/root-directory)
@@ -218,14 +227,18 @@
   (yas-reload-all))
 
 (use-package dockerfile-mode
+  :pin melpa-stable
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-(use-package popup)
+(use-package popup
+  :pin melpa-stable)
 
-(use-package auto-complete)
+(use-package auto-complete
+  :pin melpa-stable)
 
 ;; Require for helm
-(use-package async)
+(use-package async
+  :pin melpa-stable)
 
 (use-package helm
   ;; Why isn't diminishing helm working?
@@ -294,10 +307,13 @@
     '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))
 
 (use-package projectile
+  :pin melpa-stable
   :diminish projectile-mode
   :config (projectile-global-mode t))
 
 (use-package ace-jump-mode
+  :pin melpa-stable
+
   ;; Enable Ace Jump mode
   ;;   'C-u C-c SPC <char>' to jump to a specific char
   ;;   'C-c SPC <char>' to jump to a specific first-char
@@ -311,12 +327,13 @@
       ace-jump-line-mode)))
 
 (use-package winner
+  :pin melpa-stable
   ;; Winner mode
   ;;   'C-c left' and 'C-c right' to undo/redo changes to window settings
   :init (winner-mode))
 
 (use-package drag-stuff
-  :disabled t
+  :pin melpa-stable
   ;; 'M-N' / 'M-P' to move lines or selected groups of lines up/down
   ;; 'M-<left>' / 'M-<right>' to move words or selected regions
   :init (drag-stuff-global-mode 1)
@@ -324,6 +341,7 @@
          ("M-P" . drag-stuff-up)))
 
 (use-package company
+  :pin melpa-stable
   :bind ("C-." . company-complete)
   :diminish ""
   :init
@@ -336,16 +354,18 @@
                      ("<tab>" . company-complete)))
 
 (use-package expand-region
+  :pin melpa-stable
   :bind (("C-@" . er/expand-region)
          ("C-=" . er/expand-region)
          ("M-3" . er/expand-region))
   :init (delete-selection-mode))
 
 (use-package hungry-delete
-  :disabled t
+  :pin melpa-stable
   :init (global-hungry-delete-mode))
 
 (use-package beacon
+  :pin melpa-stable
   :diminish beacon-mode
   :init
   (beacon-mode 1)
@@ -353,23 +373,27 @@
         beacon-color "#cccc00"))
 
 (use-package org
-  :init
-  (setq org-startup-indented t))
+  :pin melpa-stable
+  :init (setq org-startup-indented t))
 
 (use-package magit
+  :pin melpa-stable
   :disabled t
   :bind (("C-c C-g C-g" . magit-status)))
 
 (use-package which-key
+  :pin melpa-stable
   :diminish which-key-mode
   :config (which-key-mode))
 
 (use-package saveplace
+  :pin melpa-stable
   :config
   (setq-default save-place t
                 save-place-file "~/.emacs.d/saved-placed"))
 
 (use-package auto-package-update
+  :pin melpa-stable
   :disabled t
   :config
   (progn
@@ -377,9 +401,11 @@
     (auto-package-update-maybe)))
 
 (use-package free-keys
+  :pin melpa-stable
   :defer t)
 
 (use-package which-key
+  :pin melpa-stable
   :defer t
   :diminish ""
   ;; :init	(after-init)
@@ -388,21 +414,24 @@
   (which-key-setup-side-window-right))
 
 (use-package golden-ratio
+  :pin melpa-stable
   ;; :config
   ;; (golden-ratio-mode 1)
   )
 
 (use-package mwim
-  :disabled t
+  :pin melpa-stable
   :bind ("C-a" . mwim-beginning-of-code-or-line))
 
 (use-package ace-window
+  :pin melpa-stable
   :bind ("M-p" . ace-window)
   :config
   (setq aw-background t))
 
 ;; Doesn't work with something else?
 (use-package rainbow-mode
+  :pin melpa-stable
   :diminish (rainbow-mode . "")
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))
@@ -416,6 +445,7 @@
   :pin melpa-stable)
 
 (use-package clojure-mode
+  :pin melpa-stable
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.cljc\\'")
   :init
 
@@ -438,11 +468,11 @@
               (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
 
   ;; Clojure Files
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+  ;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
   ;; In the REPL
   (add-hook 'cider-repl-mode-hook #'subword-mode)
-  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+  ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
   (setq exec-path (append exec-path '("/Users/john/dotfiles/bin"))
         cider-lein-command "/Users/john/dotfiles/bin/lein"
@@ -456,21 +486,23 @@
   (rename-modeline "clojure-mode" clojure-mode "λ"))
 
 (use-package clj-refactor
-  :pin    melpa-stable
+  :pin melpa-stable
   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
   :config (cljr-add-keybindings-with-prefix "C-!"))
 
 ;; coffescript
 
 (use-package coffee-mode
+  :pin melpa-stable
   :mode "\\.coffee\\'")
 
 ;; elixir
 
 (use-package elixir-mode
+  :pin melpa-stable
   :config
   (use-package alchemist
-    :disabled t
+    :pin melpa-stable
     :diminish alchemist-mode
     ;; :ensure t
     ))
@@ -478,13 +510,15 @@
 ;; erlang
 
 (use-package erlang
+  :pin melpa-stable
+  :disabled t        ;; causes slow load
   :ensure t)
 
 ;; go
 
 (use-package go-mode
+  :pin melpa-stable
   :init
-
   (setenv "GOPATH" "~/go")
   ;; These next two should probably be moved out to the top level, no?
   (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -494,24 +528,27 @@
   :config
 
   (use-package flymake-go
-    :disabled t
-    :init
+    :pin melpa-stable
+        :init
     (setq gofmt-command "goimports")
     :config
     (add-hook 'before-save-hook 'gofmt-before-save))
 
   (use-package go-eldoc
+    :pin melpa-stable
     :config
     (add-hook 'go-mode-hook 'go-eldoc-setup)))
 
 ;; haml
 
 (use-package haml-mode
+  :pin melpa-stable
   :mode "\\.haml\\'")
 
 ;; haskell
 
 (use-package haskell-mode
+  :pin melpa-stable
   :mode ("\\.hs\\'" "\\.lhs\\'")
   ;; :mode "\\.\\(?:[gh]s\\|hi\\)\\'"
 
@@ -524,18 +561,22 @@
 ;; html
 
 (use-package mkhtml-htmlize
+  :pin melpa-stable
   :disabled t)
 
 (use-package mkhtml
+  :pin melpa-stable
   :disabled t)
 
 (use-package zencoding-mode
+  :pin melpa-stable
   ;; Auto-start on any markup modes
   :config (add-hook 'sgml-mode-hook 'zencoding-mode))
 
 ;; javascript
 
 (use-package js2-mode
+  :pin melpa-stable
   :mode (("\\.js$" . js2-mode)
          ("Jakefile$" . js2-mode)
          ("\\.babelrc$" . js2-mode))
@@ -553,10 +594,10 @@
 ;; json
 
 (use-package json-reformat
+  :pin melpa-stable
   :disabled t)
 
 (use-package json-mode
-  :disabled t
   :pin marmalade)
 
 (defun json-format ()
@@ -567,14 +608,15 @@
 (global-set-key (kbd "C-x j") 'json-format)
 
 (use-package markdown-mode
+  :pin melpa-stable
   :mode ("\\.md\\'" "\\.markdown\\'"))
 
 ;; nu
 
 ;; wtf, nu-mode?
 (use-package nu-mode
-  :disabled t
   :pin melpa-stable
+  :disabled t
   :mode ("\\.nu\\'" . nu-mode)
 ;;  :config (nu-mode 1)
   )
@@ -582,14 +624,18 @@
 ;; ocaml
 
 (use-package tuareg
+  :pin melpa-stable
   :mode "\\.ml\\'"
   :config
-  (use-package utop)
-  (use-package merlin))
+  (use-package utop
+    :pin melpa-stable)
+  (use-package merlin
+    :pin melpa-stable))
 
 ;; python
 
 (use-package python
+  :pin melpa-stable
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
 
@@ -606,12 +652,14 @@
   ;; In theory 'C-h S' will lookup symbols, but even after installing the python
   ;; info files per https://bitbucket.org/jonwaltman/pydoc-info/ it still doesn't
   ;; quite work for me.
-  (use-package pydoc-info)
+  (use-package pydoc-info
+    :pin melpa-stable)
 
   ;; Causing problems. Very annoying.
   ;;(add-hook 'python-mode-hook 'fci-mode)
 
-  (use-package ipython)
+  (use-package ipython
+    :pin melpa-stable)
 
   ;; ===============================================
   ;; from http://www.reddit.com/r/emacs/comments/24l8f2/beginner_setting_up_emacs_for_python
@@ -630,19 +678,24 @@
   ;; ===============================================
 
   (use-package virtualenvwrapper
+    :pin melpa-stable
+    ;; :disabled t
     :commands (venv-workon))
 
   (use-package cython-mode
+    :pin melpa-stable
     :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
 
 ;; REST
 
 (use-package restclient
+  :pin melpa-stable
   :mode ("\\.rest\\'" . restclient-mode))
 
 ;; ruby
 
 (use-package ruby-mode
+  :pin melpa-stable
   :mode "\\.rb\\'"
   :interpreter "ruby"
   :init
@@ -654,6 +707,7 @@
   (add-to-list 'load-path "/Library/Ruby/Gems/2.0.0/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
   ;;(add-to-list 'load-path "~/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
   (use-package el4r
+    :pin melpa-stable
     :disabled t
     :config
     (el4r-boot)
@@ -662,11 +716,13 @@
 ;; rust
 
 (use-package rust-mode
+  :pin melpa-stable
   :mode "\\.rs\\'")
 
 ;; salesforce
 
-;; (use-package apex-mode)
+;; (use-package apex-mode
+;;   :pin melpa-stable)
 ;; (require 'apex-mode)
 
 (add-to-list 'auto-mode-alist '("\\.visualforcepage$" . html-mode))
@@ -676,20 +732,24 @@
 ;; sass
 
 (use-package sass-mode
+  :pin melpa-stable
   :mode ("\\.sass\\'" "\\.scss\\'"))
 
 ;; sbcl (common lisp)
 
 (use-package sly
+  :pin melpa-stable
   :commands (sly)
   :config (setq inferior-lisp-program (executable-find "sbcl")))
 
 ;; scala
 
-(use-package scala-mode2)
+(use-package scala-mode2
+  :pin melpa-stable)
 
 ;; fuck this noise
 ;; (use-package sbt-mode
+;;   :pin melpa-stable
 ;;   :mode "\\.sbt\\'"
 ;;   :init
 ;;   (setq exec-path (append exec-path '("/usr/local/bin"))))
@@ -697,19 +757,21 @@
 ;; scheme
 
 (use-package quack
-  :disabled t)
+  :pin melpa-stable)
 
 (use-package geiser
-  :disabled t
+  :pin melpa-stable
   :mode "\\.scm\\'"
   :config
   (setq geiser-active-implementations '(racket))
   (setq geiser-racket-binary "/Users/john/local/bin/racket"))
 
-(require 'faceup)
-(use-package faceup)
+;; (require 'faceup)
+(use-package faceup
+  :pin melpa-stable)
 
 (use-package racket-mode
+  :pin melpa
   :defer t
   :config
   (add-hook 'racket-mode-hook
@@ -725,9 +787,12 @@
 ;; YAML
 
 (use-package yaml-mode
+  :pin melpa-stable
   :mode "\\.yml\\'")
 
 (use-package flycheck
+  :disabled t
+  :pin melpa-stable
   :init
   ;; (add-hook 'after-init-hook #'global-flycheck-mode)
   :config
@@ -737,6 +802,7 @@
     (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
 (use-package paredit
+  :pin melpa
   :diminish "par"
   :init
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
@@ -745,60 +811,59 @@
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
   :config
-  (global-set-key (kbd "C-x p") 'paredit-mode))
+  (global-set-key (kbd "C-x p") 'paredit-mode)
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-;; (require 'simple-secrets)
-;; (require 'secret-funs)
+  (add-to-list 'load-path "~/.emacs.d/lisp")
+  ;; (require 'simple-secrets)
+  ;; (require 'secret-funs)
 
-;; (global-set-key (kbd "C-c s n")
-;;                 (create-new-site-secret))
+  ;; (global-set-key (kbd "C-c s n")
+  ;;                 (create-new-site-secret))
 
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
-(global-set-key (kbd "C-c l")   'linum-mode)
-(global-set-key (kbd "C-c C-l") 'global-linum-mode)
+  (global-set-key (kbd "RET") 'newline-and-indent)
+  (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
+  (global-set-key (kbd "C-c l")   'linum-mode)
+  (global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
-;; Type greek lambda character with "M-g l"
-;; Dunno why these two don't work.
-;; (global-set-key (kbd "M-g c") "©")
-;; (global-set-key (kbd "M-g t") "™")
-(global-set-key (kbd "M-g l") "λ")
-(global-set-key (kbd "M-g d") "Δ")
-(global-set-key (kbd "M-g - >") "→")
-(global-set-key (kbd "M-g = >") "⇒")
-(global-set-key (kbd "M-g f") "∀")
-(global-set-key (kbd "M-g e") "∃")
+  ;; Type greek lambda character with "M-g l"
+  ;; Dunno why these two don't work.
+  ;; (global-set-key (kbd "M-g c") "©")
+  ;; (global-set-key (kbd "M-g t") "™")
+  (global-set-key (kbd "M-g l") "λ")
+  (global-set-key (kbd "M-g d") "Δ")
+  (global-set-key (kbd "M-g - >") "→")
+  (global-set-key (kbd "M-g = >") "⇒")
+  (global-set-key (kbd "M-g f") "∀")
+  (global-set-key (kbd "M-g e") "∃")
 
-(setq erc-track-enable-keybindings nil)
+  (setq erc-track-enable-keybindings nil)
 
-(put 'upcase-region   'disabled nil)
-(put 'downcase-region 'disabled nil)
+  (put 'upcase-region   'disabled nil)
+  (put 'downcase-region 'disabled nil)
 
-;; Allow rotating out-of-order windows.
-(defun rotate-windows (arg)
-  "Rotate your windows; use the prefix argument to rotate the
-other direction.  Additionally given a numeric prefix argument n,
-it will rotate the windows n times; if the numeric argument is
-negative rotates |n| times in the other direction."
-  (interactive "P")
-  (if (not (> (count-windows) 1))
-      (message "You can't rotate a single window!")
-    (let* ((rotate-times (prefix-numeric-value arg))
-           (direction (if (or (< rotate-times 0) (equal arg '(4)))
-                          'reverse 'identity)))
-      (dotimes (_ (abs rotate-times))
-        (dotimes (i (- (count-windows) 1))
-          (let* ((w1 (elt (funcall direction (window-list)) i))
-                 (w2 (elt (funcall direction (window-list)) (+ i 1)))
-                 (b1 (window-buffer w1))
-                 (b2 (window-buffer w2))
-                 (s1 (window-start w1))
-                 (s2 (window-start w2))
-                 (p1 (window-point w1))
-                 (p2 (window-point w2)))
-            (set-window-buffer-start-and-point w1 b2 s2 p2)
-            (set-window-buffer-start-and-point w2 b1 s1 p1)))))))
+  (defun rotate-windows (arg)
+    "Rotate your windows; use the prefix argument to rotate the
+     other direction.  Additionally given a numeric prefix argument n,
+     it will rotate the windows n times; if the numeric argument is
+     negative rotates |n| times in the other direction."
+    (interactive "P")
+    (if (not (> (count-windows) 1))
+        (message "You can't rotate a single window!")
+      (let* ((rotate-times (prefix-numeric-value arg))
+             (direction (if (or (< rotate-times 0) (equal arg '(4)))
+                            'reverse 'identity)))
+        (dotimes (_ (abs rotate-times))
+          (dotimes (i (- (count-windows) 1))
+            (let* ((w1 (elt (funcall direction (window-list)) i))
+                   (w2 (elt (funcall direction (window-list)) (+ i 1)))
+                   (b1 (window-buffer w1))
+                   (b2 (window-buffer w2))
+                   (s1 (window-start w1))
+                   (s2 (window-start w2))
+                   (p1 (window-point w1))
+                   (p2 (window-point w2)))
+              (set-window-buffer-start-and-point w1 b2 s2 p2)
+              (set-window-buffer-start-and-point w2 b1 s1 p1))))))))
 
 (global-set-key (kbd "C-x r w") 'rotate-windows)
 (global-set-key (kbd "C-x w r") 'rotate-windows)

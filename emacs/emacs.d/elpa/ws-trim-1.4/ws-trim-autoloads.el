@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "ws-trim" "ws-trim.el" (22091 26818 0 0))
-;;; Generated autoloads from ws-trim.el
+;;;### (autoloads nil "ws-trim" "../../../../../.emacs.d/elpa/ws-trim-1.4/ws-trim.el"
+;;;;;;  "274907683a3bdd63b7acc952c57dd66a")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/ws-trim-1.4/ws-trim.el
 
 (defvar ws-trim-method-hook '(ws-trim-leading ws-trim-trailing) "\
 *The kind of trimming done by the WS Trim mode and functions.
@@ -175,6 +176,12 @@ off in buffers depending on their major modes.  The behavior is
 controlled by the `ws-trim-global-modes' variable.
 
 \(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/ws-trim-1.4/ws-trim-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/ws-trim-1.4/ws-trim.el") (22275
+;;;;;;  15742 641111 0))
 
 ;;;***
 

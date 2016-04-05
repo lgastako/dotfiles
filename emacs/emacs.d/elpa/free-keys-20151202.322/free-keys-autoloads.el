@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "free-keys" "free-keys.el" (22111 26378 0 0))
-;;; Generated autoloads from free-keys.el
+;;;### (autoloads nil "free-keys" "../../../../../.emacs.d/elpa/free-keys-20151202.322/free-keys.el"
+;;;;;;  "a095f6a62ab5c515e2c33ee87e8692dc")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/free-keys-20151202.322/free-keys.el
 
 (autoload 'free-keys "free-keys" "\
 Display free keys in current buffer.
@@ -19,6 +20,12 @@ hitting 'p' in the *Free keys* buffer.  Prefix is supplied in
 format recognized by `kbd', for example \"C-x\".
 
 \(fn &optional PREFIX BUFFER)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/free-keys-20151202.322/free-keys-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/free-keys-20151202.322/free-keys.el")
+;;;;;;  (22275 17380 216928 0))
 
 ;;;***
 

@@ -19,7 +19,7 @@
       kept-new-versions         6
       kept-old-versions         2
       ring-bell-function        'ignore
-      use-package-always-ensure t
+      ;; use-package-always-ensure t
       visible-bell              t
       version-control           t)   ;; use versioned backups
 

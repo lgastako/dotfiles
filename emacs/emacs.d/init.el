@@ -499,7 +499,13 @@
 
 (use-package coffee-mode
   :pin melpa-stable
-  :mode "\\.coffee\\'")
+  :mode "\\.coffee\\'"
+  :config
+  (defun coffee-tabs ()
+    (setq coffee-indent-tabs-mode t)
+    (setq indent-tabs-mode t)
+    (setq coffee-tab-width 4))
+  (add-hook 'coffee-mode-hook 'coffee-tabs))
 
 ;; elixir
 
@@ -534,7 +540,7 @@
 
   (use-package flymake-go
     :pin melpa-stable
-        :init
+    :init
     (setq gofmt-command "goimports")
     :config
     (add-hook 'before-save-hook 'gofmt-before-save))

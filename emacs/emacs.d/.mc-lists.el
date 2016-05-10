@@ -6,15 +6,19 @@
         cider-jack-in
         cider-load-buffer
         cljr-slash
+        company-complete
         dabbrev-expand
         delete-horizontal-space
         indent-for-tab-command
         kill-region
         move-frame-right
+        mwim-beginning-of-code-or-line
         org-delete-char
         org-self-insert-command
         paredit-backward-slurp-sexp
+        paredit-close-curly
         paredit-close-round
+        paredit-close-square
         paredit-comment-dwim
         paredit-doublequote
         paredit-forward-delete

@@ -270,14 +270,19 @@
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
 
+  (global-set-key (kbd "M-x") 'helm-M-x)
+
   ;; My muscle memory is set to "C-x-b" for selecting buffers, so lets change that to helm:
   (global-set-key (kbd "C-x C-b") 'list-buffers)
   (global-set-key (kbd "C-x b") 'helm-mini)
+
+
 
   (helm-mode 1)
 
   (use-package ac-helm
     :bind (("C-c g"   . helm-git-grep)
+           ("C-c C-g"   . helm-git-grep)
            ("C-c t"   . helm-git-grep-at-point)
            ("C-x C-f" . helm-find-files)
            ("C-c M-i" . heml-swoop))
@@ -446,19 +451,12 @@
 
 (use-package clojure-mode
   :pin melpa-stable
-  :mode ()
   :mode (("\\.clj$" . clojure-mode)
          ("\\.cljs$" . clojurescript-mode)
          ("\\.cljc$" . clojurec-mode)
          ("\\.cljx$" . clojurex-mode)
          ("\\.edn$" . clojure-mode))
   :init
-
-  ;; (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
-  ;; (add-to-list 'auto-mode-alist '("\.cljx$" . clojure-mode))
-  ;; (add-to-list 'auto-mode-alist '("\.cljc$" . clojure-mode))
-  ;; (add-to-list 'auto-mode-alist '("\.edn$"  . clojure-mode))
-  ;; (add-to-list 'auto-mode-alist '("\.boot$" . clojure-mode))
 
   ;; Fix indenting on some things
   (add-hook 'clojure-mode-hook

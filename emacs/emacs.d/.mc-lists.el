@@ -9,6 +9,7 @@
         company-complete
         dabbrev-expand
         delete-horizontal-space
+        hungry-delete-forward
         indent-for-tab-command
         kill-region
         move-frame-right

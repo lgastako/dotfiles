@@ -516,6 +516,10 @@
     ;; :ensure t
     ))
 
+;; elm
+(use-package elm-mode
+  :pin melpa-stable)
+
 ;; erlang
 
 (use-package erlang

@@ -74,8 +74,15 @@
 ;; Highlight matching delimiters
 (show-paren-mode 1)
 
+;; Never tabs
+(setq-default indent-tabs-mode nil)
+
 ;; Prevent insertion of tabs for spaces
 (setq-default indent-tabs-mode nil)
+
+(defun my/haskell-cabal-mode-hook ()
+  (setq indent-tabs-mode nil))
+(add-hook 'haskell-cabal-mode-hook 'my/haskell-cabal-mode-hook)
 
 (setq-default tab-width 4)
 
@@ -518,14 +525,20 @@
 
 ;; elm
 (use-package elm-mode
-  :pin melpa-stable)
+  :pin melpa-stable
+  :init
+  (setq elm-format-on-save t)
+  (setq elm-indent-offset 4)
+  (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (add-to-list 'company-backends 'company-elm))
 
 ;; erlang
 
 (use-package erlang
   :pin melpa-stable
   :disabled t        ;; causes slow load
-  :ensure t)
+  )
 
 ;; go
 

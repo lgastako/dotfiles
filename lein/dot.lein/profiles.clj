@@ -6,7 +6,8 @@
                   [cider/cider-nrepl "0.11.0"]
 
                   [org.clojure/tools.nrepl "0.2.12"
-                   :exclusions [org.clojure/clojure]]
+                   :exclusions [org.clojure/clojure
+                                org.clojure/tools.nrepl]]
                   ;; [org.clojure/tools.nrepl "0.2.10"
                   ;;  :exclusions [org.clojure/clojure]]
 
@@ -28,7 +29,8 @@
                   [slingshot                "0.10.3"
                    :exclusions [org.clojure/clojure]]
                   [lein-auto                "0.1.2"]
-                  [lein-bikeshed            "0.2.0"]
+                  [lein-bikeshed            "0.2.0"
+                   :exclusions [org.clojure/tools.namespace]]
                   [lein-cloverage           "1.0.2"]
                   [lein-codox               "0.9.0"]
                   ;; [lein-instant-cheatsheet "2.1.4"
@@ -41,8 +43,10 @@
                   [lein-marginalia          "0.8.0"]
                   [lein-ns-dep-graph        "0.1.0-SNAPSHOT"]
                   [lein-vanity              "0.2.0"]
-                  ;; [org.timmc/nephila       "0.3.0"]
                   [lein-pprint              "1.1.1"]
+                  [org.clojure/tools.nrepl  "0.2.12"
+                   :exclusions [org.clojure/clojure]]
+                  ;; [org.timmc/nephila       "0.3.0"]
                   ;; [refactor-nrepl           "1.1.0"]
                   [refactor-nrepl           "2.2.0"]
                   ;; [varspotting             "0.0.2"]
@@ -51,20 +55,41 @@
         :ios {:robovm-path "/Users/john/Downloads/robovm-1.4.0"}
         :dependencies [[alembic "0.3.2"]
                        ;; Had to add this manually for some reason to avoid
-                       ;; problems starting a REPL.
-                       [commons-logging/commons-logging "1.2"]
-                       [com.cemerick/pomegranate        "0.3.1"]
-                       [com.gfredericks/debug-repl      "0.0.7"]
-                       ;; [com.inferstructure/repl         "0.1.0-SNAPSHOT"]
-                       [im.chit/vinyasa                 "0.4.2"]
-                       ;; [io.aviso/pretty                 "0.1.8"]
+                       ;; problems starting a REPL.]
+                       [commons-logging/commons-logging  "1.2"]
+
+                       ;; I need this explicit pomegranate dependency to
+                       ;; avoid incessantly getting this error everywhere:
+                       ;; Caused by: java.lang.ClassNotFoundException: org.apache.maven.wagon.StreamWagon
+                       [org.apache.maven.wagon/wagon-http "2.9"
+                        :exclusions [commons-codec
+                                     org.apache.httpcomponents/httpcore
+                                     org.apache.httpcomponents/httpclient]]
+                       ;; [com.cemerick/pomegranate         "0.3.1"
+                       ;;  ;; ... but it conflicts with everything, so gotta exclude
+                       ;;  ;;     everything.  How does any of this ever work?
+                       ;;  :exclusions [org.apache.httpcomponents/httpclient
+                       ;;               org.apache.httpcomponents/httpcore
+                       ;;               org.codehaus.plexus/plexus-utils
+                       ;;               org.jsoup/jsoup]]
+
+                       ;; [org.codehaus.plexus/plexus-utils "1.5.7"]
+
+                       [com.gfredericks/debug-repl       "0.0.7"]
+                       ;; [com.inferstructure/repl          "0.1.0-SNAPSHOT"]
+                       [im.chit/vinyasa                  "0.4.2"]
+                       ;; [io.aviso/pretty                  "0.1.8"]
                        [leiningen #=(leiningen.core.main/leiningen-version)
                         :exclusions [commons-logging
                                      org.apache.httpcomponents/httpclient
+                                     org.apache.httpcomponents/httpcore
                                      org.apache.maven.wagon/wagon-provider-api
-                                     org.codehaus.plexus/plexus-utils]]
-                       [org.clojure/tools.namespace     "0.2.4"]
-                       [spyscope "0.1.5"]]
+                                     org.codehaus.plexus/plexus-utils
+                                     riddley]]
+                       ;; [org.clojure/tools.namespace      "0.2.4"]
+                       [org.clojure/tools.namespace      "0.2.10"]
+                       [spyscope                         "0.1.5"
+                        :exclusions [clj-time]]]
         :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
         :injections [(require 'leiningen.core.main)
                      (require 'spyscope.core)

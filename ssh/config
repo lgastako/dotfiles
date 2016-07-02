@@ -106,3 +106,8 @@ Host fs1
   Hostname 66.228.117.214
   IdentityFile /Users/john/secure/TalkIQKeyPair2015-06-30.pem
   User ubuntu
+
+Host estore
+  Hostname ec2-54-172-199-82.compute-1.amazonaws.com
+  User ubuntu
+  IdentityFile /Users/john/elo-first-key-pair.pem

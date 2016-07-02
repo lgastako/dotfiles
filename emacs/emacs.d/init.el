@@ -10,6 +10,24 @@
                   (interactive)
                   (find-file "~/dotfiles/emacs/emacs.d/init.el")))
 
+;; Bind a key to edit ~/.lein/profiles.clj
+(global-set-key (kbd "C-c e p")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/.lein/profiles.clj")))
+
+;; Bind a key to edit ~/Dropbox/org
+(global-set-key (kbd "C-c e o")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/Dropbox/org")))
+
+;; Bind a key to edit ~/Dropbox/org
+(global-set-key (kbd "C-c e w")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/src/writing")))
+
 (setq backup-by-copying         t    ;; don't clobber symlinks
       backup-directory-alist
         '(("." . "~/.saves"))        ;; collect all saves in one place
@@ -47,7 +65,11 @@
 ;; (if (> (x-display-pixel-width) 2000)
 ;;     (set-face-attribute 'default nil :height 235)
 ;;   (set-face-attribute 'default nil :height 172))
+
+;; (set-face-attribute 'default nil :height 100)
+;; (set-face-attribute 'default nil :height 144)
 (set-face-attribute 'default nil :height 172)
+
 ;; (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
 ;;(set-face-attribute 'default nil :height 240)

@@ -534,6 +534,11 @@
     (setq coffee-tab-width 4))
   (add-hook 'coffee-mode-hook 'coffee-tabs))
 
+;; c#
+
+(use-package csharp-mode
+  :ensure t)
+
 ;; elixir
 
 (use-package elixir-mode

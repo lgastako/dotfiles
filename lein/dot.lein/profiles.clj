@@ -4,7 +4,7 @@
                      ;; (require '[clojure.tools.namespace.find :as find])
                      (require '[clojure.pprint :refer :all])
                      (require '[clojure.repl :refer :all])]
-        :plugins [[cider/cider-nrepl "0.12.0"]
+        :plugins [;; [cider/cider-nrepl "0.12.0"]
                   [lein-ancient      "0.6.10"]
                   [lein-auto         "0.1.2"]
                   [lein-bikeshed     "0.3.0"]

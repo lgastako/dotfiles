@@ -28,6 +28,12 @@
                   (interactive)
                   (find-file "~/src/writing")))
 
+
+;; Prevent me from accidentally minimizing emacs.
+(global-set-key (kbd "C-x C-z") nil)
+(global-set-key (kbd "C-z") nil)
+
+
 (setq backup-by-copying         t    ;; don't clobber symlinks
       backup-directory-alist
         '(("." . "~/.saves"))        ;; collect all saves in one place

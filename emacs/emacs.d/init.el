@@ -351,20 +351,28 @@
   :diminish projectile-mode
   :config (projectile-global-mode t))
 
-(use-package ace-jump-mode
-  :pin melpa-stable
+;; (use-package ace-jump-mode
+;;   :pin melpa-stable
 
-  ;; Enable Ace Jump mode
-  ;;   'C-u C-c SPC <char>' to jump to a specific char
-  ;;   'C-c SPC <char>' to jump to a specific first-char
-  :bind (("C-c SPC" . ace-jump-mode)
-         ("C-c C-SPC" . ace-jump-mode))
-  ;; :bind (("C-c C-SPC" . ace-jump-char-mode))
+;;   ;; Enable Ace Jump mode
+;;   ;;   'C-u C-c SPC <char>' to jump to a specific char
+;;   ;;   'C-c SPC <char>' to jump to a specific first-char
+;;   :bind (("C-c SPC" . ace-jump-mode)
+;;          ("C-c C-SPC" . ace-jump-mode))
+;;   ;; :bind (("C-c C-SPC" . ace-jump-char-mode))
+;;   :config
+;;   (defvar ace-jump-mode-submode-list
+;;     '(ace-jump-char-mode
+;;       ace-jump-word-mode
+;;       ace-jump-line-mode)))
+
+(use-package avy
+  :bind ("C-c SPC" . avy-goto-char)
+  ;; Replaces 'M-g g' binding of goto-line because it switches back to
+  ;; goto-line automatically if you type a number...
   :config
-  (defvar ace-jump-mode-submode-list
-    '(ace-jump-char-mode
-      ace-jump-word-mode
-      ace-jump-line-mode)))
+  (global-set-key (kbd "M-g g")   'avy-goto-line)
+  (global-set-key (kbd "M-g M-g") 'avy-goto-line))
 
 (use-package winner
   :pin melpa-stable

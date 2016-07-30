@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: my makefile starter
+# key: h
+# --
+help:
+     @cat Makefile

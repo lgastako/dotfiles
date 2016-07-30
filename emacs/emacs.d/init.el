@@ -568,9 +568,14 @@
 (use-package elm-mode
   :pin melpa-stable
   :init
+  ;; Not sure why I have to set elm-compile-command explicity all of a
+  ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my
+  ;; exec-path properly... but, it gets the job done.
+  (setq elm-compile-command "/usr/local/bin/elm-make")
   (setq elm-format-on-save t)
   (setq elm-indent-offset 4)
   (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
+  (setq exec-path (append exec-path '("/usr/local/bin")))
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   (add-to-list 'company-backends 'company-elm))
 

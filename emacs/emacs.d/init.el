@@ -529,7 +529,12 @@
   ;; (setq cider-auto-select-error-buffer t)
 
   :config
-  (rename-modeline "clojure-mode" clojure-mode "λ"))
+  (rename-modeline "clojure-mode" clojure-mode "λ")
+
+  ;; These two don't work (eg. if you use "C-x C-b")
+  ;; (rename-modeline "clojurec-mode" clojure-mode "λc")
+  ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
+  )
 
 (use-package clj-refactor
   :pin melpa-stable

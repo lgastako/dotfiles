@@ -530,6 +530,8 @@
 
   :config
   (rename-modeline "clojure-mode" clojure-mode "λ")
+  (rename-modeline "clojure-mode" clojurec-mode "λc")
+  (rename-modeline "clojure-mode" clojurescript-mode "λs")
 
   ;; These two don't work (eg. if you use "C-x C-b")
   ;; (rename-modeline "clojurec-mode" clojure-mode "λc")

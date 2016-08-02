@@ -280,7 +280,10 @@
   :diminish ""
   :config
 
-  (use-package helm-git-grep)
+  (use-package helm-ag
+    :bind (("C-c g"   . helm-do-ag-project-root)
+           ("C-c C-g" . helm-do-ag-project-root))
+    :config (setq helm-ag-use-grep-ignore-list t))
 
   (require 'helm-config)
 
@@ -300,7 +303,7 @@
 
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
   (define-key helm-map (kbd "C-i")   'helm-execute-persistent-action) ; make TAB works in terminal
-  (define-key helm-map (kbd "C-z")   'helm-select-action)             ; list actions using C-z
+  (define-key helm-map (kbd "C-z")   'helm-select-action) ; list actions using C-z
 
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
@@ -311,16 +314,10 @@
   (global-set-key (kbd "C-x C-b") 'list-buffers)
   (global-set-key (kbd "C-x b") 'helm-mini)
 
-
-
   (helm-mode 1)
 
   (use-package ac-helm
-    :bind (("C-c g"   . helm-git-grep)
-           ("C-c C-g"   . helm-git-grep)
-           ("C-c t"   . helm-git-grep-at-point)
-           ("C-x C-f" . helm-find-files)
-           ("C-c M-i" . heml-swoop))
+    :bind (("C-x C-f" . helm-find-files))
     :config
     (global-set-key (kbd "C-;") 'ac-complete-with-helm)
     (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-helm)
@@ -957,3 +954,14 @@
 ;; ;; Then once that's started...
 ;; (cljs-repl)
 (put 'erase-buffer 'disabled nil)
+
+(eval-after-load "grep"
+  '(progn
+     (add-to-list 'grep-find-ignored-files "elm.js")
+     (add-to-list 'grep-find-ignored-directories "elm-stuff")))
+
+
+;; (prin1-to-string grep-find-ignored-files)
+
+
+

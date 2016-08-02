@@ -364,7 +364,8 @@
 ;;       ace-jump-line-mode)))
 
 (use-package avy
-  :bind ("C-c SPC" . avy-goto-char)
+  :bind (("C-c SPC" . avy-goto-char)
+         ("C-c C-SPC" . avy-goto-char))
   ;; Replaces 'M-g g' binding of goto-line because it switches back to
   ;; goto-line automatically if you type a number...
   :config

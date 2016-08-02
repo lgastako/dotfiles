@@ -888,6 +888,7 @@
   (add-hook 'clojure-mode-hook #'enable-paredit-mode)
   (add-hook 'go-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'elm-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
   :config
   (global-set-key (kbd "C-x p") 'paredit-mode)

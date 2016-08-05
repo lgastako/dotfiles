@@ -92,6 +92,9 @@
 ;; Answer 'y' or 'n' instead of 'yes' or 'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; I hate this, but too much high blood pressue to not do it
+(setq confirm-kill-emacs 'y-or-n-p)
+
 ;; UTF-8 All The Things
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -104,6 +107,9 @@
 
 ;; Never tabs
 (setq-default indent-tabs-mode nil)
+
+;; Maintain case in dynamic expansions
+(setq-default dabbrev-case-fold-search nil)
 
 ;; Prevent insertion of tabs for spaces
 (setq-default indent-tabs-mode nil)
@@ -964,5 +970,4 @@
 
 ;; (prin1-to-string grep-find-ignored-files)
 
-
-
+(setq-default css-indent-offset 2)

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: cascade
-# key: cas
-# --
-ON UPDATE CASCADE
-ON DELETE CASCADE

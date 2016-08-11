@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: odc
-# key: odc
-# --
-ON DELETE CASCADE

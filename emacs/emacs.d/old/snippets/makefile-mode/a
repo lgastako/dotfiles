@@ -1,4 +1,0 @@
-all:
-	@cat Makefile
-
-$0

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: link
-# key: l
-# --
-<link href="$0" rel="stylesheet">

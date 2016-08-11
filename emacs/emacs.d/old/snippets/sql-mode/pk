@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pk
-# key: pk
-# --
-PRIMARY KEY ($0),

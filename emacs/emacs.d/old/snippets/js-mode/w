@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: funwrap
-# key: w
-# --
-(function() {
-    $0
-})();

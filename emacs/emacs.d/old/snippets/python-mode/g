@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: logging
-# key: g
-# --
-import logging
-
-logger = logging.getLogger(__name__)
-$0

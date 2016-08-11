@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: timestamp
-# key: ts
-# --
-${1:created_at} TIMESTAMP
-    NOT NULL
-    DEFAULT NOW()

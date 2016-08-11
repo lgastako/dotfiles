@@ -1,0 +1,6 @@
+*.elc
+*~
+purescript-mode-autoloads.el
+purescript-mode.info
+purescript-mode.tmp.texi
+dir

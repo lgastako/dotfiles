@@ -715,6 +715,17 @@
   (use-package merlin
     :pin melpa-stable))
 
+;; purescript
+
+(use-package purescript-mode
+  :ensure t
+  ;; Necessary, or done by use-package already?
+  ;; :load-path "~/.emacs.d/elpa/purescript-mode/"
+  :config
+  ;;(require 'purescript-mode-autoloads)
+  ;;  (add-to-list 'Info-default-directory-list "~/.emacs.d/elpa/purescript-mode/")
+  (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation))
+
 ;; python
 
 (use-package python

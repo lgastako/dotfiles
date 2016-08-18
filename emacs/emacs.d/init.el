@@ -723,9 +723,16 @@
 
 (use-package purescript-mode
   :ensure t
-  ;; Necessary, or done by use-package already?
+  :init
+  (setq-default purescript-compile "/usr/local/bin/psc")
   :config
-  (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation))
+  (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
+  ;; TODO: use-package-ify ...
+  (define-key purescript-mode-map (kbd "C-,") 'purescript-move-nested-left)
+  (define-key purescript-mode-map (kbd "C-.") 'purescript-move-nested-right)
+  (define-key purescript-mode-map (kbd "C-c C-c") 'purescript-compile)
+  ;;(define-key purescript-cabal-mode-map (kbd "C-c C-c") 'purescript-compile)
+  )
 
 ;; python
 

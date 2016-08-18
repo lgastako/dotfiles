@@ -694,7 +694,9 @@
 
 (use-package markdown-mode
   :pin melpa-stable
-  :mode ("\\.md\\'" "\\.markdown\\'"))
+  :mode ("\\.md\\'" "\\.markdown\\'")
+  :config
+  (setq markdown-command "/usr/local/bin/markdown"))
 
 ;; nu
 

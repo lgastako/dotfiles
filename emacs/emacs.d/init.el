@@ -246,6 +246,8 @@
 ;; Better uniqification of buffer names
 ;; doesn't work with use-package for some reason
 (require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 ;; (use-package uniquify
 ;;   :ensure nil
 ;;   :config (setq uniquify-buffer-name-style 'forward))

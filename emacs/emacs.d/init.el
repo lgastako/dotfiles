@@ -985,3 +985,5 @@
 ;; (prin1-to-string grep-find-ignored-files)
 
 (setq-default css-indent-offset 2)
+
+(emacs-init-time)

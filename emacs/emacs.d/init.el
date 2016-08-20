@@ -4,6 +4,10 @@
 ;; that I still want it, but it was preventing init.el from loading and I
 ;; haven't had time to fix it yet.  Feel free to submit pull requests :)
 
+;; Global path modifications
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/Users/john/dotfiles/bin")))
+
 ;; Bind a key to edit this file
 (global-set-key (kbd "C-c i")
                 (lambda ()
@@ -260,14 +264,14 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-(use-package yasnippet
-  :pin melpa-stable
-  :load-path "~/.emacs.d/plugins/yasnippet"
-  :config
-  (setq yas/root-directory "~/.emacs.d/snippets")
-  (yas-load-directory yas/root-directory)
-  (yas-global-mode 1)
-  (yas-reload-all))
+;; (use-package yasnippet
+;;   :pin melpa-stable
+;;   :load-path "~/.emacs.d/plugins/yasnippet"
+;;   :config
+;;   (setq yas/root-directory "~/.emacs.d/snippets")
+;;   (yas-load-directory yas/root-directory)
+;;   (yas-global-mode 1)
+;;   (yas-reload-all))
 
 (use-package dockerfile-mode
   :pin melpa-stable
@@ -356,20 +360,16 @@
   :diminish projectile-mode
   :config (projectile-global-mode t))
 
-;; (use-package ace-jump-mode
-;;   :pin melpa-stable
-
-;;   ;; Enable Ace Jump mode
-;;   ;;   'C-u C-c SPC <char>' to jump to a specific char
-;;   ;;   'C-c SPC <char>' to jump to a specific first-char
-;;   :bind (("C-c SPC" . ace-jump-mode)
-;;          ("C-c C-SPC" . ace-jump-mode))
-;;   ;; :bind (("C-c C-SPC" . ace-jump-char-mode))
-;;   :config
-;;   (defvar ace-jump-mode-submode-list
-;;     '(ace-jump-char-mode
-;;       ace-jump-word-mode
-;;       ace-jump-line-mode)))
+;; TODO: delete me
+;; (print-elements-of-list exec-path)
+;; (defun print-elements-of-list (list)
+;;   "Print each element of LIST on a line of its own."
+;;   (while list
+;;     (print (car list))
+;;     (setq list (cdr list))))
+;; (shell-command-to-string "ag --literal --nocolor --noheading -l -- foo")
+;; (concat "ag --literal --nocolor --noheading -l -- " "foo")
+;; (executable-find "ag")
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-char)
@@ -526,8 +526,7 @@
   (add-hook 'cider-repl-mode-hook #'subword-mode)
   ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
-  (setq exec-path (append exec-path '("/Users/john/dotfiles/bin"))
-        cider-lein-command "/Users/john/dotfiles/bin/lein"
+  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
         cider-boot-command "/Users/john/dotfiles/bin/boot")
 
   (setq cider-overlays-use-font-lock t)
@@ -588,7 +587,6 @@
   (setq elm-format-on-save t)
   (setq elm-indent-offset 4)
   (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
-  (setq exec-path (append exec-path '("/usr/local/bin")))
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   (add-to-list 'company-backends 'company-elm))
 
@@ -606,7 +604,6 @@
   :init
   (setenv "GOPATH" "~/go")
   ;; These next two should probably be moved out to the top level, no?
-  (setq exec-path (append exec-path '("/usr/local/bin")))
   (setq exec-path (append exec-path '("/usr/local/go/bin")))
   (setq exec-path (append exec-path '("~/go/bin")))
 
@@ -710,14 +707,14 @@
 
 ;; ocaml
 
-(use-package tuareg
-  :pin melpa-stable
-  :mode "\\.ml\\'"
-  :config
-  (use-package utop
-    :pin melpa-stable)
-  (use-package merlin
-    :pin melpa-stable))
+;; (use-package tuareg
+;;   :pin melpa-stable
+;;   :mode "\\.ml\\'"
+;;   :config
+;;   (use-package utop
+;;     :pin melpa-stable)
+;;   (use-package merlin
+;;     :pin melpa-stable))
 
 ;; purescript
 
@@ -736,57 +733,57 @@
 
 ;; python
 
-(use-package python
-  :pin melpa-stable
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode)
+;; (use-package python
+;;   :pin melpa-stable
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
 
-  :config
+;;   :config
 
-  ;; Python autocompletion
-  ;;(add-hook 'python-mode-hook 'jedi:setup)
-  ;;(setq jedi:complete-on-dot t)
+;;   ;; Python autocompletion
+;;   ;;(add-hook 'python-mode-hook 'jedi:setup)
+;;   ;;(setq jedi:complete-on-dot t)
 
-  ;; Fix indenting
-  (add-hook 'python-mode-hook
-            '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+;;   ;; Fix indenting
+;;   (add-hook 'python-mode-hook
+;;             '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
 
-  ;; In theory 'C-h S' will lookup symbols, but even after installing the python
-  ;; info files per https://bitbucket.org/jonwaltman/pydoc-info/ it still doesn't
-  ;; quite work for me.
-  (use-package pydoc-info
-    :pin melpa-stable)
+;;   ;; In theory 'C-h S' will lookup symbols, but even after installing the python
+;;   ;; info files per https://bitbucket.org/jonwaltman/pydoc-info/ it still doesn't
+;;   ;; quite work for me.
+;;   (use-package pydoc-info
+;;     :pin melpa-stable)
 
-  ;; Causing problems. Very annoying.
-  ;;(add-hook 'python-mode-hook 'fci-mode)
+;;   ;; Causing problems. Very annoying.
+;;   ;;(add-hook 'python-mode-hook 'fci-mode)
 
-  (use-package ipython
-    :pin melpa-stable)
+;;   (use-package ipython
+;;     :pin melpa-stable)
 
-  ;; ===============================================
-  ;; from http://www.reddit.com/r/emacs/comments/24l8f2/beginner_setting_up_emacs_for_python
+;;   ;; ===============================================
+;;   ;; from http://www.reddit.com/r/emacs/comments/24l8f2/beginner_setting_up_emacs_for_python
 
-  ;; would be cool but doesn't have right pythonpath when i tried it..
+;;   ;; would be cool but doesn't have right pythonpath when i tried it..
 
-  ;; (defun my-python-f5 ()
-  ;;   (interactive)
-  ;;   (python-shell-send-buffer)
-  ;;   (python-shell-switch-to-shell))
+;;   ;; (defun my-python-f5 ()
+;;   ;;   (interactive)
+;;   ;;   (python-shell-send-buffer)
+;;   ;;   (python-shell-switch-to-shell))
 
-  ;; (eval-after-load "python"
-  ;;   '(progn
-  ;;      (define-key python-mode-map (kbd "<f5>") 'my-python-f5)
-  ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
-  ;; ===============================================
+;;   ;; (eval-after-load "python"
+;;   ;;   '(progn
+;;   ;;      (define-key python-mode-map (kbd "<f5>") 'my-python-f5)
+;;   ;;      (define-key python-mode-map (kbd "C-h f") 'python-eldoc-at-point)))
+;;   ;; ===============================================
 
-  (use-package virtualenvwrapper
-    :pin melpa-stable
-    ;; :disabled t
-    :commands (venv-workon))
+;;   (use-package virtualenvwrapper
+;;     :pin melpa-stable
+;;     ;; :disabled t
+;;     :commands (venv-workon))
 
-  (use-package cython-mode
-    :pin melpa-stable
-    :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
+;;   (use-package cython-mode
+;;     :pin melpa-stable
+;;     :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
 
 ;; REST
 
@@ -852,9 +849,7 @@
 ;; fuck this noise
 ;; (use-package sbt-mode
 ;;   :pin melpa-stable
-;;   :mode "\\.sbt\\'"
-;;   :init
-;;   (setq exec-path (append exec-path '("/usr/local/bin"))))
+;;   :mode "\\.sbt\\'")
 
 ;; scheme
 

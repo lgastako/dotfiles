@@ -39,6 +39,7 @@
       '(
         ace-jump-mode
         ace-jump-move
+        beginning-of-buffer
         helm-git-grep
         markdown-exdent-or-delete
         paredit-backward-kill-word

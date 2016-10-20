@@ -7,6 +7,9 @@
 ;; Global path modifications
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq exec-path (append exec-path '("/Users/john/dotfiles/bin")))
+;; Not sure why I have to do this, but I do.
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:"))
+
 
 ;; Bind a key to edit this file
 (global-set-key (kbd "C-c i")
@@ -543,10 +546,10 @@
   ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
   )
 
-(use-package clj-refactor
-  :pin melpa-stable
-  :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
-  :config (cljr-add-keybindings-with-prefix "C-!"))
+;; (use-package clj-refactor
+;;   :pin melpa-stable
+;;   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
+;;   :config (cljr-add-keybindings-with-prefix "C-!"))
 
 ;; coffescript
 
@@ -881,6 +884,12 @@
 (use-package swift-mode
   :pin melpa-stable)
 
+;; TOML
+
+(use-package toml-mode
+  :ensure t
+  :pin marmalade)
+
 ;; YAML
 
 (use-package yaml-mode
@@ -893,10 +902,13 @@
   :init
   ;; (add-hook 'after-init-hook #'global-flycheck-mode)
   :config
+  (use-package flycheck-elm
+    :ensure t)
   (progn
     (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
+    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)))
 
 (use-package paredit
   :pin melpa
@@ -909,59 +921,52 @@
   (add-hook 'elm-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
   :config
-  (global-set-key (kbd "C-x p") 'paredit-mode)
+  (global-set-key (kbd "C-x p") 'paredit-mode))
 
-  (add-to-list 'load-path "~/.emacs.d/lisp")
-  ;; (require 'simple-secrets)
-  ;; (require 'secret-funs)
 
-  ;; (global-set-key (kbd "C-c s n")
-  ;;                 (create-new-site-secret))
+(global-set-key (kbd "C-c w")   'delete-trailing-whitespace)
+(global-set-key (kbd "C-c l")   'linum-mode)
+(global-set-key (kbd "C-c C-l") 'global-linum-mode)
 
-  (global-set-key (kbd "RET") 'newline-and-indent)
-  (global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
-  (global-set-key (kbd "C-c l")   'linum-mode)
-  (global-set-key (kbd "C-c C-l") 'global-linum-mode)
+;; Type greek lambda character with "M-g l"
+;; Dunno why these two don't work.
+;; (global-set-key (kbd "M-g c") "©")
+;; (global-set-key (kbd "M-g t") "™")
+(global-set-key (kbd "M-g l")   "λ")
+(global-set-key (kbd "M-g d")   "Δ")
+(global-set-key (kbd "M-g - >") "→")
+(global-set-key (kbd "M-g = >") "⇒")
+(global-set-key (kbd "M-g f")   "∀")
+(global-set-key (kbd "M-g e")   "∃")
 
-  ;; Type greek lambda character with "M-g l"
-  ;; Dunno why these two don't work.
-  ;; (global-set-key (kbd "M-g c") "©")
-  ;; (global-set-key (kbd "M-g t") "™")
-  (global-set-key (kbd "M-g l") "λ")
-  (global-set-key (kbd "M-g d") "Δ")
-  (global-set-key (kbd "M-g - >") "→")
-  (global-set-key (kbd "M-g = >") "⇒")
-  (global-set-key (kbd "M-g f") "∀")
-  (global-set-key (kbd "M-g e") "∃")
+(setq erc-track-enable-keybindings nil)
 
-  (setq erc-track-enable-keybindings nil)
+(put 'upcase-region   'disabled nil)
+(put 'downcase-region 'disabled nil)
 
-  (put 'upcase-region   'disabled nil)
-  (put 'downcase-region 'disabled nil)
-
-  (defun rotate-windows (arg)
-    "Rotate your windows; use the prefix argument to rotate the
-     other direction.  Additionally given a numeric prefix argument n,
-     it will rotate the windows n times; if the numeric argument is
-     negative rotates |n| times in the other direction."
-    (interactive "P")
-    (if (not (> (count-windows) 1))
-        (message "You can't rotate a single window!")
-      (let* ((rotate-times (prefix-numeric-value arg))
-             (direction (if (or (< rotate-times 0) (equal arg '(4)))
-                            'reverse 'identity)))
-        (dotimes (_ (abs rotate-times))
-          (dotimes (i (- (count-windows) 1))
-            (let* ((w1 (elt (funcall direction (window-list)) i))
-                   (w2 (elt (funcall direction (window-list)) (+ i 1)))
-                   (b1 (window-buffer w1))
-                   (b2 (window-buffer w2))
-                   (s1 (window-start w1))
-                   (s2 (window-start w2))
-                   (p1 (window-point w1))
-                   (p2 (window-point w2)))
-              (set-window-buffer-start-and-point w1 b2 s2 p2)
-              (set-window-buffer-start-and-point w2 b1 s1 p1))))))))
+(defun rotate-windows (arg)
+  "Rotate your windows; use the prefix argument to rotate the
+   other direction.  Additionally given a numeric prefix argument n,
+   it will rotate the windows n times; if the numeric argument is
+   negative rotates |n| times in the other direction."
+  (interactive "P")
+  (if (not (> (count-windows) 1))
+      (message "You can't rotate a single window!")
+    (let* ((rotate-times (prefix-numeric-value arg))
+           (direction (if (or (< rotate-times 0) (equal arg '(4)))
+                          'reverse 'identity)))
+      (dotimes (_ (abs rotate-times))
+        (dotimes (i (- (count-windows) 1))
+          (let* ((w1 (elt (funcall direction (window-list)) i))
+                 (w2 (elt (funcall direction (window-list)) (+ i 1)))
+                 (b1 (window-buffer w1))
+                 (b2 (window-buffer w2))
+                 (s1 (window-start w1))
+                 (s2 (window-start w2))
+                 (p1 (window-point w1))
+                 (p2 (window-point w2)))
+            (set-window-buffer-start-and-point w1 b2 s2 p2)
+            (set-window-buffer-start-and-point w2 b1 s1 p1)))))))
 
 (global-set-key (kbd "C-x r w") 'rotate-windows)
 (global-set-key (kbd "C-x w r") 'rotate-windows)
@@ -982,8 +987,8 @@
      (add-to-list 'grep-find-ignored-directories "elm-stuff")))
 
 
-;; (prin1-to-string grep-find-ignored-files)
+(prin1-to-string grep-find-ignored-files)
 
 (setq-default css-indent-offset 2)
 
-(emacs-init-time)
+;; (emacs-init-time)

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: elm ionic attribute
+# key: ia
+# --
+$0 : String -> Attribute a
+$0 =
+    attribute "$0"

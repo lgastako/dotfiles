@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: elm ionic node
+# key: in
+# --
+$0 : List (Attribute a) -> List (Html a) -> Html a
+$0 =
+    node "$1"

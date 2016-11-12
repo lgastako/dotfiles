@@ -641,7 +641,13 @@
   ;; We need to establish both an interaction mode and an indentation mode.
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
   (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-  (setq haskell-process-type 'stack))
+  ;; (setq haskell-process-type 'stack)
+  ;;  (custom-set-variables '(haskell-process-type 'stack-ghci))
+  (setq haskell-process-type 'stack-ghci)
+
+  :config
+  (use-package shakespeare-mode
+    :ensure t))
 
 ;; html
 

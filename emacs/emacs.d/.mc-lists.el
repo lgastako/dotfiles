@@ -12,6 +12,7 @@
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command
+        kill-rectangle
         kill-region
         move-frame-right
         mwim-beginning-of-code-or-line

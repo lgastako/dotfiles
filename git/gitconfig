@@ -26,7 +26,7 @@
         branch      = auto
         interactive = auto
 [core]
-        excludesfile = ~/dotfiles/git/gitignore
+	excludesfile = /Users/john/dotfiles/git/gitignore
 [push]
         default = upstream
 [difftool "Kaleidoscope"]

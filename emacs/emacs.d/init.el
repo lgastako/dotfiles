@@ -23,6 +23,12 @@
                   (interactive)
                   (find-file "~/.lein/profiles.clj")))
 
+;; Bind a key to edit notes for Zeke's house
+(global-set-key (kbd "C-c e z")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/Dropbox/org/for-zekes-house.md")))
+
 ;; Bind a key to edit ~/Dropbox/org
 (global-set-key (kbd "C-c e o")
                 (lambda ()
@@ -356,7 +362,9 @@
   (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
   ;; Invoke `helm-git-grep' from other helm.
   (eval-after-load 'helm
-    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))
+    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+  :init
+  (use-package helm-idris))
 
 (use-package projectile
   :pin melpa-stable
@@ -630,24 +638,48 @@
   :pin melpa-stable
   :mode "\\.haml\\'")
 
+
 ;; haskell
 
 (use-package haskell-mode
   :pin melpa-stable
-  :mode ("\\.hs\\'" "\\.lhs\\'")
-  ;; :mode "\\.\\(?:[gh]s\\|hi\\)\\'"
-
+  :mode ("\\.hs\\'"
+         "\\.lhs\\'"
+         "\\.hsc\\'"
+         "\\.cpphs\\'"
+         "\\.c2hs\\'")
+  :bind (("C-c a i" . haskell-align-imports)
+         ("C-c f i" . haskell-mode-format-imports)
+         ("C-c j i" . haskell-navigate-imports)
+         ("C-c s i" . haskell-sort-imports))
   :init
-  ;; We need to establish both an interaction mode and an indentation mode.
-  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-  (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-  ;; (setq haskell-process-type 'stack)
-  ;;  (custom-set-variables '(haskell-process-type 'stack-ghci))
+  (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+  (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   (setq haskell-process-type 'stack-ghci)
 
-  :config
-  (use-package shakespeare-mode
-    :ensure t))
+  (use-package ghc
+    :commands (ghc-init ghc-debug ghc-abbrev-init ghc-type-init ghc-comp-init
+                        ghc-kill-process ghc-import-module)
+
+    ;; (evil-define-key 'normal haskell-mode-map (kbd "M-i") 'ghc-show-info)
+    ;; (evil-leader/set-key-for-mode 'haskell-mode "t" 'ghc-show-type)
+
+    :bind (("M-i" . ghc-show-info)
+           ("M-t" . ghc-show-type))
+
+    :init
+    (add-hook 'haskell-mode-hook
+              (lambda ()
+                (ghc-abbrev-init)
+                (ghc-type-init)
+                (unless ghc-initialized
+                  (ghc-comp-init)
+                  (setq ghc-initialized t)
+                  (add-hook 'kill-buffer-hook 'ghc-kill-process))
+                (ghc-import-module)))
+
+    :config
+    (use-package shakespeare-mode)))
 
 ;; html
 
@@ -663,6 +695,11 @@
   :pin melpa-stable
   ;; Auto-start on any markup modes
   :config (add-hook 'sgml-mode-hook 'zencoding-mode))
+
+;; idris
+
+(use-package idris-mode
+  :mode "\\.idr\\'")
 
 ;; javascript
 
@@ -944,6 +981,10 @@
 (global-set-key (kbd "M-g = >") "⇒")
 (global-set-key (kbd "M-g f")   "∀")
 (global-set-key (kbd "M-g e")   "∃")
+(global-set-key (kbd "C-x d")
+                (lambda ()
+                  (interactive)
+                  (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))))
 
 (setq erc-track-enable-keybindings nil)
 
@@ -998,3 +1039,12 @@
 (setq-default css-indent-offset 2)
 
 ;; (emacs-init-time)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   (quote
+    ((haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4)))))

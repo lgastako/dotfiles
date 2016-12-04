@@ -94,6 +94,7 @@ This is the case if the \".\" is part of a \"forall <tvar> . <type>\"."
   `(("hsx" . xml-mode)
     ("hamlet" . xml-mode)
     ("shamlet" . xml-mode)
+    ("whamlet" . xml-mode)
     ("xmlQQ" . xml-mode)
     ("xml" . xml-mode)
     ("cmd" . shell-mode)

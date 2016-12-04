@@ -9,6 +9,7 @@
         company-complete
         dabbrev-expand
         delete-horizontal-space
+        end-of-buffer
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command

@@ -273,14 +273,14 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-;; (use-package yasnippet
-;;   :pin melpa-stable
-;;   :load-path "~/.emacs.d/plugins/yasnippet"
-;;   :config
-;;   (setq yas/root-directory "~/.emacs.d/snippets")
-;;   (yas-load-directory yas/root-directory)
-;;   (yas-global-mode 1)
-;;   (yas-reload-all))
+(use-package yasnippet
+  :pin melpa-stable
+  :load-path "~/.emacs.d/plugins/yasnippet"
+  :config
+  (setq yas/root-directory "~/.emacs.d/snippets")
+  (yas-load-directory yas/root-directory)
+  (yas-global-mode 1)
+  (yas-reload-all))
 
 (use-package dockerfile-mode
   :pin melpa-stable

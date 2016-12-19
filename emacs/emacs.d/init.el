@@ -1047,4 +1047,6 @@
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4)))))
+     (haskell-indent-spaces . 4))))
+
+ '(haskell-process-type 'stack-ghci))

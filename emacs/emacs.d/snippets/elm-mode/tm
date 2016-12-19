@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: elm type-module
+# key: tm
+# --
+module $1.$2 exposing ($2, empty)
+
+type $2 = $2
+
+
+empty : $2
+empty =
+    $0

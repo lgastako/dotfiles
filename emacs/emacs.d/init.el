@@ -640,46 +640,58 @@
 
 
 ;; haskell
-
 (use-package haskell-mode
   :pin melpa-stable
-  :mode ("\\.hs\\'"
-         "\\.lhs\\'"
-         "\\.hsc\\'"
-         "\\.cpphs\\'"
-         "\\.c2hs\\'")
-  :bind (("C-c a i" . haskell-align-imports)
-         ("C-c f i" . haskell-mode-format-imports)
-         ("C-c j i" . haskell-navigate-imports)
-         ("C-c s i" . haskell-sort-imports))
   :init
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
-  (setq haskell-process-type 'stack-ghci)
+  (customize-set-variable 'haskell-process-type 'stack-ghci)
+  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans")))
 
-  (use-package ghc
-    :commands (ghc-init ghc-debug ghc-abbrev-init ghc-type-init ghc-comp-init
-                        ghc-kill-process ghc-import-module)
+;; (use-package haskell-mode
+;;   :pin melpa-stable
+;;   :mode ("\\.hs\\'"
+;;          "\\.lhs\\'"
+;;          "\\.hsc\\'"
+;;          "\\.cpphs\\'"
+;;          "\\.c2hs\\'")
+;;   :bind (("C-c a i" . haskell-align-imports)
+;;          ("C-c f i" . haskell-mode-format-imports)
+;;          ("C-c j i" . haskell-navigate-imports)
+;;          ("C-c s i" . haskell-sort-imports))
+;;   :init
+;;   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+;;   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
+;;   (setq haskell-process-type 'stack-ghci)
 
-    ;; (evil-define-key 'normal haskell-mode-map (kbd "M-i") 'ghc-show-info)
-    ;; (evil-leader/set-key-for-mode 'haskell-mode "t" 'ghc-show-type)
+;;   (use-package ghc
+;;     :commands (ghc-init
+;;                ghc-debug
+;;                ghc-abbrev-init
+;;                ghc-type-init
+;;                ghc-comp-init
+;;                ghc-kill-process
+;;                ghc-import-module)
 
-    :bind (("M-i" . ghc-show-info)
-           ("M-t" . ghc-show-type))
+;;     ;; (evil-define-key 'normal haskell-mode-map (kbd "M-i") 'ghc-show-info)
+;;     ;; (evil-leader/set-key-for-mode 'haskell-mode "t" 'ghc-show-type)
 
-    :init
-    (add-hook 'haskell-mode-hook
-              (lambda ()
-                (ghc-abbrev-init)
-                (ghc-type-init)
-                (unless ghc-initialized
-                  (ghc-comp-init)
-                  (setq ghc-initialized t)
-                  (add-hook 'kill-buffer-hook 'ghc-kill-process))
-                (ghc-import-module)))
+;;     :bind (("M-i" . ghc-show-info)
+;;            ("M-t" . ghc-show-type))
 
-    :config
-    (use-package shakespeare-mode)))
+;;     ;; :init
+;;     ;; (add-hook 'haskell-mode-hook
+;;     ;;           (lambda ()
+;;     ;;             (ghc-abbrev-init)
+;;     ;;             (ghc-type-init)
+;;     ;;             (unless ghc-initialized
+;;     ;;               (ghc-comp-init)
+;;     ;;               (setq ghc-initialized t)
+;;     ;;               (add-hook 'kill-buffer-hook 'ghc-kill-process))
+;;     ;;             (ghc-import-module)))
+
+;;     :config
+;;     (use-package shakespeare-mode)))
 
 ;; html
 
@@ -1039,14 +1051,16 @@
 (setq-default css-indent-offset 2)
 
 ;; (emacs-init-time)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   (quote
-    ((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4))))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(safe-local-variable-values
+;;    (quote
+;;     ((haskell-process-use-ghci . t)
+;;      (haskell-indent-spaces . 4))))
 
- '(haskell-process-type 'stack-ghci))
+
+
+;;  '(haskell-process-type 'stack-ghci))

@@ -381,10 +381,10 @@
     }, 
     {
       "data": {
-        "checksum": "9489b09ee352efafe1e65bb86a9d041c5afedd76", 
-        "contents_checksum": "ad39fb315b61dcea75d776911faebd431d85c3b1", 
-        "size": 130489439, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-java-20161107133257.tar.gz", 
+        "checksum": "12de7ea884c194549f686589fa3fea9c2e20f0d1", 
+        "contents_checksum": "76ef60c49d4977cfa477bd65004e1faeb4a25023", 
+        "size": 130672548, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-java-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
@@ -401,8 +401,8 @@
       "is_required": false, 
       "platform": {}, 
       "version": {
-        "build_number": 20161107133257, 
-        "version_string": "1.9.46"
+        "build_number": 20161209134516, 
+        "version_string": "1.9.48"
       }
     }, 
     {
@@ -490,10 +490,10 @@
     }, 
     {
       "data": {
-        "checksum": "e904e60f9c3f85a1ac3fe3381c9efd526d4b364c", 
-        "contents_checksum": "96e5bb3ffa1eb63173f4cce28299adf3adcb0f16", 
-        "size": 7543325, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-python-20160819093004.tar.gz", 
+        "checksum": "140eff7004bcc08d1ebc9eb90d3d214888ed3f02", 
+        "contents_checksum": "f15c85b3bd2cd2f70b7770401997321a27fda2d2", 
+        "size": 7587814, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-python-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
@@ -509,16 +509,16 @@
       "is_required": false, 
       "platform": {}, 
       "version": {
-        "build_number": 20160819093004, 
-        "version_string": "1.9.40"
+        "build_number": 20161209134516, 
+        "version_string": "1.9.49"
       }
     }, 
     {
       "data": {
-        "checksum": "87e7ffa0d2fa2d8b518013d17fda1109b07982d6", 
-        "contents_checksum": "4cbd178fea72f13eec042b99290675e47320210d", 
-        "size": 24700825, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-python-extras-20160819093004.tar.gz", 
+        "checksum": "a694ba9625420c3cc627ac136f2e50c01d0ee9cf", 
+        "contents_checksum": "cacba0c21baac129ba1c49a0af18e8418cddac2c", 
+        "size": 24698351, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-app-engine-python-extras-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
@@ -535,8 +535,8 @@
       "is_required": false, 
       "platform": {}, 
       "version": {
-        "build_number": 20160819093004, 
-        "version_string": "1.9.40"
+        "build_number": 20161209134516, 
+        "version_string": "1.9.49"
       }
     }, 
     {
@@ -716,10 +716,10 @@
     }, 
     {
       "data": {
-        "checksum": "e5ab32b713f587a1dcda73c3508d5726ccc17115", 
-        "contents_checksum": "49b2f84c4086b7730af1121f73915b3e1d45c1e3", 
-        "size": 463578, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-bq-20161130114623.tar.gz", 
+        "checksum": "b93cec542643199b87516f2b20f7f4ebe4aca90a", 
+        "contents_checksum": "944963401547fb4638201ff6b36eb764c0759343", 
+        "size": 463676, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-bq-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
@@ -737,7 +737,7 @@
       "is_required": false, 
       "platform": {}, 
       "version": {
-        "build_number": 20161130114623, 
+        "build_number": 20161209134516, 
         "version_string": "2.0.24"
       }
     }, 
@@ -1082,10 +1082,10 @@
     }, 
     {
       "data": {
-        "checksum": "e63830157dc9966e37c4bfd85625c9d5e96627b1", 
-        "contents_checksum": "9d606c4f7c56cbcf00aebdfd38e622fcd8e89fa1", 
-        "size": 5374860, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-core-20161208103041.tar.gz", 
+        "checksum": "3cdde4564a531f2680bea3f1a581df194eda6e34", 
+        "contents_checksum": "38c0db2586d66456f0286e5e76cb879d5dee0a1e", 
+        "size": 5434923, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-core-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
@@ -1103,8 +1103,8 @@
       "is_required": true, 
       "platform": {}, 
       "version": {
-        "build_number": 20161208103041, 
-        "version_string": "2016.12.08"
+        "build_number": 20161209134516, 
+        "version_string": "2016.12.09"
       }
     }, 
     {
@@ -2029,75 +2029,75 @@
     }, 
     {
       "data": {
-        "checksum": "d548841630e735892dd7ce69d005966392fb6590", 
-        "contents_checksum": "843f62288e80222f8205618c394ef9ce1260deae", 
-        "size": 14250584, 
-        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-tests-20161208103041.tar.gz", 
+        "checksum": "67225dc99e86a1f01562cf942aa276ecb5498716", 
+        "contents_checksum": "99be2cedb49e86e3a81b73c537ae70f82cf46d38", 
+        "size": 14278006, 
+        "source": "https://dl.google.com/dl/cloudsdk/channels/rapid/components/google-cloud-sdk-tests-20161209134516.tar.gz", 
         "type": "tar"
       }, 
       "dependencies": [
+        "docker-credential-gcr-darwin-x86_64", 
         "broker-darwin-x86", 
-        "bigtable", 
-        "broker-linux-x86", 
-        "gcloud-oss-darwin-x86", 
-        "bigtable-darwin-x86", 
-        "app-engine-php-windows", 
-        "docker-credential-gcr-windows-x86", 
-        "kubectl-windows-x86", 
-        "app-engine-go-windows-x86", 
+        "cloud-datastore-emulator", 
+        "app-engine-go-darwin-x86", 
+        "pubsub-emulator", 
+        "bq", 
+        "app-engine-python", 
+        "app-engine-go-windows-x86_64", 
+        "broker", 
+        "app-engine-grpc", 
+        "gcloud-oss-linux-x86", 
+        "kubectl-darwin-x86_64", 
+        "kubectl-darwin-x86", 
+        "core", 
+        "gcd-emulator", 
         "app-engine-grpc-windows-x86_64", 
-        "app-engine-go-darwin-x86_64", 
-        "gcloud-oss-windows-x86_64", 
+        "app-engine-go-linux-x86", 
+        "app-engine-go-windows-x86", 
+        "windows-ssh-tools", 
+        "broker-windows-x86", 
+        "bigtable-darwin-x86", 
+        "kubectl-windows-x86_64", 
+        "kubectl", 
+        "bigtable-linux-x86_64", 
+        "docker-credential-gcr-windows-x86", 
+        "kubectl-linux-x86", 
+        "kubectl-linux-x86_64", 
+        "app-engine-php-windows", 
         "gsutil", 
-        "app-engine-php-darwin", 
-        "app-engine-python-extras", 
-        "bigtable-linux-x86", 
+        "docker-credential-gcr-windows-x86_64", 
         "beta", 
         "app-engine-go-linux-x86_64", 
-        "core", 
-        "broker-darwin-x86_64", 
-        "kubectl-darwin-x86_64", 
-        "docker-credential-gcr-darwin-x86", 
-        "kubectl-darwin-x86", 
-        "pubsub-emulator", 
-        "cloud-datastore-emulator", 
-        "gcloud-oss-linux-x86", 
-        "app-engine-go-windows-x86_64", 
-        "kubectl-linux-x86_64", 
-        "kubectl", 
-        "app-engine-go-darwin-x86", 
-        "app-engine-php", 
-        "app-engine-go-linux-x86", 
-        "app-engine-go", 
-        "docker-credential-gcr", 
-        "gcloud", 
-        "gcloud-oss", 
-        "kubectl-linux-x86", 
-        "app-engine-grpc", 
-        "gcloud-oss-windows-x86", 
         "app-engine-grpc-darwin-x86_64", 
-        "app-engine-python", 
-        "gcloud-oss-linux-x86_64", 
-        "docker-credential-gcr-linux-x86_64", 
+        "kubectl-windows-x86", 
+        "broker-linux-x86", 
+        "powershell", 
         "app-engine-grpc-linux-x86_64", 
+        "app-engine-php-darwin", 
+        "app-engine-python-extras", 
+        "bigtable", 
+        "docker-credential-gcr-darwin-x86", 
+        "bigtable-darwin-x86_64", 
         "bundled-python", 
         "broker-windows-x86_64", 
-        "broker-windows-x86", 
-        "app-engine-java", 
-        "bigtable-darwin-x86_64", 
-        "alpha", 
-        "docker-credential-gcr-darwin-x86_64", 
-        "kubectl-windows-x86_64", 
-        "bq", 
-        "docker-credential-gcr-linux-x86", 
-        "broker", 
-        "gcloud-oss-darwin-x86_64", 
-        "windows-ssh-tools", 
-        "powershell", 
+        "docker-credential-gcr", 
+        "gcloud-oss-linux-x86_64", 
+        "app-engine-go", 
         "broker-linux-x86_64", 
-        "gcd-emulator", 
-        "docker-credential-gcr-windows-x86_64", 
-        "bigtable-linux-x86_64"
+        "gcloud-oss-darwin-x86_64", 
+        "app-engine-java", 
+        "gcloud-oss-darwin-x86", 
+        "app-engine-php", 
+        "gcloud-oss-windows-x86_64", 
+        "app-engine-go-darwin-x86_64", 
+        "alpha", 
+        "gcloud", 
+        "gcloud-oss-windows-x86", 
+        "gcloud-oss", 
+        "broker-darwin-x86_64", 
+        "docker-credential-gcr-linux-x86_64", 
+        "docker-credential-gcr-linux-x86", 
+        "bigtable-linux-x86"
       ], 
       "details": {
         "description": "Collection of tests used to verity Cloud SDK", 
@@ -2109,8 +2109,8 @@
       "is_required": false, 
       "platform": {}, 
       "version": {
-        "build_number": 20161208103041, 
-        "version_string": "2016.12.08"
+        "build_number": 20161209134516, 
+        "version_string": "2016.12.09"
       }
     }, 
     {
@@ -2156,11 +2156,11 @@
   ], 
   "post_processing_command": "components post-process", 
   "release_notes_url": "https://dl.google.com/dl/cloudsdk/channels/rapid/RELEASE_NOTES", 
-  "revision": 20161208103041, 
+  "revision": 20161209134516, 
   "schema_version": {
     "no_update": false, 
     "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz", 
     "version": 3
   }, 
-  "version": "137.0.1"
+  "version": "138.0.0"
 }

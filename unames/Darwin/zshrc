@@ -10,3 +10,4 @@ export JAVA_HOME=`/usr/libexec/java_home`
 
 
 export PATH=/Users/john/dotfiles/google-cloud-sdk/bin:${PATH}
+export PATH=/Users/john/.stack/snapshots/x86_64-osx/lts-7.13/8.0.1/bin:${PATH}

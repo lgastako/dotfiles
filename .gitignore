@@ -8,3 +8,4 @@ lein/dot.lein/repl-history
 *.elc
 bin/fixssh
 sensitive
+google-cloud-sdk

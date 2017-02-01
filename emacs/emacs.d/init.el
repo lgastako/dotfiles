@@ -644,6 +644,8 @@
 ;; haskell
 (use-package haskell-mode
   :pin melpa-stable
+  :bind
+  ("C-c m" . haskell-process-reload-devel-main)
   :init
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)

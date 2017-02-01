@@ -590,6 +590,8 @@
 ;; elm
 (use-package elm-mode
   :pin melpa-stable
+  :bind (("C-c C-k" . elm-compile-main))
+
   :init
   ;; Not sure why I have to set elm-compile-command explicity all of a
   ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my

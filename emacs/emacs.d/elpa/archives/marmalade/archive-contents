@@ -1,4 +1,13 @@
 (1
+ (emacs-profiles .
+		 [(20170101 1530)
+		  ((emacs
+		    (24))
+		   (cl-lib
+		    (0 5))
+		   (prompt-you
+		    (20160925 1115)))
+		  "Configuration profiles for Emacs" single])
  (zone-nyan .
 	    [(0 2 2)
 	     ((esxml
@@ -1875,7 +1884,7 @@
 	     [(0 8 8)
 	      nil "Managing multiple terminal buffers in Emacs." single])
  (multi-project .
-		[(0 0 17)
+		[(0 0 18)
 		 nil "Easily work with multiple projects." single])
  (multi-eshell .
 	       [(0 0 1)
@@ -3303,7 +3312,7 @@
 	    [(0)
 	     nil "Resize a frame.  In particular, fit a frame to its buffers." single])
  (firestarter .
-	      [(0 2 4)
+	      [(0 2 5)
 	       nil "Execute (shell) commands on save" single])
  (fiplr .
 	[(0 1 3)
@@ -3374,7 +3383,7 @@
        (2 2 0)))
      "Modern API for working with files and directories" single])
  (eyebrowse .
-	    [(0 7 1)
+	    [(0 7 4)
 	     ((dash
 	       (2 7 0))
 	      (emacs
@@ -3559,6 +3568,11 @@
 	      ((json
 		(1 4)))
 	      "View xkcd from Emacs" single])
+ (emacs-sounds .
+	       [(20161211 1530)
+		((sound-wav
+		  (20160725 724)))
+		"Sound effects for Emacs" single])
  (emacs-droid .
 	      [(0 0 0)
 	       nil "Android application development tools for Emacs" single])

@@ -28,6 +28,7 @@
         paredit-forward-delete
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-mode
         paredit-open-curly
         paredit-open-round
         paredit-open-square
@@ -42,6 +43,7 @@
         ace-jump-mode
         ace-jump-move
         beginning-of-buffer
+        haskell-process-load-file
         helm-git-grep
         markdown-exdent-or-delete
         paredit-backward-kill-word

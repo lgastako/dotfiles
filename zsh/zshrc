@@ -193,3 +193,8 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+
+alias k=kubectl
+alias ku=kubectl
+alias kube=kubectl

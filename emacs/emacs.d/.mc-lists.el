@@ -34,6 +34,7 @@
         paredit-open-square
         paredit-semicolon
         paredit-splice-sexp
+        purescript-indentation-delete-char
         upcase-region
         yas-expand
         ))

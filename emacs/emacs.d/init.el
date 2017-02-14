@@ -254,7 +254,6 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; (use-package uniquify
-;;   :ensure nil
 ;;   :config (setq uniquify-buffer-name-style 'forward))
 
 (use-package multiple-cursors
@@ -565,8 +564,7 @@
 
 ;; c#
 
-(use-package csharp-mode
-  :ensure t)
+(use-package csharp-mode)
 
 ;; elixir
 
@@ -575,9 +573,7 @@
   :config
   (use-package alchemist
     :pin melpa-stable
-    :diminish alchemist-mode
-    ;; :ensure t
-    ))
+    :diminish alchemist-mode))
 
 ;; elm
 (use-package elm-mode
@@ -773,17 +769,26 @@
 ;; purescript
 
 (use-package purescript-mode
-  :ensure t
   :init
   (setq-default purescript-compile "/usr/local/bin/psc")
   :config
-  (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
   ;; TODO: use-package-ify ...
   (define-key purescript-mode-map (kbd "C-,") 'purescript-move-nested-left)
   (define-key purescript-mode-map (kbd "C-.") 'purescript-move-nested-right)
   (define-key purescript-mode-map (kbd "C-c C-c") 'purescript-compile)
   ;;(define-key purescript-cabal-mode-map (kbd "C-c C-c") 'purescript-compile)
-  )
+
+  ;; (use-package psci
+  ;;   :config
+  ;;   (add-hook 'purescript-mode-hook 'inferior-psci-mode))
+  (use-package psc-ide
+    ;;:ensure t
+    :config
+    (add-hook 'purescript-mode-hook (lambda ()
+                                      (psc-ide-mode)
+                                      (company-mode)
+                                      (flycheck-mode)
+                                      (turn-on-purescript-indentation)))))
 
 ;; python
 
@@ -938,7 +943,6 @@
 ;; terraform
 
 (use-package terraform-mode
-  :ensure t
   :mode "\\.tf$"
   :config
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
@@ -947,7 +951,6 @@
 ;; TOML
 
 (use-package toml-mode
-  :ensure t
   :pin marmalade)
 
 ;; YAML
@@ -962,8 +965,7 @@
   :init
   ;; (add-hook 'after-init-hook #'global-flycheck-mode)
   :config
-  (use-package flycheck-elm
-    :ensure t)
+  (use-package flycheck-elm)
   (progn
     (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)

@@ -638,7 +638,9 @@
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   (customize-set-variable 'haskell-process-type 'stack-ghci)
-  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans")))
+  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
+  ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
+  (setq ghc-ghc-options '("-Wall" "-Werror")))
 
 ;; (use-package haskell-mode
 ;;   :pin melpa-stable

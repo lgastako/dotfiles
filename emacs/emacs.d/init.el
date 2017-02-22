@@ -132,6 +132,7 @@
 ;; Highlight trailing whitespace in red in all modes except the ones explicitly
 ;; exempted below.
 (setq-default show-trailing-whitespace t)
+(add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 (add-hook 'cider-repl-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 (add-hook 'buffer-menu-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
@@ -579,7 +580,6 @@
 (use-package elm-mode
   :pin melpa-stable
   :bind (("C-c C-k" . elm-compile-main))
-
   :init
   ;; Not sure why I have to set elm-compile-command explicity all of a
   ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my

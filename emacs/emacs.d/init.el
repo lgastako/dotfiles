@@ -260,9 +260,9 @@
 (use-package multiple-cursors
   :pin melpa-stable
   :config
-  (global-set-key (kbd "C-c m") 'mc/edit-lines)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c m")   'mc/edit-lines)
+  (global-set-key (kbd "C->")     'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
 (use-package yasnippet
@@ -597,6 +597,12 @@
   :pin melpa-stable
   :disabled t        ;; causes slow load
   )
+
+;; Elastic Search
+
+(use-package es-mode
+  :ensure t
+  :mode "\\.es\\'")
 
 ;; go
 
@@ -1039,6 +1045,8 @@
 
 (global-set-key (kbd "C-x r w") 'rotate-windows)
 (global-set-key (kbd "C-x w r") 'rotate-windows)
+
+(global-set-key (kbd "C-c a r") 'align-regexp)
 
 ;; Experimental
 (global-set-key (kbd "C-c r a t") 'mc/mark-all-like-this-dwim)

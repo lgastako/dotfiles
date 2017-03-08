@@ -493,6 +493,21 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))
 
+;; This should be before any of the languages
+(use-package flycheck
+  ;; :disabled t
+  :pin melpa-stable  ;; NOTE: this particular verison installed manually.
+  :init
+  (use-package flycheck-elm)
+  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
+  :config
+  (progn
+    (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)))
+
+
 ;;===========
 ;; Languages
 
@@ -969,19 +984,6 @@
 (use-package yaml-mode
   :pin melpa-stable
   :mode "\\.yml\\'")
-
-(use-package flycheck
-  :disabled t
-  :pin melpa-stable
-  :init
-  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
-  :config
-  (use-package flycheck-elm)
-  (progn
-    (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)))
 
 (use-package paredit
   :pin melpa

@@ -643,7 +643,7 @@
   :init
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
-  (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+  ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
   (customize-set-variable 'haskell-process-type 'stack-ghci)
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
@@ -781,6 +781,8 @@
   :init
   (setq-default purescript-compile "/usr/local/bin/psc")
   :config
+  (setq psc-ide-use-npm-bin t)
+
   ;; TODO: use-package-ify ...
   (define-key purescript-mode-map (kbd "C-,") 'purescript-move-nested-left)
   (define-key purescript-mode-map (kbd "C-.") 'purescript-move-nested-right)

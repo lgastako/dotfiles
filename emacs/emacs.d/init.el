@@ -495,8 +495,8 @@
 
 ;; This should be before any of the languages
 (use-package flycheck
-  ;; :disabled t
-  :pin melpa-stable  ;; NOTE: this particular verison installed manually.
+  :ensure t
+  :pin melpa-stable
   :init
   (use-package flycheck-elm)
   ;; (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -662,7 +662,11 @@
   (customize-set-variable 'haskell-process-type 'stack-ghci)
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
-  (setq ghc-ghc-options '("-Wall" "-Werror")))
+  (setq ghc-ghc-options '("-Wall" "-Werror"))
+
+  (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
+  (require 'tidal)
+  )
 
 ;; (use-package haskell-mode
 ;;   :pin melpa-stable
@@ -793,28 +797,39 @@
 ;; purescript
 
 (use-package purescript-mode
+  :mode (("\\.purs$" . purescript-mode))
+
   :init
   (setq-default purescript-compile "/usr/local/bin/psc")
+
   :config
   (setq psc-ide-use-npm-bin t)
+  (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
 
   ;; TODO: use-package-ify ...
   (define-key purescript-mode-map (kbd "C-,") 'purescript-move-nested-left)
   (define-key purescript-mode-map (kbd "C-.") 'purescript-move-nested-right)
-  (define-key purescript-mode-map (kbd "C-c C-c") 'purescript-compile)
+;;  (define-key purescript-mode-map (kbd "C-c C-c") 'purescript-compile)
   ;;(define-key purescript-cabal-mode-map (kbd "C-c C-c") 'purescript-compile)
 
   ;; (use-package psci
   ;;   :config
   ;;   (add-hook 'purescript-mode-hook 'inferior-psci-mode))
-  (use-package psc-ide
-    ;;:ensure t
-    :config
-    (add-hook 'purescript-mode-hook (lambda ()
-                                      (psc-ide-mode)
-                                      (company-mode)
-                                      (flycheck-mode)
-                                      (turn-on-purescript-indentation)))))
+  )
+
+(use-package psc-ide
+  ;;:ensure t
+  :config
+  (add-hook 'purescript-mode-hook
+            (lambda ()
+              (psc-ide-mode)
+              (company-mode)
+              (flycheck-mode)
+              (turn-on-purescript-indentation)
+              ;; (customize-set-variable 'psc-ide-add-import-on-completion t)
+              ))
+  ;; (add-hook 'purescript-mode-hook 'psc-ide-mode)
+  )
 
 ;; python
 

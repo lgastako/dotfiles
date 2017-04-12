@@ -7,6 +7,7 @@
 ;; Global path modifications
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq exec-path (append exec-path '("/Users/john/dotfiles/bin")))
+(setq exec-path (append exec-path '("/Users/john/local/bin")))
 ;; Not sure why I have to do this, but I do.
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:"))
 

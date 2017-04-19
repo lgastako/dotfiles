@@ -166,7 +166,9 @@ export PATH=${PATH}:/Users/john/.gem/ruby/2.0.0/bin
 
 export DESK_DIR=${HOME}/dotfiles/desks
 
-. /Users/john/.nix-profile/etc/profile.d/nix.sh
+if [ -e /Users/john/.nix-profile/etc/profile.d/nix.sh ]; then
+   . /Users/john/.nix-profile/etc/profile.d/nix.sh
+fi
 
 alias wifi='networksetup -setairportpower en0'
 export NVM_DIR="/Users/john/.nvm"

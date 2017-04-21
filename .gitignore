@@ -9,3 +9,4 @@ lein/dot.lein/repl-history
 bin/fixssh
 sensitive
 google-cloud-sdk
+emacs/emacs.d/auto-save-list/

@@ -8,6 +8,7 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq exec-path (append exec-path '("/Users/john/dotfiles/bin")))
 (setq exec-path (append exec-path '("/Users/john/local/bin")))
+(setq exec-path (append exec-path '("/Users/john/.local/bin")))
 ;; Not sure why I have to do this, but I do.
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:"))
 
@@ -107,6 +108,17 @@
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
+;; Revert TAGS files without asking
+(setq tags-revert-without-query 1)
+;; ...and generate haskell tags on save.
+(setq haskell-tags-on-save t)
+;; (require 'speedbar)
+;; (speedbar-add-supported-extension ".hs")
+;; (speedbar 1)
+;; (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp/hasktags")
+;; (load "hasktags")
+(global-set-key (kbd "M-,") 'pop-tag-mark)
 
 ;; Highlight matching delimiters
 (show-paren-mode 1)
@@ -583,6 +595,9 @@
 
 (use-package csharp-mode)
 
+(use-package csv-mode
+  :ensure t)
+
 ;; elixir
 
 (use-package elixir-mode
@@ -664,6 +679,7 @@
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
   (setq ghc-ghc-options '("-Wall" "-Werror"))
+  ;; (setq-default haskell-stylish-on-save t)
 
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
@@ -1107,6 +1123,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

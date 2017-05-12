@@ -36,6 +36,7 @@
         paredit-splice-sexp
         purescript-indentation-delete-char
         upcase-region
+        yaml-electric-dash-and-dot
         yas-expand
         ))
 

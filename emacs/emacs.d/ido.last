@@ -1,0 +1,53 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/john/src/wheatley/src/Focus/Emma/" . "Types/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/john/exercism/haskell/run-length-encoding/src/"
+ "/Users/john/src/wheatley/src/Focus/DSL/"
+ "/Users/john/src/katas/gchal-bigdiv3/src/"
+ "/Users/john/src/wheatley/src/Focus/Wheatley/DSL/"
+ "/Users/john/src/spun/src/Spun/Examples/Blog/"
+ "/Users/john/src/spun/src/Spun/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "notes.txt"
+ "OpLog.hs"
+ "Brute.hs"
+ "NotUsed.hs"
+ "Db.hs"
+ "Post.hs"
+ "Author.hs"
+ "Title.hs"
+ "Recipients.hs"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/john/exercism/haskell/run-length-encoding/src/" (22796 10 0 0) "RunLength.hs" "../" "./")
+
+ ("/Users/john/src/wheatley/src/Focus/Emma/Types/" (22793 263 0 0) "AppContext.hs" "../" "./")
+
+ ("/Users/john/src/wheatley/src/Focus/Emma/" (22795 40351 0 0) "Types/" "Main.hs" "Env.hs" "DSL/" "Brain.hs" "Brain/" "../" "./")
+
+ ("/Users/john/src/wheatley/src/Focus/DSL/" (22793 263 0 0) "Log.hs" "Log/" "../" "./")
+
+ ("/Users/john/src/katas/gchal-bigdiv3/src/" (22793 36942 0 0) "NotUsed.hs" "Lib.hs" "../" "./")
+
+ ("/Users/john/src/wheatley/src/Focus/Wheatley/DSL/" (22793 263 0 0) "Subs.hs" "Subs/" "Slack.hs" "Slack/" "Misc.hs" "Misc/" "ElasticSearch.hs" "ElasticSearch/" "Bot.hs" "Bot/" "Body.hs" "../" "./")
+
+ ("/Users/john/src/spun/src/Spun/Examples/Blog/" (22790 37838 0 0) "Title.hs" "Author.hs" "../" "./")
+
+ ("/Users/john/src/spun/src/Spun/Examples/" (22790 37853 0 0) "Blog.hs" "Blog/" "../" "./")
+
+ ("/Users/john/src/spun/src/Spun/" (22790 36718 0 0) "Sender.hs" "Recipient.hs" "Payload.hs" "Message.hs" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

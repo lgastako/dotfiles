@@ -10,3 +10,4 @@ bin/fixssh
 sensitive
 google-cloud-sdk
 emacs/emacs.d/auto-save-list/
+emacs/emacs.d/ido.last

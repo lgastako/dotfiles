@@ -517,8 +517,8 @@
   (progn
     (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)))
+    (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)
+    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
 
 ;;===========
@@ -637,27 +637,27 @@
 
 ;; go
 
-(use-package go-mode
-  :pin melpa-stable
-  :init
-  (setenv "GOPATH" "~/go")
-  ;; These next two should probably be moved out to the top level, no?
-  (setq exec-path (append exec-path '("/usr/local/go/bin")))
-  (setq exec-path (append exec-path '("~/go/bin")))
+;; (use-package go-mode
+;;   :pin melpa-stable
+;;   :init
+;;   (setenv "GOPATH" "~/go")
+;;   ;; These next two should probably be moved out to the top level, no?
+;;   (setq exec-path (append exec-path '("/usr/local/go/bin")))
+;;   (setq exec-path (append exec-path '("~/go/bin")))
 
-  :config
+;;   :config
 
-  (use-package flymake-go
-    :pin melpa-stable
-    :init
-    (setq gofmt-command "goimports")
-    :config
-    (add-hook 'before-save-hook 'gofmt-before-save))
+;;   (use-package flymake-go
+;;     :pin melpa-stable
+;;     :init
+;;     (setq gofmt-command "goimports")
+;;     :config
+;;     (add-hook 'before-save-hook 'gofmt-before-save))
 
-  (use-package go-eldoc
-    :pin melpa-stable
-    :config
-    (add-hook 'go-mode-hook 'go-eldoc-setup)))
+;;   (use-package go-eldoc
+;;     :pin melpa-stable
+;;     :config
+;;     (add-hook 'go-mode-hook 'go-eldoc-setup)))
 
 ;; haml
 
@@ -676,9 +676,15 @@
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
   (customize-set-variable 'haskell-process-type 'stack-ghci)
-  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
+  (setq haskell-process-args-stack-ghci
+        ;; '("--ghci-options='-ferror-spans'")
+        '("--ghc-options=-ferror-spans"
+          ;; "--test"
+          ;; ":wheatley-test"
+          ))
+
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
-  (setq ghc-ghc-options '("-Wall" "-Werror"))
+  ;; (setq ghc-ghc-options '("-Wall" "-Werror" "-v"))
   ;; (setq-default haskell-stylish-on-save t)
 
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")

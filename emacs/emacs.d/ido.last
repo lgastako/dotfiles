@@ -2,11 +2,19 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/Users/john/src/hovercraft/src/" . "Hovercraft/")
  ("/Users/john/src/wheatley/src/Focus/Emma/" . "Types/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/john/src/longboye/src/Overture/"
+ "/Users/john/src/longboye/src/Longboye/Imports/"
+ "/Users/john/Dropbox/"
+ "/Users/john/src/hovercraft/"
+ "/Users/john/src/hovercraft/src/Hovercraft/KnownFiles/"
+ "/Users/john/src/hovercraft/src/Hovercraft/"
+ "/Users/john/src/hovercraft/src/Hovercraft/KnownFile/"
  "/Users/john/exercism/haskell/run-length-encoding/src/"
  "/Users/john/src/wheatley/src/Focus/DSL/"
  "/Users/john/src/katas/gchal-bigdiv3/src/"
@@ -17,19 +25,47 @@
 
 ;; ----- ido-work-file-list -----
 (
- "notes.txt"
- "OpLog.hs"
- "Brute.hs"
- "NotUsed.hs"
+ "Internal.hs"
+ "Cracker.hs"
+ "Verify.hs"
+ "deardad1.txt"
+ "db.yaml"
+ "Rakefile.hs"
+ "StackYaml.hs"
+ "Intro.hs"
  "Db.hs"
- "Post.hs"
- "Author.hs"
- "Title.hs"
- "Recipients.hs"
+ "CommandName.hs"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/Users/john/src/longboye/src/" (22809 4383 0 0) "Overture.hs" "Longboye.hs" "Longboye/" "Debug.hs" "../" "./")
+
+ ("/Users/john/src/longboye/src/Longboye/" (22807 28669 0 0) "Parsers.hs" "Main.hs" "Imports.hs" "Imports/" "Import.hs" "../" "./")
+
+ ("/Users/john/src/longboye/src/Longboye/Imports/" (22806 47293 0 0) "Verify.hs" "../" "./")
+
+ ("/tmp/" (22804 63591 0 0) "x/" "tom.txt" "queries.sql" "PII.hs" "jason.md" "intro2.txt" "intro.txt" "foo.txt" "deardad.txt" "com.apple.launchd.Z2AUKK5A0D/" "com.apple.launchd.YUV0A71dUf/" "async-cb/" ".s.PGSQL.5432.lock" ".s.PGSQL.5432" "../" "./")
+
+ ("/Users/john/src/" (22804 1416 0 0) "wyah/" "wheatley/" "vile/" "ulmus/" "the-argument-for-haskell-or-haskellike-everywhere/" "sumtc/" "stuff-infrastructure/" "stuff/" "spun/" "sandbox/" "portal_audits/" "polyeuler/" "optparse-applicative/" "newmath/" "lgastako.github.io/" "katas/" "ical/" "hpack-convert/" "hpack/" "hovercraft/" "ghcjs-play/" "gator/" "foo/" "chask/" "audi/" "asi/" "akron/" ".DS_Store" "../" "./")
+
+ ("/Users/john/Dropbox/" (22804 5224 0 0) "ZRissues.md" "zekes-house.md" "writing/" "work/" "WHERE_IS_YOUR_GOD_NOW.jpg" "Wallpaper/" "Vegas/" "TODO.md" "threads/" "This is your Dropbox.txt" "testing.md" "taxes.md" "Tax Stuff/" "sZcaGXt.jpg" "superpowerscorp/" "super-special-focus/" "src/" "Software/" "slicehost.pw" "skype.pw.txt" "shared/" "services_tech_support.jpg" "Screenshots/" "Saves/" "save.txt" "rock-out.mov" "rental-stuff/" "reliability-format.md" "ref/" "Reactable/" "Public/" "proof-md-mva/" "Pictures:Video/" "physics/" "Photos/" "Photo Nov 24, 2 30 57 PM.png" "philosophy.txt" "pdfs/" "paperwork.jpg" "papers/" "Other Images/" "org.bak/" "org/" "opscode-private-key-PROTECT-ME.txt" "old/" "Obama2012_0818-NHWT103.jpg" "nR8SmtK.jpg" "net.py" "naming.md" "Music/" "Mobius_Milo_Yelp_Merchants_Sample.csv" "Maya-p/" "maia-old/" "Machine Learning/" "MAC.INSTALLS.TODO.txt" "linus-header.pxm" "letsencrypt.1.bak/" "launchpad/" "Kanye_West-My_Beautiful_Dark_Twisted_Fantasy-2010-DOH/" "KairaLee6.jpg" "junk/" "jon-cotton.md" "JohnCigarCancun.jpg" "john-jeans-3.jpg" "john-jeans-2.jpg" "john-jeans-1.jpg" "john-evans-sm-ffa-2013-11-15.word.doc" "john-evans-sm-faa-2013-11-15.pages" "john-ca-license-sm.jpg" "John Evans_Supermassive Founder Award Agreement (11-15-2013).pages" "John Evans.shortcat-license" "John AHR photos/" "John - Temp - Hypnotronic Incorporation  Paperwork/" "introduction.pdf.1" "interviews/" "IMG_3152.jpg" "Image Macros/" "Icon
+" "hotshot.jpg" "hey.swf" "help-wanted-ad.jpg" "haskellcomm.txt" "gstreamer/" "Gretzky610.jpg" "github/" "From ipad 1/" "For Rich/" "For Jack/" "For Healey/" "first-world-problems-21.jpg" "Evernote Camera Roll 20130627 155432.jpg" "elo-first-key-pair.pem" "echelon-todo.md" "dump.rdb" "Ducreux1.jpg" "dot.memegen/" "doing.md" "Documents/" "deepdream/" "Deck-v6.pages" "datomic-pro-0.8.4254/" "Customer-service-meme.jpg" "credit-card-will-work-for-food-small-23138.jpg" "Cowboys-vs-Redskins.jpg" "costa-rica-pics/" "CopyOfPicturesVideo/" "cognitect-roadmap.md" "cmudict.0.7a.fst" "clojure-debugging.md" "clj-demo.md" "classifieds.jpg" "cf.dmp" "cf-fc.dmp" "Casino Credit Crap/" "carl.interview.md" "Camera Uploads/" "be5971246a82a5d73f1ca5f6ba6b4eff1.jpg" "backups/" "backthen.john.jpg" "autopcap/" "aston docs/" "alt-github/" "ADR GALLERY/" "accounts.txt" "ableton_live_standard_9.1.1_64.dmg" "575x270-panoramic_help_wanted_sign_with_woman_12482.jpg" "5620_214011165183_547205183_7830998_4077288_n.jpg" "405162_484885774884474_1089858499_n.jpg" "1Password Emergency Kit A3-NQLD3A-boamidx2tgzrddwc2txq6jo74skzykml.pdf" "1pac.txt" "100_Merchants_Pt2.xls" "100_Merchants_Pt1.xls" ".dropbox.cache/" ".dropbox" "../" "./")
+
+ ("/Users/john/" (22804 61049 0 0) "src/" "Public/" "Pictures/" "otis.env" "Music/" "Movies/" "local/" "Library/" "google-cloud-sdk/" "exercism/" "evm/" "Dropbox/" "Downloads/" "dotfiles/" "Documents/" "Desktop/" "Applications/" ".zshrc.backup" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump" ".xmonad/" ".wget-hsts" ".vimrc" ".viminfo" ".vim/" ".unite/" ".Trash/" ".stack/" ".ssh/" ".sqitch/" ".saves/" ".revive.el" ".pypirc" ".psqlrc" ".psql_history-35.188.41.32-:DBNAME--Removespacebetween:andDBNAME" ".profile" ".pdbrc" ".oracle_jre_usage/" ".oh-my-zsh/" ".npm/" ".local/" ".lesshst" ".lein/" ".kube/" ".kite/" ".inputrc" ".gtkrc-2.0" ".gitk" ".gitconfig" ".ghc/" ".exercism.json" ".emacs.d/" ".elm/" ".DS_Store" ".dropbox/" ".dbvis/" ".config/" ".CFUserTextEncoding" ".boot/" ".bashrc" ".bash_history" ".ackrc" "../" "./")
+
+ ("/Users/john/src/hovercraft/" (22802 57638 0 0) "test/" "stack.yaml" "src/" "Setup.hs" "README.md" "package.yaml" "Makefile" "LICENSE" "hovercraft.cabal" "examples/" "db.csv" "completion.sh" "app/" ".stack-work/" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/john/src/hovercraft/src/" (22802 42968 0 0) "Overture.hs" "Hovercraft/" "Debug.hs" "../" "./")
+
+ ("/Users/john/src/hovercraft/src/Hovercraft/" (22802 26950 0 0) "URL.hs" "TargetFn.hs" "Target.hs" "Main.hs" "KnownFiles.hs" "KnownFiles/" "KnownFile.hs" "KnownFile/" "Intro.hs" "FilePattern.hs" "CommandName.hs" "../" "./")
+
+ ("/Users/john/src/hovercraft/src/Hovercraft/KnownFile/" (22802 45130 0 0) "Db.hs" "../" "./")
+
+ ("/Users/john/src/hovercraft/src/Hovercraft/KnownFiles/" (22802 43898 0 0) "Makefile.hs" "DotCabal.hs" "../" "./")
+
+ ("/Users/john/src/hovercraft/app/" (22799 48686 0 0) "Main.hs" "../" "./")
+
  ("/Users/john/exercism/haskell/run-length-encoding/src/" (22796 10 0 0) "RunLength.hs" "../" "./")
 
  ("/Users/john/src/wheatley/src/Focus/Emma/Types/" (22793 263 0 0) "AppContext.hs" "../" "./")

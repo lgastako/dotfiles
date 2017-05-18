@@ -10,7 +10,7 @@
 (setq exec-path (append exec-path '("/Users/john/local/bin")))
 (setq exec-path (append exec-path '("/Users/john/.local/bin")))
 ;; Not sure why I have to do this, but I do.
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:"))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/Users/john/.local/bin"))
 
 
 ;; Bind a key to edit this file
@@ -683,6 +683,8 @@
           ;; ":wheatley-test"
           ))
 
+  ;; (define-key haskell-mode-map (kbd "<f12>") 'haskell-process-reload-devel-main)
+
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
   ;; (setq ghc-ghc-options '("-Wall" "-Werror" "-v"))
   ;; (setq-default haskell-stylish-on-save t)
@@ -690,51 +692,6 @@
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
   )
-
-;; (use-package haskell-mode
-;;   :pin melpa-stable
-;;   :mode ("\\.hs\\'"
-;;          "\\.lhs\\'"
-;;          "\\.hsc\\'"
-;;          "\\.cpphs\\'"
-;;          "\\.c2hs\\'")
-;;   :bind (("C-c a i" . haskell-align-imports)
-;;          ("C-c f i" . haskell-mode-format-imports)
-;;          ("C-c j i" . haskell-navigate-imports)
-;;          ("C-c s i" . haskell-sort-imports))
-;;   :init
-;;   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
-;;   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
-;;   (setq haskell-process-type 'stack-ghci)
-
-;;   (use-package ghc
-;;     :commands (ghc-init
-;;                ghc-debug
-;;                ghc-abbrev-init
-;;                ghc-type-init
-;;                ghc-comp-init
-;;                ghc-kill-process
-;;                ghc-import-module)
-
-;;     ;; (evil-define-key 'normal haskell-mode-map (kbd "M-i") 'ghc-show-info)
-;;     ;; (evil-leader/set-key-for-mode 'haskell-mode "t" 'ghc-show-type)
-
-;;     :bind (("M-i" . ghc-show-info)
-;;            ("M-t" . ghc-show-type))
-
-;;     ;; :init
-;;     ;; (add-hook 'haskell-mode-hook
-;;     ;;           (lambda ()
-;;     ;;             (ghc-abbrev-init)
-;;     ;;             (ghc-type-init)
-;;     ;;             (unless ghc-initialized
-;;     ;;               (ghc-comp-init)
-;;     ;;               (setq ghc-initialized t)
-;;     ;;               (add-hook 'kill-buffer-hook 'ghc-kill-process))
-;;     ;;             (ghc-import-module)))
-
-;;     :config
-;;     (use-package shakespeare-mode)))
 
 ;; html
 
@@ -1136,3 +1093,11 @@
    (quote
     ((haskell-process-use-ghci . t)
      (haskell-indent-spaces . 4)))))
+
+(defun freenode ()
+  (interactive)
+  (load "~/.erc-auth.el")
+  (erc :server "irc.freenode.net"
+       :port 6667
+       :nick erc-nick
+       :password erc-password))

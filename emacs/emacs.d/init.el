@@ -510,8 +510,8 @@
 (use-package flycheck
   :ensure t
   :pin melpa-stable
-  :init
-  (use-package flycheck-elm)
+  ;; :init
+  ;; (use-package flycheck-elm)
   ;; (add-hook 'after-init-hook #'global-flycheck-mode)
   :config
   (progn
@@ -578,6 +578,11 @@
 ;;   :pin melpa-stable
 ;;   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
 ;;   :config (cljr-add-keybindings-with-prefix "C-!"))
+
+;; cmake
+
+(use-package cmake-mode
+  :mode "CMakeLists.txt")
 
 ;; coffescript
 
@@ -672,6 +677,25 @@
   :bind
   ("C-c m" . haskell-process-reload-devel-main)
   :init
+  ;; (defun longboyeee ())
+  (defun longboyeee ()
+    (interactive "r")
+    (when (eq major-mode 'haskell-mode)
+      (let ((start    1)
+            (end      (+ 1 (buffer-size)))
+            (program "longboye"))
+        (let ((saved-cursor-position (point)))
+            (call-process-region start
+                                 end
+                                 program
+                                 t         ;; delete
+                                 t         ;; destination
+                                 nil       ;; display
+                                 "imports"
+                                 "-"
+                                 )
+            (goto-char saved-cursor-position)))))
+  (add-hook 'before-save-hook #'longboyeee)
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
@@ -1002,12 +1026,17 @@
 ;; Dunno why these two don't work.
 ;; (global-set-key (kbd "M-g c") "©")
 ;; (global-set-key (kbd "M-g t") "™")
-(global-set-key (kbd "M-g l")   "λ")
-(global-set-key (kbd "M-g d")   "Δ")
-(global-set-key (kbd "M-g - >") "→")
-(global-set-key (kbd "M-g = >") "⇒")
-(global-set-key (kbd "M-g f")   "∀")
-(global-set-key (kbd "M-g e")   "∃")
+
+(global-set-key (kbd "M-g l")   '(lambda () (interactive) (insert "λ")))
+(global-set-key (kbd "M-g d")   '(lambda () (interactive) (insert "Δ")))
+(global-set-key (kbd "M-g - >") '(lambda () (interactive) (insert "→")))
+(global-set-key (kbd "M-g = >") '(lambda () (interactive) (insert "⇒")))
+(global-set-key (kbd "M-g f")   '(lambda () (interactive) (insert "∀")))
+(global-set-key (kbd "M-g E")   '(lambda () (interactive) (insert "∃")))
+(global-set-key (kbd "M-g e")   '(lambda () (interactive) (insert "∈")))
+(global-set-key (kbd "M-g k")   '(lambda () (interactive) (insert "©")))
+(global-set-key (kbd "M-g t")   '(lambda () (interactive) (insert "™")))
+
 (global-set-key (kbd "C-x d")
                 (lambda ()
                   (interactive)
@@ -1088,7 +1117,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)
@@ -1101,3 +1130,6 @@
        :port 6667
        :nick erc-nick
        :password erc-password))
+
+
+;; (setq compilation-scroll-output 'first-error)

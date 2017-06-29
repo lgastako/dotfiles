@@ -241,7 +241,10 @@
 
 (use-package ido
   :pin melpa-stable
-  :config (ido-mode t))
+  :config
+  (ido-mode t)
+  ;; https://github.com/technomancy/emacs-starter-kit/issues/39
+  (setq ffap-machine-p-known 'reject))
 
 (use-package rainbow-delimiters
   :pin melpa-stable
@@ -720,6 +723,13 @@
 
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
+
+  (add-to-list 'load-path "/Users/john/.stack/snapshots/x86_64-osx/lts-4.0/7.10.3/share/x86_64-osx-ghc-7.10.3/HaRe-0.8.2.1/elisp")
+  ;;(add-to-load-path "~/.cabal/share/x86_64-linux-ghc-7.10.2/HaRe-0.8.2.0/elisp")
+  (require 'hare)
+  (autoload 'hare-init "hare" nil t)
+
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
   )
 
 ;; html
@@ -1141,3 +1151,4 @@
 
 
 ;; (setq compilation-scroll-output 'first-error)
+

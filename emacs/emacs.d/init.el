@@ -685,6 +685,8 @@
   :bind
   ("C-c m" . haskell-process-reload-devel-main)
   :init
+  (setq haskell-interactive-popup-errors nil)
+
   ;; (defun longboyeee ())
   (defun longboyeee ()
     (interactive "r")
@@ -731,6 +733,20 @@
 
   (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
   )
+
+;; This is ganked from https://github.com/mbeidler/cation in an attempt to be
+;; able to get ghcjsi working with emacs.  Technically it should probably be
+;; inside the use-package declaration for haskell-mode, but technically it's
+;; separate and I just want to try to get it working for now.
+;; (use-package exec-path-from-shell
+;;   :pin melpa
+;;   :init
+;;   (exec-path-from-shell-initialize)
+;;   (exec-path-from-shell-copy-env "NODE_PATH"))
+
+;; (setq haskell-ghci-program-name "stack")
+;; (setq haskell-ghci-program-args '("ghci"))
+
 
 ;; html
 
@@ -1139,7 +1155,8 @@
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4)))))
+     (haskell-indent-spaces . 4))))
+ '(haskell-process-type 'stack-ghci))
 
 (defun freenode ()
   (interactive)

@@ -215,3 +215,5 @@ copr() {
     git fetch origin refs/pull/$1/head:pull-request-$1
     git co pull-request-$1
 }
+
+export PATH="/usr/local/opt/qt/bin:$PATH"

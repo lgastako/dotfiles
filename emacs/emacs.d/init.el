@@ -687,8 +687,8 @@
   :init
   (setq haskell-interactive-popup-errors nil)
 
-  ;; (defun longboyeee ())
-  (defun longboyeee ()
+  (defun longboyeee-off ())
+  (defun longboyeee-on ()
     (interactive "r")
     (when (eq major-mode 'haskell-mode)
       (let ((start    1)
@@ -705,6 +705,10 @@
                                  "-"
                                  )
             (goto-char saved-cursor-position)))))
+
+  (defun longboyeee () (longboyeee-on))
+  ;; (defun longboyeee () (longboyeee-off))
+
   (add-hook 'before-save-hook #'longboyeee)
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
@@ -731,8 +735,7 @@
   (require 'hare)
   (autoload 'hare-init "hare" nil t)
 
-  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
-  )
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init))))
 
 ;; This is ganked from https://github.com/mbeidler/cation in an attempt to be
 ;; able to get ghcjsi working with emacs.  Technically it should probably be

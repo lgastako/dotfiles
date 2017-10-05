@@ -805,6 +805,13 @@
 
 (global-set-key (kbd "C-x j") 'json-format)
 
+;; Lux
+
+(require 'lux-mode)
+(add-hook 'lux-mode-hook #'paredit-mode)
+(add-hook 'lux-mode-hook #'rainbow-delimiters-mode)
+(add-to-list 'auto-mode-alist '("\\.lux\\'" . lux-mode))
+
 (use-package markdown-mode
   :pin melpa-stable
   :mode ("\\.md\\'" "\\.markdown\\'")

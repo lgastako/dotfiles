@@ -67,7 +67,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 
 ;; '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Andale Mono")))))
@@ -544,6 +543,8 @@
          ("\\.cljc$" . clojurec-mode)
          ("\\.cljx$" . clojurex-mode)
          ("\\.edn$" . clojure-mode))
+
+  ;; :bind (("C-c C-k" . cider-repl-clear-buffer))
   :init
 
   ;; Fix indenting on some things
@@ -621,19 +622,19 @@
     :diminish alchemist-mode))
 
 ;; elm
-(use-package elm-mode
-  :pin melpa-stable
-  :bind (("C-c C-k" . elm-compile-main))
-  :init
-  ;; Not sure why I have to set elm-compile-command explicity all of a
-  ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my
-  ;; exec-path properly... but, it gets the job done.
-  (setq elm-compile-command "/usr/local/bin/elm-make")
-  (setq elm-format-on-save t)
-  (setq elm-indent-offset 4)
-  (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-  (add-to-list 'company-backends 'company-elm))
+;; (use-package elm-mode
+;;   :pin melpa-stable
+;;   :bind (("C-c C-k" . elm-compile-main))
+;;   :init
+;;   ;; Not sure why I have to set elm-compile-command explicity all of a
+;;   ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my
+;;   ;; exec-path properly... but, it gets the job done.
+;;   (setq elm-compile-command "/usr/local/bin/elm-make")
+;;   (setq elm-format-on-save t)
+;;   (setq elm-indent-offset 4)
+;;   (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
+;;   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+;;   (add-to-list 'company-backends 'company-elm))
 
 ;; erlang
 
@@ -717,7 +718,7 @@
   (setq haskell-process-args-stack-ghci
         ;; '("--ghci-options='-ferror-spans'")
         '("--ghc-options=-ferror-spans"
-          ;; "--test"
+          "--test"
           ;; ":wheatley-test"
           ))
 
@@ -735,7 +736,22 @@
   (require 'hare)
   (autoload 'hare-init "hare" nil t)
 
-  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init))))
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
+
+  ;; (use-package dante
+  ;;   :ensure t
+  ;;   ;; :after haskell-mode
+  ;;   :commands 'dante-mode
+  ;;   :init
+  ;;   (add-hook 'haskell-mode-hook 'dante-mode)
+  ;;   (add-hook 'haskell-mode-hook 'flycheck-mode)
+  ;;   (add-hook 'dante-mode-hook
+  ;;             '(lambda () (flycheck-add-next-checker
+  ;;                          'haskell-dante
+  ;;                          '(warning . haskell-hlint))))
+
+  ;;   )
+  )
 
 ;; This is ganked from https://github.com/mbeidler/cation in an attempt to be
 ;; able to get ghcjsi working with emacs.  Technically it should probably be
@@ -817,6 +833,12 @@
   :mode ("\\.md\\'" "\\.markdown\\'")
   :config
   (setq markdown-command "/usr/local/bin/markdown"))
+
+;; nix
+
+(use-package nix-mode
+  :ensure t
+  )
 
 ;; nu
 
@@ -1159,14 +1181,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4))))
- '(haskell-process-type 'stack-ghci))
+     (haskell-indent-spaces . 4)))))
 
 (defun freenode ()
   (interactive)

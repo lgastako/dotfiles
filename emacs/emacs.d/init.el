@@ -871,6 +871,8 @@
 
   :config
   (setq psc-ide-use-npm-bin t)
+  (setq psc-ide-server-executable "/bin/echo")
+
   (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
 
   ;; TODO: use-package-ify ...
@@ -884,19 +886,20 @@
   ;;   (add-hook 'purescript-mode-hook 'inferior-psci-mode))
   )
 
-(use-package psc-ide
-  ;;:ensure t
-  :config
-  (add-hook 'purescript-mode-hook
-            (lambda ()
-              (psc-ide-mode)
-              (company-mode)
-              (flycheck-mode)
-              (turn-on-purescript-indentation)
-              ;; (customize-set-variable 'psc-ide-add-import-on-completion t)
-              ))
-  ;; (add-hook 'purescript-mode-hook 'psc-ide-mode)
-  )
+;; (use-package psc-ide
+;;   ;;:ensure t
+;;   :config
+;;   (add-hook 'purescript-mode-hook
+;;             (lambda ()
+;;               (psc-ide-mode)
+;;               (company-mode)
+;;               (flycheck-mode)
+;;               (turn-on-purescript-indentation)
+;;               ;; (customize-set-variable 'psc-ide-add-import-on-completion t)
+;;               ))
+;;   ;; (add-hook 'purescript-mode-hook 'psc-ide-mode)
+;;   )
+
 
 ;; python
 

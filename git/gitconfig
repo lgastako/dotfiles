@@ -2,6 +2,7 @@
 	name = John Evans
 	email = lgastako@gmail.com
 [alias]
+        git         = !exec git
         news        = log -p HEAD@{1}..HEAD@{0}
         pull        = pull --recurse-submodules
         u           = push

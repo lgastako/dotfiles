@@ -217,6 +217,11 @@ only for `imenu' support.")
   (concat literate-haskell-ds-line-prefix haskell-ds-start-decl-re)
   "The regexp that starts a Bird-style literate Haskell declaration.")
 
+(defun haskell-ds-whitespace-p (char)
+  "Test if CHAR is a whitespace character."
+  ;; the nil is a bob/eob test
+  (member char '(nil ?\t ?\n ?\ )))
+
 (defun haskell-ds-move-to-decl (direction bird-literate fix)
   "General function for moving to the start of a declaration,
 either forwards or backwards from point, with normal or with Bird-style
@@ -360,10 +365,7 @@ there."
   ;; ensure result is `t' or `nil' instead of just truthy
   (if (or
        ;; is cursor on whitespace
-       (let ((f (following-char)))
-         (or (= f ?\t)
-             (= f ?\n)
-             (= f ? )))
+       (haskell-ds-whitespace-p (following-char))
        ;; http://emacs.stackexchange.com/questions/14269/how-to-detect-if-the-point-is-within-a-comment-area
        ;; is cursor at begging, inside, or end of comment
        (let ((fontfaces (get-text-property (or pt
@@ -372,8 +374,9 @@ there."
            (setf fontfaces (list fontfaces)))
          (delq nil (mapcar
                     #'(lambda (f)
-                        (or (eq f 'font-lock-comment-face)
-                            (eq f 'font-lock-comment-delimiter-face)))
+                        (member f '(font-lock-comment-face
+                                    font-lock-doc-face
+                                    font-lock-comment-delimiter-face)))
                     fontfaces))))
       t
     nil))
@@ -419,8 +422,7 @@ declaration.  As `haskell-ds-backward-decl' but forward."
       (forward-line -1)
       (while (and (haskell-ds-line-commented-p)
                   ;; prevent infinite loop
-                  (not (= (point)
-                          (point-min))))
+                  (not (bobp)))
         (forward-line -1))
       (forward-line 1)))
   (point))

@@ -30,14 +30,12 @@
 
 (require 'haskell-mode)
 (require 'haskell-compile)
-(require 'haskell-navigate-imports)
 (require 'haskell-process)
-(require 'haskell-collapse)
 (require 'haskell-session)
 (require 'haskell-font-lock)
 (require 'haskell-presentation-mode)
 (require 'haskell-utils)
-
+(require 'haskell-string)
 (require 'ansi-color)
 (require 'cl-lib)
 (require 'etags)
@@ -208,9 +206,11 @@ be nil.")
         (next-error-no-select 0)
       (self-insert-command n))))
 
-(defun haskell-interactive-at-prompt ()
-  "If at prompt, return start position of user-input, otherwise return nil."
-  (if (>= (point)
+(defun haskell-interactive-at-prompt (&optional end-line)
+  "If at prompt, return start position of user-input, otherwise return nil.
+If END-LINE is non-nil, then return non-nil when the end of line
+is at the prompt."
+  (if (>= (if end-line (line-end-position) (point))
           haskell-interactive-mode-prompt-start)
       haskell-interactive-mode-prompt-start
     nil))
@@ -291,46 +291,46 @@ SESSION, otherwise operate on the current buffer."
   (with-current-buffer (if session
                            (haskell-session-interactive-buffer session)
                          (current-buffer))
-    (goto-char (point-max))
-    (let ((prompt (propertize haskell-interactive-prompt
-                              'font-lock-face 'haskell-interactive-face-prompt
-                              'prompt t
-                              'read-only t
-                              'rear-nonsticky t)))
-      ;; At the time of writing, front-stickying the first char gives an error
-      ;; Has unfortunate side-effect of being able to insert before the prompt
-      (insert (substring prompt 0 1)
-              (propertize (substring prompt 1)
-                          'front-sticky t)))
-    (let ((marker (setq-local haskell-interactive-mode-prompt-start (make-marker))))
-      (set-marker marker (point)))
-    (when haskell-interactive-mode-scroll-to-bottom
+    (save-excursion
+      (goto-char (point-max))
+      (let ((prompt (propertize haskell-interactive-prompt
+                                'font-lock-face 'haskell-interactive-face-prompt
+                                'prompt t
+                                'read-only haskell-interactive-prompt-read-only
+                                'rear-nonsticky t)))
+        ;; At the time of writing, front-stickying the first char gives an error
+        ;; Has unfortunate side-effect of being able to insert before the prompt
+        (insert (substring prompt 0 1)
+                (propertize (substring prompt 1)
+                            'front-sticky t)))
+      (let ((marker (setq-local haskell-interactive-mode-prompt-start (make-marker))))
+        (set-marker marker (point))))
+    (when (haskell-interactive-at-prompt t)
       (haskell-interactive-mode-scroll-to-bottom))))
 
 (defun haskell-interactive-mode-eval-result (session text)
   "Insert the result of an eval as plain text."
   (with-current-buffer (haskell-session-interactive-buffer session)
-    (goto-char (point-max))
-    (let ((prop-text (propertize text
+    (let ((at-end (eobp))
+          (prop-text (propertize text
                                  'font-lock-face 'haskell-interactive-face-result
                                  'front-sticky t
                                  'prompt t
-                                 'read-only t
+                                 'read-only haskell-interactive-mode-read-only
                                  'rear-nonsticky t
                                  'result t)))
-      (when (string= text haskell-interactive-prompt2)
-        (put-text-property 0
-                           (length haskell-interactive-prompt2)
-                           'font-lock-face
-                           'haskell-interactive-face-prompt2
-                           prop-text))
-      (insert (ansi-color-apply prop-text))
-      (haskell-interactive-mode-handle-h)
-      (let ((marker (setq-local haskell-interactive-mode-result-end (make-marker))))
-        (set-marker marker
-                    (point)
-                    (current-buffer)))
-      (when haskell-interactive-mode-scroll-to-bottom
+      (save-excursion
+        (goto-char (point-max))
+        (when (string= text haskell-interactive-prompt2)
+          (setq prop-text
+                (propertize prop-text
+                            'font-lock-face 'haskell-interactive-face-prompt2
+                            'read-only haskell-interactive-prompt-read-only)))
+        (insert (ansi-color-apply prop-text))
+        (haskell-interactive-mode-handle-h)
+        (let ((marker (setq-local haskell-interactive-mode-result-end (make-marker))))
+          (set-marker marker (point))))
+      (when at-end
         (haskell-interactive-mode-scroll-to-bottom)))))
 
 (defun haskell-interactive-mode-scroll-to-bottom ()
@@ -338,7 +338,7 @@ SESSION, otherwise operate on the current buffer."
   (let ((w (get-buffer-window (current-buffer))))
     (when w
       (goto-char (point-max))
-      (set-window-point w (point-max)))))
+      (set-window-point w (point)))))
 
 (defun haskell-interactive-mode-compile-error (session message)
   "Echo an error."
@@ -363,7 +363,7 @@ SESSION, otherwise operate on the current buffer."
                                   'expandable t
                                   'font-lock-face type
                                   'front-sticky t
-                                  'read-only t
+                                  'read-only haskell-interactive-mode-read-only
                                   'rear-nonsticky t))
               (insert (propertize (concat (match-string 2 message) "\n")
                                   'collapsible t
@@ -371,12 +371,12 @@ SESSION, otherwise operate on the current buffer."
                                   'front-sticky t
                                   'invisible haskell-interactive-mode-hide-multi-line-errors
                                   'message-length (length (match-string 2 message))
-                                  'read-only t
+                                  'read-only haskell-interactive-mode-read-only
                                   'rear-nonsticky t)))
           (insert (propertize (concat message "\n")
                               'font-lock-face type
                               'front-sticky t
-                              'read-only t
+                              'read-only haskell-interactive-mode-read-only
                               'rear-nonsticky t)))))))
 
 (defun haskell-interactive-mode-insert (session message)
@@ -494,6 +494,7 @@ FILE-NAME only."
 ;; Misc
 
 (declare-function haskell-interactive-switch "haskell")
+(declare-function haskell-session "haskell")
 
 (defun haskell-session-interactive-buffer (s)
   "Get the session interactive buffer."
@@ -501,7 +502,7 @@ FILE-NAME only."
     (if (and buffer (buffer-live-p buffer))
         buffer
       (let ((buffer-name (format "*%s*" (haskell-session-name s)))
-            index)
+            (index 0))
         (while (get-buffer buffer-name)
           (setq buffer-name (format "*%s <%d>*" (haskell-session-name s) index))
           (setq index (1+ index)))
@@ -512,6 +513,10 @@ FILE-NAME only."
             (haskell-session-assign s))
           (haskell-interactive-switch)
           buffer)))))
+
+(defun haskell-interactive-buffer ()
+  "Get the interactive buffer of the session."
+  (haskell-session-interactive-buffer (haskell-session)))
 
 (defun haskell-process-cabal-live (state buffer)
   "Do live updates for Cabal processes."
@@ -541,7 +546,7 @@ FILE-NAME only."
     span))
 
 (defun haskell-process-suggest-add-package (session msg)
-  "Add tthe (matched) module to your cabal file.
+  "Add the (matched) module to your cabal file.
 Cabal file is selected using SESSION's name, module matching is done in MSG."
   (let* ((suggested-package (match-string 1 msg))
          (package-name (replace-regexp-in-string "-[^-]+$" "" suggested-package))
@@ -1022,7 +1027,7 @@ This completion function is used in interactive REPL buffer itself."
 If there is one, pop that up in a buffer, similar to `debug-on-error'."
   (when (and haskell-interactive-types-for-show-ambiguous
              (string-match "^\n<interactive>:[-0-9]+:[-0-9]+:" response)
-             (not (string-match "^\n<interactive>:[-0-9]+:[-0-9]+:[\n ]+Warning:" response)))
+             (not (string-match "^\n<interactive>:[-0-9]+:[-0-9]+:[\n ]+[Ww]arning:" response)))
     (let ((inhibit-read-only t))
       (delete-region haskell-interactive-mode-prompt-start (point))
       (set-marker haskell-interactive-mode-prompt-start

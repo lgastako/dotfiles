@@ -207,7 +207,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'diminish)
+;;(require 'diminish)
 (require 'bind-key)
 
 (add-hook 'emacs-lisp-mode-hook
@@ -718,8 +718,10 @@
   (setq haskell-process-args-stack-ghci
         ;; '("--ghci-options='-ferror-spans'")
         '("--ghc-options=-ferror-spans"
+          ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
+          ;; see https://github.com/haskell/haskell-mode/issues/1553
+          "--ghc-options=-fshow-loaded-modules"
           "--test"
-          ;; ":wheatley-test"
           ))
 
   ;; (define-key haskell-mode-map (kbd "<f12>") 'haskell-process-reload-devel-main)
@@ -731,12 +733,12 @@
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
 
-  (add-to-list 'load-path "/Users/john/.stack/snapshots/x86_64-osx/lts-4.0/7.10.3/share/x86_64-osx-ghc-7.10.3/HaRe-0.8.2.1/elisp")
-  ;;(add-to-load-path "~/.cabal/share/x86_64-linux-ghc-7.10.2/HaRe-0.8.2.0/elisp")
-  (require 'hare)
-  (autoload 'hare-init "hare" nil t)
+  ;; (add-to-list 'load-path "/Users/john/.stack/snapshots/x86_64-osx/lts-4.0/7.10.3/share/x86_64-osx-ghc-7.10.3/HaRe-0.8.2.1/elisp")
+  ;; ;;(add-to-load-path "~/.cabal/share/x86_64-linux-ghc-7.10.2/HaRe-0.8.2.0/elisp")
+  ;; (require 'hare)
+  ;; (autoload 'hare-init "hare" nil t)
 
-  (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
+  ;; (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
 
   ;; (use-package dante
   ;;   :ensure t
@@ -751,6 +753,7 @@
   ;;                          '(warning . haskell-hlint))))
 
   ;;   )
+
   )
 
 ;; This is ganked from https://github.com/mbeidler/cation in an attempt to be

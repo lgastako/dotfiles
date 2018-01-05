@@ -3,7 +3,7 @@ haskell-mode.texi.
 
 This manual is for Haskell mode, version 16.1-git
 
-   Copyright © 2013-2016 Haskell Mode contributors.
+   Copyright © 2013-2017 Haskell Mode contributors.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License
@@ -40,13 +40,14 @@ interpreter (e.g.  GHCi).
 * Module templates::                     Module templates
 * Declaration scanning::                 How to navigate in a source file
 * Compilation::                          How to compile
-* Inferior Haskell interpreter::         How to interact with GHCi (1)
-* Interactive Haskell::                  How to interact with GHCi (2)
+* Interactive Haskell::                  How to interact with GHCi
 * Editing Cabal files::                  Cabal support
 * Browsing Haddocks::                    Using ‘w3m’ to browse documentation
 * Spell checking strings and comments::  Using ‘flyspell-prog-mode’
 * Aligning code::                        Aligning code using ‘align-regexp’
 * Rectangular commands::                 Manage indentation manually
+* REPL::                                 GHCi REPL
+* Collapsing Haskell code::              View more code on screen
 * Getting Help and Reporting Bugs::      How to improve Haskell Mode
 * Concept index::                        Index of Haskell Mode concepts
 * Function index::                       Index of commands
@@ -106,7 +107,7 @@ following:
           M-x customize-option RET package-archives
   2. Use ‘INS’ to add new archive, use:
           Archive name:          melpa-stable
-          URL or directory name: http://stable.melpa.org/packages
+          URL or directory name: http://stable.melpa.org/packages/
   3. Fetch new packages using:
           M-x package-refresh-contents
   4. Install Haskell Mode using:
@@ -222,7 +223,7 @@ To generally format (sort, align) your imports, you can run
 
    ‘M-x’ ‘haskell-mode-format-imports’
 
-   Or ‘C-c C-.’.
+   Or ‘C-c C-,’.
 
 3.1.3 Sort imports
 ------------------
@@ -702,7 +703,7 @@ if you enable Haskell support for speedbar:
 the line in the right file when clicked/selected.
 
 
-File: haskell-mode.info,  Node: Compilation,  Next: Inferior Haskell interpreter,  Prev: Declaration scanning,  Up: Top
+File: haskell-mode.info,  Node: Compilation,  Next: Interactive Haskell,  Prev: Declaration scanning,  Up: Top
 
 12 Compilation
 **************
@@ -763,40 +764,69 @@ temporarily by invoking ‘haskell-compile’ with a prefix argument (e.g.
 customized compile command, invoke ‘recompile’ (bound to ‘g’) inside the
 ‘*haskell-compilation*’ buffer.
 
+12.1 Keybindings
+================
+
+Key   Function
+binding
+------------
+TAB   compilation-next-error
+      
+RET   compile-goto-error
+      
+C-o   compilation-display-error
+      
+SPC   scroll-up-command
+      
+-     negative-argument
+      
+0     digit-argument
+..    
+9
+<     beginning-of-buffer
+      
+>     end-of-buffer
+      
+?     describe-mode
+      
+g     recompile
+      
+h     describe-mode
+      
+q     quit-window
+      
+DEL   scroll-down-command
+      
+S-SPC scroll-down-command
+      
+<backtab>compilation-previous-error
+      
+<follow-link>mouse-face
+      
+<mouse-2>compile-goto-error
+      
+<remap>Prefix
+      Command
+      
+M-n   compilation-next-error
+      
+M-p   compilation-previous-error
+      
+M-{   compilation-previous-file
+      
+M-}   compilation-next-file
+      
+C-c   compile-goto-error
+C-c   
+C-c   next-error-follow-minor-mode
+C-f   
+C-c   kill-compilation
+C-k   
+
 
-File: haskell-mode.info,  Node: Inferior Haskell interpreter,  Next: Interactive Haskell,  Prev: Compilation,  Up: Top
+File: haskell-mode.info,  Node: Interactive Haskell,  Next: Editing Cabal files,  Prev: Compilation,  Up: Top
 
-13 Inferior Haskell interpreter
-*******************************
-
-The major mode ‘inferior-haskell-mode’ provides support for interacting
-with an inferior Haskell process based on ‘comint-mode’.
-
-   By default the ‘haskell-mode-map’ keymap is setup to use this mode:
-
-‘C-c C-z’
-     is bound to ‘switch-to-haskell’
-‘C-c C-b’
-     is bound to ‘switch-to-haskell’
-‘C-c C-l’
-     is bound to ‘inferior-haskell-load-file’
-‘C-c C-t’
-     is bound to ‘inferior-haskell-type’
-‘C-c C-i’
-     is bound to ‘inferior-haskell-info’
-
-   The Haskell interpreter used by the inferior Haskell mode is
-auto-detected by default, but is customizable via the
-‘haskell-program-name’ variable.
-
-   Currently, GHCi and Hugs are support as Haskell interpreter.
-
-   TODO/WRITEME
-
-
-File: haskell-mode.info,  Node: Interactive Haskell,  Next: Editing Cabal files,  Prev: Inferior Haskell interpreter,  Up: Top
-
-14 Interactive Haskell
+13 Interactive Haskell
 **********************
 
 An alternative mode providing a REPL (read–eval–print loop) via GHCi
@@ -815,7 +845,7 @@ associated with at most one GHCi session, so when you call
 session associated yet, you’re asked which GHCi session to create or
 associate with.
 
-14.1 Goto Error
+13.1 Goto Error
 ===============
 
 In a Haskell source buffer associated with a GHCi session, errors that
@@ -829,7 +859,7 @@ You can move between these error lines with
 ‘C-c M-p’
      is bound to ‘haskell-goto-first-error’
 
-14.2 Using GHCi 8+ or GHCi-ng
+13.2 Using GHCi 8+ or GHCi-ng
 =============================
 
 If you use either of the above, then you can use these functions:
@@ -840,21 +870,23 @@ If you use either of the above, then you can use these functions:
    You have to load the module before it works, after that it will
 remember for the current GHCi session.
 
-14.3 Customizing
+13.3 Customizing
 ================
 
 What kind of Haskell REPL ‘haskell-interactive-mode’ will start up
 depends on the value of ‘haskell-process-type’.  This can be one of the
-symbols ‘auto’, ‘ghci’, ‘cabal-repl’, or ‘stack-ghci’.  If it’s ‘auto’,
-the directory contents and available programs will be used to make a
-best guess at the process type.  The actual process type will then
-determine which variables ‘haskell-interactive-mode’ will access to
-determine the program to start and its arguments:
+symbols ‘auto’, ‘ghci’, ‘cabal-repl’, ‘cabal-new-repl’, or ‘stack-ghci’.
+If it’s ‘auto’, the directory contents and available programs will be
+used to make a best guess at the process type.  The actual process type
+will then determine which variables ‘haskell-interactive-mode’ will
+access to determine the program to start and its arguments:
 
    • If it’s ‘ghci’, ‘haskell-process-path-ghci’ and
      ‘haskell-process-args-ghci’ will be used.
-   • If it’s ‘cabal-repl’, ‘haskell-process-path-ghci’ and
-     ‘haskell-process-args-ghci’.
+   • If it’s ‘cabal-repl’, ‘haskell-process-path-cabal’ and
+     ‘haskell-process-args-cabal-repl’.
+   • If it’s ‘cabal-new-repl’, ‘haskell-process-path-cabal’ and
+     ‘haskell-process-args-cabal-new-repl’.
    • If it’s ‘stack-ghci’, ‘haskell-process-path-stack’ and
      ‘haskell-process-args-stack-ghci’ will be used.
 
@@ -864,7 +896,7 @@ where the first element is the program path and the rest are initial
 arguments.  The ‘haskell-process-args-...’ is a list of strings
 specifying (further) command-line arguments.
 
-14.4 Haskell Interactive Mode Setup
+13.4 Haskell Interactive Mode Setup
 ===================================
 
 The most straight-forward way to get setup with Interactive Mode is to
@@ -878,7 +910,7 @@ interactive mode, use:
      (require 'haskell-process)
      (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
-14.4.1 Customizations
+13.4.1 Customizations
 ---------------------
 
 This enables some handy and benign features.
@@ -888,7 +920,7 @@ This enables some handy and benign features.
        '(haskell-process-auto-import-loaded-modules t)
        '(haskell-process-log t))
 
-14.4.2 Haskell-mode bindings
+13.4.2 Haskell-mode bindings
 ----------------------------
 
 This gives the basic ways to start a session.  In a Haskell buffer:
@@ -909,7 +941,7 @@ This gives the basic ways to start a session.  In a Haskell buffer:
      (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
      (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
-14.4.3 Cabal-mode bindings
+13.4.3 Cabal-mode bindings
 --------------------------
 
 The below commands pretty much match the ones above, but are handy to
@@ -920,7 +952,7 @@ have in cabal-mode, too:
      (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
      (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
-14.4.4 GHCi process type
+13.4.4 GHCi process type
 ------------------------
 
 By default ‘haskell-process-type’ is set to ‘auto’.  It is smart enough
@@ -937,6 +969,7 @@ setting by running ‘M-x’ ‘customize-variable’ ‘RET’
 
    • ghci
    • cabal-repl
+   • cabal-new-repl
    • cabal-dev
    • cabal-ghci
    • stack-ghci
@@ -944,7 +977,7 @@ setting by running ‘M-x’ ‘customize-variable’ ‘RET’
    Please, check the documentation for ‘haskell-process-type’ to see how
 the real type is guessed, when it’s set to ‘auto’.
 
-14.4.5 Troubleshooting
+13.4.5 Troubleshooting
 ----------------------
 
 Launching your GHCi process can fail when you’re first getting setup,
@@ -952,7 +985,7 @@ depending on the type you choose.  If it does fail to launch, switch to
 the buffer ‘*haskell-process-log*’ and see what’s up.  The buffer
 contains a log of incoming/outgoing messages to the GHCi process.
 
-14.5 Haskell Interactive Mode Tags Using GHCi
+13.5 Haskell Interactive Mode Tags Using GHCi
 =============================================
 
 You can bind the following to use GHCi to find definitions of things:
@@ -972,7 +1005,7 @@ rather than ‘foo is defined in /foo/Bar.hs:123:23’.
    Alternatively, you can use tags generation, which doesn’t require a
 valid compile.
 
-14.5.1 Tags Setup
+13.5.1 Tags Setup
 -----------------
 
 Make sure to install ‘hasktags’.
@@ -987,7 +1020,7 @@ save:
 
    And make sure ‘hasktags’ is in your ‘$PATH’ which Emacs can see.
 
-14.5.2 Generating tags
+13.5.2 Generating tags
 ----------------------
 
 Now, every time you run ‘save-buffer’ (‘C-x C-s’), there is a hook that
@@ -998,7 +1031,7 @@ directory.  The resulting file will be called ‘TAGS’.
 directory or something, otherwise it will traverse all the way down and
 take an impossibly long time.
 
-14.5.3 Jumping to tags
+13.5.3 Jumping to tags
 ----------------------
 
 Bind the following keybinding:
@@ -1008,7 +1041,7 @@ Bind the following keybinding:
    To jump to the location of the top-level identifier at point, run
 ‘M-x’ ‘haskell-mode-tag-find’ or ‘M-.’.
 
-14.5.4 Hybrid: GHCi and fallback to tags
+13.5.4 Hybrid: GHCi and fallback to tags
 ----------------------------------------
 
 To use GHCi first and then if that fails to fallback to tags for
@@ -1016,21 +1049,21 @@ jumping, use:
 
      (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
 
-14.5.5 Troubleshooting tags
+13.5.5 Troubleshooting tags
 ---------------------------
 
 Sometimes a ‘TAGS’ file is deleted (by you or some other process).
 Emacs will complain that it doesn’t exist anymore.  To resolve this
 simply do ‘M-x’ ‘tags-reset-tags-tables’.
 
-14.6 Sessions
+13.6 Sessions
 =============
 
 All commands in Haskell Interactive Mode work within a session.
 Consider it like a “project” or a “solution” in popular IDEs.  It tracks
 the root of your project and an associated process and REPL.
 
-14.6.1 Start a session
+13.6.1 Start a session
 ----------------------
 
 To start a session run the following steps:
@@ -1048,7 +1081,7 @@ To start a session run the following steps:
 figures out where the cabal directory is and defaults for the current
 directory, so you should be able to just hit RET twice.
 
-14.6.2 Switch a session
+13.6.2 Switch a session
 -----------------------
 
 Sometimes a particular file is used in two different sessions/projects.
@@ -1059,7 +1092,7 @@ You can run
    If it prompts you to make a new session, tell it no (that’s a bug).
 It will ask you to choose from a list of sessions.
 
-14.6.3 Killing a session
+13.6.3 Killing a session
 ------------------------
 
 To kill a session you can run
@@ -1078,7 +1111,7 @@ normally with ‘C-x k RET’.  It will prompt
 the REPL buffer.  You can bring it back with ‘M-x’
 ‘haskell-interactive-bring’.
 
-14.6.4 Menu
+13.6.4 Menu
 -----------
 
 To see a list of all sessions you have open with some simple statistics
@@ -1092,13 +1125,13 @@ about memory usage, etc.  run
          bar  29119 00:22:03 130MB /path/to/bar/       /path/to/bar/      ghci
          mu   22575 08:48:20 73MB  /path/to/fpco/mu/   /path/to/fpco/mu/  ghci
 
-14.7 Compiling
+13.7 Compiling
 ==============
 
 There are a bunch of ways to compile Haskell modules.  This page covers
 a few of them.
 
-14.7.1 Load into GHCi
+13.7.1 Load into GHCi
 ---------------------
 
 To compile and load a Haskell module into GHCi, run the following
@@ -1107,7 +1140,7 @@ To compile and load a Haskell module into GHCi, run the following
 
    Or ‘C-c C-l’.  You’ll see any compile errors in the REPL window.
 
-14.7.2 Build the Cabal project
+13.7.2 Build the Cabal project
 ------------------------------
 
 To compile the whole Cabal project, run the following
@@ -1116,7 +1149,7 @@ To compile the whole Cabal project, run the following
 
    Or ‘C-c C-c’.  You’ll see any compile errors in the REPL window.
 
-14.7.3 Reloading modules
+13.7.3 Reloading modules
 ------------------------
 
 To reload the current module, even when you’re in other modules, you can
@@ -1125,7 +1158,7 @@ will now reload that module whenever you run ‘C-c C-l’ in the future
 from whatever module you’re in.  To disable this mode, just run ‘C-u C-c
 C-l’ again.
 
-14.7.4 Jumping to compile errors
+13.7.4 Jumping to compile errors
 --------------------------------
 
 You can use the standard compile error navigation function ‘C-x `’ —
@@ -1134,7 +1167,7 @@ jump to the next error.
    Or you can move your cursor to an error in the REPL and hit ‘RET’ to
 jump to it.
 
-14.7.5 Auto-removing imports
+13.7.5 Auto-removing imports
 ----------------------------
 
 If the customization variable
@@ -1162,7 +1195,7 @@ If the customization variable
    • ‘c’: it will comment out the import (this is handy for when you
      just want to temporarily hide an import).
 
-14.7.6 Auto-adding of modules to import
+13.7.6 Auto-adding of modules to import
 ---------------------------------------
 
 Enable the customization variable
@@ -1177,7 +1210,7 @@ from Hoogle’s results.
 
    You need to make sure you’ve generated your Hoogle database properly.
 
-14.7.7 Auto-adding of extensions
+13.7.7 Auto-adding of extensions
 --------------------------------
 
 It you use an extension which is not enabled, GHC will often inform you.
@@ -1201,14 +1234,14 @@ For example, if you write:
    If you answer ‘y‘, it will temporarily jump to the buffer and it to
 the top of the file.
 
-14.7.8 Orphan instances
+13.7.8 Orphan instances
 -----------------------
 
 If GHC complains about orphan instances, you usually are doing it
 intentionally, so it prompts to add ‘-fno-warn-orphans’ to the top of
 the file with an ‘OPTIONS’ pragma.
 
-14.7.9 Auto-adding of dependencies
+13.7.9 Auto-adding of dependencies
 ----------------------------------
 
 When doing a build, you will sometimes get a message from GHC like:
@@ -1237,7 +1270,7 @@ of those, prompting, too.
 
    Now you can rebuild with ‘C-c C-c’ again.
 
-14.8 Haskell Interactive Mode REPL
+13.8 Haskell Interactive Mode REPL
 ==================================
 
 When GHCi has been launched, it works on a read-eval-print basis.  So
@@ -1247,7 +1280,7 @@ you will be presented with the prompt:
          Changed directory: /path/to/your/project/
          λ>
 
-14.8.1 Changing REPL target
+13.8.1 Changing REPL target
 ---------------------------
 
 With ‘haskell-session-change-target’ you can change the target for REPL
@@ -1270,7 +1303,7 @@ executables.
 
    TODO/WRITEME
 
-14.8.2 Bringing the REPL
+13.8.2 Bringing the REPL
 ------------------------
 
 If you don’t know where the REPL buffer is, you can always bring it
@@ -1280,7 +1313,7 @@ with:
 
    Or ‘C-`’.
 
-14.8.3 Evaluating expressions
+13.8.3 Evaluating expressions
 -----------------------------
 
 To evaluate expressions, simply type one out and hit ‘RET‘.
@@ -1288,7 +1321,7 @@ To evaluate expressions, simply type one out and hit ‘RET‘.
          λ> 123
          123
 
-14.8.4 Evaluating multiline expressions
+13.8.4 Evaluating multiline expressions
 ---------------------------------------
 
 GHCi features two ways to evaluate multiline expressions.  You can use
@@ -1319,7 +1352,7 @@ You can simulate the above example like so:
             b = 20
             c = 30
 
-14.8.5 Type of expressions
+13.8.5 Type of expressions
 --------------------------
 
 You can use normal ‘:type’ which is part of GHCi to get the type of
@@ -1362,7 +1395,7 @@ The same is true for ambiguous things:
      (custom-set-variables
        '(haskell-interactive-types-for-show-ambiguous nil))
 
-14.8.6 Printing mode
+13.8.6 Printing mode
 --------------------
 
 You can choose between printing modes used for the results of evaluating
@@ -1398,7 +1431,7 @@ expressions.  To do that, configure the variable
    There you can choose ‘haskell-mode‘, for example, to pretty print the
 output as Haskell.
 
-14.8.7 Presentations
+13.8.7 Presentations
 --------------------
 
 If you have the ‘present’ package installed, you can use the following
@@ -1423,23 +1456,23 @@ You can click the ‘[Integer]’ or press ‘RET’ on it to expand further:
 
    Etc.  Remember: this only works for instances of ‘Data.Data.Data’.
 
-14.8.8 History
+13.8.8 History
 --------------
 
 A history is maintained for the duration of the REPL buffer.  To go up
 and down in the history, run ‘M-p’ for previous and ‘M-n’ for next.
 
-14.8.9 Cancelling commands
+13.8.9 Cancelling commands
 --------------------------
 
 To cancel a running REPL command, run ‘C-c C-c’.
 
-14.8.10 Clear the REPL
+13.8.10 Clear the REPL
 ----------------------
 
 Run ‘C-c C-k’ to clear the REPL.
 
-14.8.11 Trick: Put Interactive REPL in Separate Frame
+13.8.11 Trick: Put Interactive REPL in Separate Frame
 -----------------------------------------------------
 
 The following ‘create-haskell-interactive-frame’ is a quick hack to move
@@ -1459,7 +1492,7 @@ layout of windows in Emacs.
        (delete-window))
 
 
-14.8.12 Troubleshooting
+13.8.12 Troubleshooting
 -----------------------
 
 If the REPL ever goes funny, you can clear the command queue via:
@@ -1481,12 +1514,12 @@ following command can dump the ‘haskell-process’ state:
 
    The output can be copied from the ‘*Messages*’ buffer.
 
-14.9 Haskell Interactive Mode Querying
+13.9 Haskell Interactive Mode Querying
 ======================================
 
 There a few ways GHCi lets you query information about your code.
 
-14.9.1 Get identifer type
+13.9.1 Get identifer type
 -------------------------
 
 To print the type of the top-level identifier at point in the REPL and
@@ -1496,7 +1529,7 @@ in the message buffer, run the following command:
 
    or ‘C-c C-t’.
 
-14.9.2 Insert identifier’s type as type signature
+13.9.2 Insert identifier’s type as type signature
 -------------------------------------------------
 
 To print the type of the top-level identifier at point, run the
@@ -1506,7 +1539,7 @@ following command:
 
    or ‘C-u C-c C-t’.
 
-14.9.3 Get identifier info
+13.9.3 Get identifier info
 --------------------------
 
 To print the info of the identifier at point, run the following command:
@@ -1515,7 +1548,7 @@ To print the info of the identifier at point, run the following command:
 
    or ‘C-c C-i’.
 
-14.9.4 Presentation mode
+13.9.4 Presentation mode
 ------------------------
 
 When using ‘C-c C-i’ or ‘C-c C-t’ it will open a buffer in
@@ -1550,7 +1583,7 @@ cursor to ‘Ordering’ and hit ‘C-c C-i’ again to get another popup:
 
    And so on.  It’s a very good way of exploring a new codebase.
 
-14.9.5 Browse import’s module
+13.9.5 Browse import’s module
 -----------------------------
 
 To print all exported identifiers of the module imported by the import
@@ -1561,13 +1594,13 @@ line at point, run the following command:
    or ‘C-c C-i’.  It will print all exports by running ‘:browse
 The.Module’ in the GHCi process.
 
-14.10 Haskell Interactive Mode Cabal integration
+13.10 Haskell Interactive Mode Cabal integration
 ================================================
 
 There’s some integration with Cabal in Haskell Interactive Mode.  Once
 you’ve started a session, the features below are available.
 
-14.10.1 Cabal building
+13.10.1 Cabal building
 ----------------------
 
 The most common Cabal action is building, so that has a specific
@@ -1601,7 +1634,7 @@ command:
 
    Which is considerably more verbose but rarely useful or interesting.
 
-14.10.2 Arbitrary cabal commands
+13.10.2 Arbitrary cabal commands
 --------------------------------
 
 To run an arbitrary Cabal command:
@@ -1613,7 +1646,7 @@ To run an arbitrary Cabal command:
    It will prompt for an input, so you can write ‘configure -fdev’, for
 example.
 
-14.10.3 Completing cabal commands
+13.10.3 Completing cabal commands
 ---------------------------------
 
 To run some common Cabal commands, just run:
@@ -1623,13 +1656,13 @@ To run some common Cabal commands, just run:
    Or ‘C-c c’.  This is commonly used to do ‘install’, ‘haddock’,
 ‘configure’, etc.
 
-14.11 Haskell Interactive Mode Debugger
+13.11 Haskell Interactive Mode Debugger
 =======================================
 
 There is limited support for debugging in GHCi.  Haskell Interactive
 Mode provides an interface for interacting with this.
 
-14.11.1 Opening the debug buffer
+13.11.1 Opening the debug buffer
 --------------------------------
 
 To open the debug buffer run the following command from any buffer
@@ -1649,7 +1682,7 @@ associated with a session:
 
          No loaded modules.
 
-14.11.2 Loading modules
+13.11.2 Loading modules
 -----------------------
 
 To debug anything you need to load something into GHCi.  Switch to a
@@ -1678,7 +1711,7 @@ in the debugging buffer, you’ll see something like:
 
          Main - hello.hs
 
-14.11.3 Setting a breakpoint
+13.11.3 Setting a breakpoint
 ----------------------------
 
 To set a breakpoint hit ‘b’ in the debugger buffer.  It will prompt for
@@ -1703,7 +1736,7 @@ a name.  Enter ‘main’ and hit ‘RET’.
 
          Main - hello.hs
 
-14.11.4 Start stepping
+13.11.4 Start stepping
 ----------------------
 
 Hit ‘s’ to step through an expression: it will prompt for an expression
@@ -1749,7 +1782,7 @@ buffer will look like this:
 
      1 do putStrLn "Hello!" putStrLn "World"
 
-14.11.5 Continue stepping
+13.11.5 Continue stepping
 -------------------------
 
 To continue stepping, just hit ‘s’ again.  Now the context will change
@@ -1800,7 +1833,7 @@ to:
 
 File: haskell-mode.info,  Node: Editing Cabal files,  Next: Browsing Haddocks,  Prev: Interactive Haskell,  Up: Top
 
-15 Editing Cabal files
+14 Editing Cabal files
 **********************
 
 ‘haskell-cabal-mode’ is a major mode for editing Cabal package
@@ -1819,13 +1852,13 @@ sequence ‘C-c v c’.
 
 File: haskell-mode.info,  Node: Browsing Haddocks,  Next: Spell checking strings and comments,  Prev: Editing Cabal files,  Up: Top
 
-16 Browsing Haddocks using ‘w3m’
+15 Browsing Haddocks using ‘w3m’
 ********************************
 
 An experimental feature is use of the w3m browser to browse Haddock docs
 inside Emacs.
 
-16.1 Get w3m
+15.1 Get w3m
 ============
 
 Most Linux distributions will have a package for the binary:
@@ -1842,7 +1875,7 @@ Most Linux distributions will have a package for the binary:
 
    If this works, you’re good to go.
 
-16.2 Configure w3m
+15.2 Configure w3m
 ==================
 
 Now that you have w3m, you probably want to configure it to be more of a
@@ -1865,7 +1898,7 @@ passive viewer than a full-fledged browser.  For example:
                (equal '(w3m-arrived-anchor) (get-text-property (point) 'face)))
            (w3m-view-this-url)))
 
-16.3 Import w3m-haddock
+15.3 Import w3m-haddock
 =======================
 
 It’s not enabled by default in haskell-mode at present, so you need to
@@ -1873,7 +1906,7 @@ import it manually:
 
      (require 'w3m-haddock)
 
-16.4 Add a hook for w3m
+15.4 Add a hook for w3m
 =======================
 
 In order to make haddock pages a little more palatable (and add syntax
@@ -1883,7 +1916,7 @@ highlighting to source view), you can add this hook:
 
    It’s a little rough around the edges, but it’s a start.
 
-16.5 Configure your package locations
+15.5 Configure your package locations
 =====================================
 
 By default, the package locations is set to:
@@ -1895,7 +1928,7 @@ By default, the package locations is set to:
 configure this variable with M-x customize-variable or by writing the
 custom-set-variables code for it.
 
-16.6 Finally
+15.6 Finally
 ============
 
 You did all that!  Now you’re ready to bind a useful key:
@@ -1910,7 +1943,7 @@ to.
 
 File: haskell-mode.info,  Node: Spell checking strings and comments,  Next: Aligning code,  Prev: Browsing Haddocks,  Up: Top
 
-17 Using with ‘flyspell-prog-mode’
+16 Using with ‘flyspell-prog-mode’
 **********************************
 
 Strings and comments can be checked for spelling mistakes.  There is a
@@ -1939,7 +1972,7 @@ your ‘~/.emacs’ file:
 
 File: haskell-mode.info,  Node: Aligning code,  Next: Rectangular commands,  Prev: Spell checking strings and comments,  Up: Top
 
-18 Aligning code
+17 Aligning code
 ****************
 
 Select a region you want to align text within, ‘M-x’ ‘align-regexp’, and
@@ -1984,9 +2017,9 @@ aligner about Haskell.  Once you evaluate this, you can just use ‘M-x’
                     (modes quote (haskell-mode literate-haskell-mode))))
 
 
-File: haskell-mode.info,  Node: Rectangular commands,  Next: Getting Help and Reporting Bugs,  Prev: Aligning code,  Up: Top
+File: haskell-mode.info,  Node: Rectangular commands,  Next: REPL,  Prev: Aligning code,  Up: Top
 
-19 Using rectangular region commands
+18 Using rectangular region commands
 ************************************
 
 Emacs has a set of commands which operate on the region as if it were
@@ -2031,9 +2064,229 @@ whitespace sensitive languages.
 out what keys are bound beginning with the ‘C-x r’ prefix.
 
 
-File: haskell-mode.info,  Node: Getting Help and Reporting Bugs,  Next: Concept index,  Prev: Rectangular commands,  Up: Top
+File: haskell-mode.info,  Node: REPL,  Next: Collapsing Haskell code,  Prev: Rectangular commands,  Up: Top
 
-20 Getting Help and Reporting Bugs
+19 Using GHCi REPL within Emacs
+*******************************
+
+To start the REPL you can run one of the following:
+
+   • ‘M-x run-haskell’
+   • ‘M-x switch-to-haskell’
+
+   This repl works with Comint
+(https://www.emacswiki.org/emacs/ComintMode).  So you will feel at home
+if you are already using ‘M-x Shell’ or ‘M-x ielm’.
+
+   ‘Inf-Haskell’ is a Major mode for running GHCi, with comint.
+
+   Important key bindings in ‘Inf-haskell’:
+
+‘RET’
+     invokes ‘comint-send-input’.  Sends the input to the GHCi process,
+     evaluates the line and returns the output.
+
+‘C-d or <delete>’
+     deletes the forward character
+
+‘<C-up> or M-p’
+     invokes ‘comint-previous-input’.  Cycle backwards through input
+     history, saving input.
+
+‘<C-down> or M-n’
+     invokes ‘comint-next-input’.  Cycle forwards through input history.
+
+‘C-c C-c’
+     invokes ‘comint-interrupt-subjob’.  Sends KeyboardInterrupt signal.
+
+‘C-c C-\’
+     invokes ‘comint-quit-subjob’.  Sends KeyboardInterrupt signal.
+
+‘C-c C-z’
+     invokes ‘comint-stop-subjob’.  Kills the GHCi process.
+
+‘C-c M-r’
+     invokes ‘comint-previous-matching-input-from-input’.  If you are
+     familiar with ‘C-r’ in bash.  This is the same as that.  Searches
+     backwards through input history for match for current input.
+
+‘C-c M-s’
+     invokes ‘comint-next-matching-input-from-input’.  Searches forwards
+     through input history for match for current input.
+
+‘C-c C-l’
+     invokes ‘comint-dynamic-list-input-ring’.  Displays a list of
+     recent inputs entered into the current buffer.
+
+‘C-c M-o’
+     invokes ‘comint-clear-buffer’.  Clears the buffer (Only with Emacs
+     25.X and above)
+
+‘C-c C-n’
+     invokes ‘comint-next-prompt’.  Goes to the start of the previous
+     REPL prompt.
+
+‘C-c C-p’
+     invokes ‘comint-previous-prompt’.  Goes to the start of the next
+     REPL prompt.
+
+‘C-c C-o’
+     invokes ‘comint-delete-output’.  Clears the output of the most
+     recently evaluated expression.
+
+‘C-c C-e’
+     invokes ‘comint-show-maximum-output’.  Moves the point to the end
+     of the buffer.
+
+‘C-c C-u’
+     invokes ‘comint-kill-input’.  Kills backward, the line at point.
+     (Use this when you have typed in an expression into the prompt but
+     you dont want to evaluate it.)
+
+‘C-c C-w’
+     invokes ‘backward-kill-word’.  Kills backward, the word at point
+
+‘C-c C-s’
+     invokes ‘comint-write-output’.  Write output from interpreter since
+     last input to FILENAME. Any prompt at the end of the output is not
+     written.
+
+19.1 Relevant defcustoms:
+=========================
+
+Interpreter (defcustom)       Default        Possible Values
+                              Value
+---------------------------------------------------------------------------
+‘haskell-process-type’        ‘'auto’        ‘'stack-ghci, 'cabal-repl,
+                                             'ghci, 'auto’
+‘inferior-haskell-hook’       ‘nil’          -
+‘haskell-process-path-ghci’   ‘ghci’         -
+‘haskell-process-args-ghci’   ‘-ferror-spans’-
+‘haskell-process-path-cabal’  ‘cabal’        -
+‘haskell-process-args-cabal-repl’‘--ghc-option=-ferror-spans’-
+‘haskell-process-path-stack’  ‘stack’        -
+‘haskell-process-args-stack-ghci’‘--ghci-options=-ferror-spans-
+                              --no-build
+                              --no-load’
+
+19.2 More on ‘haskell-process-type’
+===================================
+
+The Haskell interpreter used by ‘Inf-Haskell’ is auto-detected by
+default, but is customizable with defcustom ‘haskell-process-type’.  The
+values recognized by it are (default is ’auto):
+
+   • ‘'stack-ghci’
+   • ‘'cabal-repl’
+   • ‘'ghci’
+   • ‘'auto’
+
+   if the ‘haskell-process-type’ is ‘'auto’, the directories are
+searched for ‘cabal.sandbox.config’ or ‘stack.yaml’ or ‘*.cabal’ file.
+If the file is present, then appropriate process is started.
+
+   When ‘cabal.sandbox.config’ is found ‘haskell-process-type’ is
+‘'cabal-repl’.  Similarly, when ‘stack.yaml’ is found
+‘haskell-process-type’ is ‘'stack-ghci’.  Similarly, when ‘xyz.cabal’ is
+found ‘haskell-process-type’ is ‘'cabal-repl’.  When nothing is found
+‘haskell-process-type’ is ‘'ghci’.  When more than one file such as
+‘cabal.sandbox.config’ and ‘stack.yaml’ are found the following
+preference is followed.
+
+   ‘cabal.sandbox.config’ > ‘stack.yaml’ > ‘*.cabal’
+
+
+File: haskell-mode.info,  Node: Collapsing Haskell code,  Next: Getting Help and Reporting Bugs,  Prev: REPL,  Up: Top
+
+20 Collapsing Haskell code
+**************************
+
+This is ‘hs-minor-mode’ for ‘haskell-mode’.  This module uses hideshow
+module.
+
+   To activate this minor mode (haskell-collapse-mode)
+   • ‘M-x haskell-collapse-mode’ is "To start haskell-collapse-mode".
+   This minor mode works with indentation.
+
+   In a quick glance:
+
+‘C-c  C-c’
+     is bound to ‘haskell-hide-toggle’
+‘C-c  C-M-c’
+‘C-c  C-M-h’
+‘C-c  C-M-s’
+     are all bound to ‘haskell-hide-toggle-all’
+
+   How to use ‘M-x haskell-hide-toggle’?
+
+   Place your point on the code block that you want to collapse and hit
+the keybinding.  Now the code collapses and you can see the first line
+of the block and elipsis.
+
+   Take this example code (example usage of ‘M-x haskell-hide-toggle’):
+when you place the cursor here, like this (notice the thick block in the
+first line):
+
+   ‘ f█x | rem i 3 == 0 = if i == 0 && (k /= 0) then (c k) else (h j) |
+otherwise = 0 where i = sum x j = g x (div i 3) 0 0 [] k = zeroes x 0 ’
+
+   or
+
+   ‘ f x | rem i 3 == 0 = if i == 0 && (k /= 0) then (c k) else (h j) █
+| otherwise = 0 where i = sum x j = g x (div i 3) 0 0 [] k = zeroes x 0
+’
+
+   then when you collapse it becomes something like this:
+
+   ‘ f█x… ’
+
+   It works in terms of (indentation) blocks.
+
+   One more example:
+
+   ‘ f x | rem i 3 == 0 = if i == 0 && (k /= 0) then (c k) else (h j) |
+otherwise = 0 w█ere i = sum x j = g x (div i 3) 0 0 [] k = zeroes x 0 ’
+
+   or
+
+   ‘ f x | rem i 3 == 0 = if i == 0 && (k /= 0) then (c k) else (h j) |
+otherwise = 0 where i = sum x j = g x (div i 3) 0 0 [] █ k = zeroes x 0
+’
+
+   this, will result in something like:
+
+   ‘ f x | rem i 3 == 0 = if i == 0 && (k /= 0) then (c k) else (h j) |
+otherwise = 0 where i = sum █… ’
+
+   The other functionality ‘M-x haskell-hide-toggle-all’ also works only
+for indentation and it collapses all toplevel functions.
+
+   So a file that looks like this:
+
+     main = interact $ show.f. map read .words
+     f (x:xs) = dp x xs
+
+     dp money a | money < 0 || null a = [1..1000]
+     dp 0 a = []
+     dp money a @ (coin:coins)
+       | (length i) <= length j = i
+       | otherwise = j
+       where i = (coin:(dp (money-coin) a))
+             j = (dp money coins)
+
+   will turn into this:
+
+     main = interact $ show.f. map read .words
+     f (x:xs) = dp x xs
+
+     dp money a | money < 0 || null a = [1..1000]
+     dp 0 a = []
+     dp money a @ (coin:coins)…
+
+
+File: haskell-mode.info,  Node: Getting Help and Reporting Bugs,  Next: Concept index,  Prev: Collapsing Haskell code,  Up: Top
+
+21 Getting Help and Reporting Bugs
 **********************************
 
 Work on Haskell Mode is organized with Github ‘haskell-mode’ project.
@@ -2065,7 +2318,7 @@ Concept index
  [index ]
 * Menu:
 
-* benchmarking:                          Interactive Haskell. (line 466)
+* benchmarking:                          Interactive Haskell. (line 469)
 * CUA mode:                              Indentation.         (line  49)
 * customizing:                           Installation.        (line  55)
 * customizing <1>:                       Interactive Haskell. (line  50)
@@ -2075,7 +2328,7 @@ Concept index
 * layout rule:                           Indentation.         (line   6)
 * off-side rule:                         Indentation.         (line   6)
 * rectangle:                             Indentation.         (line  49)
-* testing:                               Interactive Haskell. (line 464)
+* testing:                               Interactive Haskell. (line 467)
 * Unicode:                               Unicode support.     (line   6)
 
 
@@ -2094,25 +2347,7 @@ Function index
                                                               (line   6)
 * haskell-mode:                          Editing Haskell Code.
                                                               (line   6)
-* haskell-session-change-target:         Interactive Haskell. (line 457)
-* inferior-haskell-find-definition:      Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-find-haddock:         Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-info:                 Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-load-and-run:         Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-load-file:            Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-mode:                 Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-reload-file:          Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-start-process:        Inferior Haskell interpreter.
-                                                              (line   6)
-* inferior-haskell-type:                 Inferior Haskell interpreter.
-                                                              (line   6)
+* haskell-session-change-target:         Interactive Haskell. (line 460)
 
 
 File: haskell-mode.info,  Node: Variable index,  Prev: Function index,  Up: Top
@@ -2133,53 +2368,51 @@ Variable index
 * haskell-decl-scan-mode-hook:           Declaration scanning.
                                                               (line   6)
 * haskell-definition-face:               Syntax highlighting. (line  31)
-* haskell-interactive-mode-hook:         Interactive Haskell. (line 457)
+* haskell-interactive-mode-hook:         Interactive Haskell. (line 460)
 * haskell-keyword-face:                  Syntax highlighting. (line  28)
 * haskell-literate-comment-face:         Syntax highlighting. (line  35)
 * haskell-mode-hook:                     Installation.        (line  60)
 * haskell-operator-face:                 Syntax highlighting. (line  33)
 * haskell-pragma-face:                   Syntax highlighting. (line  34)
-* haskell-process-args-cabal-repl:       Interactive Haskell. (line  71)
-* haskell-process-args-ghci:             Interactive Haskell. (line  71)
-* haskell-process-args-stack-ghci:       Interactive Haskell. (line  70)
-* haskell-process-path-cabal:            Interactive Haskell. (line  71)
-* haskell-process-path-ghci:             Interactive Haskell. (line  71)
-* haskell-process-path-stack:            Interactive Haskell. (line  71)
-* haskell-process-type:                  Interactive Haskell. (line  71)
-* haskell-program-name:                  Inferior Haskell interpreter.
-                                                              (line   6)
+* haskell-process-args-cabal-new-repl:   Interactive Haskell. (line  73)
+* haskell-process-args-cabal-repl:       Interactive Haskell. (line  73)
+* haskell-process-args-ghci:             Interactive Haskell. (line  73)
+* haskell-process-args-stack-ghci:       Interactive Haskell. (line  72)
+* haskell-process-path-cabal:            Interactive Haskell. (line  73)
+* haskell-process-path-ghci:             Interactive Haskell. (line  73)
+* haskell-process-path-stack:            Interactive Haskell. (line  73)
+* haskell-process-type:                  Interactive Haskell. (line  73)
 * haskell-quasi-quote-face:              Syntax highlighting. (line  36)
 * haskell-type-face:                     Syntax highlighting. (line  29)
-* inferior-haskell-mode-hook:            Inferior Haskell interpreter.
-                                                              (line   6)
 
 
 
 Tag Table:
 Node: Top683
-Node: Introduction2546
-Node: Installation4127
-Node: Editing Haskell Code6749
-Node: Syntax highlighting10509
-Node: Completion support12765
-Node: Unicode support14809
-Node: Indentation19481
-Node: External indentation22953
-Node: Autoformating23681
-Node: Module templates24309
-Node: Declaration scanning24739
-Node: Compilation28027
-Node: Inferior Haskell interpreter31040
-Node: Interactive Haskell31972
-Node: Editing Cabal files62609
-Node: Browsing Haddocks63356
-Node: Spell checking strings and comments66181
-Node: Aligning code67287
-Node: Rectangular commands69032
-Node: Getting Help and Reporting Bugs70579
-Node: Concept index71620
-Node: Function index72663
-Node: Variable index74681
+Node: Introduction2588
+Node: Installation4169
+Node: Editing Haskell Code6792
+Node: Syntax highlighting10552
+Node: Completion support12808
+Node: Unicode support14852
+Node: Indentation19524
+Node: External indentation22996
+Node: Autoformating23724
+Node: Module templates24352
+Node: Declaration scanning24782
+Node: Compilation28070
+Node: Interactive Haskell31971
+Node: Editing Cabal files62765
+Node: Browsing Haddocks63512
+Node: Spell checking strings and comments66337
+Node: Aligning code67443
+Node: Rectangular commands69188
+Node: REPL70708
+Node: Collapsing Haskell code75486
+Node: Getting Help and Reporting Bugs78094
+Node: Concept index79138
+Node: Function index80181
+Node: Variable index80903
 
 End Tag Table
 

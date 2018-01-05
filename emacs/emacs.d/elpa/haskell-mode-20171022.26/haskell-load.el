@@ -27,7 +27,7 @@
 (require 'haskell-modules)
 (require 'haskell-commands)
 (require 'haskell-session)
-(require 'haskell-utils)
+(require 'haskell-string)
 
 (defun haskell-process-look-config-changes (session)
   "Check whether a cabal configuration file has changed.
@@ -88,7 +88,14 @@ Restarts the SESSION's process if that is the case."
    ((haskell-process-consume process "\nBuilding \\(.+?\\)\\.\\.\\.")
     (let ((msg (format "Building: %s" (match-string 1 buffer))))
       (haskell-interactive-mode-echo (haskell-process-session process) msg)
-      (haskell-mode-message-line msg)))))
+      (haskell-mode-message-line msg)))
+   ((string-match "Collecting type info for [[:digit:]]+ module(s) \\.\\.\\."
+                  (haskell-process-response process)
+                  (haskell-process-response-cursor process))
+    (haskell-mode-message-line (match-string 0 buffer))
+    ;; Do not consume "Ok, modules loaded" that goes before
+    ;; "Collecting type info...", just exit.
+    nil)))
 
 (defun haskell-process-load-complete (session process buffer reload module-buffer &optional cont)
   "Handle the complete loading response. BUFFER is the string of
@@ -98,6 +105,14 @@ actual Emacs buffer of the module being loaded."
     (with-current-buffer (haskell-interactive-mode-splices-buffer session)
       (erase-buffer)))
   (let* ((ok (cond
+              ((haskell-process-consume
+                process
+                "Ok, \\(?:[0-9]+\\) modules? loaded\\.$")
+               t)
+              ((haskell-process-consume
+                process
+                "Failed, \\(?:[0-9]+\\) modules? loaded\\.$")
+               nil)
               ((haskell-process-consume
                 process
                 "Ok, modules loaded: \\(.+\\)\\.$")
@@ -173,6 +188,7 @@ list of modules where missed IDENT was found."
                  (not (string-match "\\([A-Z][A-Za-z]+\\) is deprecated" msg)))
             (string-match "Use \\([A-Z][A-Za-z]+\\) to permit this" msg)
             (string-match "Use \\([A-Z][A-Za-z]+\\) to allow" msg)
+            (string-match "Use \\([A-Z][A-Za-z]+\\) to enable" msg)
             (string-match
              "Use \\([A-Z][A-Za-z]+\\) if you want to disable this"
              msg)
@@ -193,7 +209,7 @@ list of modules where missed IDENT was found."
             file
             (match-string 2 msg)
             line)))
-        ((string-match "Warning: orphan instance: " msg)
+        ((string-match "[Ww]arning: orphan instance: " msg)
          (when haskell-process-suggest-no-warn-orphans
            (haskell-process-suggest-pragma
             session
@@ -252,6 +268,7 @@ list of modules where missed IDENT was found."
                              (cl-ecase (haskell-process-type)
                                ('ghci haskell-process-path-cabal)
                                ('cabal-repl haskell-process-path-cabal)
+                               ('cabal-new-repl haskell-process-path-cabal)
                                ('cabal-ghci haskell-process-path-cabal)
                                ('stack-ghci haskell-process-path-stack))
                              (cl-caddr state)))))
@@ -294,6 +311,7 @@ list of modules where missed IDENT was found."
                    :app-name (cl-ecase (haskell-process-type)
                                ('ghci haskell-process-path-cabal)
                                ('cabal-repl haskell-process-path-cabal)
+                               ('cabal-new-repl haskell-process-path-cabal)
                                ('cabal-ghci haskell-process-path-cabal)
                                ('stack-ghci haskell-process-path-stack))
                    :app-icon haskell-process-logo)))))))))))
@@ -358,7 +376,7 @@ list of modules where missed IDENT was found."
   (with-current-buffer buffer
     (remove-overlays (point-min) (point-max) 'haskell-check t)))
 
-(defmacro with-overlay-properties (proplist ovl &rest body)
+(defmacro haskell-with-overlay-properties (proplist ovl &rest body)
   "Evaluate BODY with names in PROPLIST bound to the values of
 correspondingly-named overlay properties of OVL."
   (let ((ovlvar (cl-gensym "OVL-")))
@@ -366,26 +384,26 @@ correspondingly-named overlay properties of OVL."
             ,@(mapcar (lambda (p) `(,p (overlay-get ,ovlvar ',p))) proplist))
        ,@body)))
 
-(defun overlay-start> (o1 o2)
+(defun haskell-overlay-start> (o1 o2)
   (> (overlay-start o1) (overlay-start o2)))
-(defun overlay-start< (o1 o2)
+(defun haskell-overlay-start< (o1 o2)
   (< (overlay-start o1) (overlay-start o2)))
 
-(defun first-overlay-in-if (test beg end)
+(defun haskell-first-overlay-in-if (test beg end)
   (let ((ovls (cl-remove-if-not test (overlays-in beg end))))
-    (cl-first (sort (cl-copy-list ovls) 'overlay-start<))))
+    (cl-first (sort (cl-copy-list ovls) 'haskell-overlay-start<))))
 
-(defun last-overlay-in-if (test beg end)
+(defun haskell-last-overlay-in-if (test beg end)
   (let ((ovls (cl-remove-if-not test (overlays-in beg end))))
-    (cl-first (sort (cl-copy-list ovls) 'overlay-start>))))
+    (cl-first (sort (cl-copy-list ovls) 'haskell-overlay-start>))))
 
 (defun haskell-error-overlay-briefly (ovl)
-  (with-overlay-properties
+  (haskell-with-overlay-properties
    (haskell-msg haskell-msg-type) ovl
    (cond
     ((not (eq haskell-msg-type 'warning))
      haskell-msg)
-    ((string-prefix-p "Warning:\n    " haskell-msg)
+    ((string-prefix-p "[Ww]arning:\n    " haskell-msg)
      (cl-subseq haskell-msg 13))
     (t
      (error
@@ -402,7 +420,7 @@ correspondingly-named overlay properties of OVL."
 (defun haskell-goto-first-error ()
   (interactive)
   (haskell-goto-error-overlay
-   (first-overlay-in-if 'haskell-check-overlay-p
+   (haskell-first-overlay-in-if 'haskell-check-overlay-p
                         (buffer-end 0) (buffer-end 1))))
 
 (defun haskell-goto-prev-error ()
@@ -410,7 +428,7 @@ correspondingly-named overlay properties of OVL."
   (haskell-goto-error-overlay
    (let ((ovl-at
           (cl-first (haskell-check-filter-overlays (overlays-at (point))))))
-     (or (last-overlay-in-if 'haskell-check-overlay-p
+     (or (haskell-last-overlay-in-if 'haskell-check-overlay-p
                              (point-min)
                              (if ovl-at (overlay-start ovl-at) (point)))
          ovl-at))))
@@ -420,7 +438,7 @@ correspondingly-named overlay properties of OVL."
   (haskell-goto-error-overlay
    (let ((ovl-at
           (cl-first (haskell-check-filter-overlays (overlays-at (point))))))
-     (or (first-overlay-in-if
+     (or (haskell-first-overlay-in-if
           'haskell-check-overlay-p
           (if ovl-at (overlay-end ovl-at) (point)) (point-max))
          ovl-at))))
@@ -508,7 +526,7 @@ When MODULE-BUFFER is non-NIL, paint error overlays."
              (file (match-string 1 buffer))
              (location-raw (match-string 2 buffer))
              (error-msg (match-string 3 buffer))
-             (type (cond ((string-match "^Warning:" error-msg)  'warning)
+             (type (cond ((string-match "^[Ww]arning:" error-msg)  'warning)
                          ((string-match "^Splicing " error-msg) 'splice)
                          (t                                     'error)))
              (critical (not (eq type 'warning)))
@@ -522,7 +540,7 @@ When MODULE-BUFFER is non-NIL, paint error overlays."
                         (concat file ":" location-raw ": x")))
              (line (plist-get location :line))
              (col1 (plist-get location :col)))
-        (when module-buffer
+        (when (and module-buffer haskell-process-show-overlays)
           (haskell-check-paint-overlay
            module-buffer
            (string= (file-truename (buffer-file-name module-buffer))

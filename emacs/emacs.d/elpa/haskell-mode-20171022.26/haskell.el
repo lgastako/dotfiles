@@ -29,7 +29,6 @@
 (require 'haskell-repl)
 (require 'haskell-load)
 (require 'haskell-commands)
-(require 'haskell-sandbox)
 (require 'haskell-modules)
 (require 'haskell-string)
 (require 'haskell-completions)
@@ -306,10 +305,6 @@ If `haskell-process-load-or-reload-prompt' is nil, accept `default'."
   "Get the current process from the current session."
   (haskell-session-process (haskell-session)))
 
-(defun haskell-interactive-buffer ()
-  "Get the interactive buffer of the session."
-  (haskell-session-interactive-buffer (haskell-session)))
-
 ;;;###autoload
 (defun haskell-kill-session-process (&optional session)
   "Kill the process."
@@ -343,7 +338,7 @@ If `haskell-process-load-or-reload-prompt' is nil, accept `default'."
 Give optional NEXT-P parameter to override value of
 `xref-prompt-for-identifier' during definition search."
   (interactive "P")
-  (let ((ident (haskell-ident-at-point))
+  (let ((ident (haskell-string-drop-qualifier (haskell-ident-at-point)))
         (tags-file-dir (haskell-cabal--find-tags-dir))
         (tags-revert-without-query t))
     (when (and ident

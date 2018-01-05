@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: debug-logging
+# key: debug-logging
+# --
+PUT /_cluster/settings
+{
+  "transient": {
+    "logger._root": "DEBUG"
+  }
+}

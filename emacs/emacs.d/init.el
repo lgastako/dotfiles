@@ -523,7 +523,8 @@
     (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
     (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)
-    (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
+    ;;(add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
+    ))
 
 (dumb-jump-mode)
 (setq dumb-jump-selector 'helm)
@@ -759,6 +760,26 @@
 ;;   (exec-path-from-shell-initialize)
 ;;   (exec-path-from-shell-copy-env "NODE_PATH"))
 
+;; (use-package intero
+;;   :ensure t
+;;   :after haskell-mode
+;;   :commands 'intero-mode
+;;   :init
+;;   (add-hook 'haskell-mode-hook 'intero-mode))
+
+;; (use-package dante
+;;   ;;:ensure t
+;;   :after haskell-mode
+;;   :commands 'dante-mode
+;;   :init
+;;   (add-hook 'haskell-mode-hook 'dante-mode)
+;;   (add-hook 'haskell-mode-hook 'flycheck-mode)
+
+;;   ;; I'll try to get this working after I have dante itself working.
+;;   ;; (add-hook 'dante-mode-hook
+;;   ;;           '(lambda () (flycheck-add-next-checker 'haskell-dante
+;;   ;;                                                  '(warning . haskell-hlint))))
+;;   )
 
 ;; html
 
@@ -1168,7 +1189,7 @@
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

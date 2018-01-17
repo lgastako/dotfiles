@@ -413,7 +413,9 @@
   ;; 'M-<left>' / 'M-<right>' to move words or selected regions
   :init (drag-stuff-global-mode 1)
   :bind (("M-N" . drag-stuff-down)
-         ("M-P" . drag-stuff-up)))
+         ("M-P" . drag-stuff-up))
+  :config
+  (add-to-list 'drag-stuff-except-modes 'org-mode))
 
 (use-package company
   :pin melpa-stable

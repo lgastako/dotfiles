@@ -451,7 +451,9 @@
 
 (use-package org
   :pin melpa-stable
-  :init (setq org-startup-indented t))
+  :init (setq org-startup-indented t)
+  :config
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "BLOCKED" "DONE"))))
 
 (use-package magit
   :pin melpa-stable

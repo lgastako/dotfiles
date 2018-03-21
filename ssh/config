@@ -111,3 +111,39 @@ Host estore
   Hostname ec2-54-172-199-82.compute-1.amazonaws.com
   User ubuntu
   IdentityFile /Users/john/elo-first-key-pair.pem
+
+Host conv.github.com
+  Hostname github.com
+
+Host dispenser.github.com
+  Hostname github.com
+
+Host focus.github.com
+  Hostname github.com
+
+Host focus-prelude.github.com
+  Hostname github.com
+
+Host hancock.github.com
+  Hostname github.com
+
+Host hslack.github.com
+  Hostname github.com
+
+Host luthor.github.com
+  Hostname github.com
+
+Host nlp.github.com
+  Hostname github.com
+
+Host suggestor.github.com
+  Hostname github.com
+
+Host taut.github.com
+  Hostname github.com
+
+Host taut-slack-api.github.com
+  Hostname github.com
+
+Host unimorph.github.com
+  Hostname github.com

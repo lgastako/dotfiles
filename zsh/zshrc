@@ -220,3 +220,6 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # TODO: move fzf stuff into dotfiles if it persists
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ocaml opam
+. /Users/john/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

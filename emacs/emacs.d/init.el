@@ -147,9 +147,10 @@
 ;; Highlight trailing whitespace in red in all modes except the ones explicitly
 ;; exempted below.
 (setq-default show-trailing-whitespace t)
-(add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
-(add-hook 'cider-repl-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'term-mode-hook        (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'cider-repl-mode-hook  (lambda () (setq show-trailing-whitespace nil)))
 (add-hook 'buffer-menu-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'idris-repl-mode-hook  (lambda () (setq show-trailing-whitespace nil)))
 
 ;; Set the print margin
 (setq-default fill-column 79)
@@ -1158,10 +1159,21 @@
 (global-set-key (kbd "C-x r w") 'rotate-windows)
 (global-set-key (kbd "C-x w r") 'rotate-windows)
 
-(global-set-key (kbd "C-c a a") 'org-agenda)
 (global-set-key (kbd "C-c a r") 'align-regexp)
 
 (global-set-key (kbd "C-c r s") 'replace-string)
+
+;; TODO: maybe 'smart or 'show-and-error ?
+(setq-default org-catch-invisible-edits 'error)
+
+
+;; Org Mode
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-caa" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+;; (global-set-key (kbd "C-c a a") 'org-agenda)
 
 
 ;; Experimental
@@ -1192,7 +1204,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(haskell-process-type (quote stack-ghci))
- '(org-agenda-files (quote ("~/Dropbox/org/me.org")))
+ '(org-agenda-files (quote ("~/Dropbox/org/")))
  '(package-selected-packages
    (quote
     (intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
@@ -1211,4 +1223,3 @@
 
 
 ;; (setq compilation-scroll-output 'first-error)
-

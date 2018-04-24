@@ -118,6 +118,15 @@ Host conv.github.com
 Host dispenser.github.com
   Hostname github.com
 
+Host dispenser-core.github.com
+  Hostname github.com
+
+Host dispenser-memcache.github.com
+  Hostname github.com
+
+Host dispenser-server.github.com
+  Hostname github.com
+
 Host focus.github.com
   Hostname github.com
 

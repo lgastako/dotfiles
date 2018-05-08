@@ -35,7 +35,7 @@
 (global-set-key (kbd "C-c e o")
                 (lambda ()
                   (interactive)
-                  (find-file "~/Dropbox/org")))
+                  (find-file "~/Dropbox/org/phaeton.org")))
 
 ;; Bind a key to edit ~/Dropbox/org
 (global-set-key (kbd "C-c e w")
@@ -536,6 +536,14 @@
 
 ;;===========
 ;; Languages
+
+;; (use-package agda2-mode
+;;   :pin melpa-stable)
+
+(load-file (let ((coding-system-for-read 'utf-8))
+             (shell-command-to-string "agda-mode locate")))
+
+;; agda
 
 ;; clojure/clojurescript
 

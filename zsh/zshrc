@@ -223,3 +223,5 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # ocaml opam
 . /Users/john/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+if [ -e ~/envs/drone.env ]; then . ~/envs/drone.env; fi

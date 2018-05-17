@@ -1,6 +1,6 @@
 (
- (:id "sha1:ccfd2cc2a08c89a9b10969be8c1e926954d53e28" :fingerprint "sha1:02:60:f7:3c:1d:78:38:17:83:8b:a5:64:66:95:bc:8a:42:07:fc:bd" :host "stable.melpa.org:443" :conditions (:insecure :unknown-ca :invalid))
- (:id "sha1:85b31c268009209a8d3c5387033b219264f7e62b" :fingerprint "sha1:ef:8c:59:65:55:04:7d:30:0d:44:f0:f5:b1:d1:ce:54:18:72:7a:84" :host "melpa.org:443" :conditions (:insecure :unknown-ca :invalid))
+ (:id "sha1:ccfd2cc2a08c89a9b10969be8c1e926954d53e28" :fingerprint "sha1:b2:85:5c:6f:45:23:d5:88:0e:82:ee:17:b9:eb:c1:88:ed:50:84:44" :host "stable.melpa.org:443" :conditions (:insecure :unknown-ca :invalid))
+ (:id "sha1:6d4eb958390599243ba9f5035cb671fa8dd6a93a" :fingerprint "sha1:46:cc:ea:ab:17:18:b3:1a:22:52:6e:c5:bd:bc:82:12:8e:ea:5a:19" :host "elpa.gnu.org:443" :conditions (:insecure :unknown-ca :invalid))
+ (:id "sha1:85b31c268009209a8d3c5387033b219264f7e62b" :fingerprint "sha1:f8:e1:fc:e4:34:8e:19:e8:48:c1:61:fe:3d:09:dd:d4:d2:7a:cb:db" :host "melpa.org:443" :conditions (:insecure :unknown-ca :invalid))
  (:id "sha1:85457c729378cc93c732b6a3941c8e4f9c2e60f3" :fingerprint "sha1:ab:a6:d7:6a:b3:d3:63:fa:19:0d:65:41:60:23:6e:ef:d3:2a:46:dc" :host "marmalade-repo.org:443" :conditions (:insecure :unknown-ca :invalid))
- (:id "sha1:6d4eb958390599243ba9f5035cb671fa8dd6a93a" :fingerprint "sha1:a0:55:22:66:18:cb:09:86:19:db:15:3e:7d:84:7d:0f:26:37:b8:36" :host "elpa.gnu.org:443" :conditions (:insecure :unknown-ca :invalid))
 )

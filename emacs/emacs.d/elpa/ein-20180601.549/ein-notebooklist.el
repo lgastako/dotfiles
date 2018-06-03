@@ -30,6 +30,8 @@
 
 (eval-when-compile (require 'cl))
 (require 'widget)
+(require 'cus-edit)
+
 
 (require 'ein-core)
 (require 'ein-notebook)
@@ -89,14 +91,15 @@ is opened at first time.::
 (defcustom ein:notebooklist-sort-field :name
   "The notebook list sort field."
   :type '(choice (const :tag "Name" :name)
-          (const :tag "Last modified" :last_modified))
+                 (const :tag "Last modified" :last_modified))
   :group 'ein)
 (make-variable-buffer-local 'ein:notebooklist-sort-field)
 (put 'ein:notebooklist-sort-field 'permanent-local t)
+
 (defcustom ein:notebooklist-sort-order :ascending
   "The notebook list sort order."
   :type '(choice (const :tag "Ascending" :ascending)
-          (const :tag "Descending" :descending))
+                 (const :tag "Descending" :descending))
   :group 'ein)
 (make-variable-buffer-local 'ein:notebooklist-sort-order)
 (put 'ein:notebooklist-sort-order 'permanent-local t)
@@ -148,7 +151,7 @@ the notebook list buffer, the notebook is searched in the
 notebook list of the current buffer.
 
 When used in lisp, CALLBACK and CBARGS are passed to `ein:notebook-open'.
-To suppress popup, you can pass a function `ein:do-nothing' as CALLBACK."
+To suppress popup, you can pass `ignore' as CALLBACK."
   (loop with nblist = (if url-or-port
                           (ein:notebooklist-list-get url-or-port)
                         ein:%notebooklist%)
@@ -216,6 +219,18 @@ To suppress popup, you can pass a function `ein:do-nothing' as CALLBACK."
   ;(ein:notebooklist-get-buffer url-or-port)
   )
 
+;;;###autoload
+ (defun ein:notebooklist-refresh-kernelspecs (&optional url-or-port)
+  (interactive (list (or (and ein:%notebooklist% (ein:$notebooklist-url-or-port ein:%notebooklist%))
+                         (ein:notebooklist-ask-url-or-port))))
+  (unless url-or-port
+    (if ein:%notebooklist%
+        (setq url-or-port (ein:$notebooklist-url-or-port ein:%notebooklist%))
+      (setq url-or-port (ein:default-url-or-port))))
+  (ein:query-kernelspecs url-or-port t)
+  (when ein:%notebooklist%
+    (ein:notebooklist-reload ein:%notebooklist%)))
+
 (defcustom ein:notebooklist-keepalive-refresh-time 1
   "When the notebook keepalive is enabled, the frequency, IN
 HOURS, with which to make calls to the jupyter content API to
@@ -232,8 +247,7 @@ refresh the notebook connection."
 
 (defcustom ein:notebooklist-date-format "%x"
   "The format spec for date in notebooklist mode.
-Should be either a string (passed to `format-time-string')
-or a function (called on the date)."
+See `ein:format-time-string'."
   :type '(or string function)
   :group 'ein)
 
@@ -592,6 +606,11 @@ Notebook list data is passed via the buffer local variable
     (widget-insert " ")
     (widget-create
      'link
+     :notify (lambda (&rest ignore) (ein:notebooklist-refresh-kernelspecs))
+     "Query Kernelspecs")
+    (widget-insert " ")
+    (widget-create
+     'link
      :notify (lambda (&rest ignore)
                (browse-url
                 (ein:url (ein:$notebooklist-url-or-port ein:%notebooklist%))))
@@ -646,9 +665,7 @@ Notebook list data is passed via the buffer local variable
 (defun ein:format-nbitem-data (name last-modified)
   (let ((dt (date-to-time last-modified)))
     (format "%-40s%+20s" name
-            (cl-etypecase ein:notebooklist-date-format
-              (string (format-time-string ein:notebooklist-date-format dt))
-              (function (funcall ein:notebooklist-date-format dt))))))
+            (ein:format-time-string ein:notebooklist-date-format dt))))
 
 (defun render-directory (ipy-at-least-3)
   "Render directory.

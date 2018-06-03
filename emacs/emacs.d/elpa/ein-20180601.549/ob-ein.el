@@ -23,7 +23,7 @@
 
 
 ;; You should have received a copy of the GNU General Public License
-;; along with ein-notebooklist.el.  If not, see <http://www.gnu.org/licenses/>.
+;; along with ob-ein.el.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 ;; Support executing org-babel source blocks using EIN worksheets.
@@ -151,7 +151,7 @@ jupyter kernels.
                           (cdr (assoc :session processed-params))
                           kernelspec))
          ;; either OUTPUT or VALUE which should behave as described above
-         (result-type (cdr (assoc :result-type processed-params)))
+         ;; (result-type (cdr (assoc :result-type processed-params)))
          ;; expand the body with `org-babel-expand-body:template'
          (full-body (org-babel-expand-body:generic (encode-coding-string body 'utf-8)
                                                    params
@@ -206,8 +206,9 @@ jupyter kernels.
       )))
 
 (defun ein:ob-ein--execute (full-body session-kernel processed-params)
-  (ein:shared-output-eval-string full-body nil nil session-kernel)
-  (let ((cell (ein:shared-output-get-cell)))
+  (let* ((d (ein:shared-output-eval-string full-body nil nil session-kernel))
+         (cell (ein:shared-output-get-cell)))
+    (deferred:sync! d)
     (ein:wait-until #'(lambda ()
                         (null (slot-value cell 'running)))
                     nil ein:org-execute-timeout)
@@ -224,7 +225,7 @@ jupyter kernels.
     (setf kernelspec (or kernelspec (ein:get-kernelspec url-or-port "default")))
     (let ((nb (or (ein:notebook-get-opened-notebook url-or-port path)
                   (ein:notebook-open url-or-port path kernelspec
-                                     (lambda (nb param packed)
+                                     (lambda (_nb _param packed)
                                        (multiple-value-bind (session kernelspec) packed
                                          (org-babel-ein-initiate-session session kernelspec)))
                                      (list session kernelspec)))))
@@ -239,7 +240,7 @@ jupyter kernels.
 
 ;; This function should be used to assign any variables in params in
 ;; the context of the session environment.
-(defun org-babel-prep-session:ein (session params)
+(defun org-babel-prep-session:ein (_session _params)
   "Prepare SESSION according to the header arguments specified in PARAMS."
   )
 
@@ -248,7 +249,7 @@ jupyter kernels.
  specifying a var of the same value."
   (format "%S" var))
 
-(defun org-babel-ein-table-or-string (results)
+(defun org-babel-ein-table-or-string (_results)
   "If the results look like a table, then convert them into an
  Emacs-lisp table, otherwise return the results as a string."
   )

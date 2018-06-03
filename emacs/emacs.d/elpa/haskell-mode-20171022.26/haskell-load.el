@@ -610,6 +610,7 @@ running context across :load/:reloads in GHCi."
                     (haskell-process-send-string (plist-get state ':process)
                                                  ":l DevelMain"))
               :live (lambda (state buffer)
+                      ;; (message buffer)
                       (haskell-process-live-build (plist-get state ':process)
                                                   buffer
                                                   nil))

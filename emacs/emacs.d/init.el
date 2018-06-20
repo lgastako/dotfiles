@@ -748,6 +748,9 @@
 
   (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
+  (add-to-list 'load-path "~/src/tidal")
+  (setq tidal-interpreter "/Users/john/src/tunes/ghci.sh")
+
 
 
   ;; (use-package dante
@@ -1219,7 +1222,7 @@
  '(org-agenda-files (quote ("~/Dropbox/org/")))
  '(package-selected-packages
    (quote
-    (ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

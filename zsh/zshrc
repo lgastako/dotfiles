@@ -229,3 +229,5 @@ if [ -e ~/envs/drone.env ]; then . ~/envs/drone.env; fi
 autoload -Uz promptinit
 promptinit
 # run "prompt" for more info
+
+alias refio="stack exec refactorio --"

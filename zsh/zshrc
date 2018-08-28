@@ -231,3 +231,6 @@ promptinit
 # run "prompt" for more info
 
 alias refio="stack exec refactorio --"
+
+# autoupgrade
+export DISABLE_UPDATE_PROMPT=true

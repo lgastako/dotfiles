@@ -1,4 +1,4 @@
-;;; init.el --- John's Emacs Configuration
+;; init.el --- John's Emacs Configuration
 
 ;; If a package appears in a use-package declartion but is disabled that means
 ;; that I still want it, but it was preventing init.el from loading and I
@@ -43,11 +43,15 @@
                   (interactive)
                   (find-file "~/src/writing")))
 
+;; Why are there so many way's of setting keyboard bindings?
+(define-key global-map (kbd "C-c SPC") 'ace-jump-char-mode)
 
 ;; Prevent me from accidentally minimizing emacs.
 (global-set-key (kbd "C-x C-z") nil)
 (global-set-key (kbd "C-z") nil)
 
+;; For local customizations and stuff not in a repo
+(add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
 
 (setq backup-by-copying         t    ;; don't clobber symlinks
       backup-directory-alist
@@ -68,8 +72,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
-
-;; '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Andale Mono")))))
 
 (if window-system
     (load-theme 'deeper-blue)
@@ -284,14 +286,14 @@
   (global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-(use-package yasnippet
-  :pin melpa-stable
-  :load-path "~/.emacs.d/plugins/yasnippet"
-  :config
-  (setq yas/root-directory "~/.emacs.d/snippets")
-  (yas-load-directory yas/root-directory)
-  (yas-global-mode 1)
-  (yas-reload-all))
+;; (use-package yasnippet
+;;   :pin melpa-stable
+;;   :load-path "~/.emacs.d/plugins/yasnippet"
+;;   :config
+;;   (setq yas/root-directory "~/.emacs.d/snippets")
+;;   (yas-load-directory yas/root-directory)
+;;   (yas-global-mode 1)
+;;   (yas-reload-all))
 
 (use-package dockerfile-mode
   :pin melpa-stable
@@ -696,6 +698,9 @@
   :pin melpa-stable
   :mode "\\.haml\\'")
 
+;; handlebars
+(require 'handlebars-mode)
+
 ;; haskell
 
 (use-package haskell-mode
@@ -746,7 +751,6 @@
   ;; (setq ghc-ghc-options '("-Wall" "-Werror" "-v"))
   ;; (setq-default haskell-stylish-on-save t)
 
-  (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
   (require 'tidal)
   (add-to-list 'load-path "~/src/tidal")
   (setq tidal-interpreter "/Users/john/src/tunes/ghci.sh")

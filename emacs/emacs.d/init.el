@@ -744,6 +744,11 @@
           ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
           ;; see https://github.com/haskell/haskell-mode/issues/1553
           ;; "--ghc-options=-fshow-loaded-modules"
+          ;; this is for the same thing via the same
+          "--ghci-options=-fno-diagnostics-show-caret"
+          ;; this is for the same thing via the same
+          "--ghci-options=-fshow-loaded-modules"
+
           "--test"
           ))
 
@@ -1244,3 +1249,14 @@
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 ;; (setq compilation-scroll-output 'first-error)
+
+ (defun sort-words (reverse beg end)
+      "Sort words in region alphabetically, in REVERSE if negative.
+    Prefixed with negative \\[universal-argument], sorts in reverse.
+
+    The variable `sort-fold-case' determines whether alphabetic case
+    affects the sort order.
+
+    See `sort-regexp-fields'."
+      (interactive "*P\nr")
+      (sort-regexp-fields reverse "\\w+" "\\&" beg end))

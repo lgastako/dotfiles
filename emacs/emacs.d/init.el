@@ -744,8 +744,10 @@
           ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
           ;; see https://github.com/haskell/haskell-mode/issues/1553
           ;; "--ghc-options=-fshow-loaded-modules"
+
+          ;; these two are the ones that appear to work...
           ;; this is for the same thing via the same
-          "--ghci-options=-fno-diagnostics-show-caret"
+          ;; "--ghci-options=-fno-diagnostics-show-caret"
           ;; this is for the same thing via the same
           "--ghci-options=-fshow-loaded-modules"
 
@@ -827,7 +829,8 @@
 ;; idris
 
 (use-package idris-mode
-  :mode "\\.idr\\'")
+  :mode "\\.idr\\'"
+  :bind (("C-c TAB"  . idris-case-split)))
 
 ;; javascript
 
@@ -1260,3 +1263,10 @@
     See `sort-regexp-fields'."
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+
+
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((haskell . t)
+   (shell . t)))

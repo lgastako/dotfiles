@@ -740,19 +740,26 @@
 
   (setq haskell-process-args-stack-ghci
         ;; '("--ghci-options='-ferror-spans'")
-        '("--ghc-options=-ferror-spans"
-          ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
-          ;; see https://github.com/haskell/haskell-mode/issues/1553
-          ;; "--ghc-options=-fshow-loaded-modules"
-
-          ;; these two are the ones that appear to work...
-          ;; this is for the same thing via the same
-          ;; "--ghci-options=-fno-diagnostics-show-caret"
-          ;; this is for the same thing via the same
-          "--ghci-options=-fshow-loaded-modules"
-
+        ;; Using the new fix from https://github.com/haskell/haskell-mode/issues/1553
+        '("--with-ghc=ghci"
+          "--ghci-options=-ferror-spans"
           "--test"
-          ))
+          )
+        ;; '("--ghc-options=-ferror-spans"
+
+        ;;   ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
+        ;;   ;; see https://github.com/haskell/haskell-mode/issues/1553
+        ;;   ;; "--ghc-options=-fshow-loaded-modules"
+
+        ;;   ;; these two are the ones that appear to work...
+        ;;   ;; this is for the same thing via the same
+        ;;   ;; "--ghci-options=-fno-diagnostics-show-caret"
+        ;;   ;; this is for the same thing via the same
+        ;;   ;; "--ghci-options=-fshow-loaded-modules"
+
+        ;;   "--test"
+        ;;   )
+        )
 
   ;; This -Wall -Werror doesn't seem to take affect on eg. 'C-c C-l'
   ;; (setq ghc-ghc-options '("-Wall" "-Werror" "-v"))
@@ -798,7 +805,7 @@
 ;;   (add-hook 'haskell-mode-hook 'intero-mode))
 
 ;; (use-package dante
-;;   ;;:ensure t
+;;   ;;:ensure tch
 ;;   :after haskell-mode
 ;;   :commands 'dante-mode
 ;;   :init
@@ -1234,7 +1241,7 @@
  '(org-agenda-files (quote ("~/Dropbox/org/")))
  '(package-selected-packages
    (quote
-    (applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

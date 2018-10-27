@@ -1145,6 +1145,7 @@
 ;; (global-set-key (kbd "M-g c") "©")
 ;; (global-set-key (kbd "M-g t") "™")
 
+;; unicode characters
 (global-set-key (kbd "M-g l")   '(lambda () (interactive) (insert "λ")))
 (global-set-key (kbd "M-g d")   '(lambda () (interactive) (insert "Δ")))
 (global-set-key (kbd "M-g - >") '(lambda () (interactive) (insert "→")))

@@ -37,6 +37,12 @@
                   (interactive)
                   (find-file "~/Dropbox/org/phaeton.org")))
 
+;; Bind a key to edit ~/Dropbox/org/interos.org
+(global-set-key (kbd "C-c e e i")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/Dropbox/org/interos.org")))
+
 ;; Bind a key to edit ~/Dropbox/org
 (global-set-key (kbd "C-c e w")
                 (lambda ()
@@ -92,8 +98,9 @@
 ;;(set-face-attribute 'default nil :height 240)
 
 ;; Declutter the UI by hiding the menus
-(menu-bar-mode 0)
-(tool-bar-mode 0)
+(when (display-graphic-p)
+  (menu-bar-mode 0)
+  (tool-bar-mode 0))
 
 ;; Highlight the current line
 (global-hl-line-mode t)
@@ -743,13 +750,15 @@
         ;; Using the new fix from https://github.com/haskell/haskell-mode/issues/1553
         '("--with-ghc=ghci"
           "--ghci-options=-ferror-spans"
+          "--ghc-options=-fshow-loaded-modules"
           "--test"
           )
+
         ;; '("--ghc-options=-ferror-spans"
 
         ;;   ;; -fshow-loaded-modules is because haskell-mode doesn't work with GHC 8.2.2 yet
         ;;   ;; see https://github.com/haskell/haskell-mode/issues/1553
-        ;;   ;; "--ghc-options=-fshow-loaded-modules"
+          ;; "--ghc-options=-fshow-loaded-modules"
 
         ;;   ;; these two are the ones that appear to work...
         ;;   ;; this is for the same thing via the same
@@ -768,22 +777,6 @@
   (require 'tidal)
   (add-to-list 'load-path "~/src/tidal")
   (setq tidal-interpreter "/Users/john/src/tunes/ghci.sh")
-
-
-
-  ;; (use-package dante
-  ;;   :ensure t
-  ;;   ;; :after haskell-mode
-  ;;   :commands 'dante-mode
-  ;;   :init
-  ;;   (add-hook 'haskell-mode-hook 'dante-mode)
-  ;;   (add-hook 'haskell-mode-hook 'flycheck-mode)
-  ;;   (add-hook 'dante-mode-hook
-  ;;             '(lambda () (flycheck-add-next-checker
-  ;;                          'haskell-dante
-  ;;                          '(warning . haskell-hlint))))
-
-  ;;   )
 
   )
 
@@ -1278,3 +1271,6 @@
  'org-babel-load-languages
  '((haskell . t)
    (shell . t)))
+
+;; (setq helm-ag-always-set-extra-option t)
+;; (setq helm-ag-always-set-extra-option nil)

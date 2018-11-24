@@ -98,8 +98,8 @@
 ;;(set-face-attribute 'default nil :height 240)
 
 ;; Declutter the UI by hiding the menus
+(menu-bar-mode 0)
 (when (display-graphic-p)
-  (menu-bar-mode 0)
   (tool-bar-mode 0))
 
 ;; Highlight the current line
@@ -640,12 +640,12 @@
 
 ;; elixir
 
-(use-package elixir-mode
-  :pin melpa-stable
-  :config
-  (use-package alchemist
-    :pin melpa-stable
-    :diminish alchemist-mode))
+;; (use-package elixir-mode
+;;   :pin melpa-stable
+;;   :config
+;;   (use-package alchemist
+;;     :pin melpa-stable
+;;     :diminish alchemist-mode))
 
 ;; elm
 ;; (use-package elm-mode
@@ -720,26 +720,13 @@
   (defun longboyeee-off ())
   (defun longboyeee-on ()
     (interactive "r")
-    (when (eq major-mode 'haskell-mode)
-      (let ((start    1)
-            (end      (+ 1 (buffer-size)))
-            (program "longboye"))
-        (let ((saved-cursor-position (point)))
-            (call-process-region start
-                                 end
-                                 program
-                                 t         ;; delete
-                                 t         ;; destination
-                                 nil       ;; display
-                                 "all"
-                                 "-"
-                                 )
-            (goto-char saved-cursor-position)))))
+    (haskell-mode-buffer-apply-command "longboye-all.sh"))
 
-  ;; (defun longboyeee () (longboyeee-on))
-  (defun longboyeee () (longboyeee-off))
+  (defun longboyeee () (longboyeee-on))
+  ;; (defun longboyeee () (longboyeee-off))
 
   (add-hook 'before-save-hook #'longboyeee)
+
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
 
@@ -868,10 +855,10 @@
 
 ;; Lux
 
-(require 'lux-mode)
-(add-hook 'lux-mode-hook #'paredit-mode)
-(add-hook 'lux-mode-hook #'rainbow-delimiters-mode)
-(add-to-list 'auto-mode-alist '("\\.lux\\'" . lux-mode))
+;; (require 'lux-mode)
+;; (add-hook 'lux-mode-hook #'paredit-mode)
+;; (add-hook 'lux-mode-hook #'rainbow-delimiters-mode)
+;; (add-to-list 'auto-mode-alist '("\\.lux\\'" . lux-mode))
 
 (use-package markdown-mode
   :pin melpa-stable

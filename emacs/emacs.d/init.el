@@ -41,7 +41,7 @@
 (global-set-key (kbd "C-c e e i")
                 (lambda ()
                   (interactive)
-                  (find-file "~/Dropbox/org/interos.org")))
+                  (find-file "~/SecuriSync/org/interos.org")))
 
 ;; Bind a key to edit ~/Dropbox/org
 (global-set-key (kbd "C-c e w")
@@ -146,6 +146,9 @@
 (defun my/haskell-cabal-mode-hook ()
   (setq indent-tabs-mode nil))
 (add-hook 'haskell-cabal-mode-hook 'my/haskell-cabal-mode-hook)
+
+;; Enable auto fill in org mode
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 (setq-default tab-width 4)
 
@@ -459,11 +462,21 @@
   (setq beacon-push-mark 35
         beacon-color "#cccc00"))
 
+;; #+TODO: TODO(t) IN-PROGRESS(p) BLOCKED(b@) | DONE(d!) DELEGATED(g@) CANCELED(c)
+
 (use-package org
   :pin melpa-stable
   :init (setq org-startup-indented t)
   :config
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "BLOCKED" "DONE"))))
+  (setq org-log-into-drawer "LOGBOOK")
+  (setq org-todo-keywords
+        '((sequence "TODO(t)"
+                    "IN-PROGRESS(i)"
+                    "BLOCKED(b@)"
+                    "|"
+                    "DONE(d!)"
+                    "DELEGATED(g@)"
+                    "CANCELED(c)"))))
 
 (use-package magit
   :pin melpa-stable
@@ -546,13 +559,13 @@
 ;;===========
 ;; Languages
 
+;; agda
+
 ;; (use-package agda2-mode
 ;;   :pin melpa-stable)
 
-(load-file (let ((coding-system-for-read 'utf-8))
-             (shell-command-to-string "agda-mode locate")))
-
-;; agda
+;; (load-file (let ((coding-system-for-read 'utf-8))
+;;              (shell-command-to-string "agda-mode locate")))
 
 ;; clojure/clojurescript
 
@@ -1141,6 +1154,16 @@
                   (interactive)
                   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))))
 
+(defun goto-match-paren (arg)
+  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
+vi style of % jumping to matching brace."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
+
+(global-set-key (kbd "%") 'goto-match-paren)o
+
 (setq erc-track-enable-keybindings nil)
 
 (put 'upcase-region   'disabled nil)
@@ -1219,7 +1242,7 @@
  ;; If there is more than one, they won't work right.
  '(haskell-ask-also-kill-buffers nil)
  '(haskell-process-type (quote stack-ghci))
- '(org-agenda-files (quote ("~/Dropbox/org/")))
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))

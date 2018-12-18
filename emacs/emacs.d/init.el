@@ -147,9 +147,6 @@
   (setq indent-tabs-mode nil))
 (add-hook 'haskell-cabal-mode-hook 'my/haskell-cabal-mode-hook)
 
-;; Enable auto fill in org mode
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
-
 (setq-default tab-width 4)
 
 ;; Show (line, col) in modeline
@@ -466,8 +463,8 @@
 
 (use-package org
   :pin melpa-stable
-  :init (setq org-startup-indented t)
-  :config
+  :init
+  (setq org-startup-indented t)
   (setq org-log-into-drawer "LOGBOOK")
   (setq org-todo-keywords
         '((sequence "TODO(t)"
@@ -476,7 +473,19 @@
                     "|"
                     "DONE(d!)"
                     "DELEGATED(g@)"
-                    "CANCELED(c)"))))
+                    "CANCELED(c)")))
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  (setq-default org-catch-invisible-edits 'smart)
+  (require 'ox-taskjuggler)
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((dot . t)
+                               (haskell . t)
+                               (python . t)
+                               ))
+  ;; jira
+  (use-package org-jira
+    :config
+    (setq jiralib-url "https://interos.atlassian.net")))
 
 (use-package magit
   :pin melpa-stable
@@ -813,6 +822,9 @@
 
 ;; html
 
+(use-package htmlize
+  :pin melpa-stable)
+
 (use-package mkhtml-htmlize
   :pin melpa-stable
   :disabled t)
@@ -1000,6 +1012,12 @@
 ;;     :pin melpa-stable
 ;;     :config (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))))
 
+
+;; R (& friends)
+
+(use-package ess
+  :init (require 'ess-site))
+
 ;; REST
 
 (use-package restclient
@@ -1096,6 +1114,11 @@
 (use-package swift-mode
   :pin melpa-stable)
 
+;; taskjuggler
+
+(use-package tj3-mode
+  :ensure t)
+
 ;; terraform
 
 (use-package terraform-mode
@@ -1162,7 +1185,7 @@ vi style of % jumping to matching brace."
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 
-(global-set-key (kbd "%") 'goto-match-paren)o
+(global-set-key (kbd "%") 'goto-match-paren)
 
 (setq erc-track-enable-keybindings nil)
 
@@ -1212,7 +1235,6 @@ vi style of % jumping to matching brace."
 (global-set-key "\C-cb" 'org-switchb)
 ;; (global-set-key (kbd "C-c a a") 'org-agenda)
 
-
 ;; Experimental
 (global-set-key (kbd "C-c r a t") 'mc/mark-all-like-this-dwim)
 
@@ -1242,10 +1264,12 @@ vi style of % jumping to matching brace."
  ;; If there is more than one, they won't work right.
  '(haskell-ask-also-kill-buffers nil)
  '(haskell-process-type (quote stack-ghci))
- '(org-agenda-files nil)
+ '(org-agenda-files
+   (quote
+    ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
  '(package-selected-packages
    (quote
-    (camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)
@@ -1275,6 +1299,18 @@ vi style of % jumping to matching brace."
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
+;; Default re-builder syntax to "string" (so no double escaping is necessary)
+(setq reb-re-syntax 'string)
+;; Helpful keybindings in re-builder:
+;; C-c C-q - quit
+;; C-c TAB - change syntax
+;; C-c C-u - find out why the regex is invalid - doesn't appear to work?
+;; C-c C-w - copy the regex to the kill ring - may convert to elisp syntax
+;; C-c C-b - change the target buffer
+;; C-c C-e - only highlight capturing groups
+;; C-c C-c - toggle case sensitivity
+;; C-c C-s - next match
+;; C-c C-r - previous match
 
 ;; active Babel languages
 (org-babel-do-load-languages

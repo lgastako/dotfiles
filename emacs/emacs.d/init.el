@@ -1302,6 +1302,7 @@ vi style of % jumping to matching brace."
 ;; Default re-builder syntax to "string" (so no double escaping is necessary)
 (setq reb-re-syntax 'string)
 ;; Helpful keybindings in re-builder:
+;; C-h m   - Minor mode help
 ;; C-c C-q - quit
 ;; C-c TAB - change syntax
 ;; C-c C-u - find out why the regex is invalid - doesn't appear to work?

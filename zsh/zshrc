@@ -240,3 +240,5 @@ export MONO_GAC_PREFIX="/usr/local"
 cdiff() {
   colordiff -u "$@" | less -RF
 }
+
+bindkey -e

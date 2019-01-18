@@ -1335,6 +1335,13 @@
  (prolog .
 	 [(1 22)
 	  nil "major mode for editing and running Prolog (and Mercury) code" single])
+ (projectile-extras .
+		    [(20190101 2353)
+		     ((emacs
+		       (24))
+		      (cl-lib
+		       (0 5)))
+		     "A few extra functions for projectile" single])
  (projectile .
 	     [(0 10 0)
 	      ((s

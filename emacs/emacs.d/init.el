@@ -670,19 +670,19 @@
 ;;     :diminish alchemist-mode))
 
 ;; elm
-;; (use-package elm-mode
-;;   :pin melpa-stable
-;;   :bind (("C-c C-k" . elm-compile-main))
-;;   :init
-;;   ;; Not sure why I have to set elm-compile-command explicity all of a
-;;   ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my
-;;   ;; exec-path properly... but, it gets the job done.
-;;   (setq elm-compile-command "/usr/local/bin/elm-make")
-;;   (setq elm-format-on-save t)
-;;   (setq elm-indent-offset 4)
-;;   (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
-;;   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-;;   (add-to-list 'company-backends 'company-elm))
+(use-package elm-mode
+  :pin melpa-stable
+  :bind (("C-c C-k" . elm-compile-main))
+  :init
+  ;; Not sure why I have to set elm-compile-command explicity all of a
+  ;; sudden...  I didn't need to do this initially, and /usr/local/bin is in my
+  ;; exec-path properly... but, it gets the job done.
+  (setq elm-compile-command "/usr/local/bin/elm-make")
+  (setq elm-format-on-save t)
+  (setq elm-indent-offset 4)
+  (setq elm-interactive-arguments '("--interpreter=/usr/local/bin/node"))
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (add-to-list 'company-backends 'company-elm))
 
 ;; erlang
 
@@ -1146,7 +1146,7 @@
   (add-hook 'clojure-mode-hook #'enable-paredit-mode)
   (add-hook 'go-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-  (add-hook 'elm-mode-hook 'paredit-mode)
+  ;; (add-hook 'elm-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
   :config
   (global-set-key (kbd "C-x p") 'paredit-mode))

@@ -90,8 +90,9 @@
 ;;   (set-face-attribute 'default nil :height 172))
 
 ;; (set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 128)
 ;; (set-face-attribute 'default nil :height 144)
-(set-face-attribute 'default nil :height 172)
+;; (set-face-attribute 'default nil :height 172)
 
 ;; (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
@@ -466,13 +467,14 @@
   :init
   (setq org-startup-indented t)
   (setq org-log-into-drawer "LOGBOOK")
-  (setq org-todo-keywords
+  (setq org-todo-keywor
         '((sequence "TODO(t)"
                     "IN-PROGRESS(i)"
                     "BLOCKED(b@)"
                     "|"
                     "DONE(d!)"
                     "DELEGATED(g@)"
+                    "MOVED-FORWARD(m)"
                     "CANCELED(c)")))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq-default org-catch-invisible-edits 'smart)
@@ -1132,6 +1134,26 @@
 (use-package toml-mode
   :pin marmalade)
 
+;; TypeScript
+
+(use-package typescript-mode
+  :mode (("\\.ts\\'" . typescript-mode)
+         ("\\.tsx\\'" . typescript-mode)))
+
+(defun setup-tide-mode ()
+  (interactive)
+  (defun tide-imenu-index () nil)
+  (tide-setup)
+  (tide-hl-identifier-mode +1))
+
+(use-package tide
+  :config
+  (progn
+    (add-hook 'typescript-mode-hook #'setup-tide-mode)
+    (add-hook 'js-mode-hook #'setup-tide-mode)
+    (add-hook 'js2-mode-hook #'setup-tide-mode)
+    (add-hook 'rjsx-mode-hook #'setup-tide-mode)))
+
 ;; YAML
 
 (use-package yaml-mode
@@ -1269,7 +1291,7 @@ vi style of % jumping to matching brace."
     ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
  '(package-selected-packages
    (quote
-    (tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

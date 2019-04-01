@@ -467,7 +467,7 @@
   :init
   (setq org-startup-indented t)
   (setq org-log-into-drawer "LOGBOOK")
-  (setq org-todo-keywor
+  (setq org-todo-keyword
         '((sequence "TODO(t)"
                     "IN-PROGRESS(i)"
                     "BLOCKED(b@)"

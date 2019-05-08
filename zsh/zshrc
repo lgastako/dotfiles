@@ -25,7 +25,8 @@ ZSH_THEME=kphoen
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git textmate virtualenvwrapper)
+#plugins=(git textmate virtualenvwrapper)
+plugins=(git textmate)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,20 +42,20 @@ export PATH=$PATH:/usr/local/share/npm/bin
 # e.g. virtualenvwrappersource $ZSH/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
-VIRTUALENV_WRAPPER_LOCATIONS=(
-    /usr/local/bin/python
-    /usr/local/share/python
-    /usr/bin
-)
-for d in $VIRTUALENV_WRAPPER_LOCATIONS
-do
-    wrapper=$d/virtualenvwrapper.sh
-    if [ -e $wrapper ]; then
-        . $wrapper
-    fi
-done
+# VIRTUALENV_WRAPPER_LOCATIONS=(
+#     /usr/local/bin/python
+#     /usr/local/share/python
+#     /usr/bin
+# )
+# for d in $VIRTUALENV_WRAPPER_LOCATIONS
+# do
+#     wrapper=$d/virtualenvwrapper.sh
+#     if [ -e $wrapper ]; then
+#         . $wrapper
+#     fi
+# done
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
 unsetopt correctall
 

@@ -1,12 +1,12 @@
 #source /usr/local/bin/virtualenvwrapper.sh
 
 
-source $HOME/dotfiles/oh-my-zsh/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
+#source $HOME/dotfiles/oh-my-zsh/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # TODO - only if not already set?
-export JAVA_HOME=`/usr/libexec/java_home`
+#export JAVA_HOME=`/usr/libexec/java_home`
 
 
 export PATH=/Users/john/dotfiles/google-cloud-sdk/bin:${PATH}

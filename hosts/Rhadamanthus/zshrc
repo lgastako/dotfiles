@@ -1,0 +1,4 @@
+# Example :
+# alias platform-build="ssh -Y ubuntu@ec2-13-57-189-223.us-west-1.compute.amazonaws.com -i $AMAZON_PEM_HOME/interos-test.pem"
+AMAZON_PEM_HOME=~/aws-pems
+alias platform-build="ssh -Y ec2-54-185-94-131.us-west-2.compute.amazonaws.com -i $AMAZON_PEM_HOME/interos-prod.pem"

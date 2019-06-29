@@ -1,158 +1,103 @@
 KeepAlive yes
 ServerAliveInterval 60
 
-Host pi
-  HostName 192.168.1.16
-  User pi
-
-Host dr
-  HostName dr.everalbum.com
-  User ubuntu
-  IdentityFile /Users/john/.ssh/JohnEvansKeyPair1.pem
-
 Host zeus
   User john
   HostName 162.248.163.16
 
-Host snow1
+Host platform-build
   User john
-  HostName 54.68.97.79
-  #IdentityFile /Users/john/dotfiles/sensitive/AccuvitAmazonKeys.pem
+  HostName  ec2-54-185-94-131.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+  ForwardAgent yes
 
-Host snowmm
-  Hostname snows-mac-mini.local
-  User snow
+Host platform-web-1
+  User root
+  HostName ec2-34-209-87-104.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+  ForwardAgent yes
 
-Host tower
-  Hostname ec2-54-193-127-116.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host platform-web-2
+  User root
+  HostName ec2-34-219-40-105.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-integration-2
+  User root
+  HostName ec2-52-43-91-14.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-integration-3
+  User root
+  HostName ec2-52-39-112-60.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-integration-4
+  User root
+  HostName ec2-18-237-164-241.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-staging-web-1
+  User root
+  HostName ec2-34-209-87-104.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-staging-web-2
+  User root
+  HostName ec2-34-219-40-105.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-production-1
+  User root
+  HostName ec2-34-209-92-143.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-production-2
+  User root
+  HostName ec2-35-161-23-67.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-production-3
+  User root
+  HostName ec2-54-185-58-188.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host notebooks
   User ubuntu
+  HostName ec2-54-212-243-173.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
 
-Host switch-prd
-  Hostname ec2-54-183-109-17.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host platform-demo-2
+  User root
+  HostName ec2-34-209-125-230.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-demo-3
+  User root
+  HostName ec2-54-214-208-84.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host developer-prod
   User ubuntu
+  HostName ec2-54-203-99-61.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
 
-Host switch-stg
-  Hostname ec2-54-67-0-219.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host developer-stage
   User ubuntu
+  HostName ec2-35-163-200-132.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
 
-Host jenkins
-  Hostname ec2-50-18-197-44.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host wordpress-warmup
   User ubuntu
+  HostName ec2-3-208-219-234.compute-1.amazonaws.com
+  IdentityFile ~/aws-pems/east1.pem
 
-Host rama-stg
-  Hostname ec2-54-67-24-109.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host wordpress-dev
   User ubuntu
+  HostName ec2-54-145-255-62.compute-1.amazonaws.com
+  IdentityFile ~/aws-pems/east1.pem
 
-Host rama-prd
-  Hostname ec2-54-67-8-8.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
+Host wordpress-stage
+  HostName ec2-52-200-48-72.compute-1.amazonaws.com
   User ubuntu
-
-Host nickolay
-  Hostname ec2-54-68-97-79.us-west-2.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-Host etienne-recog
-  Hostname ec2-54-67-9-64.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-Host etienne-new
-  Hostname ec2-54-67-124-234.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-Host clabonne
-  Hostname ec2-54-187-225-11.us-west-2.compute.amazonaws.com
-  User ubuntu
-
-
-Host jenkins-wheezy
-  Hostname ec2-54-67-12-35.us-west-1.compute.amazonaws.com
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-
-Host rama-staging
-  Hostname 54.67.24.109
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-Host freeswitch-staging
-  Hostname 54.67.0.219
-  IdentityFile /Users/john/Accuvit-AWS-NewKeyPair.pem
-  User ubuntu
-
-Host git-codecommit.*.amazonaws.com
-  User APKAJFHUIGZK4ZAJTEFQ
-  IdentityFile ~/.ssh/id_rsa
-
-Host consul
-  Hostname 127.0.0.1
-  Port 2201
-  IdentityFile /Users/john/.vagrant.d/insecure_private_key
-  User vagrant
-  LocalForward 8300 localhost:8300
-  LocalForward 8400 localhost:8400
-  LocalForward 8500 localhost:8500
-
-Host fs1
-  Hostname 66.228.117.214
-  IdentityFile /Users/john/secure/TalkIQKeyPair2015-06-30.pem
-  User ubuntu
-
-Host estore
-  Hostname ec2-54-172-199-82.compute-1.amazonaws.com
-  User ubuntu
-  IdentityFile /Users/john/elo-first-key-pair.pem
-
-Host conv.github.com
-  Hostname github.com
-
-Host dispenser.github.com
-  Hostname github.com
-
-Host dispenser-core.github.com
-  Hostname github.com
-
-Host dispenser-memcache.github.com
-  Hostname github.com
-
-Host dispenser-server.github.com
-  Hostname github.com
-
-Host focus.github.com
-  Hostname github.com
-
-Host focus-prelude.github.com
-  Hostname github.com
-
-Host hancock.github.com
-  Hostname github.com
-
-Host hslack.github.com
-  Hostname github.com
-
-Host luthor.github.com
-  Hostname github.com
-
-Host nlp.github.com
-  Hostname github.com
-
-Host suggestor.github.com
-  Hostname github.com
-
-Host taut.github.com
-  Hostname github.com
-
-Host taut-slack-api.github.com
-  Hostname github.com
-
-Host unimorph.github.com
-  Hostname github.com
+  IdentityFile ~/aws-pems/east1.pem

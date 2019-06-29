@@ -746,8 +746,8 @@
     (interactive "r")
     (haskell-mode-buffer-apply-command "longboye-all.sh"))
 
-  (defun longboyeee () (longboyeee-on))
-  ;; (defun longboyeee () (longboyeee-off))
+  ;; (defun longboyeee () (longboyeee-on))
+  (defun longboyeee () (longboyeee-off))
 
   (add-hook 'before-save-hook #'longboyeee)
 

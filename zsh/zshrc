@@ -167,9 +167,9 @@ export PATH=${PATH}:/Users/john/.gem/ruby/2.0.0/bin
 
 export DESK_DIR=${HOME}/dotfiles/desks
 
-if [ -e /Users/john/.nix-profile/etc/profile.d/nix.sh ]; then
-   . /Users/john/.nix-profile/etc/profile.d/nix.sh
-fi
+# if [ -e /Users/john/.nix-profile/etc/profile.d/nix.sh ]; then
+#    . /Users/john/.nix-profile/etc/profile.d/nix.sh
+# fi
 
 alias wifi='networksetup -setairportpower en0'
 
@@ -246,3 +246,5 @@ bindkey -e
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+HTML_TIDY=~/.tidy.cfg

@@ -911,7 +911,10 @@
 
 (use-package markdown-mode
   :pin melpa-stable
-  :mode ("\\.md\\'" "\\.markdown\\'")
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)
+         )
   :config
   (setq markdown-command "/usr/local/bin/markdown"))
 

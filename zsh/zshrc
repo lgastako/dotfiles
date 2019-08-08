@@ -248,3 +248,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 HTML_TIDY=~/.tidy.cfg
+
+NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/interos/private-repo-key-config"

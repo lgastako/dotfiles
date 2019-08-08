@@ -738,13 +738,24 @@
   :pin melpa-stable
   :bind
   ("C-c m" . haskell-process-reload-devel-main)
+  ("C-c f l" . bindable-longboye)
+  ("C-c C-f l" . bindable-longboye)
+  ("C-c C-f C-l" . bindable-longboye)
   :init
   (setq haskell-interactive-popup-errors nil)
+
+  ;; TODO clean this up
+  (defun bindable-longboye ()
+    (interactive)
+    (haskell-mode-buffer-apply-command "longboye-all.sh"))
 
   (defun longboyeee-off ())
   (defun longboyeee-on ()
     (interactive "r")
     (haskell-mode-buffer-apply-command "longboye-all.sh"))
+
+  ;; (defun lb-format ()
+  ;;   (haskell-mode-buffer-apply-command "longboye-all.sh"))
 
   ;; (defun longboyeee () (longboyeee-on))
   (defun longboyeee () (longboyeee-off))
@@ -790,6 +801,17 @@
   (setq tidal-interpreter "/Users/john/src/tunes/ghci.sh")
 
   )
+
+;; (use-package dante
+;;   :ensure t
+;;   :after haskell-mode
+;;   :commands 'dante-mode
+;;   :init
+;;   (add-hook 'haskell-mode-hook 'flycheck-mode)
+;;   ;; OR:
+;;   ;; (add-hook 'haskell-mode-hook 'flymake-mode)
+;;   (add-hook 'haskell-mode-hook 'dante-mode)
+;;   )
 
 ;; This is ganked from https://github.com/mbeidler/cation in an attempt to be
 ;; able to get ghcjsi working with emacs.  Technically it should probably be
@@ -1136,23 +1158,23 @@
 
 ;; TypeScript
 
-(use-package typescript-mode
-  :mode (("\\.ts\\'" . typescript-mode)
-         ("\\.tsx\\'" . typescript-mode)))
+;; (use-package typescript-mode
+;;   :mode (("\\.ts\\'" . typescript-mode)
+;;          ("\\.tsx\\'" . typescript-mode)))
 
-(defun setup-tide-mode ()
-  (interactive)
-  (defun tide-imenu-index () nil)
-  (tide-setup)
-  (tide-hl-identifier-mode +1))
+;; (defun setup-tide-mode ()
+;;   (interactive)
+;;   (defun tide-imenu-index () nil)
+;;   (tide-setup)
+;;   (tide-hl-identifier-mode +1))
 
-(use-package tide
-  :config
-  (progn
-    (add-hook 'typescript-mode-hook #'setup-tide-mode)
-    (add-hook 'js-mode-hook #'setup-tide-mode)
-    (add-hook 'js2-mode-hook #'setup-tide-mode)
-    (add-hook 'rjsx-mode-hook #'setup-tide-mode)))
+;; (use-package tide
+;;   :config
+;;   (progn
+;;     (add-hook 'typescript-mode-hook #'setup-tide-mode)
+;;     (add-hook 'js-mode-hook #'setup-tide-mode)
+;;     (add-hook 'js2-mode-hook #'setup-tide-mode)
+;;     (add-hook 'rjsx-mode-hook #'setup-tide-mode)))
 
 ;; YAML
 
@@ -1291,7 +1313,7 @@ vi style of % jumping to matching brace."
     ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
  '(package-selected-packages
    (quote
-    (tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

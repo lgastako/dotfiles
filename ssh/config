@@ -77,6 +77,21 @@ Host platform-demo-3
   HostName ec2-54-214-208-84.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
+Host platform-demo2a
+  User root
+  HostName ec2-34-222-222-130.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-demo2b
+  User root
+  HostName ec2-34-209-25-49.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-demo2c
+  User root
+  HostName ec2-34-219-89-98.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
 Host developer-prod
   User ubuntu
   HostName ec2-54-203-99-61.us-west-2.compute.amazonaws.com
@@ -101,3 +116,18 @@ Host wordpress-stage
   HostName ec2-52-200-48-72.compute-1.amazonaws.com
   User ubuntu
   IdentityFile ~/aws-pems/east1.pem
+
+Host platform-staging-1
+  HostName ec2-54-189-152-181.us-west-2.compute.amazonaws.com
+  User root
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host viewer
+  HostName ec2-54-148-61-137.us-west-2.compute.amazonaws.com
+  User root
+  IdentityFile ~/aws-pems/east1.pem
+
+Host ikgprofiles
+  HostName ec2-52-37-8-201.us-west-2.compute.amazonaws.com
+  User root
+  IdentityFile ~/aws-pems/ikg-tool.pem

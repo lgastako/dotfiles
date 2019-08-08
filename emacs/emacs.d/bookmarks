@@ -1,8 +1,18 @@
-;;;; Emacs Bookmark Format Version 1 ;;;;
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("debug.txt"
+(("RequestHandler.hs"
+ (filename . "~/src/interos-portal/backend/src/Backend/RequestHandler.hs")
+ (front-context-string . "tagSIC, _supplie")
+ (rear-context-string . "\n            , (")
+ (position . 17537))
+("Suppliers.hs"
+ (filename . "~/src/interos-portal/backend/src/Backend/Suppliers.hs")
+ (front-context-string . "apiKey = _ikgCon")
+ (rear-context-string . "Manager ctx\n    ")
+ (position . 28538))
+("debug.txt"
  (filename . "/tmp/debug.txt")
  (front-context-string . "[TypeSig (SrcSpa")
  (rear-context-string . "headMay\")])}]\n  ")

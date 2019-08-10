@@ -51,6 +51,7 @@
 
 ;; Why are there so many way's of setting keyboard bindings?
 (define-key global-map (kbd "C-c SPC") 'ace-jump-char-mode)
+(define-key global-map (kbd "M-g M-j") 'ace-jump-char-mode)
 
 ;; Prevent me from accidentally minimizing emacs.
 (global-set-key (kbd "C-x C-z") nil)

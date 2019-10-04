@@ -51,7 +51,7 @@
 
 ;; Why are there so many way's of setting keyboard bindings?
 (define-key global-map (kbd "C-c SPC") 'ace-jump-char-mode)
-(define-key global-map (kbd "M-g M-j") 'ace-jump-char-mode)
+;;(define-key global-map (kbd "M-g M-j") 'ace-jump-char-mode)
 
 ;; Prevent me from accidentally minimizing emacs.
 (global-set-key (kbd "C-x C-z") nil)
@@ -234,12 +234,12 @@
 ;; maximize as early as possible.
 (use-package frame-cmds
   :pin melpa-stable
-  :bind (("C-c f m" . maximize-frame)
-         ("C-c f r" . restore-frame)
-         ("C-c f o" . other-window-or-frame)
-         ("<M-up>" . move-frame-up)
-         ("<M-down>" . move-frame-down)
-         ("<M-left>" . move-frame-left)
+  :bind (("C-c f m"   . maximize-frame)
+         ("C-c f r"   . restore-frame)
+         ("C-c f o"   . other-window-or-frame)
+         ("<M-up>"    . move-frame-up)
+         ("<M-down>"  . move-frame-down)
+         ("<M-left>"  . move-frame-left)
          ("<M-right>" . move-frame-right))
   :config
   ;; Maximize window on startup
@@ -424,8 +424,13 @@
   ;; 'M-N' / 'M-P' to move lines or selected groups of lines up/down
   ;; 'M-<left>' / 'M-<right>' to move words or selected regions
   :init (drag-stuff-global-mode 1)
-  :bind (("M-N" . drag-stuff-down)
-         ("M-P" . drag-stuff-up))
+  :bind (("M-N"       . drag-stuff-down)
+         ("M-P"       . drag-stuff-up)
+         ("<M-left>"  . drag-stuff-left)
+         ("<M-right>" . drag-stuff-right)
+         ;; ("M-q"       . drag-stuff-left) -- conflicts with the key to align text
+         ;; ("M-w"       . drag-stuff-right)
+         )
   :config
   (add-to-list 'drag-stuff-except-modes 'org-mode))
 
@@ -894,7 +899,9 @@
   :disabled t)
 
 (use-package json-mode
-  :pin marmalade)
+  :pin marmalade
+  :mode (("\\.json.tpl$" . json-mode)
+         ("\\.json$" . json-mode)))
 
 (defun json-format ()
   (interactive)
@@ -1321,7 +1328,7 @@ vi style of % jumping to matching brace."
     ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
  '(package-selected-packages
    (quote
-    (nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (protobuf-mode nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

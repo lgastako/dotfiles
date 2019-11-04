@@ -7,7 +7,12 @@ Host zeus
 
 Host platform-build
   User john
-  HostName  ec2-54-185-94-131.us-west-2.compute.amazonaws.com
+  HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com
+  ForwardAgent yes
+
+Host platform-deploy
+  User deploy
+  HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
   ForwardAgent yes
 
@@ -24,12 +29,12 @@ Host platform-web-2
 
 Host platform-integration-2
   User root
-  HostName ec2-52-43-91-14.us-west-2.compute.amazonaws.com
+  HostName ec2-34-213-214-12.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
 Host platform-integration-3
   User root
-  HostName ec2-52-39-112-60.us-west-2.compute.amazonaws.com
+  HostName ec2-34-215-82-21.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
 Host platform-integration-4
@@ -49,17 +54,17 @@ Host platform-staging-web-2
 
 Host platform-production-1
   User root
-  HostName ec2-34-209-92-143.us-west-2.compute.amazonaws.com
+  HostName ec2-52-41-160-240.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
 Host platform-production-2
   User root
-  HostName ec2-35-161-23-67.us-west-2.compute.amazonaws.com
+  HostName ec2-18-236-37-27.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
 Host platform-production-3
   User root
-  HostName ec2-54-185-58-188.us-west-2.compute.amazonaws.com
+  HostName ec2-100-20-31-50.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
 Host notebooks
@@ -67,12 +72,12 @@ Host notebooks
   HostName ec2-54-212-243-173.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
-Host platform-demo-2
+Host platform-preview-1
   User root
-  HostName ec2-34-209-125-230.us-west-2.compute.amazonaws.com
+  HostName ec2-34-209-90-55.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
-Host platform-demo-3
+Host platform-preview-2
   User root
   HostName ec2-54-214-208-84.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
@@ -118,7 +123,12 @@ Host wordpress-stage
   IdentityFile ~/aws-pems/east1.pem
 
 Host platform-staging-1
-  HostName ec2-54-189-152-181.us-west-2.compute.amazonaws.com
+  HostName ec2-54-71-217-79.us-west-2.compute.amazonaws.com
+  User root
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host platform-staging-2
+  HostName ec2-54-186-147-0.us-west-2.compute.amazonaws.com
   User root
   IdentityFile ~/aws-pems/interos-prod.pem
 
@@ -131,3 +141,14 @@ Host ikgprofiles
   HostName ec2-52-37-8-201.us-west-2.compute.amazonaws.com
   User root
   IdentityFile ~/aws-pems/ikg-tool.pem
+
+Host platform-test-1
+  User root
+  HostName ec2-52-27-30-218.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host devops-oregon-1
+  User ubuntu
+  HostName ec2-18-237-66-107.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+

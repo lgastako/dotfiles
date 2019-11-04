@@ -250,3 +250,6 @@ export NVM_DIR="$HOME/.nvm"
 HTML_TIDY=~/.tidy.cfg
 
 NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/interos/private-repo-key-config"
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

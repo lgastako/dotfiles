@@ -295,14 +295,17 @@
   (global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-;; (use-package yasnippet
-;;   :pin melpa-stable
-;;   :load-path "~/.emacs.d/plugins/yasnippet"
-;;   :config
-;;   (setq yas/root-directory "~/.emacs.d/snippets")
-;;   (yas-load-directory yas/root-directory)
-;;   (yas-global-mode 1)
-;;   (yas-reload-all))
+(use-package yasnippet
+  :pin melpa-stable
+;;  :load-path "~/.emacs.d/plugins/yasnippet"
+  :config
+  (add-to-list #'yas-snippet-dirs "~/.emacs.d/snippets")
+
+;;  (setq yas/root-directory "~/.emacs.d/snippets")
+;;  (yas-load-directory yas/root-directory)
+  (yas-global-mode t)
+  (yas-reload-all)
+  :diminish yas-minor-mode)
 
 (use-package dockerfile-mode
   :pin melpa-stable
@@ -879,6 +882,12 @@
   :mode "\\.idr\\'"
   :bind (("C-c TAB"  . idris-case-split)))
 
+;; jinja2
+
+(use-package jinja2-mode
+  ;; :ensure t
+  )
+
 ;; javascript
 
 (use-package js2-mode
@@ -1251,6 +1260,13 @@ vi style of % jumping to matching brace."
 
 (global-set-key (kbd "%") 'goto-match-paren)
 
+(use-package erc-sasl
+  ;; :ensure t
+  ;; :config
+  )
+
+(add-to-list 'erc-sasl-server-regexp-list "*\\.freenode\\.net")
+
 (setq erc-track-enable-keybindings nil)
 
 (put 'upcase-region   'disabled nil)
@@ -1333,7 +1349,7 @@ vi style of % jumping to matching brace."
     ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
  '(package-selected-packages
    (quote
-    (graphql-mode protobuf-mode nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+    (erc-sasl jinja2-mode graphql-mode protobuf-mode nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
  '(safe-local-variable-values
    (quote
     ((haskell-process-use-ghci . t)

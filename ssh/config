@@ -152,3 +152,21 @@ Host devops-oregon-1
   HostName ec2-18-237-66-107.us-west-2.compute.amazonaws.com
   IdentityFile ~/aws-pems/interos-prod.pem
 
+Host matomo-ec2
+  User ubuntu
+  HostName ec2-54-202-27-174.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+Host intplprdappapi1
+  HostName 10.1.3.29
+  User root
+  ForwardAgent yes
+  ProxyCommand ssh ss-gateway -W %h:%p 2> /dev/null
+  IdentityFile ~/aws-pems/int-pl-prd-app-q3-19.pem
+
+Host ss-gateway
+  HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
+  Port 2222
+  User ubuntu
+  ForwardAgent yes
+  IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem

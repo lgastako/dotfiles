@@ -28,7 +28,7 @@ ZSH_THEME=kphoen
 #plugins=(git textmate virtualenvwrapper)
 plugins=(git textmate kubectl)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source $HOME/dotfiles/bash/bash_aliases
@@ -252,4 +252,6 @@ HTML_TIDY=~/.tidy.cfg
 NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/interos/private-repo-key-config"
 
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if $(/usr/bin/which -s jenv); then
+   eval "$(jenv init -)"
+fi

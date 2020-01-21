@@ -886,6 +886,8 @@
 
 (use-package jinja2-mode
   ;; :ensure t
+  :mode (("\\.jinja$" . jinja2-mode)
+         ("\\.ginger$" . jinja2-mode))
   )
 
 ;; javascript

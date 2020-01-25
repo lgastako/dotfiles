@@ -10,6 +10,11 @@ Host platform-build
   HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com
   ForwardAgent yes
 
+Host platform-build-temp
+  User john
+  HostName 18.237.156.109
+  ForwardAgent yes
+
 Host platform-deploy
   User deploy
   HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com

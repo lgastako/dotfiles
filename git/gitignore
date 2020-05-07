@@ -18,3 +18,5 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+TAGS
+tags

@@ -255,3 +255,4 @@ export PATH="$HOME/.jenv/bin:$PATH"
 if $(/usr/bin/which -s jenv); then
    eval "$(jenv init -)"
 fi
+export PATH="/usr/local/opt/openjdk/bin:$PATH"

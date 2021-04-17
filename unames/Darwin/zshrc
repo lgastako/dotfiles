@@ -11,3 +11,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 export PATH=/Users/john/dotfiles/google-cloud-sdk/bin:${PATH}
 export PATH=/Users/john/.stack/snapshots/x86_64-osx/lts-7.13/8.0.1/bin:${PATH}
+
+alias pg_start="launchctl load ~/Library/LaunchAgents/*postg*"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/*postg*"

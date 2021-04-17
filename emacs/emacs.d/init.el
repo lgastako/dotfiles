@@ -91,9 +91,9 @@
 ;;   (set-face-attribute 'default nil :height 172))
 
 ;; (set-face-attribute 'default nil :height 100)
-(set-face-attribute 'default nil :height 128)
+;; (set-face-attribute 'default nil :height 128)
 ;; (set-face-attribute 'default nil :height 144)
-;; (set-face-attribute 'default nil :height 172)
+(set-face-attribute 'default nil :height 172)
 
 ;; (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
@@ -589,60 +589,60 @@
 
 ;; clojure/clojurescript
 
-(use-package cider
-  :pin melpa-stable)
+;; (use-package cider
+;;   :pin melpa-stable)
 
-(use-package clojure-mode
-  :pin melpa-stable
-  :mode (("\\.clj$" . clojure-mode)
-         ("\\.cljs$" . clojurescript-mode)
-         ("\\.cljc$" . clojurec-mode)
-         ("\\.cljx$" . clojurex-mode)
-         ("\\.edn$" . clojure-mode))
-
-  ;; :bind (("C-c C-k" . cider-repl-clear-buffer))
-  :init
-
-  ;; Fix indenting on some things
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (put-clojure-indent 'defui '(1 nil nil (1)))))
-
-  ;; Why doesn't this work?
-  ;; See https://github.com/clojure-emacs/clojure-mode
-  ;; And https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
-
-  ;; Clojure Files
-  ;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
-  ;; In the REPL
-  (add-hook 'cider-repl-mode-hook #'subword-mode)
-  ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
-
-  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
-        cider-boot-command "/Users/john/dotfiles/bin/boot")
-
-  (setq cider-overlays-use-font-lock t)
-
-  ;; (setq cider-auto-select-error-buffer t)
-
-  :config
-  (rename-modeline "clojure-mode" clojure-mode "λ")
-  (rename-modeline "clojure-mode" clojurec-mode "λc")
-  (rename-modeline "clojure-mode" clojurescript-mode "λs")
-
-  ;; These two don't work (eg. if you use "C-x C-b")
-  ;; (rename-modeline "clojurec-mode" clojure-mode "λc")
-  ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
-  )
-
-;; (use-package clj-refactor
+;; (use-package clojure-mode
 ;;   :pin melpa-stable
-;;   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
-;;   :config (cljr-add-keybindings-with-prefix "C-!"))
+;;   :mode (("\\.clj$" . clojure-mode)
+;;          ("\\.cljs$" . clojurescript-mode)
+;;          ("\\.cljc$" . clojurec-mode)
+;;          ("\\.cljx$" . clojurex-mode)
+;;          ("\\.edn$" . clojure-mode))
+
+;;   ;; :bind (("C-c C-k" . cider-repl-clear-buffer))
+;;   :init
+
+;;   ;; Fix indenting on some things
+;;   (add-hook 'clojure-mode-hook
+;;             (lambda ()
+;;               (put-clojure-indent 'defui '(1 nil nil (1)))))
+
+;;   ;; Why doesn't this work?
+;;   ;; See https://github.com/clojure-emacs/clojure-mode
+;;   ;; And https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification
+;;   (add-hook 'clojure-mode-hook
+;;             (lambda ()
+;;               (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
+
+;;   ;; Clojure Files
+;;   ;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+;;   ;; In the REPL
+;;   (add-hook 'cider-repl-mode-hook #'subword-mode)
+;;   ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+;;   (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
+;;         cider-boot-command "/Users/john/dotfiles/bin/boot")
+
+;;   (setq cider-overlays-use-font-lock t)
+
+;;   ;; (setq cider-auto-select-error-buffer t)
+
+;;   :config
+;;   (rename-modeline "clojure-mode" clojure-mode "λ")
+;;   (rename-modeline "clojure-mode" clojurec-mode "λc")
+;;   (rename-modeline "clojure-mode" clojurescript-mode "λs")
+
+;;   ;; These two don't work (eg. if you use "C-x C-b")
+;;   ;; (rename-modeline "clojurec-mode" clojure-mode "λc")
+;;   ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
+;;   )
+
+;; ;; (use-package clj-refactor
+;; ;;   :pin melpa-stable
+;; ;;   :init   (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
+;; ;;   :config (cljr-add-keybindings-with-prefix "C-!"))
 
 ;; cmake
 
@@ -880,7 +880,8 @@
 
 (use-package idris-mode
   :mode "\\.idr\\'"
-  :bind (("C-c TAB"  . idris-case-split)))
+  :bind (("C-c TAB"  . idris-case-split))
+  :init (setq idris-interpreter-path "/usr/local/bin/idris2"))
 
 ;; jinja2
 
@@ -1409,3 +1410,17 @@ vi style of % jumping to matching brace."
 
 ;; (setq helm-ag-always-set-extra-option t)
 ;; (setq helm-ag-always-set-extra-option nil)
+
+;; Better mode comes built in now.
+;; ;; TODO: integrate properly.
+;; (autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+;; (autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
+;; (autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+;; ;;(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
+;; (setq prolog-system 'swi)
+;; ;; (setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)
+;; ;;                                 ("\\.m$" . mercury-mode))
+;; ;;                                auto-mode-alist))
+
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+

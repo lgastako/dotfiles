@@ -249,10 +249,12 @@ export NVM_DIR="$HOME/.nvm"
 
 HTML_TIDY=~/.tidy.cfg
 
-NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/interos/private-repo-key-config"
+NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/soretni/private-repo-key-config"
 
 export PATH="$HOME/.jenv/bin:$PATH"
 if $(/usr/bin/which -s jenv); then
    eval "$(jenv init -)"
 fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+set -o emacs

@@ -7,13 +7,24 @@ Host zeus
 
 Host platform-build
   User john
-  HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com
+  HostName 35.165.254.202
   ForwardAgent yes
 
-Host platform-build-temp
+Host platform-activities
   User john
-  HostName 18.237.156.109
+  HostName 34.220.18.102
   ForwardAgent yes
+  IdentityFile ~/aws-pems/interos-prod.pem
+
+# Host platform-build
+#   User john
+#   HostName ec2-54-212-231-103.us-west-2.compute.amazonaws.com
+#   ForwardAgent yes
+
+# Host platform-build-temp
+#   User john
+#   HostName 18.237.156.109
+#   ForwardAgent yes
 
 Host platform-deploy
   User deploy
@@ -170,8 +181,31 @@ Host intplprdappapi1
   IdentityFile ~/aws-pems/int-pl-prd-app-q3-19.pem
 
 Host ss-gateway
-  HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
-  Port 2222
+  HostName 10.10.5.123
+  Port 22
+#  User jevans
   User ubuntu
   ForwardAgent yes
-  IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+  IdentityFile ~/aws-pems/int-mg-shs-app-q1-20.pem
+#  IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+
+# Host ss-gateway
+#   HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
+#   Port 2222
+# #  User jevans
+#   User ubuntu
+#   ForwardAgent yes
+#   IdentityFile ~/aws-pems/int-mg-shs-app-q1-20.pem
+# #  IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+
+# Host ss-gateway
+#   HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
+#   Port 2222
+#   User ubuntu
+#   ForwardAgent yes
+#   IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+
+Host batchjob2
+  User ubuntu
+  HostName ec2-54-203-3-105.us-west-2.compute.amazonaws.com
+  IdentityFile ~/aws-pems/interos-prod.pem

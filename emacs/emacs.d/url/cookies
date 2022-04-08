@@ -4,7 +4,9 @@
 (setq url-cookie-storage
  'nil)
 (setq url-cookie-secure-storage
- 'nil)
+ '((".youtube.com"
+  [url-cookie "VISITOR_INFO1_LIVE" "ObFrE1qVs48" "Wed, 14-Oct-2020 00:20:41 GMT" "/" ".youtube.com" t]))
+)
 
 ;; Local Variables:
 ;; version-control: never

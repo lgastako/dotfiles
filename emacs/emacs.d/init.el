@@ -12,6 +12,11 @@
 ;; Not sure why I have to do this, but I do.
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/Users/john/.local/bin"))
 
+;; argh
+(setq debug-on-error nil)
+(setq debug-on-quit nil)
+(setq-default debug-on-error nil)
+(setq-default debug-on-quit nil)
 
 ;; Bind a key to edit this file
 (global-set-key (kbd "C-c i")
@@ -57,6 +62,9 @@
 (global-set-key (kbd "C-x C-z") nil)
 (global-set-key (kbd "C-z") nil)
 
+;; Easier next-error
+(global-set-key (kbd "C-c n") 'next-error)
+
 ;; For local customizations and stuff not in a repo
 (add-to-list 'load-path "~/dotfiles/emacs/emacs.d/lisp")
 
@@ -81,8 +89,8 @@
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 235 :width normal :foundry "apple" :family "Monaco")))))
 
 (if window-system
-    (load-theme 'deeper-blue)
-  (load-theme 'wombat t))
+  (load-theme 'deeper-blue)
+ (load-theme 'wombat t))
 
 ;; We do this right after the theme is loaded to minimize the time it looks
 ;; wonky.
@@ -91,9 +99,9 @@
 ;;   (set-face-attribute 'default nil :height 172))
 
 ;; (set-face-attribute 'default nil :height 100)
-(set-face-attribute 'default nil :height 128)
+;; (set-face-attribute 'default nil :height 128)
 ;; (set-face-attribute 'default nil :height 144)
-;; (set-face-attribute 'default nil :height 172)
+(set-face-attribute 'default nil :height 172)
 
 ;; (set-face-attribute 'default nil :height 200)
 ;;(set-face-attribute 'default nil :height 256)
@@ -204,12 +212,14 @@
         (setq mode-name ,new-name))))
 
 ;; Packaging (brought to you by use-package)
-(require' package)
+(require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
-                         ("marmalade"    . "https://marmalade-repo.org/packages/")
-                         ("melpa"        . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
+;; (setq package-check-signature nil)
+(setq package-archives
+      '(("gnu"          . "https://elpa.gnu.org/packages/")
+        ;; ("marmalade"    . "https://marmalade-repo.org/packages/")
+        ("melpa"        . "https://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -450,12 +460,12 @@
                      ("C-d"   . company-show-doc-buffer)
                      ("<tab>" . company-complete)))
 
-(use-package company-tabnine
-  :ensure t
-  :config
-  (add-to-list 'company-backends 'company-tabnine)
-  (setq company-idle-delay 0)
-  (setq company-show-numbers t))
+;; (use-package company-tabnine
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'company-backends 'company-tabnine)
+;;   (setq company-idle-delay 0.85)
+;;   (setq company-show-numbers t))
 
 (use-package expand-region
   :pin melpa-stable
@@ -481,6 +491,7 @@
 (use-package org
   :pin melpa-stable
   :init
+  (setq org-default-notes-file "~/SecuriUnsync/org/notes.org")
   (setq org-startup-indented t)
   (setq org-log-into-drawer "LOGBOOK")
   (setq org-todo-keywords
@@ -502,10 +513,10 @@
                                (java . t)
                                (js . t)
                                ))
-  ;; jira
-  (use-package org-jira
-    :config
-    (setq jiralib-url "https://interos.atlassian.net"))
+  ;; ;; jira
+  ;; (use-package org-jira
+  ;;   :config
+  ;;   (setq jiralib-url "https://interos.atlassian.net"))
 
   (use-package org-re-reveal
     :pin melpa-stable
@@ -582,6 +593,7 @@
 
 ;; Doesn't work with something else?
 (use-package rainbow-mode
+  :disabled t
   :pin melpa-stable
   :diminish (rainbow-mode . "")
   :config
@@ -610,63 +622,67 @@
 
 ;; agda
 
+(require 'agda2-mode)
+
 ;; (use-package agda2-mode
-;;   :pin melpa-stable)
+;;   :ensure t
+;;   ;; :pin melpa-stable
+;;   )
 
 ;; (load-file (let ((coding-system-for-read 'utf-8))
 ;;              (shell-command-to-string "agda-mode locate")))
 
 ;; clojure/clojurescript
 
-(use-package cider
-  :pin melpa-stable)
+;; (use-package cider
+;;   :pin melpa-stable)
 
-(use-package clojure-mode
-  :pin melpa-stable
-  :mode (("\\.clj$" . clojure-mode)
-         ("\\.cljs$" . clojurescript-mode)
-         ("\\.cljc$" . clojurec-mode)
-         ("\\.cljx$" . clojurex-mode)
-         ("\\.edn$" . clojure-mode))
+;; (use-package clojure-mode
+;;   :pin melpa-stable
+;;   :mode (("\\.clj$" . clojure-mode)
+;;          ("\\.cljs$" . clojurescript-mode)
+;;          ("\\.cljc$" . clojurec-mode)
+;;          ("\\.cljx$" . clojurex-mode)
+;;          ("\\.edn$" . clojure-mode))
 
-  ;; :bind (("C-c C-k" . cider-repl-clear-buffer))
-  :init
+;;   ;; :bind (("C-c C-k" . cider-repl-clear-buffer))
+;;   :init
 
-  ;; Fix indenting on some things
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (put-clojure-indent 'defui '(1 nil nil (1)))))
+;;   ;; Fix indenting on some things
+;;   (add-hook 'clojure-mode-hook
+;;             (lambda ()
+;;               (put-clojure-indent 'defui '(1 nil nil (1)))))
 
-  ;; Why doesn't this work?
-  ;; See https://github.com/clojure-emacs/clojure-mode
-  ;; And https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
+;;   ;; Why doesn't this work?
+;;   ;; See https://github.com/clojure-emacs/clojure-mode
+;;   ;; And https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification
+;;   (add-hook 'clojure-mode-hook
+;;             (lambda ()
+;;               (put-clojure-indent 'defcomponent '(1 nil nil (1)))))
 
-  ;; Clojure Files
-  ;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+;;   ;; Clojure Files
+;;   ;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
-  ;; In the REPL
-  (add-hook 'cider-repl-mode-hook #'subword-mode)
-  ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+;;   ;; In the REPL
+;;   (add-hook 'cider-repl-mode-hook #'subword-mode)
+;;   ;; (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
-  (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
-        cider-boot-command "/Users/john/dotfiles/bin/boot")
+;;   (setq cider-lein-command "/Users/john/dotfiles/bin/lein"
+;;         cider-boot-command "/Users/john/dotfiles/bin/boot")
 
-  (setq cider-overlays-use-font-lock t)
+;;   (setq cider-overlays-use-font-lock t)
 
-  ;; (setq cider-auto-select-error-buffer t)
+;;   ;; (setq cider-auto-select-error-buffer t)
 
-  :config
-  (rename-modeline "clojure-mode" clojure-mode "λ")
-  (rename-modeline "clojure-mode" clojurec-mode "λc")
-  (rename-modeline "clojure-mode" clojurescript-mode "λs")
+;;   :config
+;;   (rename-modeline "clojure-mode" clojure-mode "λ")
+;;   (rename-modeline "clojure-mode" clojurec-mode "λc")
+;;   (rename-modeline "clojure-mode" clojurescript-mode "λs")
 
-  ;; These two don't work (eg. if you use "C-x C-b")
-  ;; (rename-modeline "clojurec-mode" clojure-mode "λc")
-  ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
-  )
+;;   ;; These two don't work (eg. if you use "C-x C-b")
+;;   ;; (rename-modeline "clojurec-mode" clojure-mode "λc")
+;;   ;; (rename-modeline "clojurescript-mode" clojure-mode "λs")
+;;   )
 
 ;; (use-package clj-refactor
 ;;   :pin melpa-stable
@@ -923,7 +939,7 @@
 
 (use-package js2-mode
   :pin melpa-stable
-  :mode (("\\.js$" . js2-mode)
+  :mode ( ;; ("\\.js$" . js2-mode) ;; now rsjx-mode
          ("Jakefile$" . js2-mode)
          ("\\.babelrc$" . js2-mode))
   :interpreter ("node" . js2-mode)
@@ -934,6 +950,55 @@
 ;;    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
     ;; (add-hook 'js2-mode-hook (lambda ()
     ;;                            (bind-key "M-j" 'join-line-or-lines-in-region js2-mode-map)))
+
+    
+    ;; (use-package js-comint
+    ;;   :ensure t
+    ;;   ;; :bind (("C-x C-e" . js-send-last-sexp)
+    ;;   ;;        ("C-M-x"   . js-send-last-sexp-and-go)
+    ;;   ;;        ("C-c b"   . js-send-buffer)
+    ;;   ;;        ("C-c C-b" . js-send-buffer-and-go)
+    ;;   ;;        ("C-c l"   . js-load-file-and-go))
+
+    ;;   :config
+    ;;   (setq ;; was validate-setq
+    ;;    ;; Set JavaScript inferior.
+    ;;    inferior-js-program-command
+    ;;    (cond
+    ;;     ((executable-find "js") (executable-find "js"))
+    ;;     ((executable-find "node")
+    ;;      (concat (executable-find "node") " --interactive"))
+    ;;     (t "java org.mozilla.javascript.tools.shell.Main")))
+
+    ;;   ;; Workaround for Node.js prompt.
+    ;;   (setenv "NODE_NO_READLINE" "1"))
+
+
+
+    ))
+
+;; (use-package js-comint
+;;   :commands (run-js)
+;;   :config
+;;   (js-do-use-nvm)
+;; ;;  :general
+;;   (js-mode-map "C-c M-j" #'run-js
+;;                "C-x C-e" #'js-send-last-sexp
+;;                "C-c C-k" #'js-send-buffer
+;;                "C-c M-z" #'js-send-buffer-and-go))
+
+(use-package indium
+;;  :ensure t
+
+  :config
+
+  (progn
+    (add-hook 'js-mode-hook #'indium-interaction-mode)
+    (define-key indium-interaction-mode-map
+      (kbd "C-c C-c") 'indium-eval-region
+      (kbd "C-c C-k") 'indium-eval-buffer)
+
+
     ))
 
 
@@ -944,7 +1009,7 @@
   :disabled t)
 
 (use-package json-mode
-  :pin marmalade
+  ;; :pin marmalade
   :mode (("\\.json.tpl$" . json-mode)
          ("\\.json$" . json-mode)))
 
@@ -1138,7 +1203,7 @@
 
 (use-package rust-mode
   :pin melpa-stable
-  :mode "\\.rs\\'")
+  :mode ("\\.rs\\'" "\\.ron\\'"))
 
 ;; salesforce
 
@@ -1198,6 +1263,12 @@
                (define-key racket-mode-map (kbd "C-c C-l") 'racket-run)
                (define-key racket-mode-map (kbd "C-c C-k") 'racket-test))))
 
+;; jsx
+(use-package rjsx-mode
+  ;; :ensure t
+  :mode (("\\.js\\'" . rjsx-mode)
+         ("\\.jsx\\'" . rjsx-mode)))
+
 ;; swift
 
 (use-package swift-mode
@@ -1219,7 +1290,8 @@
 ;; TOML
 
 (use-package toml-mode
-  :pin marmalade)
+  ;; :pin marmalade
+  )
 
 ;; TypeScript
 
@@ -1240,6 +1312,12 @@
 ;;     (add-hook 'js-mode-hook #'setup-tide-mode)
 ;;     (add-hook 'js2-mode-hook #'setup-tide-mode)
 ;;     (add-hook 'rjsx-mode-hook #'setup-tide-mode)))
+
+;; WASM
+
+(use-package wat-mode
+  :load-path "~/.emacs.d/lisp/wat-mode"
+  :mode "\\.was?t\\'")
 
 ;; YAML
 
@@ -1387,17 +1465,14 @@ vi style of % jumping to matching brace."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(haskell-ask-also-kill-buffers nil)
- '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-type 'stack-ghci)
  '(org-agenda-files
-   (quote
-    ("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org")))
+   '("~/SecuriSync/org/interos.org" "~/SecuriSync/org/roadmap/user-stories.org"))
  '(package-selected-packages
-   (quote
-    (company-tabnine org-re-reveal-ref org-re-reveal ox-reveal php-mode erc-sasl jinja2-mode graphql-mode protobuf-mode nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize org-jira camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm)))
+   '(wat-mode true agda2-mode rjsx-mode unison-mode org-re-reveal-ref org-re-reveal ox-reveal php-mode erc-sasl jinja2-mode graphql-mode protobuf-mode nix-buffer nix-shell nix-drv-mode nix-repl tide tj3-mode ess htmlize camcorder applescript-mode ein intero dumb-jump nix-mode dante cmake-mode csv-mode zencoding-mode yasnippet yaml-mode ws-trim which-key virtualenvwrapper utop use-package tuareg toml-mode terraform-mode swift-mode sly shakespeare-mode scala-mode2 sass-mode rust-mode revive restclient rainbow-mode rainbow-delimiters racket-mode quack pydoc-info psci psc-ide projectile paredit mwim multiple-cursors merlin memoize markdown-mode json-mode js2-mode ipython hydra hungry-delete helm-idris helm-git-grep helm-ag golden-ratio go-eldoc ghc geiser free-keys frame-cmds flymake-go flymake-cursor fill-column-indicator expand-region es-mode erlang elm-mode edn edit-server drag-stuff dockerfile-mode cython-mode csharp-mode coffee-mode cider beacon alchemist ace-window ace-jump-mode ac-helm))
  '(safe-local-variable-values
-   (quote
-    ((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4)))))
+   '((haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4))))
 
 (defun freenode ()
   (interactive)
@@ -1433,7 +1508,7 @@ vi style of % jumping to matching brace."
 ;; C-c C-w - copy the regex to the kill ring - may convert to elisp syntax
 ;; C-c C-b - change the target buffer
 ;; C-c C-e - only highlight capturing groups
-p;; C-c C-c - toggle case sensitivity
+;; C-c C-c - toggle case sensitivity
 ;; C-c C-s - next match
 ;; C-c C-r - previous match
 
@@ -1445,3 +1520,28 @@ p;; C-c C-c - toggle case sensitivity
 
 ;; (setq helm-ag-always-set-extra-option t)
 ;; (setq helm-ag-always-set-extra-option nil)
+
+
+(use-package tidal
+  :ensure nil
+  :if (file-readable-p "~/.emacs.d/lisp/tidal.el")
+  :init
+  (load "~/.emacs.d/lisp/tidal.el")
+  (require 'tidal)
+  (setq tidal-interpreter "/Users/john/.local/bin/stack")
+  (setq tidal-interpreter-arguments
+        '("ghci"
+          "--ghci-options" "-XOverloadedStrings"
+          "--package" "tidal"
+          ))
+  (setq tidal-boot-script-path "/Users/john/.stack/snapshots/x86_64-osx/2d3e3cac9abd4b8e1e314ded11dc952188525058afeb5faf5ebbbf16c0d7a5b2/8.8.3/share/x86_64-osx-ghc-8.8.3/tidal-1.5.2/BootTidal.hs"))
+
+  ;; (setq tidal-interpreter-arguments
+  ;;       '("--install-ghc"
+  ;;         "repl"
+  ;;         "--resolver" "nightly-2017-06-02"
+  ;;         "--package" "tidal"
+  ;;         "--ghci-options=-XOverloadedStrings")))
+
+(use-package unison-mode
+  :ensure t)

@@ -1,6 +1,8 @@
 # Automatically report run time of all commands
 REPORTTIME=1
 
+ZSH_DISABLE_COMPFIX=true
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -253,3 +255,7 @@ NIX_PATH="${NIX_PATH}:ssh-config-file=/etc/interos/private-repo-key-config"
 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+eval "$(direnv hook zsh)"
+
+#aws configure set sso_start_url https://interos-ai.awsapps.com/start#/
+alias newsso='aws sso login --profile InterosSandboxEnv --profile InterosLowerEnv'

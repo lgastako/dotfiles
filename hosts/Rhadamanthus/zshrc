@@ -3,3 +3,8 @@ alias opendev='open http://ec2-54-202-48-93.us-west-2.compute.amazonaws.com:8000
 export JENKINS_URL=http://jenkins.interos.io
 
 export PATH=${PATH}:/Library/PostgreSQL/11/bin
+
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+alias gitst="git st"

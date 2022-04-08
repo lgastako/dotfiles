@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("RequestHandler.hs"
+(("org-refile-last-stored"
+ (filename . "~/SecuriUnsync/org/notes.org")
+ (front-context-string . "** TODO Refile m")
+ (rear-context-string . "Libraries%20=]]\n")
+ (position . 414))
+("org-capture-last-stored"
+ (filename . "~/SecuriUnsync/org/notes.org")
+ (front-context-string . "** TODO Refile m")
+ (rear-context-string . "Libraries%20=]]\n")
+ (position . 278))
+("RequestHandler.hs"
  (filename . "~/src/interos-portal/backend/src/Backend/RequestHandler.hs")
  (front-context-string . "tagSIC, _supplie")
  (rear-context-string . "\n            , (")

@@ -2,4 +2,6 @@
 # name: deriving.hs
 # key: de
 # --
-deriving (Eq, Ord, Read, Show)
+  deriving (Eq, Ord, Show)
+
+$0

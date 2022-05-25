@@ -2,4 +2,4 @@
 # name: language-pragma.hs
 # key: l
 # --
-{-# LANGAUGE $0 #-}
+{-# LANGUAGE $0 #-}

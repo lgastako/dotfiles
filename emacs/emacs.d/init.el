@@ -1386,8 +1386,6 @@ vi style of % jumping to matching brace."
 
 (setq erc-track-enable-keybindings nil)
 
-(put 'upcase-region   'disabled nil)
-(put 'downcase-region 'disabled nil)
 
 (defun rotate-windows (arg)
   "Rotate your windows; use the prefix argument to rotate the
@@ -1545,3 +1543,5 @@ vi style of % jumping to matching brace."
 
 (use-package unison-mode
   :ensure t)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

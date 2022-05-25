@@ -8,3 +8,22 @@ export PATH=${PATH}:/Library/PostgreSQL/11/bin
 source /usr/local/bin/virtualenvwrapper.sh
 
 alias gitst="git st"
+
+# syntax highlighting in the terminal
+# pip install pygments
+alias pcat="pygmentize -f terminal256 -O style=native -g"
+
+export FZF_TMUX=1
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
+export FZF_DEFAULT_OPTS="--no-height --layout=reverse --cycle"
+export FZF_ALT_C_OPTS="--preview 'exa -l --tree {}'"
+
+alias fzfbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs brew install'
+
+# fzfopen() {
+#   fd -t f -H -I | fzf -m --preview="xdg-mime query  {}" | xargs -ro -d "\n" xdg-open 2>&-
+# }
+
+fzfreveal() {
+  fd -t f -H -I | fzf --preview 'bat --color=always {}' | xargs open --reveal
+}

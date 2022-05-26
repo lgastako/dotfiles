@@ -93,14 +93,42 @@ identityPipe() {
   cat -
 }
 
-fzwords() {
-  transmogrify=identityPipe
-  if [ "$1" = "lower" ]; then
-    transmogrify=toLower
-  elif [ "$1" = "upper" ]; then
-    transmogrify=toUpper
+exactly() {
+  n=$1
+  if [ -z "$n" ]; then
+    echo "ERRRO: exactly(): empty n"
+    (cat -)
+  else
+    awk "length==${n}"
   fi
+}
+
+fzwords() {
+  filter=identityPipe
+  transmogrify=identityPipe
+
+  for arg in $*; do
+    case "$arg" in
+      lower)    transmogrify=toLower      ;;
+      upper)    transmogrify=toUpper      ;;
+      identity) transmogrify=identityPipe ;;
+      *)        head=$(echo "$arg" | cut -c1)
+                tail=$(echo "$arg" | cut -c2-)
+                # echo "head is ${head}"
+                case "$head" in
+                  "+") filter=(sed -r "/^.{0,${tail}}$/d")      ;;
+                  "-") filter=(sed -r "/^.{${tail},100000}$/d") ;;
+                  "=") filter=(exactly "${tail}")               ;;
+                  *)   echo "WARNING: fzwords ignoring unknown argument: ${arg}"
+                esac
+    esac
+  done
+
+  # echo "transmogrify: ${transmogrify}"
+  # echo "filter: ${filter}"
+
   cat /usr/share/dict/words \
       | ${transmogrify}      \
+      | ${filter}             \
       | fzf -m
 }

@@ -15,12 +15,12 @@ alias pcat="pygmentize -f terminal256 -O style=native -g"
 
 export FZF_TMUX=1
 export FZF_CTRL_T_OPTS="--preview 'bat_or_exa.sh {}'"
-export FZF_DEFAULT_OPTS="--no-height --layout=reverse-list --cycle"
+export FZF_DEFAULT_OPTS="--no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line"
 export FZF_ALT_C_OPTS="--preview 'bat_or_exa.sh {}'"
 
-alias fzfbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs brew install'
+alias fzbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs brew install'
 
-# fzfopen() {
+# fzopen() {
 #   fd -t f -H -I | fzf -m --preview="xdg-mime query  {}" | xargs -ro -d "\n" xdg-open 2>&-
 # }
 
@@ -28,11 +28,11 @@ alias fzfbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs bre
 
 /bin/cp -f ~/dotfiles/hosts/Rhadamanthus/bat_or_exa.sh ~/.local/bin
 
-fzfreveal() {
+fzreveal() {
   fd -t f -H -I | fzf --preview 'bat_or_exa.sh --color=always {}' | xargs open --reveal
 }
 
-fzfmime() {
+fzmime() {
   fzf --preview 'file -b --mime-type {}' | xargs file -b --mime-type
 }
 
@@ -44,7 +44,7 @@ jc() {
     cd "$(z -c -1 2>&1 | awk '{print $2}' | sort -u | fzf --inline-info --height 33%)"
 }
 
-fzfgitdiff() {
+fzgitdiff() {
     git status -s | awk '{print $2}' | fzf --preview 'git diff --color=always HEAD -- {}'
 }
 
@@ -96,7 +96,7 @@ identityPipe() {
 exactly() {
   n=$1
   if [ -z "$n" ]; then
-    echo "ERRRO: exactly(): empty n"
+    echo "ERROR: exactly(): empty n"
     (cat -)
   else
     awk "length==${n}"

@@ -15,7 +15,7 @@ alias pcat="pygmentize -f terminal256 -O style=native -g"
 
 export FZF_TMUX=1
 export FZF_CTRL_T_OPTS="--preview 'bat_or_exa.sh {}'"
-export FZF_DEFAULT_OPTS="--no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line"
+export FZF_DEFAULT_OPTS="--exact --no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line"
 export FZF_ALT_C_OPTS="--preview 'bat_or_exa.sh {}'"
 
 alias fzbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs brew install'

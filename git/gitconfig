@@ -26,6 +26,7 @@
         diff        = auto
         branch      = auto
         interactive = auto
+	ui = auto
 [core]
 	excludesfile = /Users/john/dotfiles/git/gitignore
 [push]

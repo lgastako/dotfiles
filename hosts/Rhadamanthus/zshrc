@@ -14,9 +14,9 @@ alias gitst="git st"
 alias pcat="pygmentize -f terminal256 -O style=native -g"
 
 export FZF_TMUX=1
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
-export FZF_DEFAULT_OPTS="--no-height --layout=reverse --cycle"
-export FZF_ALT_C_OPTS="--preview 'exa -l --tree {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat_or_exa.sh {}'"
+export FZF_DEFAULT_OPTS="--no-height --layout=reverse-list --cycle"
+export FZF_ALT_C_OPTS="--preview 'bat_or_exa.sh {}'"
 
 alias fzfbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs brew install'
 
@@ -24,6 +24,83 @@ alias fzfbrew='brew list --formula | fzf -m --preview="brew info {}" | xargs bre
 #   fd -t f -H -I | fzf -m --preview="xdg-mime query  {}" | xargs -ro -d "\n" xdg-open 2>&-
 # }
 
+. /usr/local/etc/profile.d/z.sh
+
+/bin/cp -f ~/dotfiles/hosts/Rhadamanthus/bat_or_exa.sh ~/.local/bin
+
 fzfreveal() {
-  fd -t f -H -I | fzf --preview 'bat --color=always {}' | xargs open --reveal
+  fd -t f -H -I | fzf --preview 'bat_or_exa.sh --color=always {}' | xargs open --reveal
+}
+
+fzfmime() {
+  fzf --preview 'file -b --mime-type {}' | xargs file -b --mime-type
+}
+
+j() {
+    cd "$(z -1 2>&1 | awk '{print $2}' | sort -u | fzf --inline-info --height 33%)"
+}
+
+jc() {
+    cd "$(z -c -1 2>&1 | awk '{print $2}' | sort -u | fzf --inline-info --height 33%)"
+}
+
+fzfgitdiff() {
+    git status -s | awk '{print $2}' | fzf --preview 'git diff --color=always HEAD -- {}'
+}
+
+fl() {
+  url=$1
+  query=$2
+
+  if [ -z "$url" ]; then
+     echo "ERROR: No URL provided."
+     return
+  fi
+
+  if [ -z "$query" ]; then
+     echo "ERROR: No QUERY provided."
+     return
+  fi
+
+  echo "Browsing url: $url"
+  echo "   via query: $query"
+  curl -s $url \
+    | htmlq $query --attribute href            \
+    | fzf -m --preview 'lynx -nolist -dump {}' \
+    | xargs open
+}
+
+fst() {
+  # echo "fst initializing ..."
+  sqlite=sqlite3
+  # echo sqlite is $sqlite
+  db=$(fd '\.sqlite$' | fzf --preview "echo .schema | $sqlite {}")
+  # echo DB is $db
+  table=$(echo ".tables" | $sqlite $db | xargs -n1 echo | fzf --preview "echo '.schema {}' | $sqlite $db")
+  # echo TABLE is $table
+  fzql $db "SELECT * FROM $table"
+}
+
+toLower() {
+  tr '[A-Z]' '[a-z]'
+}
+
+toUpper() {
+  tr '[a-z]' '[A-Z]'
+}
+
+identityPipe() {
+  cat -
+}
+
+fzwords() {
+  transmogrify=identityPipe
+  if [ "$1" = "lower" ]; then
+    transmogrify=toLower
+  elif [ "$1" = "upper" ]; then
+    transmogrify=toUpper
+  fi
+  cat /usr/share/dict/words \
+      | ${transmogrify}      \
+      | fzf -m
 }

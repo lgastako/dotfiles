@@ -255,6 +255,9 @@
   ;; Maximize window on startup
   (maximize-frame))
 
+(use-package fzf
+  :ensure t)
+
 (use-package revive
   :pin melpa-stable)
 

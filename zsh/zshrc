@@ -259,3 +259,17 @@ eval "$(direnv hook zsh)"
 
 #aws configure set sso_start_url https://interos-ai.awsapps.com/start#/
 alias newsso='aws sso login --profile InterosSandboxEnv --profile InterosLowerEnv'
+
+whatslistening() {
+  PORT="$1"
+  echo "Trying to find what's listening on port ${PORT:-all ports}"
+  (lsof -nP -iTCP -sTCP:LISTEN | grep "${PORT}") 2>/dev/null
+}
+
+rows() {
+    FN=$1
+    if [ -z "$1" ]; then
+        FN="-"
+    fi
+    cat $FN | wc -l | awk '{print $1}' | xargs -I {} numfmt --to=si --format="%0.1f" {} | sed 's/.0$//'
+}

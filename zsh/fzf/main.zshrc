@@ -225,4 +225,8 @@ hn() {
      | xargs -n1 open
 }
 
+yn() {
+    echo "no\nyes" | fzf --no-multi --layout=default
+}
+
 unset REPORTTIME  # for now

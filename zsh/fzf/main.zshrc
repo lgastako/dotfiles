@@ -6,8 +6,8 @@ LB=~/.local/bin
 ################################################################
 
 export FZF_TMUX=1
-export FZF_CTRL_T_OPTS="--preview 'look {}'"
-export FZF_ALT_C_OPTS="--preview 'look {}'"
+export FZF_CTRL_T_OPTS="--preview 'preview.zsh {}' --preview-window=57%,border-left"
+export FZF_ALT_C_OPTS="--preview 'preview.zsh {}' --preview-window=57%,border-left"
 export FZF_DEFAULT_COMMAND='fd'
 
 export FZF_DEFAULT_OPTS="--exact --multi --no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line,alt-down:page-down,alt-up:page-up"
@@ -230,7 +230,7 @@ yn() {
 }
 
 fzhex() {
-  fzf --preview 'hexyl --color=never {}' --preview-window='75%,border-left' | hexyl
+  fzf --preview 'hexyl --color=never {}' --preview-window='57%,border-left' | hexyl
 }
 
 unset REPORTTIME  # for now

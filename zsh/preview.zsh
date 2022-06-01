@@ -7,11 +7,16 @@ if [ -z "$1" ]; then
     args="$f"
 fi
 
+mime_encooding=$(file --mime-encoding ${f} | awk '{print $(NF)}')
+# echo "MIME ENCODING: ${mime_encoding}"
+
 if [ ! -e "$f" ]; then
-  echo "bot_or_exa: $f does not exist."
+  echo "preview.zsh: $f does not exist."
 else
   if [ -d "$f" ]; then
     exa --color=always -l --header $args
+  elif [ "${mime_encooding}" = "binary" ]; then
+    hexyl --color=always $args
   else
     bat --color=always --line-range :1000 $args
   fi

@@ -32,9 +32,9 @@ identityPipe() {
 #  Install helper scripts                                      #
 ################################################################
 
-(/bin/cp -f ${DOTFILES}/zsh/bat_or_exa.zsh     ${LB} &) >/dev/null 2>&1
+(/bin/cp -f ${DOTFILES}/zsh/preview.zsh        ${LB} &) >/dev/null 2>&1
 (/bin/cp -f ${DOTFILES}/zsh/preview-fzf-hn.zsh ${LB} &) >/dev/null 2>&1
-(ln -s ${LB}/bat_or_exa.zsh ${LB}/look               &) >/dev/null 2>&1
+(ln -s ${LB}/preview.zsh ${LB}/look                  &) >/dev/null 2>&1
 
 ################################################################
 #  Fz Functions                                                #
@@ -49,7 +49,7 @@ wordle() {
 }
 
 fzfreveal() {
-  fd -t f -H -I | fzf --preview 'bat_or_exa.zsh {}' | xargs open --reveal
+  fd -t f -H -I | fzf --preview 'preview.zsh {}' | xargs open --reveal
 }
 
 fzmime() {
@@ -227,6 +227,10 @@ hn() {
 
 yn() {
     echo "yes\nno" | fzf +s --tac --no-multi --layout=default
+}
+
+fzhex() {
+  fzf --preview 'hexyl --color=never {}' --preview-window='75%,border-left' | hexyl
 }
 
 unset REPORTTIME  # for now

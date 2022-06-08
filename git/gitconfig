@@ -1,49 +1,75 @@
 [user]
 	name = John Evans
-	email = lgastako@gmail.com
-[alias]
-        git         = !exec git
-        news        = log -p HEAD@{1}..HEAD@{0}
-        pull        = pull --recurse-submodules
-        u           = push
-        d           = pull
-        a           = add
-        co          = checkout
-        ci          = commit
-        st          = status
-        b           = branch
-        r           = remote
-        reb         = rebase
-        pl          = pull
-        pn          = pull --no-ff
-        p           = push
-        qc          = commit --no-verify
-        qcommit     = commit --no-verify
-        m           = merge
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    email = lgastako@gmail.com
+
+################################################################
+# Colors
+#
 [color]
-        status      = auto
-        diff        = auto
-        branch      = auto
-        interactive = auto
-	ui = auto
+    status      = auto
+    diff        = auto
+    branch      = auto
+    interactive = auto
+    ui          = auto
+
+################################################################
+# Use Delta as a pager
+#
 [core]
-	excludesfile = /Users/john/dotfiles/git/gitignore
-[push]
-        default = upstream
-[difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
+    excludesfile = /Users/john/dotfiles/git/gitignore
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate     = true  # use n and N to move between diff sections
+    light        = false
+    side-by-side = true
+    line-numbers = true
+[merge]
+    conflictstyle = diff3
 [diff]
-	tool = Kaleidoscope
+    colorMoved = default
+
+################################################################
+# Aliases
+#
+[alias]
+    git         = !exec git
+    news        = log -p HEAD@{1}..HEAD@{0}
+    pull        = pull --recurse-submodules
+    u           = push
+    d           = pull
+    a           = add
+    co          = checkout
+    ci          = commit
+    st          = status
+    b           = branch
+    r           = remote
+    reb         = rebase
+    pl          = pull
+    pn          = pull --no-ff
+    p           = push
+    qc          = commit --no-verify
+    qcommit     = commit --no-verify
+    m           = merge
+    lg          = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+
+################################################################
+# commands
+#
+[push]
+    default = upstream
+
 [grep]
 	lineNumber = true
+
 [mergetool]
 	keepBackup = true
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [init]
 	defaultBranch = main

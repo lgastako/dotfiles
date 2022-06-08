@@ -1546,5 +1546,5 @@ vi style of % jumping to matching brace."
 
 (use-package unison-mode
   :ensure t)
-(put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

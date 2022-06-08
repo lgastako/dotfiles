@@ -9,8 +9,7 @@ export FZF_TMUX=1
 export FZF_CTRL_T_OPTS="--preview 'preview.zsh {}' --preview-window=57%,border-left"
 export FZF_ALT_C_OPTS="--preview 'preview.zsh {}' --preview-window=57%,border-left"
 export FZF_DEFAULT_COMMAND='fd'
-
-export FZF_DEFAULT_OPTS="--exact --multi --no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line,alt-down:page-down,alt-up:page-up"
+export FZF_DEFAULT_OPTS="--exact --multi --no-height --layout=reverse-list --cycle --bind=ctrl-k:kill-line,ctrl-f:page-down,ctrl-b:page-up"
 
 ################################################################
 #  Utility Functions                                           #
@@ -231,6 +230,18 @@ yn() {
 
 fzhex() {
   fzf --preview 'hexyl --color=never {}' --preview-window='57%,border-left' | hexyl
+}
+
+c() {
+  local cols sep
+  cols=$(( COLUMNS / 3 ))
+  sep='{::}'
+  /bin/cp -f "/Users/john/Library/Application Support/Google/Chrome/Profile 2/History" /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open
 }
 
 unset REPORTTIME  # for now

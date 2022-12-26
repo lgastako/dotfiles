@@ -1,0 +1,285 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/" . "Client/")
+ ("/Users/john/src/cfa-ikg-client/cfa-ikg-types/src/Ikg/" . "Types/")
+ ("/Users/john/src/cfa-ikg-client/cfa-ikg-types/src/" . "Ikg/")
+ ("/Users/john/src/cfa-ikg-client/cfa-ikg-types/" . "src/")
+ ("/Users/john/src/cfa-ikg-client/" . "cfa-ikg-types/")
+ ("/Users/john/src/" . "interos-portal/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/john/src/arachnid/silk-prelude/src/Silk/Log/"
+ "/Users/john/src/PyChatGPT/"
+ "/Users/john/src/arachnid/silk-prelude/src/Silk/Log/Orphans/"
+ "/Users/john/src/arachnid/proof/src/Proof/Reactors/"
+ "/Users/john/src/gptcanvas/"
+ "/tmp/"
+ "/Users/john/src/arachnid/silk-spacy/src/Silk/Spacy/Orphans/"
+ "/Users/john/src/arachnid/silk-http/src/Silk/Http/"
+ "/Users/john/src/arachnid/proof/src/Proof/Types/"
+ "/Users/john/src/arachnid/proof/src/Proof/Pages/"
+ "/Users/john/src/arachnid/silk-prelude/src/Silk/Now/Orphans/"
+ "/Users/john/src/arachnid/proof/src/Proof/Projections/"
+ "/Users/john/src/arachnid/silk-events/test/"
+ "/Users/john/src/arachnid/silk-cas/src/Silk/CAS/"
+ "/Users/john/src/arachnid/silk-cas-postgresql/test/"
+ "/Users/john/src/arachnid/proof/src/Proof/"
+ "/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/Client/Ui/"
+ "/Users/john/src/sudoku/src/Ui/"
+ "/Users/john/src/sudoku/src/"
+ "/Users/john/src/sudoku/src/Types/"
+ "/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/Client/"
+ "/Users/john/src/arachnid/silk-poker/src/Silk/Poker/V1/Types/"
+ "/Users/john/src/arachnid/silk/src/Silk/"
+ "/Users/john/src/"
+ "/Users/john/src/arachnid/silk/test/"
+ "/Users/john/src/arachnid/silk/src/Silk/Types/"
+ "/Users/john/src/arachnid/silk/src/Silk/Projectors/Stream/"
+ "/Users/john/src/arachnid/eventmodel/src/Arachnid/V1_Alt2/"
+ "/Users/john/src/redact/src/Redact/Poker/V1/Types/"
+ "/Users/john/src/arachnid/eventmodel/src/Arachnid/V1/Types/"
+ "/Users/john/src/jarvix/src/Pages/"
+ "/Users/john/src/jarvix/src/"
+ "/Users/john/src/funworld/src/FW/"
+ "/Users/john/src/ktree/src/Data/Tree/K/"
+ "/Users/john/src/casual/test/"
+ "/Users/john/src/idrisaslib/"
+ "/Users/john/src/idrisaslib/src/Gab/"
+ "/Users/john/src/idrisaslib/src/Gab/Nameless/"
+ "/Users/john/src/idrisaslib/src/Gab/Named/"
+ "/Users/john/src/manim-play/"
+ "/Users/john/src/erlannng/"
+ "/Users/john/src/eznn/test/OldSchool/"
+ "/Users/john/src/eznn/src/NN/"
+ "/Users/john/src/eznn/src/NN/OldSchool/"
+ "/Users/john/src/blender/src/Blender/DB/"
+ "/Users/john/src/blender/src/Blender/Views/"
+ "/Users/john/src/blender/src/Blender/Handlers/"
+ "/Users/john/src/blender/src/Blender/"
+ "/Users/john/src/blender/src/Blender/Types/"
+ "/Users/john/src/blender/src/Blender/Lucid/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "IO.hs"
+ "gptedit.py"
+ "ReaderT.hs"
+ "SerialT.hs"
+ "Prelude.hs"
+ "stdgpt.py"
+ "index3.html"
+ "canvas.css"
+ "index2.html"
+ "instances-sorted.txt"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/john/src/arachnid/silk-prelude/src/Silk/" (25493 20868 885550 655000) "Now.hs" "Id.hs" "Log.hs" "Timestamp.hs" "Result.hs" "Debug.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/PyChatGPT/" (25487 51179 987822 134000) ".idea/" "main.py" ".git/" ".gitignore" "env/" "README.md" "config.json" "Classes/" "requirements.txt" "LICENSE" ".DS_Store" ".envrc" "stdgpt.py" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-prelude/src/Silk/Log/Orphans/" (25488 9469 760672 894000) "IO.hs" "SerialT.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-prelude/src/Silk/Log/" (25477 35554 676528 20000) "Orphans/" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/Proof/Reactors/" (25488 7182 544990 536000) "Fetch.hs" "Ingest.hs" "../" "./")
+
+ ("/Users/john/src/gptcanvas/" (25486 43170 175329 98000) "index1.html" "canvas.css" "Makefile" "index.html" "index2.html" "../" "./")
+
+ ("/tmp/" (25484 25085 495204 867000) "steam_chrome_overlay_uid501_spid37968" "pointfree.io/" ".s.PGSQL.5432" "steam_chrome_overlay_uid501_spid6814" "CrashUpload-fqarJ/" "steam_chrome_overlay_uid501_spid69607" "steam_chrome_overlay_uid501_spid28884" "steam_chrome_overlay_uid501_spid25754" "steam_chrome_overlay_uid501_spid74901" "steam_chrome_overlay_uid501_spid91467" "steam_chrome_overlay_uid501_spid78734" "CrashUpload-KiQlh/" "com.apple.launchd.EcszphRKxr/" "steam.pipe" "steam_chrome_overlay_uid501_spid46717" "steam_chrome_overlay_uid501_spid98406" "steam_chrome_overlay_uid501_spid45157" "steam_chrome_overlay_uid501_spid13113" "CrashUpload-L5Neg/" ".#x.x" "steam_chrome_overlay_uid501_spid27954" "data1" "steam_chrome_overlay_uid501_spid44432" ".s.PGSQL.5432.lock" "steam_chrome_overlay_uid501_spid24317" "steam_chrome_overlay_uid501_spid17888" "com.apple.launchd.DkF1vcvoKx/" "gameoverlayui.log.last" "steam_chrome_overlay_uid501_spid94364" "powerlog/" "steam_chrome_overlay_uid501_spid28887" "steam_chrome_overlay_uid501_spid95000" "steam_chrome_overlay_uid501_spid1282" "steam_chrome_overlay_uid501_spid23436" "#x.x.txt#" "steam_chrome_overlay_uid501_spid18245" "com.apple.launchd.0aVicEmnUr/" "dumps/" "steam_chrome_overlay_uid501_spid15212" "CrashUpload-BLBqA/" "x.x.txt" "com.apple.launchd.ORhR2tpoeY/" "instances.txt" "gameoverlayui.log" ".#x.x.txt" "backup-stacks/" "../" "./")
+
+ ("/Users/john/src/arachnid/proof-server/src/Proof/" (25484 6377 34520 819000) "Server.hs" "Env.hs" "Router.hs" "Main.hs" "Reactors/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-spacy/src/Silk/Spacy/" (25480 17837 121125 125000) "HtmlUtils.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-spacy/src/Silk/" (25480 25335 86036 388000) "Spacy/" "Spacy.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-http/src/Silk/" (25480 20233 77935 251000) "Http.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/Proof/Types/" (25479 63707 659400 130000) "HashedPassword.hs" "PlainTextPassword.hs" "Username.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/Proof/Pages/" (25479 61867 873784 151000) "BytesFetched.hs" "RecentUrls.hs" "ManualFetchRequest.hs" "Fetch.hs" "Ingest.hs" "ExtractedLinks.hs" "Home.hs" "Error.hs" "Login.hs" "Url.hs" "NER.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof-server-impl/src/Proof/" (25476 12669 385677 100000) "Server.hs" "Env.hs" "Router.hs" "Main.hs" "Reactors/" ".#Env.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/Proof/Projections/" (25473 58451 139568 866000) "Ingestions.hs" "BytesFetched.hs" "RecentUrls.hs" "Fetches.hs" "ManualFetchRequests.hs" "FetchDates.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-events/test/" (25472 26722 557899 370000) "TestTVar.hs" "TestMVarStream.hs" "TestState.hs" "Tests.hs" "Driver.hs" "TestProjectors.hs" "TestSilk.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/" (25471 11876 509825 862000) "lucid-htmx/" "silk-prelude/" ".git/" "silk-poker-server/" "cockroach/" "silk-cas-postgresql/" "silk-events/" "silk-cas/" ".gitignore" "silk-net/" "Makefile.haskell" "silk-cas-minio/" "minio/" "silk-surrealdb/" "proof-pg/" "silk-poker-client/" "Makefile" "Dockerfile" ".hlint.yaml" "silk-cas-localfs/" "silk-poker/" "spiderbot/" "silk-events-postgresql/" "eventmodel/" "surrealdb/" ".DS_Store" "silk-events-sqlite/" "infra/" "proof/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-events/" (25472 16922 264934 972000) "src/" ".stack-work/" "package.yaml" "silk-events.cabal" ".gitignore" "README.md" "TAGS" "Makefile" "stack.yaml.lock" "CHANGELOG.md" "test/" "LICENSE" "app/" "Setup.hs" "stack.yaml" ".envrc" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-events/src/" (25471 11876 544313 312000) "Control/" "Text/" "Silk/" "Streamly/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-events/src/Silk/" (25472 26471 85151 320000) "Event/" "Event.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-events/src/Silk/Event/" (25472 33034 369257 641000) "CmdResult.hs" "Aggregate.hs" "EventNum.hs" "Event.hs" "GlobalDomain.hs" "Command.hs" "Folds.hs" "GenericSilkError.hs" "TVar.hs" "State.hs" "Mem.hs" "Projector/" "Reference.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas/src/Silk/CAS/" (25466 48460 170786 476000) "Key.hs" "Key/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas/src/Silk/" (25466 49150 113982 329000) "CAS.hs" "CAS/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas-postgresql/test/" (25466 43754 401224 142000) "Driver.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas-postgresql/" (25466 47021 897069 173000) "src/" ".stack-work/" "package.yaml" "silk-cas-postgresql.cabal" ".gitignore" "README.md" "TAGS" "Makefile" "stack.yaml.lock" "CHANGELOG.md" "test/" "LICENSE" "app/" "Setup.hs" "stack.yaml" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas/" (25466 47029 592845 669000) "src/" ".stack-work/" "package.yaml" ".gitignore" "README.md" "TAGS" "Makefile" "stack.yaml.lock" "CHANGELOG.md" "test/" "LICENSE" "Setup.hs" "stack.yaml" "silk-cas.cabal" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-cas/test/" (25466 47919 840198 345000) "CASTests.hs" "Driver.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/Proof/" (25464 26251 339237 346000) "Pages/" "Links.hs" "Types.hs" "Fetch.hs" "HttpUtils.hs" "Server.hs" "Env.hs" "Projections/" "Router.hs" "Reactors/" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/src/" (25456 26093 15142 526000) "Proof/" "Database/" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/" (25464 48450 358945 287000) "src/" "proof.cabal" ".terraform.lock.hcl" ".stack-work/" "package.yaml" "static/" "app-reactors/" ".gitignore" "README.md" "TAGS" ".terraform/" "Makefile" "Dockerfile" "stack.yaml.lock" "CHANGELOG.md" "test/" "LICENSE" "app/" "Setup.hs" "stack.yaml" "main.tf" ".envrc" "terraform.tfstate" "../" "./")
+
+ ("/Users/john/src/arachnid/proof/app/" (25452 36026 368337 885000) "Main.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/" (25431 33498 598311 358000) "Client.hs" "Client/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/Client/Ui/" (25431 30090 129267 583000) "Ambient.hs" "Jumbotron.hs" "Unauthenticated.hs" "Authenticated.hs" "../" "./")
+
+ ("/Users/john/src/sudoku/src/Ui/" (25428 52756 167468 990000) "Square.elm" "../" "./")
+
+ ("/Users/john/src/sudoku/src/" (25428 39491 293779 525000) "Square.elm" "Utils.elm" "Flags.elm" "Ui.elm" "Board.elm" "Digit.elm" "elm.js" "Model.elm" "Subs.elm" "Msg.elm" "Main.elm" "index.html" "Triple.elm" "Update.elm" "Init.elm" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-poker/src/Silk/Poker/V1/Types/" (25427 20303 387701 825000) "Seat/" "Account/" "Chips.hs" "USD.hs" ".#ServerId.hs" "Seat.hs" "ClientId.hs" "#ServerId.hs#" "Table.hs" "ServerId.hs" "Account.hs" "Username.hs" "Spread.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk-poker-client/src/Silk/Poker/Client/" (25427 19195 924924 796000) "Ui.hs" "Types.hs" "CUIEvent.hs" "WS.hs" "Model.hs" "Prelude.hs" "Ui/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/src/Silk/" (25427 638 623924 553000) "Monad.hs" "Monad/" "Projectors/" "GlobalDomain.hs" "Command.hs" "Folds.hs" "Mem.hs" "Types/" "Prelude.hs" "Aggregates.hs" "Imp/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/" (25419 48147 779065 706000) "src/" ".stack-work/" "package.yaml" ".gitignore" "README.md" "TAGS" "Makefile" "stack.yaml.lock" "CHANGELOG.md" "test/" "LICENSE" "app/" "Setup.hs" "stack.yaml" ".envrc" "silk.cabal" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/src/" (25419 47762 975286 117000) "Control/" "Silk/" "../" "./")
+
+ ("/Users/john/src/" (25425 23538 378705 875000) "ec2-env-config/" "gator-aide/" "p/" "trixie/" "hakn-old/" "ihaskell-in-docker/" "xformers/" "grender/" "show-and-tell/" "magicbane/" "omni/" "konami-dev-zone/" "ikg-client-gen/" "ghcjs-examples/" "sonarqube-bitnami/" "matomo/" "matomo-fix/" "esplite/" "datamodel.zip" "intro-to-applications-team/" "redstring/" "evans/" "keylines-5.6.1-37692/" "idris-comonad/" "siphon/" "openai/" "reflex/" "optics/" "waldo/" "interos-haskell-style-guide/" "pandas/" "tidal/" "entities/" "textables/" "apache-server-image/" "qandaplus/" "c-sdk/" "eks-setup/" "unixlsx-js/" "vartex/" "new-relic/" "proto3-wire/" "frogger-Dissertation/" "monad-bayes/" "splat/" "client-python/" "warbotai/" "turbine/" "Godot-MindCraft/" "joe-globe/" "lambdabot-zulip/" "app-admin/" "why-haskell-at-interos/" "gnants/" "monad-cell/" "stand-in-language/" "trieagain/" "100ktable/" "sheetjs/" "pure-rdbms-platform-schema/" "tf/" "idris-nn/" "rps-client/" "task-cull/" "plato/" "supply-chain-algebra/" "profviz/" "haskell-remotedata/" "blender/" "unisonplay/" "temple/" "searchtrees/" "zenagain/" "jsplay/" "inline-js/" "youtube-channel/" "ihpblog/" "ghc-simple/" "hasbolt-sample-app/" "clutter/" "hakn-old-2/" "connectome/" "dispenser-qldb/" "lens-aeson/" "ce/" "headroom/" "mindcraft/" "pagecursors/" "MtShootmore/" "gitlab-triage/" "app-html/" "binsert/" "old-app/" "prod-templates/" "keylines-visualizations/" "bistring/" "elementary/" "grimoire/" "csvdiff/" "sliceofpy/" "apptool-docs/" "fizzbuzzhaskdsl/" "rhyolite/" "http2-client-grpc/" "massiv/" "sonarqube/" "dispenser-tests/" "redditanalysis/" "app-visualizations/" "pg13/" "style-elements/" "concepts_adaptive_engine/" "synacor/" "nysongsync/" "fsharp-play/" "ducklens/" "emacs-reveal-howto/" "homunculus/" "io-streams-example/" "holmes/" "ini-parser/" "IHaskell/" "org-lens/" "stablediffusion/" "zinc/" "pushshift/" "ginger/" "helix/" "elements-new/" "jp/" "replica/" "obelisk/" "fclabels/" "parsefun/" "pixels/" "hakn-lowlevel/" "deleteme/" "funsets/" "qinlings/" "jakn/" "functional-way/" "design-work/" "3jsboiler/" "oo/" "ihaskell-tdf-old-and-busted/" "test-ihaskell/" "Rocket/" "stuff-infrastructure/" "graql-0.1.1/" "hmatrix/" "three.ts/" "crdts/" "jira-tools/" "kube/" "knee/" "eventual/" "Godot-Neural-Networks/" "reveal.js-3.8.0/" "platform-deployment/" "hasktorch/" "Spock/" "jarvis/" "keylinesdemo/" "app-broken/" "jsmaybe/" "replicapp/" "assessment-search/" "mindsweeper/" "stable-diffusion-docker/" "hsfb/" "client-nodejs/" "deleteme.py" "Shpadoinkle/" "haskell_lessons/" "amft-refactorio/" "redukti/" "near/" "keys/" "vdweb/" "wdk/" "mermeros/" "datavana/" "berp-0.0.2/" "idris-containers/" "grakn-play/" "elm-package.json" "nix-mode/" "ihaskellpod/" "foci/" "cellular/" "promiseplay/" "armetafetch/" "glossplay/" "protoperson/" "row-types/" "taut/" "hive/" "chess/" "digestive-functors/" "roboedit/" "100ktable.zip" "extracellular/" "dispenser-redis/" "ikgexplorer/" "grakn-node/" "keylines-dicer/" "modern-cli-tools/" "webshow/" "entity-tools.bitbucket/" "blog.old/" "haskell-barchart/" "platform-chart/" "troids/" "thematrix/" "wrapping-editor/" "hakn-lowlevel-2/" "viper/" "lambdapy/" "Godot-WFC-0bded7a97f4604e938d6cf56f8c2b4f5e4cbf724/" "opticsbyexample/" "eco-system-globe/" "johns-guide-to-options/" "gwfc/" "interosxr1/" "rhel8-nix/" "irregex/" "rollup/" "propagation/" "fez/" "symbolism/" "pitchdemo/" "lensplay/" "org-reveal/" "aws-all/" "brick/" "preview-app/" "idris-nn-2/" "bypass-paywalls-chrome-master/" "elm-tooling-cli/" "profiling/" "matrix-lens/" "space-menace/" "mk/" "dispenser-server-old/" "orbital/" "bankcsv/" "funjsx/" "clay/" "htmx-play/" "lets-lens/" "protected-data/" "threadtest/" "funjs/" "blender-eventstore-0/" "pgwasm/" "primeoffset/" "material-components-web-codelabs/" "cellular-stack/" "guanxi/" "jsaddle/" "templay/" "bulkgroup/" "threads/" "nurse-sveta/" "wasmfun/" "package-lock.json" "logo/" "dispenser-groundhog-postgresql/" "keylinesmerger/" "nand2tetris/" "arsync/" "splat-oops-deleted-git/" "datadoggydog/" "aoc2018/" "tyshpl/" "neo4john/" "loupe/" "cpython/" "stable-diffusion-webui/" "hinq/" "phonething/" "propagators/" "daml/" "supply_chain/" "johns-personal-life/" "ezcurl/" "tlaplus-1.7.2/" "sctubes/" "frelm/" "ghcjs-dom/" "idrisplay/" "automaton/" "green-field-interos-data-model/" "dispenser-core/" "check-pvp-build/" "perhaps/" "elements/" "Employee-Home/" "lens/" "polywasm/" "prevayler/" "agplay/" "ikg_tool/" "apptool/" "biosim4/" "fontawesome-free-5.12.1-web/" "ml-agents-old/" "hslack/" "monoidal/" "ikg-client/" "tezos-bake-monitor/" "nixbooks/" "english-words/" "janus/" "voltron/" "dockbooks/" "Shpadoinkle-polaris/" "haskell-companies/" "wheatley/" "reflex-dom/" "katas/" "neo4unity/" "sudokul/" "adolescere/" "http2-client-grpc-example/" "reflex-examples/" "complexity-0.1.3/" "retrie/" "transmogrifile/" "idris-codegen-wasm/" "stan/" "genewars/" "orgnoteparser/" "idrisaslib/" "ihaskell-clean/" "README.md" "plz/" "fora/" "tenet/" "dispenser-sqlite/" "zen/" "lvplay/" "cuboid/" "rows/" "haskellevangelism/" "blog/" "idrisjs/" "graphql-engine/" "rumuki-server/" "salesdemo/" "luthor/" "matomo-platform-php/" "ikglogreader/" "dispenser-postgresql/" "aplplay/" "dequelang/" "mempipe/" "aeson/" "redact/" "aws-stuff/" "scifan/" "tdf/" "matt/" "newtabfixer/" "treestate/" "arachnid/" "git-slides/" "my.aoc2018/" "battleship/" "superbooks/" "quaalude/" "protocol/" "funworld/" "sbvplay/" "levelup-private/" "pydatadc_2018-tidy/" "hsp/" "entity-tools/" "stm-gators/" "adapter/" "emphomeext/" "bearish/" "genapp/" "z/" "conflict/" "haskell-web-tracing-framework/" "bayes/" "elm/" "brainmaker/" "sosplay/" "algado/" "k8sco/" "cfa/" "ralph/" "ihaskell-notebook/" "zalgopaint/" "bizdsl/" "apply-refact/" "penner-tui/" "casual/" "trimmer/" "mad-props/" "platform-obselete/" "Gource/" "alex-jenkins-demo/" "wc/" "speakeasy/" "arsyncer/" "hypertoe-gloss/" "material-design-icons/" "fzql/" "zke/" "RubiksCubeAI/" "goar/" "curried/" "jarvix.old/" "dispenser-chat-example/" "org-html-themes/" "jupyter-dark-theme/" "keylines-visualizations-old/" "catjson/" "playsemy/" "needlefinder/" "3b1bnn/" "countryflag-th/" "hasura/" "http2-grpc-types/" "risedebug/" "longboye/" "vdplay/" "amft/" "Godot-WFC/" "sonarqube-8.0/" "blender.fuckt/" "waihelp/" "jvars/" "rescript-project-template/" "tsd/" "eventstoreplay/" "duckling/" "agdaplay/" "jarvix/" "hga/" "proto3-suite/" "cg-back/" "material-starter-kit/" "mythreads/" "s3photos/" "IHaskell-other/" "hscifan/" "dylan/" "reflexer/" "rpg/" "ihaskell-cuboid/" "freud/" "termcrowd/" "dynatree/" "jake/" "ktree/" "reveal/" "ml-agents/" "polaris-react/" "omni-old/" "dispenser-core-phil/" "eznn/" "jenkins-docker-image/" "wfc/" "scylla-tui/" "superx/" "lvish-propagators/" "fam/" "platform-api/" "hackyslack/" "compositor/" "3d-force-graph/" "nattransplay/" "mpropagators/" "qck/" "manim-play/" "phoenix-play/" "gui_in_3d/" "ci/" "summoner/" "lambdabot-slack/" "digestive-functors-lucid/" "mastering-haskell/" "extensible-fizzbuzz/" "lucid-from-html/" "hypertoe/" "stick/" "cambridge/" "nants/" "metamorph/" "membrain-play/" "propagator-examples/" "recursion-schemes/" "datoms/" "orgtxt/" "news-alerts-automation/" "transmogrify/" "specs/" "type-of-html/" "cg/" "proto-lens/" "haskell-hedgehog/" "jenkins-jobs-bafwi/" "tdf-ver-play/" "interos-portal-out-of-sync-develop-with-github/" "debugtl/" "feat/" "Solution1.cs" "these/" "Shpadoinkle-snowman/" "penguin_assets_release_10/" "ml-agents-release_17/" "haskell-chart/" "birutto/" "rise-strawman-schema/" "setpassword/" "polysemy/" "ml-agents-release_19/" "jet/" "word-cloud/" "relations/" "yarn-error.log" "parkerwords/" "closure-compiler/" "levelup/" "rustnn/" "smoosh/" "lean-4.0.0-darwin/" "Idris-dev/" "interos-ui/" "unixlsx/" "project-m36/" "agent99/" "quickhacker/" "test/" "lithograph/" "hm/" "handy/" "GodotMindMap/" "kafkaesque/" "deletemevec/" "bjsl-graphs/" "keylines-5.6.0-37253/" "gati/" "lin/" "lucid-hyperscript/" "bulk-group-loads/" "tidal-music/" "co-log/" "app/" "haskell-to-elm/" "platform-build/" "dynahaskell/" "ad/" "plzwrk/" "interosxr2/" "otherlangs/" "graql-play/" "flat-map/" "asc/" "idris-time/" "toprotobuf/" ".DS_Store" "simplexcel/" "contexts/" "hed/" "colife/" "penguins/" "blender-eventstore-ts-aborted/" "hello-jsoo-esy/" "hb/" "platform-ecs-terraform/" "pywfcplay/" "ecosystemmap/" "itrav/" "ape/" "markury/" "transitionsystems/" "matomo-docker/" "prismatic/" "atoms/" "python-bistring/" "build-all-the-things/" "atlanta-hasura/" "seeking-temp/" "selfdriving/" "hakn/" "lean/" "Solar-System/" "nero/" "prob/" "Entity-Tools-A7/" "webframe/" "groundhog/" "oak/" "ob-test/" "visidata/" "cells/" "wtf.homepoker/" "comonadic-graphs/" "swarm/" "lens-csv/" "matomo-chart/" "servant-swagger/" "databasicplay/" "helloworld/" "refactorio/" "stick-server/" "roboworld/" "brief-templates/" "interos-portal-data-model/" "hakn-fail2/" "client-java/" "haskell-ide-engine/" "amft-longboye/" "matterhorn/" "alexander-mills/" "erlannng/" "pgquarrel/" "limitless/" "chronos/" "prometheus-dev/" "recofvectors/" "before-i-moved-it-to-cfa.cfa-ikg-client/" "haskvana/" "godot1/" "pyvd/" "mockgooginterview/" "org-re-reveal/" "functorality/" "get-it-together/" "postgred/" "mnist/" "autograph/" "dream-schema/" "monoidal-stack/" "dumbcsv/" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/test/" (25419 17906 578770 132000) "Tests.hs" "Driver.hs" "TestProjectors.hs" "TestSilk.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/src/Silk/Types/" (25418 23592 955027 665000) "Event.hs" "Id.hs" "Timestamp.hs" "Result.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/silk/src/Silk/Projectors/" (25418 12449 683520 929000) "Stream.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/eventmodel/src/Arachnid/" (25412 48178 307407 765000) "V1_Alt/" "Prelude.hs" "V1/" "../" "./")
+
+ ("/Users/john/src/arachnid/eventmodel/src/Arachnid/V1_Alt/" (25414 10736 331941 761000) "Types.hs" "Door.hs" "../" "./")
+
+ ("/Users/john/src/redact/src/Redact/Poker/V1/Types/" (25405 11354 115235 607000) "Id.hs" "Account.hs" "../" "./")
+
+ ("/Users/john/src/arachnid/eventmodel/src/Arachnid/V1/Types/" (25404 41909 355754 144000) "Team.hs" "Id.hs" "Name.hs" "DataSet.hs" "../" "./")
+
+ ("/Users/john/src/jarvix/src/" (25390 22042 515360 230000) "assets/" "View.elm" "HelloWorld.elm" "Msg.elm" "Main.elm" "Update.elm" "../" "./")
+
+ ("/Users/john/src/hscifan/src/SF/Update/" (25042 38489 458410 323000) "MainMenu.hs" "Loading.hs" "Playing.hs" "Utils.hs" "Paused.hs" "../" "./")
+
+ ("/Users/john/src/hscifan/src/SF/" (25042 38535 969315 213000) "Spez.hs" "Constants.hs" "Views/" "Tileset.hs" "Subs.hs" "Action.hs" "Update.hs" "Model/" "Audio/" "Audio.hs" "FilePath.hs" "Main.hs" "Init.hs" "Animation/" "HelmUtils.hs" "sfm" "Image.hs" "Cmds.hs" "Model.hs" "Animation.hs" "Update/" "Orphans.hs" "View.hs" "Types/" "Assets.hs" "Debug.hs" "Prelude.hs" "Background/" "EzForms.hs" "../" "./")
+
+ ("/Users/john/src/matt/src/" (25129 27973 628681 481000) "Isolated/" "Junk/" "Propaganda.hs" "Propaganda/" "../" "./")
+
+ ("/Users/john/src/tdf/relativ/src/Relativ/Types/" (25137 29547 361574 559000) "Range.hs" "Flag.hs" "Interval.hs" "Openness.hs" "Name.hs" "Period/" "DateTime.hs" "Period.hs" "../" "./")
+
+ ("/Users/john/src/tdf/relativ/src/Relativ/Types/Period/" (25125 18270 360475 52000) "YearFreq.hs" "Second.hs" "Frequency.hs" "Year.hs" "Month.hs" "Day.hs" "Minute.hs" "Hour.hs" "../" "./")
+
+ ("/Users/john/src/limitless/src/" (25126 59109 219634 626000) "Views/" "Really.elm" "View.elm" "ElmGuide.elm" "TAGS" "Model.elm" "Subs.elm" "Drag.elm" "Msg.elm" "Main.elm" "Update.elm" "../" "./")
+
+ ("/Users/john/src/matt/src/Isolated/" (25129 35896 960761 104000) "Domain.hs" "Constraints.hs" "DirectWishful.hs" "DomainTEx.hs" "DomainT.hs" "../" "./")
+
+ ("/Users/john/src/tdf/relativ-frames/src/Relativ/Series/" (25138 36902 416874 768000) "Sized.hs" "Unsized.hs" "../" "./")
+
+ ("/Users/john/src/tdf/relativ-frames/src/Relativ/Frame/" (25138 28156 810444 558000) "Sized.hs" "Unsized.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/tdf/relativ-frames/src/Relativ/" (25138 29775 144669 107000) "Locator.hs" "Frame/" "Series/" "../" "./")
+
+ ("/Users/john/src/postgred/src/Postgred/" (25157 3306 805770 358000) "SQL/" "Repl.hs" "Client.hs" "D/" "Parsers.hs" "Widths.hs" "Table.hs" "Translator.hs" "Driver.hs" "JSON.hs" "Printer.hs" "Evaluator.hs" "Driver/" "Connection.hs" "Result.hs" "Example.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/postgred/src/Postgred/Driver/" (25157 2413 635638 95000) "SQLite.hs" "S3.hs" "File.hs" "Postgres.hs" "../" "./")
+
+ ("/Users/john/src/wasmfun/src/Fun/Types/Ast/" (25167 49565 724244 250000) "Export.hs" "FunModule.hs" "../" "./")
+
+ ("/Users/john/src/contexts/src/Data/Stack/" (25170 42437 614017 732000) "NonEmpty.hs" "../" "./")
+
+ ("/Users/john/src/contexts/src/Contexts/" (25170 42322 309518 0) "Google.hs" "Monad.hs" "Omni.hs" "Types/" "CLI.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/dotfiles/emacs/emacs.d/snippets/haskell-mode/" (25189 46695 314044 70000) "option-ghc.hs" "deriving.hs" "import.hs" "language-pragma.hs" "TAGS" "new-module.hs" "newtype.hs" "auto-Spec.hs" "prelude.hs" "../" "./")
+
+ ("/Users/john/.emacs.d/snippets/haskell-mode/" (25189 46695 314044 70000) "option-ghc.hs" "deriving.hs" "import.hs" "language-pragma.hs" "TAGS" "new-module.hs" "newtype.hs" "auto-Spec.hs" "prelude.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/Types/" (25229 46914 191714 913000) "MimeType.hs" "DisplayName.hs" "Id.hs" "Name.hs" "Namespace.hs" "Binding.hs" "Driver.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/" (25275 36151 559014 768000) "Handlers/" "Views/" "Links.hs" "Types.hs" "SQLite.hs" "DB/" "Plugins.hs" "DB.hs" "Server.hs" "Env.hs" "Components/" "FAM.hs" "Plugins/" "Orphans.hs" "Api.hs" "Interpreter.hs" ".DS_Store" "VFS.hs" "Types/" "Prelude.hs" "App.hs" "CAS.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/Handlers/" (25275 34535 229905 106000) "Name/" "TohIndex.hs" "Files/" "Files.hs" "Index.hs" "Main.hs" "Namespace/" "Namespaces.hs" "File/" "File.hs" "Prelude.hs" "Csv.hs" "Calc.hs" "Xlsx.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/Views/" (25301 62220 77452 978000) "Name/" "TohIndex.hs" "Files.hs" "Jumbotron.hs" "Header.hs" "LeftNav.hs" "Index.hs" "Theme.hs" "Uploaded.hs" "Main.hs" "Namespace/" "Help.hs" "Namespaces.hs" "Central.hs" "File/" "File.hs" "SVG.hs" "Prelude.hs" "Csv.hs" "Calc.hs" "Xlsx.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/DB/" (25228 6841 689887 536000) "Prelude.hs" "Bindings.hs" "../" "./")
+
+ ("/Users/john/src/eznn/src/NN/OldSchool/" (25292 32219 498096 599000) "Rosenblatt.hs" "MP.hs" "../" "./")
+
+ ("/Users/john/src/eznn/src/NN/" (25299 14121 8564 549000) "Util.hs" "Inefficient.hs" "Types.hs" "Linearizers.hs" "Mazzo/" "Mazzo.hs" "Activate.hs" "MNIST.hs" "AdPlay.hs" "Prelude.hs" "Loader.hs" "OldSchool/" "Py1.hs" "Train.hs" "Joesephus.hs" "../" "./")
+
+ ("/Users/john/src/eznn/test/OldSchool/" (25290 35018 466173 767000) "MPTests.hs" "BoolTests.hs" "RosenblattTests.hs" "../" "./")
+
+ ("/Users/john/src/erlannng/" (25290 45884 887460 615000) ".git/" "mp.erl" "mp.beam" "rosenblatt.erl" "../" "./")
+
+ ("/Users/john/src/manim-play/" (25290 64415 94384 569000) "media/" ".direnv/" ".git/" "go.py" ".gitignore" "env/" "README.md" "__pycache__/" "custom_config.yml" "net.py" "Makefile" ".envrc" "../" "./")
+
+ ("/Users/john/src/idrisaslib/src/Gab/Named/" (25303 42072 359546 291000) "Recursive.hs" "../" "./")
+
+ ("/Users/john/src/idrisaslib/src/Gab/Nameless/" (25303 44149 869702 950000) "Recursive.hs" "../" "./")
+
+ ("/Users/john/src/idrisaslib/src/Gab/" (25304 40216 485379 730000) "Term.hs" "Nameless/" "Named/" "Named.hs" "Morte.hs" "Nameless.hs" "Namespaced.hs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/casual/test/" (25304 50728 350114 26000) "MapTTests.hs" "Driver.hs" "DirTTests.hs" "../" "./")
+
+ ("/Users/john/src/ktree/src/Data/Tree/K/" (25309 48107 394988 645000) "Naive.hs" "../" "./")
+
+ ("/Users/john/src/funworld/src/FW/" (25311 18203 167692 306000) "Play.lhs" ".#Play.lhs" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/ktree/src/Data/Tree/" (25309 34688 623840 723000) "K.hs" "../" "./")
+
+ ("/Users/john/src/idrisaslib/" (25304 39894 720844 521000) "src/" ".stack-work/" ".git/" "package.yaml" ".gitignore" "README.md" "TAGS" "Makefile" "stack.yaml.lock" "ChangeLog.md" "test/" "LICENSE" "app/" "Setup.hs" "stack.yaml" "mt/" "idrisaslib.cabal" "../" "./")
+
+ ("/Users/john/src/idrisaslib/src/" (25303 40537 358172 413000) "Gab/" "../" "./")
+
+ ("/Users/john/src/blender/src/" (25193 59232 359063 423000) "Blender/" "Servant/" "Lucid/" "Htmx.hs" "DevelMain.hs" "../" "./")
+
+ ("/Users/john/src/blender/src/Blender/Lucid/" (25190 10878 448415 144000) "X.hs" "Files.hs" "Index.hs" "File.hs" "Csv.hs" "../" "./")
+
+ ("/Users/john/src/datablender/src/Blender/Lucid/" (25190 4495 932421 765000) "X.hs" "Files.hs" "Index.hs" "../" "./")
+
+ ("/Users/john/src/datablender/src/Blender/TOH/" (25189 51251 554380 815000) "Index.hs" "../" "./")
+
+ ("/Users/john/src/datablender/src/Blender/" (25189 51181 163175 734000) "Server.hs" "Lucid/" "TOH/" "Prelude.hs" "../" "./")
+
+ ("/Users/john/src/datablender/src/Blender/TOH/Pages/" (25189 50990 455194 648000) "Index.hs" "../" "./")
+
+ ("/Users/john/src/datablender/src/" (25188 62103 721570 810000) "Blender/" "../" "./")
+
+ ("/Users/john/dotfiles/emacs/emacs.d/snippets/" (24052 23360 438155 691000) "python-mode/" "haskell-mode/" "elm-mode/" "makefile-bsdmake-mode/" "../" "./")
+
+ ("/Users/john/go/pkg/mod/github.com/ever!finance/arsyncer@v1.1.2/example/" (25167 43983 115139 718000) "all-tx-syncer.go" "from-tx-syncer.go" "target-tx-syncer.go" "swc-syncer.go" "../" "./")
+
+ ("/Users/john/src/contexts/src/" (25169 61512 408815 64000) "Contexts/" "../" "./")
+
+ ("/Users/john/src/contexts/src/Contexts/Types/" (25169 64461 482933 383000) "AppState.hs" "Stack/" "Context.hs" "../" "./")
+
+ ("/Users/john/src/contexts/src/Contexts/Types/Stack/" (25169 64474 809784 634000) "NonEmpty.hs" "../" "./")
+
+ ("/Users/john/src/wasmfun/src/Fun/Types/" (25167 49476 391754 888000) "ModuleName.hs" "Ast/" "../" "./")
+
+ ("/Users/john/src/wasmfun/src/Fun/" (25167 49508 407568 153000) "Types/" "Prelude.hs" "Ast.hs" "../" "./")
+
+ ("/Users/john/src/arsync/" (25167 44561 852246 965000) "arsync.go" ".git/" "README.md" "go.sum" "Makefile" "go.mod" ".#arsync.go" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

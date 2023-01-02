@@ -258,3 +258,4 @@ fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 set -o emacs
+eval "$(direnv hook zsh)"

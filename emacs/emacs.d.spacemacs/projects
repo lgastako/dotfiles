@@ -1,2 +1,9 @@
 ;;; -*- lisp-data -*-
-(("/Users/john/dotfiles/emacs/emacs.d.spacemacs/"))
+(("/Users/john/src/bittensor/")
+ ("/Users/john/src/greg/transformers-bloom-inference/")
+ ("/Users/john/src/greg/DeepSpeed-MII/")
+ ("/ssh:paperspace@172.83.13.195:/home/paperspace/john/torchserve/")
+ ("/Users/john/src/gptslackbot/")
+ ("/Users/john/src/gptdba/")
+ ("/Users/john/dotfiles/emacs/emacs.d.spacemacs/")
+ ("/Users/john/dotfiles/"))

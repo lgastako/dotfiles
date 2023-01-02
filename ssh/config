@@ -11,3 +11,19 @@ Host ss-gateway
   User ubuntu
   ForwardAgent yes
   IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+
+Host fourx
+  User paperspace
+  Hostname 172.83.13.195
+
+Host twox
+  #HostName 97.106.141.19
+  HostName 97.106.139.19
+  User lgastako
+  Port 2022
+  ForwardAgent yes
+
+Host eightx
+  HostName 172.83.15.252
+  User lgastako
+  ForwardAgent yes

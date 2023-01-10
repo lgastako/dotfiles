@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
-(("/Users/john/src/bittensor/")
+(("/Users/john/src/droste/")
+ ("/Users/john/src/bittensor/")
  ("/Users/john/src/greg/transformers-bloom-inference/")
  ("/Users/john/src/greg/DeepSpeed-MII/")
  ("/ssh:paperspace@172.83.13.195:/home/paperspace/john/torchserve/")

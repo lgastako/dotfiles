@@ -1,5 +1,9 @@
 ;;; -*- lisp-data -*-
-(("/Users/john/src/droste/")
+(("/Users/john/src/toolbot/")
+ ("/Users/john/src/droste/")
+ ("/Users/john/src/droste/src/autobot/")
+ ("/Users/john/src/droste/haskell/autobot/")
+ ("/Users/john/src/droste/haskell/flexichat/")
  ("/Users/john/src/bittensor/")
  ("/Users/john/src/greg/transformers-bloom-inference/")
  ("/Users/john/src/greg/DeepSpeed-MII/")

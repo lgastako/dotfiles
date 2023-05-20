@@ -85,6 +85,11 @@ This function should only modify configuration layer settings."
                          :fetcher github
                          :repo "joshcho/ChatGPT.el"))
      ;; other additional packages...
+     (copilot :location (recipe
+                         :fetcher github
+                         :repo "zerolfx/copilot.el"
+                         :files ("*.el" "dist")))
+
      )
 
    ;; A list of packages that cannot be updated.
@@ -603,6 +608,8 @@ before packages are loaded."
   (global-set-key (kbd "C-c q") #'chatgpt-query)
 
   (setq tags-revert-without-query 1)
+  (setq copilot-idle-delay 0.25)
+
   )
 
 (setq-default dotspacemacs-configuration-layers
@@ -639,3 +646,27 @@ This function is called at the very end of Spacemacs initialization."
 )
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+;; ========================
+;; dotspacemacs/user-config
+;; ========================
+
+;; accept completion from copilot and fallback to company
+
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+
+(with-eval-after-load 'copilot
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+
+(add-hook 'prog-mode-hook 'copilot-mode)
+
+(setq copilot-enable-predicates nil)
+
+
+;; (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+;; (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)

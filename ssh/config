@@ -1,9 +1,14 @@
 KeepAlive yes
 ServerAliveInterval 60
 
-Host thor
-  User paperspace
-  HostName 184.105.180.6
+Host do
+  User john
+  HostName 161.35.10.34
+
+
+#Host thor
+#  User paperspace
+#  HostName 184.105.180.6
 
 
 # Host zeus

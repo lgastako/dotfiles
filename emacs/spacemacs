@@ -610,10 +610,16 @@ before packages are loaded."
   (setq tags-revert-without-query 1)
   (setq copilot-idle-delay 0.25)
 
+  (setq haskell-process-type 'stack-ghci)
+  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans" "--test"))
+
   )
 
 (setq-default dotspacemacs-configuration-layers
-              '((haskell :variables haskell-process-type 'stack-ghci)))
+              '((haskell :variables
+                         haskell-process-type 'stack-ghci
+
+                         )))
 
 (setq-default dotspacemacs-configuration-layers
               '((terraform :variables terraform-auto-format-on-save t)))

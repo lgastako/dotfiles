@@ -1,5 +1,8 @@
 ;;; -*- lisp-data -*-
-(("/Users/john/src/toolbot/")
+(("/Users/john/src/borgbot/")
+ ("/Users/john/src/ascender/")
+ ("/Users/john/src/agijr/")
+ ("/Users/john/src/toolbot/")
  ("/Users/john/src/droste/")
  ("/Users/john/src/droste/src/autobot/")
  ("/Users/john/src/droste/haskell/autobot/")

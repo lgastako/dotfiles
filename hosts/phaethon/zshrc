@@ -1,0 +1,2 @@
+export PATH="$PATH:/Users/john/.dotnet/tools"
+export PATH="$PATH:/Users/john/flutter/bin"

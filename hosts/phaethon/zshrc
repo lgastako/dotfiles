@@ -8,3 +8,11 @@ export PATH="/Users/john/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 export PATH="$PATH:$PNPM_HOME"
+
+plugins+=(zsh-auto-nvm-use)
+
+export REFAB_FABRIC_PATTERNS_PATHS="/Users/john/src/refab/patterns;/Users/john/src/fabric/patterns"
+export REFAB_OPENAI_MODEL=gpt-4-turbo-preview
+export REFAB_OPENAI_API_KEY=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
+
+alias plant='java -jar ~/src/plantuml/plantuml.jar'

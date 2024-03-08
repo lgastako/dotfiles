@@ -11,7 +11,7 @@ export PATH="$PATH:$PNPM_HOME"
 
 plugins+=(zsh-auto-nvm-use)
 
-export REFAB_FABRIC_PATTERNS_PATHS="/Users/john/src/refab/patterns;/Users/john/src/fabric/patterns"
+export REFAB_FABRIC_PATTERNS_PATHS="/Users/john/src/refab-private;/Users/john/src/refab/patterns;/Users/john/src/fabric/patterns"
 export REFAB_OPENAI_MODEL=gpt-4-turbo-preview
 
 alias plant='java -jar ~/src/plantuml/plantuml.jar'

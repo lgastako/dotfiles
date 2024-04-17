@@ -16,3 +16,5 @@ export REFAB_OPENAI_MODEL=gpt-4-turbo-preview
 
 export AUTOBOT_PATTERN_PATHS="/Users/john/src/autobot-hs/patterns;/Users/john/src/refab-private;/Users/john/src/refab/patterns;/Users/john/src/fabric/patterns"
 alias plant='java -jar ~/src/plantuml/plantuml.jar'
+
+PATH=$(pyenv root)/shims:$PATH

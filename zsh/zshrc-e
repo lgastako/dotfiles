@@ -258,5 +258,3 @@ fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 set -o emacs
-
-[ -f "/Users/johnevans/.ghcup/env" ] && . "/Users/johnevans/.ghcup/env" # ghcup-env

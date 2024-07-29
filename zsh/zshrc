@@ -252,6 +252,7 @@ fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 set -o emacs
+
 eval "$(direnv hook zsh)"
 
 eval "$(pyenv virtualenv-init -)"
@@ -279,4 +280,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Users/john/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-[ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
+[ -f "/Users/johnevans/.ghcup/env" ] && . "/Users/johnevans/.ghcup/env" # ghcup-env

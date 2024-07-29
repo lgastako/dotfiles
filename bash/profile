@@ -28,4 +28,4 @@ export PATH="//anaconda/bin:$PATH"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
-[ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
+[ -f "/Users/johnevans/.ghcup/env" ] && . "/Users/johnevans/.ghcup/env" # ghcup-env

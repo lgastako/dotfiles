@@ -1,0 +1,13 @@
+export PATH="/Users/johnevans/.local/bin:${PATH}"
+
+export AUTOBOT_PATTERN_PATHS="/Users/johnevans/src/autobot-hs/patterns;/Users/johnevans/src/refab/patterns"
+
+alias c='git commit -m'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh
+
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${PATH}"

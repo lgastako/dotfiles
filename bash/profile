@@ -29,3 +29,8 @@ export PATH="//anaconda/bin:$PATH"
 
 
 [ -f "/Users/johnevans/.ghcup/env" ] && . "/Users/johnevans/.ghcup/env" # ghcup-env
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/johnevans/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+. "$HOME/.cargo/env"

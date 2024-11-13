@@ -1,4 +1,4 @@
-export PATH="$PATH:/Users/john/.dotnet/tools"
+#export PATH="$PATH:/Users/john/.dotnet/tools"
 export PATH="$PATH:/Users/john/flutter/bin"
 
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"

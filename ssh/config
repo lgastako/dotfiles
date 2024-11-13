@@ -1,6 +1,11 @@
 KeepAlive yes
 ServerAliveInterval 60
 
+Host mercury-dev
+  HostName 100.75.142.109
+  Port 10222
+  User john-evans
+
 Host do
   User john
   HostName 161.35.10.34

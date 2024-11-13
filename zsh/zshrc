@@ -258,3 +258,13 @@ fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 set -o emacs
+
+# Activate `fnm`: https://github.com/Schniz/fnm
+if command -v fnm >/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
+# Activate `direnv`: https://direnv.net/
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi

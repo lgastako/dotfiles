@@ -28,6 +28,7 @@
         interactive = auto
 [core]
 	excludesfile = /Users/john/dotfiles/git/gitignore
+	editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t
 [push]
         default = upstream
 [difftool "Kaleidoscope"]

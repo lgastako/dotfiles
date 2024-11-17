@@ -1,13 +1,44 @@
 KeepAlive yes
 ServerAliveInterval 60
 
-Host zeus
-  User john
-  HostName 162.248.163.16
+Host mercury-dev
+  HostName 100.75.142.109
+  Port 10222
+  User john-evans
 
-Host ss-gateway
-  HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
-  Port 2222
-  User ubuntu
-  ForwardAgent yes
-  IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+Host do
+  User john
+  HostName 161.35.10.34
+
+
+#Host thor
+#  User paperspace
+#  HostName 184.105.180.6
+
+
+# Host zeus
+#   User john
+#   HostName 162.248.163.16
+
+# Host ss-gateway
+#   HostName ss-gateway-646095619.us-east-1.elb.amazonaws.com
+#   Port 2222
+#   User ubuntu
+#   ForwardAgent yes
+#   IdentityFile ~/aws-pems/int-mg-shs-app-q3-19.pem
+
+# Host fourx
+#   User paperspace
+#   Hostname 172.83.13.195
+
+# Host twox
+#   #HostName 97.106.141.19
+#   HostName 97.106.139.19
+#   User lgastako
+#   Port 2022
+#   ForwardAgent yes
+
+# Host eightx
+#   HostName 172.83.15.252
+#   User lgastako
+#   ForwardAgent yes

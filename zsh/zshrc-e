@@ -26,7 +26,7 @@ ZSH_THEME=kphoen
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git textmate virtualenvwrapper)
-plugins=(git textmate kubectl poetry)
+plugins=(git textmate kubectl)
 
 #source $ZSH/oh-my-zsh.sh
 
@@ -258,7 +258,3 @@ fi
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 set -o emacs
-
-[ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
-
-alias c='git commit -m'

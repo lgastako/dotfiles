@@ -1,1 +1,5 @@
 export AUTOBOT_PATTERN_PATHS="/Users/john/src/autobot-hs/patterns;/Users/john/src/refab/patterns"
+
+eval "$(direnv hook zsh)"
+
+eval "$(~/.local/bin/mise activate zsh)"

@@ -29,3 +29,7 @@ export PATH="//anaconda/bin:$PATH"
 
 
 [ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/john/.cache/lm-studio/bin"

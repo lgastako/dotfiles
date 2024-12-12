@@ -262,3 +262,25 @@ set -o emacs
 [ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
 
 alias c='git commit -m'
+
+# bun completions
+[ -s "/Users/john/.bun/_bun" ] && source "/Users/john/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/john/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Activate `fnm`: https://github.com/Schniz/fnm
+if command -v fnm >/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/john/.cache/lm-studio/bin"
+
+# Added by Windsurf
+export PATH="/Users/john/.codeium/windsurf/bin:$PATH"

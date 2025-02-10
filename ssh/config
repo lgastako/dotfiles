@@ -10,6 +10,15 @@ Host do
   User john
   HostName 161.35.10.34
 
+Host github-platonicio
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_platonic
+
+Host platonic-systems
+    HostName gitlab.platonic.systems
+    User john.evans
+
 
 #Host thor
 #  User paperspace

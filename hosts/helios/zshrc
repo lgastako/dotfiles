@@ -1,6 +1,7 @@
 export AUTOBOT_PATTERN_PATHS="/Users/john/src/autobot-hs/patterns;/Users/john/src/refab/patterns"
 
-# all mise, all the time? lfg.
-# eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
 
-eval "$(~/.local/bin/mise activate zsh)"
+# eval "$(~/.local/bin/mise activate zsh)"
+
+alias corp='cd ~/src/ytmcnd/apps/john/droste/corp'

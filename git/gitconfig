@@ -29,14 +29,18 @@
 [core]
 	excludesfile = /Users/john/dotfiles/git/gitignore
 	editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t
+  pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
 [push]
         default = upstream
-[difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[merge]
+    conflictstyle = zdiff3
 [difftool]
 	prompt = false
-[diff]
-	tool = Kaleidoscope
 [grep]
 	lineNumber = true
 [mergetool]

@@ -5,3 +5,7 @@ eval "$(direnv hook zsh)"
 # eval "$(~/.local/bin/mise activate zsh)"
 
 alias corp='cd ~/src/ytmcnd/apps/john/droste/corp'
+
+source <(fzf --zsh)
+
+alias zed="open -a /Applications/Zed.app -n"

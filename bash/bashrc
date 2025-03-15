@@ -185,3 +185,5 @@ export PATH="/Users/john/.rd/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/john/.cache/lm-studio/bin"
+
+source /Users/john/.config/broot/launcher/bash/br

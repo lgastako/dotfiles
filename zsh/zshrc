@@ -291,3 +291,5 @@ fpath=(~/.zsh/completion $fpath)
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+
+source /Users/john/.config/broot/launcher/bash/br

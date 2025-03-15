@@ -7,7 +7,7 @@
 \set PAGER OFF
 \set HISTFILE ~/.psql_history- :HOST - : DBNAME -- Remove space between : and DBNAME
 \set HISTSIZE 2000
-\set ECHO_HIDDEN ON
+-- \set ECHO_HIDDEN ON
 \set COMP_KEYWORD_CASE upper
 
 \timing

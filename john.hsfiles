@@ -105,12 +105,22 @@ main = defaultMain
 {-# LANGUAGE NoImplicitPrelude #-}
 
 module {{name-as-module}}.Prelude
-    ( module X
-    ) where
+  ( module X
+  , cs
+  ) where
 
 import Protolude as X
 
+import Protolude.Conv ( StringConv
+                      , Leniency( Lenient )
+                      , strConv
+                      )
+
+cs :: StringConv a b => a -> b
+cs = strConv Lenient
+
 {-# START_FILE app/Main.hs #-}
+{-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 
@@ -118,8 +128,74 @@ module Main ( main ) where
 
 import {{name-as-module}}.Prelude
 
+import Options.Applicative ( Parser
+                           , ParserInfo
+                           , auto
+                           , command
+                           , execParser
+                           , fullDesc
+                           , help
+                           , helper
+                           , hsubparser
+                           , info
+                           , long
+                           , option
+                           , progDesc
+                           , short
+                           , value
+                           )
+
+data Cmd
+  = Docs
+  | Serve Port
+  | Show
+  deriving (Show)
+
+type Port = Int
+
 main :: IO ()
-main = putText "Coming soon, perhaps?  We shall see."
+main = execParser cmdInfoP >>= run
+
+cmdInfoP :: ParserInfo Cmd
+cmdInfoP = info
+  (cmdP <**> helper)
+  (fullDesc <> progDesc "A CLI for the application")
+
+cmdP :: Parser Cmd
+cmdP = hsubparser . mconcat $
+  [ command "docs"  (docsP
+      `withInfo` "Show the documentation")
+  , command "serve" (serveP
+      `withInfo` "Serve the application on the given port")
+  , command "show"  (showP
+      `withInfo` "Show the application")
+  ]
+  where
+    withInfo :: Parser a -> Text -> ParserInfo a
+    withInfo p desc = info p (progDesc . cs $ desc)
+
+docsP :: Parser Cmd
+docsP = pure Docs
+
+serveP :: Parser Cmd
+serveP = Serve <$> portP
+
+showP :: Parser Cmd
+showP = pure Show
+
+portP :: Parser Port
+portP = option auto . mconcat $
+  [ long "port"
+  , short 'p'
+  , help "The port to serve the application on"
+  , value 8080
+  ]
+
+run :: Cmd -> IO ()
+run = \case
+  Docs -> putText "Coming soon, perhaps?  We shall see."
+  Serve port -> putText $ "Serving on port " <> show port
+  Show -> putText "Showing the application"
 
 {-# START_FILE README.md #-}
 # {{name}}

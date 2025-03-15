@@ -9,3 +9,5 @@ alias corp='cd ~/src/ytmcnd/apps/john/droste/corp'
 source <(fzf --zsh)
 
 alias zed="open -a /Applications/Zed.app -n"
+
+alias dayz="$HOME/src/arma3-unix-launcher/build/src/dayz-linux-launcher/dayz-linux-launcher"

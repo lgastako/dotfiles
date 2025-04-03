@@ -21,3 +21,56 @@ Host github-droste
 Host platonic-systems
     HostName gitlab.platonic.systems
     User john.evans
+
+# vi: set ft=sshconfig :
+# .ssh_config
+
+Host datap-prod
+    Hostname ec2-35-165-74-197.us-west-2.compute.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+Host datap-e2e
+    Hostname ec2-52-34-145-230.us-west-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+Host geo
+    HostName ec2-54-193-71-203.us-west-1.compute.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/keys/us-west-1-datap-prod.pem
+
+Host cbot01
+    Hostname 44.247.68.147
+    User ubuntu
+    IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+Host cbot02
+    Hostname 34.211.235.86
+    User ubuntu
+    IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+# Host bot03-old
+#     Hostname 18.236.112.101
+#     User ubuntu
+#     IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+# Host cbot03
+#     Hostname 44.230.167.15
+#     User ec2-user
+#     IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+Host cbot04
+    Hostname 44.245.142.150
+    User ec2-user
+    IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+# Host prod-calling-bot
+#     Hostname ec2-35-166-180-84.us-west-2.compute.amazonaws.com
+#     User ubuntu
+#     IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem
+
+# Host stage-calling-bot
+#     Hostname ec2-35-87-13-15.us-west-2.compute.amazonaws.com
+#     User ubuntu
+#     IdentityFile ~/.ssh/keys/datap-stack-prod-0001-key-pair.pem

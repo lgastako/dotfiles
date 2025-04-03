@@ -262,7 +262,7 @@ set -o emacs
 
 [ -f "/Users/john/.ghcup/env" ] && . "/Users/john/.ghcup/env" # ghcup-env
 
-alias c='git commit -m'
+alias c='hllm commit -y'
 
 # bun completions
 [ -s "/Users/john/.bun/_bun" ] && source "/Users/john/.bun/_bun"
@@ -293,3 +293,11 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 zstyle ':completion:*' menu select
 
 source /Users/john/.config/broot/launcher/bash/br
+
+# pnpm
+export PNPM_HOME="/Users/john/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

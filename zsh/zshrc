@@ -299,3 +299,6 @@ esac
 # pnpm end
 
 alias gcm='git commit -m'
+
+export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
